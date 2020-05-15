@@ -1,0 +1,2 @@
+rootProject.name='SPL'
+include ':app'
