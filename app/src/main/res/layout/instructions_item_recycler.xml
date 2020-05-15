@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:id="@+id/container"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:background="?selectableItemBackground"
+        android:clickable="true"
+        android:focusable="true">
+
+        <TextView
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:id="@+id/title"
+            android:textSize="16sp"
+            tools:text="كيفية إختيار الفريق00000000000000000000000000000000"
+            android:textAlignment="viewStart"
+            android:padding="@dimen/_12sdp"
+            android:textColor="@color/white"
+            android:background="@drawable/instruction_gradient_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <ImageView
+            android:id="@+id/img"
+            app:layout_constraintEnd_toEndOf="@id/title"
+            android:layout_marginEnd="@dimen/_8sdp"
+            app:layout_constraintTop_toTopOf="@id/title"
+            app:layout_constraintBottom_toBottomOf="@id/title"
+            app:srcCompat="@drawable/ic_navigate_next_black_24dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:textColor="#222222"
+            android:textSize="14sp"
+            android:padding="@dimen/_8sdp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/title"
+            tools:text="خمسة لاعبين وسطخمسة لاعبين وسطخمسة لاعبين وسطخمسة لاعبين وسطخمسة لاعبين وسطخمسة لاعبين وسطخمسة لاعبين وسطخمسة لاعبين وسطخمسة لاعبين وسطخمسة لاعبين وسطخمسة لاعبين وسطخمسة لاعبين وسطخمسة لاعبين وسطخمسة لاعبين وسطخمسة لاعبين وسطخمسة لاعبين وسطخمسة لاعبين وسطخمسة لاعبين وسطخمسة لاعبين وسطخمسة لاعبين وسطخمسة لاعبين وسطخمسة لاعبين وسط"
+            android:id="@+id/content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

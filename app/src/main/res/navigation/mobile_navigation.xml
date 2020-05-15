@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            xmlns:tools="http://schemas.android.com/tools"
+            android:id="@+id/nav_graph"
+            app:startDestination="@id/homeFragment">
+
+    <fragment android:id="@+id/homeFragment"
+              android:name="com.sakb.spl.ui.home.HomeFragment"
+              android:label="@string/home"
+              tools:layout="@layout/home_fragment">
+        <action
+            android:id="@+id/action_homeFragment_to_chooseTeamPlayersFragment"
+            app:destination="@id/chooseTeamPlayersFragment" />
+    </fragment>
+
+    <fragment android:id="@+id/videosFragment"
+        android:name="com.sakb.spl.ui.videos.VideosFragment"
+        android:label="@string/videos"
+        tools:layout="@layout/fragment_videos"/>
+
+    <fragment
+        android:id="@+id/chooseTeamPlayersFragment"
+        android:name="com.sakb.spl.ui.chooseteamplayers.ChooseTeamPlayersFragment"
+        android:label="@string/choose_team" />
+
+    <fragment android:id="@+id/termsFragment"
+        android:name="com.sakb.spl.ui.terms.TermsFragment"
+        android:label="@string/terms"
+        tools:layout="@layout/fragment_terms"/>
+
+    <fragment
+        android:id="@+id/newsFragment"
+        android:name="com.sakb.spl.ui.news.NewsFragment"
+        android:label="@string/news"
+        tools:layout="@layout/fragment_news"/>
+
+
+    <fragment
+        android:id="@+id/myPointsFragment"
+        android:name="com.sakb.spl.ui.mypoints.MyPointsFragment"
+        android:label="@string/my_points" />
+    <fragment
+        android:id="@+id/statisticsFragment"
+        android:name="com.sakb.spl.ui.statistics.StatisticsFragment"
+        android:label="@string/statistics"
+        tools:layout="@layout/fragment_statisitcs"/>
+
+    <fragment
+        android:id="@+id/logoutFragment"
+        android:name="com.sakb.spl.ui.logout.LogoutFragment"
+        android:label="@string/logout"
+        tools:layout="@layout/fragment_logout" />
+
+    <fragment android:id="@+id/contactUsFragment"
+        android:name="com.sakb.spl.ui.contactus.ContactUsFragment"
+        android:label="@string/contactus_title"
+        tools:layout="@layout/fragment_contact_us"/>
+
+    <fragment
+        android:id="@+id/helpFragment"
+        tools:layout="@layout/fragment_helps"
+        android:name="com.sakb.spl.ui.help.HelpFragment"
+        android:label="@string/help" />
+
+    <fragment
+        android:id="@+id/howToPlayFragment"
+        android:name="com.sakb.spl.ui.howtoplay.HowToPlayFragment"
+        android:label="@string/how_to_play"
+        tools:layout="@layout/how_to_play_fragment" />
+
+
+    <fragment
+        android:id="@+id/myTeamFragment"
+        android:name="com.sakb.spl.ui.myteam.MyTeamFragment"
+        android:label="@string/my_team"
+        tools:layout="@layout/fragment_my_team"
+        />
+
+
+    <fragment
+        android:id="@+id/transfersFragment"
+        android:name="com.sakb.spl.ui.transfers.TransfersFragment"
+        android:label="@string/transfers" />
+
+    <fragment
+        android:id="@+id/myProfileFragment"
+        android:name="com.sakb.spl.ui.myprofile.MyProfileFragment"
+        android:label="@string/my_profile" >
+
+
+        <action
+            android:id="@+id/action_myProfileFragment_to_editProfileFragment"
+            app:destination="@id/editProfileFragment" />
+        <action
+            android:id="@+id/action_myProfileFragment_to_changePasswordFragment"
+            app:destination="@id/changePasswordFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/editProfileFragment"
+        android:name="com.sakb.spl.ui.editprofile.EditProfileFragment"
+        android:label="@string/edit_profile" />
+
+    <fragment
+        android:id="@+id/changePasswordFragment"
+        android:name="com.sakb.spl.ui.changepassword.ChangePasswordFragment"
+        android:label="@string/change_pass" />
+</navigation>

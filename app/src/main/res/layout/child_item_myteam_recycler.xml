@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:id="@+id/container"
+    android:background="@color/colorYellow"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="8dp"
+    android:layout_marginEnd="8dp"
+    android:layout_marginBottom="8dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <TextView
+
+        android:textAlignment="center"
+        android:id="@+id/child_textView"
+        android:layout_width="60dp"
+        android:layout_height="wrap_content"
+
+
+        android:maxLines="1"
+        android:alpha=".85"
+        android:background="#000000"
+        tools:text="medo000000000000000000000000"
+        android:textColor="@android:color/white"
+android:textSize="11sp"
+        app:layout_constraintEnd_toEndOf="@id/child_imageView"
+        app:layout_constraintStart_toStartOf="@id/child_imageView"
+        app:layout_constraintTop_toBottomOf="@+id/child_imageView" />
+    <TextView
+        android:gravity="center"
+        android:id="@+id/child_cost_textView"
+        android:layout_width="60dp"
+        android:layout_height="wrap_content"
+
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:background="#000000"
+        android:textSize="11sp"
+
+        tools:text="medo0000"
+        android:textColor="@android:color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@id/child_textView"
+        app:layout_constraintStart_toStartOf="@id/child_textView"
+        app:layout_constraintTop_toBottomOf="@+id/child_textView" />
+    <ImageView
+        android:visibility="gone"
+        android:layout_marginLeft="4dp"
+        android:layout_marginBottom="2dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/child_textView"
+        android:id="@+id/captainIv"
+        android:src="@drawable/c_icon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+    <ImageView
+        android:visibility="gone"
+        android:layout_marginLeft="4dp"
+        android:layout_marginBottom="2dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/child_textView"
+        android:id="@+id/viceIv"
+        android:src="@drawable/v_icon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+
+    <TextView
+
+    android:textAlignment="center"
+    android:id="@+id/type"
+    android:layout_width="60dp"
+    android:layout_height="wrap_content"
+
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+android:gravity="center"
+    android:maxLines="1"
+
+    tools:text="GK"
+    android:textColor="@android:color/black"
+    android:textSize="11sp"
+    app:layout_constraintTop_toTopOf="parent"/>
+    <ImageView
+        android:id="@+id/child_imageView"
+        android:layout_width="39dp"
+        android:layout_height="41dp"
+        android:layout_marginBottom="8dp"
+        android:padding="4dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/type"
+        app:layout_constraintVertical_bias="1.0"
+        app:srcCompat="@drawable/add_player" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
