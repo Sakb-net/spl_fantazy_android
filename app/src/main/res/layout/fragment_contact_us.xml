@@ -190,6 +190,57 @@
                                     android:layout_height="wrap_content"
                                     android:orientation="vertical">
 
+
+                                    <LinearLayout
+                                        android:layout_marginTop="8dp"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:orientation="horizontal">
+                                        <ImageView
+                                            android:layout_gravity="center"
+                                            android:tint="@color/colorPrimary"
+                                            android:src="@drawable/email"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"/>
+
+                                    <TextView
+                                        android:layout_marginStart="8dp"
+                                        android:layout_marginEnd="8dp"
+                                        android:textAlignment="viewStart"
+                                        tools:text="info@AlAhly.commmmmmmmmmmmm"
+                                        android:textSize="16sp"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:id="@+id/emailtv"
+                                       />
+
+                                    </LinearLayout>
+
+                                    <LinearLayout
+                                        android:layout_marginTop="8dp"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:orientation="horizontal">
+                                        <ImageView
+                                            android:layout_gravity="center"
+                                            android:tint="@color/colorPrimary"
+                                            android:src="@drawable/ic_location_on_black_24dp"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"/>
+
+                                        <TextView
+                                            android:layout_marginStart="8dp"
+                                            android:layout_marginEnd="8dp"
+                                            android:textAlignment="viewStart"
+                                            tools:text="info@AlAhly.commmmmmmmmmmmm"
+                                            android:textSize="16sp"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:id="@+id/addresstv"
+                                            />
+
+                                    </LinearLayout>
+
                                     <TextView
                                         android:fontFamily="@font/helvetica_reg"
                                         android:includeFontPadding="false"
@@ -202,46 +253,10 @@
                                         android:textColor="@color/head_title"
                                         android:textAlignment="center"/>
 
-                                    <androidx.appcompat.widget.AppCompatEditText
-                                        android:fontFamily="@font/helvetica_reg"
-                                        android:includeFontPadding="false"
-                                        android:padding="8dp"
-                                        android:background="@null"
-                                        android:layout_marginTop="24dp"
-                                        android:inputType="textPersonName"
-                                        android:id="@+id/UserNameEt"
-                                        android:hint="@string/user_name"
-                                        android:imeOptions="actionNext"
-                                        style="@style/contactus_form">
-                                        <requestFocus/>
-                                    </androidx.appcompat.widget.AppCompatEditText>
-                                    <View
-                                        android:layout_marginEnd="13dp"
-                                        android:layout_marginStart="13dp"
-                                        android:layout_width="match_parent"
-                                        android:background="@color/form_ed"
-                                        android:layout_height="1dp"/>
 
 
-                                    <androidx.appcompat.widget.AppCompatEditText
-                                        android:fontFamily="@font/helvetica_reg"
-                                        android:includeFontPadding="false"
-                                        android:padding="8dp"
-                                        android:background="@null"
-                                        android:layout_marginTop="16dp"
-                                        android:inputType="textEmailAddress"
-                                        android:id="@+id/EmailEt"
-                                        android:hint="@string/email"
-                                        style="@style/contactus_form"
 
 
-                                        />
-                                    <View
-                                        android:layout_marginEnd="13dp"
-                                        android:layout_marginStart="13dp"
-                                        android:layout_width="match_parent"
-                                        android:background="@color/form_ed"
-                                        android:layout_height="1dp"/>
 
 
 

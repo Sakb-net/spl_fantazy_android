@@ -190,4 +190,14 @@ interface SplApiEndpoints {
     fun uploadImage(
         @Field("image") image  : String
     ): Single<UploadImgResponse>
+
+
+    @POST("api/v1/contact_us")
+    fun contactUsData(): Single<ContactUsResponse>
+
+    @FormUrlEncoded
+    @POST("api/v1/add_contact_us")
+    fun addContactUsMessage(
+        @Field("content") content : String
+    ): Single<AddContactUsMessageResponse>
 }

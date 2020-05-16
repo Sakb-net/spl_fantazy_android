@@ -8,13 +8,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
-import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.sakb.spl.R
 import com.sakb.spl.base.BaseFragment
-import com.sakb.spl.data.local.PrefManager
-import com.sakb.spl.data.model.LoginResponse
 import com.sakb.spl.data.model.MyteamPlayersResponse
 import com.sakb.spl.databinding.FragmentMyTeamBinding
 import com.sakb.spl.ui.myteam.adapter.MyTeamPlayersAdapter
@@ -23,6 +20,7 @@ import com.sakb.spl.ui.myteam.adapter.dialog.MyTeamSubstitutesAdapter
 import com.sakb.spl.ui.myteam.adapter.menu.MyTeamPlayersMenuAdapter
 import com.sakb.spl.ui.playerprofile.PlayerProfileActivity
 import com.sakb.spl.utils.DividerItemDecorationNoLast
+import com.sakb.spl.utils.showWarningDialog
 import com.sakb.spl.utils.toast
 import kotlinx.android.synthetic.main.dialog_spl_myteam_swap_view.view.*
 import kotlinx.android.synthetic.main.dialog_spl_myteam_view.view.*
@@ -83,6 +81,15 @@ class MyTeamFragment : BaseFragment() {
     }
 
     private fun initListeners(data: MyteamPlayersResponse) {
+        binding.buttonBenchBoost.setOnClickListener {
+            openButtonBoostDialog()
+        }
+
+        binding.buttonTrippleCaptain.setOnClickListener {
+            openCaptainTripleSheet()
+        }
+
+
         binding.menuBtn.setOnClickListener {
            // context?.toast("Reset...")
             viewModel.selectedPlayer = 0
@@ -451,6 +458,23 @@ class MyTeamFragment : BaseFragment() {
                 )
             }
         }
+    }
+
+    private fun openCaptainTripleSheet() {
+        context?.showWarningDialog(R.drawable.xtripple, R.string.tripple_captain_card, R.string.triple_content,{
+                dialog ->  dialog?.dismiss()
+        },{
+                dialog ->  dialog?.dismiss()
+        })
+    }
+
+    private fun openButtonBoostDialog() {
+
+        context?.showWarningDialog(R.drawable.rocket, R.string.benchboost_text_view, R.string.boost_content,{
+            dialog ->  dialog?.dismiss()
+        },{
+            dialog ->  dialog?.dismiss()
+        })
     }
 
     private fun updateUi(data: MyteamPlayersResponse) {

@@ -5,6 +5,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.Observer
+import androidx.navigation.fragment.findNavController
 import com.sakb.spl.R
 import com.sakb.spl.base.BaseFragment
 import com.sakb.spl.databinding.FragmentContactUsBinding
@@ -13,9 +15,7 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class ContactUsFragment : BaseFragment() {
 
-
     private lateinit  var binding : FragmentContactUsBinding
-    //private val binding = _binding!!
     override val viewModel by viewModel<ContactUsViewModel>()
 
 
@@ -23,33 +23,37 @@ class ContactUsFragment : BaseFragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
       // activity?.window?.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE)
         binding  = DataBindingUtil.inflate(inflater, R.layout.fragment_contact_us, container, false)
         return binding.root
     }
 
 
-
-
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
+        viewModel.loadContactUs()
+        initObservers()
         initListener()
     }
 
-    private fun initListener() {
-//        binding.menu.setOnClickListener {
-//            (activity as MainActivity).binding.drawerLayout.openDrawer(GravityCompat.START)
-//        }
+    private fun initObservers() {
+        viewModel.contactUsData.observe(viewLifecycleOwner, Observer {data->
+            binding.emailtv.text = data?.data?.email
+            binding.addresstv.text = data?.data?.address
+        })
+
+        viewModel.addState.observe(viewLifecycleOwner, Observer {
+            if (it>0){
+                findNavController().navigateUp()
+            }
+        })
     }
 
-
-   /* override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
-    }*/
-
-
+    private fun initListener() {
+        binding.buttonSend.setOnClickListener {
+            viewModel.addContactUsMessage(binding.MessageContentEt.text?.toString()?:"")
+        }
+    }
 
 
 }

@@ -263,4 +263,11 @@
     <string name="change_pass">Change password</string>
     <string name="delete_all">Delete all</string>
     <string name="auto_selection">Auto selection</string>
+    <string name="boost_content">هذه الورقة تسمح لك أن تلعب بـ15 لاعب، أي أنه يحتسب نقاط لاعبين البدلاء وكأنهم أساسيين ويمكنك استخدامها مرة واحدة فقط خلال الموسم</string>
+    <string name="tripple_captain_card">Captain triple sheet</string>
+    <string name="triple_content">هذه الورقة تضرب نقاط الكابتن بـ3 بدل أن تضاعف فقط ويمكنك استخدامها مرة واحدة فقط خلال الموسم</string>
+    <string name="silver_card">الكارت الفضي</string>
+    <string name="gold_card">الكارت الذهبي</string>
+    <string name="gold_card_content">هذا الكارت يسمح لك بإجراء انتقالات مجانية غير محدودة خلال الجولة ويمكنك شرائها أكثر من مرة خلال الموسم</string>
+    <string name="silver_card_content">هذا الكارت يسمح لك بإجراء انتقالات مجانية غير محدودة خلال الجولة ويمكنك استخدامها مرة واحدة فقط خلال الموسم</string>
 </resources>

@@ -18,6 +18,7 @@ import com.sakb.spl.ui.playerprofile.PlayerProfileActivity
 import com.sakb.spl.ui.transfers.adapter.MyTeamPlayersMasterAdapter
 import com.sakb.spl.ui.transfers.adapter.menu.MyTeamPlayersMasterMenuAdapter
 import com.sakb.spl.utils.showEnterTeamNameDialog
+import com.sakb.spl.utils.showWarningDialog
 import com.sakb.spl.utils.toast
 
 import kotlinx.android.synthetic.main.fragment_transfers.*
@@ -283,6 +284,13 @@ class TransfersFragment : BaseFragment() {
 
             }
 
+            binding.buttonGoldCard.setOnClickListener {
+                openGoldCardDialog()
+            }
+            binding.buttonSilverCard.setOnClickListener {
+                openSilverCardDialog()
+            }
+
             if (viewModel.isMenuPreviewEnabled) {
                 binding.stadIv.setImageDrawable(null)
                 binding.stadIv.setBackgroundColor(
@@ -367,6 +375,23 @@ class TransfersFragment : BaseFragment() {
 
     }
 
+    private fun openSilverCardDialog() {
+        context?.showWarningDialog(R.drawable.ic_sliver_card, R.string.silver_card,R.string.silver_card_content,{
+                dialog ->  dialog?.dismiss()
+        },{
+                dialog -> dialog?.dismiss()
+        })
+    }
+
+
+
+    private fun openGoldCardDialog() {
+        context?.showWarningDialog(R.drawable.ic_golden_card, R.string.gold_card,R.string.gold_card_content,{
+            dialog ->  dialog?.dismiss()
+        },{
+            dialog -> dialog?.dismiss()
+        })
+    }
 
 
 }

@@ -12,7 +12,7 @@ object Constants{
             "https://fantgame.sakb-co.com.sa/"
         const val type_dev ="android"
         const val val_dev = "A\$&h6#565aN\$DrOiD#(*I\$&h6#aN\$&*rOiD#"
-        const val UNAUTHENTICATED = "unAuthenticated"
+       // const val UNAUTHENTICATED = "unAuthenticated"
 
         // Facebook app id
         //App ID: 2585402265062933

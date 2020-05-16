@@ -194,93 +194,112 @@
             android:layout_width="0dp"
             android:layout_height="0dp"
             >
+
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                >
+                android:layout_height="wrap_content">
 
 
+                <ImageView
 
-        <ImageView
-
-            android:layout_marginBottom="24dp"
-            android:layout_marginTop="24dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintBottom_toBottomOf="@id/rv_swapList"
-            app:layout_constraintTop_toTopOf="parent"
-
-
-            android:id="@+id/stadIv"
-            android:src="@drawable/pitch"
-            android:scaleType="centerCrop"
-            android:layout_width="0dp"
-            android:layout_height="0dp"/>
-
-        <androidx.recyclerview.widget.RecyclerView
-
-            app:layout_constraintVertical_bias="0"
-            app:layout_constraintEnd_toEndOf="@id/stadIv"
-            app:layout_constraintStart_toStartOf="@id/stadIv"
-            app:layout_constraintTop_toTopOf="@id/stadIv"
-            android:id="@+id/rv_parent"
-            android:orientation="vertical"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            tools:listitem="@layout/parent_item_team_recycler"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content" />
+                    android:id="@+id/stadIv"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_marginTop="24dp"
+                    android:layout_marginBottom="24dp"
+                    android:scaleType="centerCrop"
 
 
-    <ImageView
-        app:layout_constraintTop_toTopOf="@id/rv_swapList"
-        app:layout_constraintBottom_toBottomOf="@id/rv_swapList"
-        app:layout_constraintEnd_toEndOf="@id/stadIv"
-        app:layout_constraintStart_toStartOf="@id/stadIv"
-        android:id="@+id/swap_bg"
-        android:background="#B2B2B2"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        />
-        <androidx.recyclerview.widget.RecyclerView
-            android:layoutDirection="ltr"
-            app:layout_constraintVertical_bias="0"
-            app:layout_constraintTop_toBottomOf="@id/rv_parent"
-            android:layout_width="wrap_content"
-            app:layout_constraintEnd_toEndOf="@id/stadIv"
-            app:layout_constraintStart_toStartOf="@id/stadIv"
-            android:orientation="horizontal"
-            android:id="@+id/rv_swapList"
-            android:layout_marginTop="24dp"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            tools:listitem="@layout/child_item_myteam_recycler"
-            android:layout_height="wrap_content"/>
+                    android:src="@drawable/pitch"
+                    app:layout_constraintBottom_toBottomOf="@id/rv_swapList"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <androidx.recyclerview.widget.RecyclerView
+
+                    android:id="@+id/rv_parent"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    app:layout_constraintEnd_toEndOf="@id/stadIv"
+                    app:layout_constraintStart_toStartOf="@id/stadIv"
+                    app:layout_constraintTop_toTopOf="@id/stadIv"
+                    app:layout_constraintVertical_bias="0"
+                    tools:listitem="@layout/parent_item_team_recycler" />
 
 
+                <ImageView
+                    android:id="@+id/swap_bg"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:background="#B2B2B2"
+                    app:layout_constraintBottom_toBottomOf="@id/rv_swapList"
+                    app:layout_constraintEnd_toEndOf="@id/stadIv"
+                    app:layout_constraintStart_toStartOf="@id/stadIv"
+                    app:layout_constraintTop_toTopOf="@id/rv_swapList" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rv_swapList"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="24dp"
+                    android:layoutDirection="ltr"
+                    android:orientation="horizontal"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    app:layout_constraintEnd_toEndOf="@id/stadIv"
+                    app:layout_constraintStart_toStartOf="@id/stadIv"
+                    app:layout_constraintTop_toBottomOf="@id/rv_parent"
+                    app:layout_constraintVertical_bias="0"
+                    tools:listitem="@layout/child_item_myteam_recycler" />
 
 
-        <Button
-            android:id="@+id/buttonBenchBoost"
-            style="@style/button_green"
-            android:layout_width="wrap_content"
-            android:layout_gravity="center"
+                <Button
+                    android:id="@+id/buttonBenchBoost"
+                    style="@style/button_green"
+                    android:layout_width="wrap_content"
+                    android:layout_gravity="center"
 
-            android:text="@string/benchboost_text_view"
+                    android:layout_marginStart="12dp"
+                    android:layout_marginTop="12dp"
 
-            app:layout_constraintTop_toBottomOf="@id/rv_swapList"
-
-
-            android:paddingStart="8dp"
-            android:paddingEnd="8dp"
-            android:background="@drawable/rec_green_color_dialog"
-            android:layout_marginBottom="12dp"
-            android:layout_marginTop="12dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            />
+                    android:layout_marginBottom="12dp"
 
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+                    app:layout_constraintEnd_toStartOf="@id/buttonTrippleCaptain"
+                    android:background="@drawable/rec_green_color_dialog"
+                    android:paddingStart="8dp"
+                    android:paddingEnd="8dp"
+                    android:text="@string/benchboost_text_view"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintHorizontal_chainStyle="packed"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/rv_swapList" />
+
+                <Button
+                    android:id="@+id/buttonTrippleCaptain"
+                    style="@style/button_green"
+                    android:layout_width="wrap_content"
+                    android:layout_gravity="center"
+
+                    android:layout_marginTop="12dp"
+
+                    android:layout_marginStart="24dp"
+                    android:layout_marginBottom="12dp"
+
+
+                    android:background="@drawable/rec_green_color_dialog"
+                    android:paddingStart="8dp"
+                    android:paddingEnd="8dp"
+                    android:text="@string/tripple_captain_card"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/buttonBenchBoost"
+                    app:layout_constraintTop_toBottomOf="@id/rv_swapList" />
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.core.widget.NestedScrollView>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

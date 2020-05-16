@@ -237,6 +237,13 @@ class SplRepository constructor(
             return remote.home( "", "")
         }
 
+    fun contactUs(): Single<ContactUsResponse> {
+            return remote.contactUsData()
+        }
+fun addContactUsMessage(content : String): Single<AddContactUsMessageResponse> {
+            return remote.addContactUsMessage(content)
+        }
+
 
 
 

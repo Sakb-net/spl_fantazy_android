@@ -106,7 +106,7 @@ val viewModelModule = module {
         LogOutViewModel()
     }
     viewModel {
-        ContactUsViewModel()
+        ContactUsViewModel(get())
     }
     viewModel {
         HelpViewModel(get())
