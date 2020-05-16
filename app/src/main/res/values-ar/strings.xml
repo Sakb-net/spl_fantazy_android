@@ -217,4 +217,5 @@
     <string name="gold_card">الكارت الذهبي</string>
     <string name="gold_card_content">هذا الكارت يسمح لك بإجراء انتقالات مجانية غير محدودة خلال الجولة ويمكنك شرائها أكثر من مرة خلال الموسم \n سعر الكارت 200 ريال</string>
     <string name="silver_card_content">هذا الكارت يسمح لك بإجراء انتقالات مجانية غير محدودة خلال الجولة ويمكنك استخدامها مرة واحدة فقط خلال الموسم</string>
+    <string name="choose_team_first">قم باختيار الفريق أولا!</string>
 </resources>

@@ -9,6 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.Observer
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.sakb.spl.R
 import com.sakb.spl.base.BaseFragment
@@ -33,8 +34,7 @@ import timber.log.Timber
 class MyTeamFragment : BaseFragment() {
 
     private lateinit var binding: FragmentMyTeamBinding
- //   private val binding = _binding!!
-  //  private val binding = _binding!!
+
     private lateinit var adapter: MyTeamPlayersAdapter
     override val viewModel by viewModel<MyTeamViewModel>()
 
@@ -75,8 +75,28 @@ class MyTeamFragment : BaseFragment() {
 
     private fun loadTeamPlayers() {
         viewModel.MyTeamPlayersListLiveData.observe(this, Observer { data ->
-            initListeners(data)
-            updateUi(data)
+            var all_found = true
+            data?.data?.forEach {
+                it?.forEach {
+                    if (it.found_player?:0<=0)
+                        all_found = false
+                }
+            }
+            if (all_found) {
+                binding.emptyView.visibility = View.GONE
+                binding.nestedContainer.visibility = View.VISIBLE
+                binding.buttonsLinearLayout.visibility = View.VISIBLE
+                initListeners(data)
+                updateUi(data)
+            }
+            else {
+                binding.emptyView.visibility = View.VISIBLE
+                binding.nestedContainer.visibility = View.GONE
+                binding.buttonsLinearLayout.visibility = View.GONE
+                binding.buttonOpenChooseTeam.setOnClickListener {
+                    findNavController().navigate(R.id.chooseTeamPlayersFragment)
+                }
+            }
         })
     }
 

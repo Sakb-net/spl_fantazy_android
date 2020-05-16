@@ -71,6 +71,69 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
 
+        <View
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/banner_text_view"
+            android:id="@+id/view_bg"
+            android:background="@color/colorPrimary"
+            android:layout_width="0dp"
+            android:layout_height="0dp"/>
+
+        <ImageView
+          android:layout_marginTop="@dimen/_48sdp"
+            app:layout_constraintTop_toTopOf="@id/view_bg"
+            app:layout_constraintStart_toStartOf="@id/view_bg"
+            app:layout_constraintEnd_toEndOf="@id/view_bg"
+            android:id="@+id/empty_image"
+            app:srcCompat="@drawable/ic_warning"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            app:layout_constraintTop_toBottomOf="@id/empty_image"
+            android:layout_marginTop="16dp"
+            app:layout_constraintStart_toStartOf="@id/view_bg"
+            app:layout_constraintEnd_toEndOf="@id/view_bg"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:id="@+id/empty_view_title"
+            android:text="@string/choose_team_first"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <Button
+            android:id="@+id/buttonOpenChooseTeam"
+            style="@style/button_green"
+            android:layout_width="wrap_content"
+            android:layout_gravity="center"
+
+            app:layout_constraintVertical_bias="0.0"
+            android:layout_marginTop="24dp"
+
+            android:paddingStart="8dp"
+            android:paddingEnd="8dp"
+            android:background="@drawable/rec_green_color_dialog"
+
+            android:textAllCaps="false"
+            android:text="@string/choose_team"
+
+            app:layout_constraintEnd_toEndOf="@id/view_bg"
+            app:layout_constraintStart_toStartOf="@id/view_bg"
+            app:layout_constraintBottom_toBottomOf="@id/view_bg"
+            app:layout_constraintTop_toBottomOf="@id/empty_view_title" />
+
+
+
+        <androidx.constraintlayout.widget.Group
+            android:visibility="gone"
+            app:constraint_referenced_ids="view_bg,empty_image,empty_view_title,buttonOpenChooseTeam"
+            android:id="@+id/empty_view"
+            android:layout_width="0dp"
+            android:layout_height="0dp"/>
+
       <!--  <LinearLayout
             android:minHeight="60dp"
             android:id="@+id/count_linear_layout"
@@ -144,6 +207,7 @@
         </LinearLayout>-->
 
         <LinearLayout
+            android:visibility="gone"
             android:id="@+id/buttons_linear_layout"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -184,7 +248,8 @@
 
         <androidx.core.widget.NestedScrollView
 
-
+android:id="@+id/nested_container"
+            android:visibility="gone"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/buttons_linear_layout"
