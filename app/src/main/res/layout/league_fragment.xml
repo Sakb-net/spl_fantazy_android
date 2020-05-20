@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+    </data>
+<androidx.core.widget.NestedScrollView
+    android:fillViewport="true"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <androidx.constraintlayout.widget.ConstraintLayout
+       android:background="@drawable/bg"
+       android:layout_width="match_parent"
+       android:layout_height="match_parent">
+
+       <TextView
+           android:id="@+id/join_text"
+           app:layout_constraintTop_toTopOf="parent"
+           app:layout_constraintStart_toStartOf="parent"
+           app:layout_constraintEnd_toEndOf="parent"
+           app:layout_constraintHorizontal_bias="0"
+           android:layout_marginTop="24dp"
+           android:layout_marginStart="24dp"
+           android:layout_marginEnd="24dp"
+           android:text="@string/join_league"
+           android:textColor="@color/white"
+           android:textSize="18sp"
+           android:textStyle="bold"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"/>
+
+       <TextView
+           android:id="@+id/join_description_text"
+           app:layout_constraintTop_toBottomOf="@id/join_text"
+           app:layout_constraintStart_toStartOf="parent"
+           app:layout_constraintEnd_toEndOf="parent"
+           app:layout_constraintHorizontal_bias="0"
+           android:layout_marginTop="24dp"
+           android:layout_marginStart="24dp"
+           app:layout_constrainedWidth="true"
+           android:lineSpacingMultiplier="1.5"
+           android:layout_marginEnd="24dp"
+           android:text="@string/join_league_description"
+           android:textColor="@color/white"
+           android:textSize="18sp"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"/>
+
+       <Button
+           android:id="@+id/special_league_button"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:layout_marginStart="24dp"
+           android:layout_marginTop="24dp"
+           android:layout_marginEnd="24dp"
+           style="@style/green_button_style"
+           android:textAllCaps="false"
+           android:text="@string/special_league"
+           app:layout_constrainedWidth="true"
+           app:layout_constraintHorizontal_bias="0"
+           app:layout_constraintStart_toStartOf="parent"
+           app:layout_constraintTop_toBottomOf="@id/join_description_text" />
+
+
+       <Button
+           android:id="@+id/powerful_league"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:layout_marginStart="24dp"
+           android:layout_marginTop="24dp"
+           android:textAllCaps="false"
+           android:layout_marginEnd="24dp"
+           android:text="@string/powerful_league"
+           style="@style/green_button_style"
+           app:layout_constrainedWidth="true"
+           app:layout_constraintEnd_toEndOf="parent"
+           app:layout_constraintHorizontal_bias="0"
+           app:layout_constraintStart_toEndOf="@id/special_league_button"
+           app:layout_constraintTop_toBottomOf="@id/join_description_text" />
+
+
+
+
+
+
+       <TextView
+           android:id="@+id/create_text"
+           app:layout_constraintTop_toBottomOf="@id/special_league_button"
+           app:layout_constraintStart_toStartOf="parent"
+           app:layout_constraintEnd_toEndOf="parent"
+           app:layout_constraintHorizontal_bias="1"
+           android:layout_marginTop="24dp"
+           android:layout_marginStart="24dp"
+           android:layout_marginEnd="24dp"
+           android:text="@string/create_a_league"
+           android:textColor="@color/white"
+           android:textSize="18sp"
+           android:textStyle="bold"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"/>
+
+
+       <TextView
+           android:id="@+id/create_description_text"
+           app:layout_constraintTop_toBottomOf="@id/create_text"
+           app:layout_constraintStart_toStartOf="parent"
+           app:layout_constraintEnd_toEndOf="parent"
+           app:layout_constraintHorizontal_bias="1"
+           android:layout_marginTop="24dp"
+           android:layout_marginStart="24dp"
+           app:layout_constrainedWidth="true"
+           android:lineSpacingMultiplier="1.5"
+           android:layout_marginEnd="24dp"
+           android:text="@string/create_a_league_to_compete_with_you_and_your_friends_and_invite_them_to_join_you_via_mobile_number_or_code"
+           android:textColor="@color/white"
+           android:textSize="18sp"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"/>
+
+       <Button
+           android:id="@+id/head_button"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:layout_marginStart="24dp"
+           android:layout_marginTop="24dp"
+           android:layout_marginEnd="24dp"
+           style="@style/green_button_style"
+           android:textAllCaps="false"
+           app:layout_constraintStart_toStartOf="parent"
+           android:text="@string/head_to_head"
+           app:layout_constrainedWidth="true"
+           app:layout_constraintHorizontal_bias="1"
+           app:layout_constraintEnd_toStartOf="@id/classic_button"
+           app:layout_constraintTop_toBottomOf="@id/create_description_text" />
+
+       <Button
+           android:id="@+id/classic_button"
+           style="@style/green_button_style"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:layout_marginStart="24dp"
+           android:layout_marginEnd="24dp"
+           android:layout_marginTop="24dp"
+           android:text="@string/classic"
+           android:textAllCaps="false"
+           app:layout_constrainedWidth="true"
+           app:layout_constraintEnd_toEndOf="parent"
+           app:layout_constraintHorizontal_bias="1"
+           app:layout_constraintTop_toBottomOf="@id/create_description_text" />
+
+
+   </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.core.widget.NestedScrollView>
+
+</layout>

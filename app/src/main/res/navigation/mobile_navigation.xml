@@ -109,4 +109,8 @@
         android:id="@+id/matchesFragment"
         android:name="com.sakb.spl.ui.matches.MatchesFragment"
         android:label="@string/matches" />
+    <fragment
+        android:id="@+id/leagueFragment"
+        android:name="com.sakb.spl.ui.league.LeagueFragment"
+        android:label="@string/create_or_join_league" />
 </navigation>

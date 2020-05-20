@@ -22,6 +22,10 @@
             android:title="@string/transfers"/>
 
         <item
+            android:id="@+id/leagueFragment"
+            android:title="@string/create_or_join_league"/>
+
+        <item
                 android:id="@+id/howToPlayFragment"
                 android:title="@string/how_to_play"/>
 

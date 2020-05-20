@@ -271,4 +271,13 @@
     <string name="gold_card_content">هذا الكارت يسمح لك بإجراء انتقالات مجانية غير محدودة خلال الجولة ويمكنك شرائها أكثر من مرة خلال الموسم</string>
     <string name="silver_card_content">هذا الكارت يسمح لك بإجراء انتقالات مجانية غير محدودة خلال الجولة ويمكنك استخدامها مرة واحدة فقط خلال الموسم</string>
     <string name="choose_team_first">Choose team first!</string>
+    <string name="create_or_join_league">Create or join league</string>
+    <string name="join_league">Join league</string>
+    <string name="join_league_description">Join a private league if you have its own code or participate in one of the stronger leagues</string>
+    <string name="special_league">Special league</string>
+    <string name="powerful_league">Powerful league</string>
+    <string name="create_a_league">Create a league</string>
+    <string name="create_a_league_to_compete_with_you_and_your_friends_and_invite_them_to_join_you_via_mobile_number_or_code">Create a league to compete with you and your friends and invite them to join you via mobile number or code</string>
+    <string name="classic">Classic</string>
+    <string name="head_to_head">Head to Head</string>
 </resources>

@@ -12,6 +12,7 @@ import com.sakb.spl.ui.forgotpassword.ForgotPassViewModel
 import com.sakb.spl.ui.help.HelpViewModel
 import com.sakb.spl.ui.home.HomeViewModel
 import com.sakb.spl.ui.howtoplay.HowToPlayViewModel
+import com.sakb.spl.ui.league.LeagueViewModel
 import com.sakb.spl.ui.login.LoginViewModel
 import com.sakb.spl.ui.logout.LogOutViewModel
 import com.sakb.spl.ui.matches.MatchesViewModel
@@ -133,6 +134,9 @@ val viewModelModule = module {
 
     viewModel {
         MatchesViewModel()
+    }
+    viewModel {
+        LeagueViewModel()
     }
 
 

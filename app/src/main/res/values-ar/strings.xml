@@ -218,4 +218,13 @@
     <string name="gold_card_content">هذا الكارت يسمح لك بإجراء انتقالات مجانية غير محدودة خلال الجولة ويمكنك شرائها أكثر من مرة خلال الموسم \n سعر الكارت 200 ريال</string>
     <string name="silver_card_content">هذا الكارت يسمح لك بإجراء انتقالات مجانية غير محدودة خلال الجولة ويمكنك استخدامها مرة واحدة فقط خلال الموسم</string>
     <string name="choose_team_first">قم باختيار الفريق أولا!</string>
+    <string name="create_or_join_league">أنشئ أو انضم لدوري</string>
+    <string name="join_league">انضم إلي دوري</string>
+    <string name="join_league_description">انضم لدوري خاص إذا كان معك الكود الخاص به او اشترك في أحد الدوريات الأقوى</string>
+    <string name="special_league">دوري خاص</string>
+    <string name="powerful_league">الدوريات الأقوي</string>
+    <string name="create_a_league">إنشاء دوري</string>
+    <string name="create_a_league_to_compete_with_you_and_your_friends_and_invite_them_to_join_you_via_mobile_number_or_code">قم بإنشاء دوري للتنافس بينك وبين أصدقائك و قم بدعوتهم للانضمام لك عن طريق رقم الجوال أو كود</string>
+    <string name="classic">كلاسيك</string>
+    <string name="head_to_head">Head to Head</string>
 </resources>
