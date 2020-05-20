@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:elevation="8dp"
+        android:clickable="true"
+        android:foreground="?attr/selectableItemBackground"
+        android:background="?attr/selectableItemBackground"
+        app:cardCornerRadius="4dp"
+        android:layout_margin="8dp"
+        android:layout_height="wrap_content"
+        android:focusable="true">
+
+
+        <LinearLayout
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            android:layout_width="match_parent"
+            android:baselineAligned="false"
+            android:orientation="horizontal"
+            android:id="@+id/linear"
+            app:layout_constraintTop_toBottomOf="@+id/date"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginEnd="8dp"
+            app:layout_constraintBottom_toBottomOf="parent">
+
+            <LinearLayout
+                android:gravity="center"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:orientation="horizontal"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_gravity="center"
+                    android:gravity="start"
+                    app:layout_constrainedWidth="true"
+                    tools:text="النادي"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:textColor="@color/colorGrey"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/team1_tv" />
+
+                <ImageView
+                    android:layout_gravity="center"
+                    android:layout_width="@dimen/_46sdp"
+                    android:layout_height="@dimen/_46sdp"
+                    tools:src="@mipmap/ic_launcher"
+                    android:id="@+id/team1_iv" />
+
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="8dp"
+
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:layout_weight="0"
+                android:layout_width="wrap_content"
+                android:orientation="vertical"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:textColor="#303030"
+                    tools:text="122:112"
+                    android:gravity="center"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/date_result"
+                    android:textSize="16sp" />
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:gravity="center"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:orientation="horizontal"
+                android:layout_height="wrap_content">
+
+
+                <ImageView
+                    android:layout_gravity="center"
+                    android:layout_width="@dimen/_46sdp"
+                    android:layout_height="@dimen/_46sdp"
+                    tools:src="@mipmap/ic_launcher"
+                    android:id="@+id/team2_iv" />
+
+
+                <TextView
+                    android:layout_gravity="center"
+                    tools:text="االهلال "
+                    tools:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/team2_tv"
+                    android:textColor="@color/colorGrey"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_width="wrap_content" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+
+    </androidx.cardview.widget.CardView>
+</layout>

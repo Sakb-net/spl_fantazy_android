@@ -105,4 +105,8 @@
         android:id="@+id/changePasswordFragment"
         android:name="com.sakb.spl.ui.changepassword.ChangePasswordFragment"
         android:label="@string/change_pass" />
+    <fragment
+        android:id="@+id/matchesFragment"
+        android:name="com.sakb.spl.ui.matches.MatchesFragment"
+        android:label="@string/matches" />
 </navigation>

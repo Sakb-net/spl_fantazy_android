@@ -14,6 +14,7 @@ import com.sakb.spl.ui.home.HomeViewModel
 import com.sakb.spl.ui.howtoplay.HowToPlayViewModel
 import com.sakb.spl.ui.login.LoginViewModel
 import com.sakb.spl.ui.logout.LogOutViewModel
+import com.sakb.spl.ui.matches.MatchesViewModel
 import com.sakb.spl.ui.mypoints.MyPointsViewModel
 import com.sakb.spl.ui.myprofile.MyProfileViewModel
 import com.sakb.spl.ui.myteam.MyTeamViewModel
@@ -128,6 +129,10 @@ val viewModelModule = module {
     }
     viewModel {
         ChangePasswordViewModel(get())
+    }
+
+    viewModel {
+        MatchesViewModel()
     }
 
 
