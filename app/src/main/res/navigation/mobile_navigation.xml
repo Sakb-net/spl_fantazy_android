@@ -116,10 +116,18 @@
         <action
             android:id="@+id/action_leagueFragment_to_specialLeagueFragment"
             app:destination="@id/specialLeagueFragment" />
+        <action
+            android:id="@+id/action_leagueFragment_to_createClassicLeagueFragment"
+            app:destination="@id/createClassicLeagueFragment" />
     </fragment>
     <fragment
         android:id="@+id/specialLeagueFragment"
         android:name="com.sakb.spl.ui.specialleague.SpecialLeagueFragment"
         android:label="@string/join_to_special_league"
         tools:layout="@layout/special_league_fragment" />
+    <fragment
+        android:id="@+id/createClassicLeagueFragment"
+        android:name="com.sakb.spl.ui.classicleague.CreateClassicLeagueFragment"
+        android:label="@string/create_classic_league"
+        tools:layout="@layout/create_classic_league_fragment" />
 </navigation>

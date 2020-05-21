@@ -5,6 +5,7 @@ import com.sakb.spl.ui.addplayer.AddPlayerViewModel
 import com.sakb.spl.ui.changepassword.ChangePasswordViewModel
 import com.sakb.spl.ui.chooseteam.ChooseTeamViewModel
 import com.sakb.spl.ui.chooseteamplayers.ChooseTeamPlayersViewModel
+import com.sakb.spl.ui.classicleague.CreateClassicLeagueViewModel
 import com.sakb.spl.ui.contactus.ContactUsViewModel
 import com.sakb.spl.ui.detailsvideo.DetailsVideosViewModel
 import com.sakb.spl.ui.editprofile.EditProfileViewModel
@@ -141,6 +142,9 @@ val viewModelModule = module {
     }
     viewModel {
         SpecialLeagueViewModel()
+    }
+    viewModel {
+        CreateClassicLeagueViewModel()
     }
 
 

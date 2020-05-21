@@ -232,4 +232,10 @@
     <string name="league_code">كود الدوري</string>
     <string name="enter_the_league_code_here">ادخل كود الدوري هنا</string>
     <string name="select_round">اختر الجولة</string>
+    <string name="create_classic_league">إنشاء دوري كلاسيك</string>
+    <string name="classic_league">الدوري الكلاسيك</string>
+    <string name="classic_desc">في الدوري الكلاسيكي ، يتم ترتيب الفرق بناءً على إجمالي نقاطها في اللعبة. يمكنك الانضمام أو الخروج من الدوري .الكلاسيكي في أي وقت خلال الموسم</string>
+    <string name="league_name">اسم الدوري</string>
+    <string name="enter_the_league_name_here">ادخل اسم الدوري هنا</string>
+    <string name="beginning_of_calculating_points">بداية حساب النقاط</string>
 </resources>

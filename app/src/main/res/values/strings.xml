@@ -285,4 +285,11 @@
     <string name="league_code">League code</string>
     <string name="enter_the_league_code_here">Enter the league code here</string>
     <string name="select_round">Choose a round</string>
+    <string name="create_classic_league">Create a classic league</string>
+    <string name="classic_league">"Classic League "</string>
+    <string name="classic_desc">In the classic league, teams are ranked based on their total score in the game. You can join or exit the Classic League at any time during the season
+</string>
+    <string name="league_name">League name</string>
+    <string name="enter_the_league_name_here">Enter the league name here</string>
+    <string name="beginning_of_calculating_points">Beginning of calculating points</string>
 </resources>
