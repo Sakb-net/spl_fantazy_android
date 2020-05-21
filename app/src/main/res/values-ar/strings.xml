@@ -227,4 +227,9 @@
     <string name="create_a_league_to_compete_with_you_and_your_friends_and_invite_them_to_join_you_via_mobile_number_or_code">قم بإنشاء دوري للتنافس بينك وبين أصدقائك و قم بدعوتهم للانضمام لك عن طريق رقم الجوال أو كود</string>
     <string name="classic">كلاسيك</string>
     <string name="head_to_head">Head to Head</string>
+    <string name="join_to_special_league">انضم إلي دوري خاص</string>
+    <string name="join_special_league_desc">انضم إلى الدوري الخاص إذا أعطاك شخص ما رمز الدوري للدخول</string>
+    <string name="league_code">كود الدوري</string>
+    <string name="enter_the_league_code_here">ادخل كود الدوري هنا</string>
+    <string name="select_round">اختر الجولة</string>
 </resources>

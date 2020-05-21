@@ -63,7 +63,7 @@ class MatchesFragment : BaseFragment() {
 
         var selectedItem = 0
         val builder = AlertDialog.Builder(requireContext(),R.style.MaterialThemeDialog)
-        builder.setTitle(getString(R.string.select_fav_team))
+        builder.setTitle(getString(R.string.select_round))
         builder.setSingleChoiceItems(options
             , 0
         ) { _: DialogInterface, item: Int ->

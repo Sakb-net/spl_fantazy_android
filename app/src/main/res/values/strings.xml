@@ -280,4 +280,9 @@
     <string name="create_a_league_to_compete_with_you_and_your_friends_and_invite_them_to_join_you_via_mobile_number_or_code">Create a league to compete with you and your friends and invite them to join you via mobile number or code</string>
     <string name="classic">Classic</string>
     <string name="head_to_head">Head to Head</string>
+    <string name="join_to_special_league">Join to special league</string>
+    <string name="join_special_league_desc">Join the private league if someone gives you the league code to enter</string>
+    <string name="league_code">League code</string>
+    <string name="enter_the_league_code_here">Enter the league code here</string>
+    <string name="select_round">Choose a round</string>
 </resources>

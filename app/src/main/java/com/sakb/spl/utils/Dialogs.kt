@@ -5,6 +5,7 @@ import android.content.Context
 import android.view.LayoutInflater
 import androidx.annotation.DrawableRes
 import com.sakb.spl.R
+import com.sakb.spl.databinding.DialogViewConfirmationBinding
 import com.sakb.spl.databinding.DialogViewWarningBinding
 import dmax.dialog.SpotsDialog
 import kotlinx.android.synthetic.main.dialog_view.view.*
@@ -18,6 +19,7 @@ object Dialogs {
     ): AlertDialog? {
         return SpotsDialog.Builder().setContext(context).setMessage(titleId).setCancelable(isCancelable).build()
     }
+
 
     fun getSuccessDialog(
          context: Context,
@@ -74,5 +76,21 @@ fun Context.showWarningDialog(
     binding.positiveButton.setOnClickListener { positive(dialog) }
     //if (drawableRes == R.drawable.dialog_check) view.negativeButton.visibility =View.GONE
     binding.negativeBtn.setOnClickListener { negative(dialog) }
+    dialog.show()
+}
+
+fun Context.showConfirmationDialog(
+    @DrawableRes drawableRes : Int,
+    title: String,
+    contentResID : Int?=null,
+    positive: (dialog: AlertDialog?) -> Unit) {
+    val binding = DialogViewConfirmationBinding.inflate(LayoutInflater.from(this), null,false)
+    val alertDialog = AlertDialog.Builder(this).setView(binding.root).setCancelable(false)
+    val dialog = alertDialog.create()
+    dialog.window?.setBackgroundDrawableResource(android.R.color.transparent)
+    binding.dialogImage.setImageResource(drawableRes)
+    binding.dialogTextTitle.text = title
+    binding.dialogTextContent.text = contentResID?.let { this.getString(it) }
+    binding.positiveButton.setOnClickListener { positive(dialog) }
     dialog.show()
 }

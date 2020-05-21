@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
+import androidx.navigation.fragment.findNavController
 
 import com.sakb.spl.R
 import com.sakb.spl.base.BaseFragment
@@ -31,6 +32,12 @@ class LeagueFragment : BaseFragment() {
     }
 
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        binding.specialLeagueButton.setOnClickListener {
+            findNavController().navigate(R.id.action_leagueFragment_to_specialLeagueFragment)
+        }
+    }
 
 
 
