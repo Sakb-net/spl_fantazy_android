@@ -24,6 +24,7 @@ import com.sakb.spl.ui.newdetails.NewsDetailsViewModel
 import com.sakb.spl.ui.newpass.NewPassViewModel
 import com.sakb.spl.ui.news.NewsViewModel
 import com.sakb.spl.ui.playerprofile.PlayerProfileViewModel
+import com.sakb.spl.ui.powerfulleague.JoinToPowerfulLeagueViewModel
 import com.sakb.spl.ui.register.RegisterViewModel
 import com.sakb.spl.ui.specialleague.SpecialLeagueViewModel
 import com.sakb.spl.ui.splash.SplashViewModel
@@ -146,6 +147,10 @@ val viewModelModule = module {
     viewModel {
         CreateClassicLeagueViewModel()
     }
+    viewModel {
+        JoinToPowerfulLeagueViewModel()
+    }
+
 
 
 

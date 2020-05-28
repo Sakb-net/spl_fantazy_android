@@ -238,4 +238,10 @@
     <string name="league_name">اسم الدوري</string>
     <string name="enter_the_league_name_here">ادخل اسم الدوري هنا</string>
     <string name="beginning_of_calculating_points">بداية حساب النقاط</string>
+    <string name="powerful_desc">الدوريات الأقوي هي أقوي الدوريات الموجودة في الموسم ويمكنك الاشتراك بها مقابل مبلغ محدد.</string>
+    <string name="Join_the_strongest_leagues">انضم إلي الدوريات الأقوي</string>
+    <string name="join_now">انضم الآن</string>
+    <string name="order">الترتيب</string>
+    <string name="buy">شراء</string>
+    <string name="content_join">يمكنك الانضمام لهذا الدوري عن طريق دفع ثمن الاشتراك</string>
 </resources>

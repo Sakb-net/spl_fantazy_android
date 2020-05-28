@@ -292,4 +292,10 @@
     <string name="league_name">League name</string>
     <string name="enter_the_league_name_here">Enter the league name here</string>
     <string name="beginning_of_calculating_points">Beginning of calculating points</string>
+    <string name="powerful_desc">The strongest leagues are the strongest leagues in the season and you can subscribe for a specified amount.</string>
+    <string name="Join_the_strongest_leagues">Join the strongest leagues</string>
+    <string name="join_now">Join Now</string>
+    <string name="order">Order</string>
+    <string name="buy">Buy</string>
+    <string name="content_join">You can join this league by paying for the subscription</string>
 </resources>

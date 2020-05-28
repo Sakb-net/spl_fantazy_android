@@ -119,6 +119,9 @@
         <action
             android:id="@+id/action_leagueFragment_to_createClassicLeagueFragment"
             app:destination="@id/createClassicLeagueFragment" />
+        <action
+            android:id="@+id/action_leagueFragment_to_joinToPowerfulLeagueFragment"
+            app:destination="@id/joinToPowerfulLeagueFragment" />
     </fragment>
     <fragment
         android:id="@+id/specialLeagueFragment"
@@ -130,4 +133,8 @@
         android:name="com.sakb.spl.ui.classicleague.CreateClassicLeagueFragment"
         android:label="@string/create_classic_league"
         tools:layout="@layout/create_classic_league_fragment" />
+    <fragment
+        android:id="@+id/joinToPowerfulLeagueFragment"
+        android:name="com.sakb.spl.ui.powerfulleague.JoinToPowerfulLeagueFragment"
+        android:label="@string/Join_the_strongest_leagues" />
 </navigation>
