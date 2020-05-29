@@ -46,6 +46,10 @@ class LeagueFragment : BaseFragment() {
             findNavController().navigate(R.id.action_leagueFragment_to_createClassicLeagueFragment)
         }
 
+        binding.headButton.setOnClickListener {
+            findNavController().navigate(R.id.action_leagueFragment_to_createHeadToHeadLeagueFragment)
+        }
+
     }
 
 

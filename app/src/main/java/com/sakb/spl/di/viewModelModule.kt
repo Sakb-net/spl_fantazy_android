@@ -10,6 +10,7 @@ import com.sakb.spl.ui.contactus.ContactUsViewModel
 import com.sakb.spl.ui.detailsvideo.DetailsVideosViewModel
 import com.sakb.spl.ui.editprofile.EditProfileViewModel
 import com.sakb.spl.ui.forgotpassword.ForgotPassViewModel
+import com.sakb.spl.ui.headtoheadleague.CreateHeadToHeadLeagueViewModel
 import com.sakb.spl.ui.help.HelpViewModel
 import com.sakb.spl.ui.home.HomeViewModel
 import com.sakb.spl.ui.howtoplay.HowToPlayViewModel
@@ -149,6 +150,9 @@ val viewModelModule = module {
     }
     viewModel {
         JoinToPowerfulLeagueViewModel()
+    }
+  viewModel {
+      CreateHeadToHeadLeagueViewModel()
     }
 
 
