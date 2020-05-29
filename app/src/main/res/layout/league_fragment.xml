@@ -11,7 +11,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
     <androidx.constraintlayout.widget.ConstraintLayout
-       android:background="@drawable/bg"
+       android:background="@drawable/dawriatbg"
        android:layout_width="match_parent"
        android:layout_height="match_parent">
 
@@ -91,7 +91,7 @@
            app:layout_constraintStart_toStartOf="parent"
            app:layout_constraintEnd_toEndOf="parent"
            app:layout_constraintHorizontal_bias="1"
-           android:layout_marginTop="24dp"
+           android:layout_marginTop="@dimen/_160sdp"
            android:layout_marginStart="24dp"
            android:layout_marginEnd="24dp"
            android:text="@string/create_a_league"
