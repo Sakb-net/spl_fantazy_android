@@ -303,4 +303,9 @@
     <string name="head_to_head_desc">Each team plays a match against Head to head in the league, another team in the league in each round. The outcome of the match depends on the result of the round for each team minus any transfer points. It was spent to prepare for the round \n The confrontation schedule is created at the beginning of the first round of the league. Once the schedule is created, the league is locked and teams will not be able to join or leave.</string>
     <string name="create">Create</string>
     <string name="max_team_num">The maximum number of teams</string>
+    <string name="league_management">League management</string>
+    <string name="my_leagues">My Leagues</string>
+    <string name="league_created_title">The league was created successfully</string>
+    <string name="content_join_desc">Send the league code to your friends so they can join</string>
+    <string name="code_league">League code :</string>
 </resources>

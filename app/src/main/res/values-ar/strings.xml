@@ -249,4 +249,9 @@
     <string name="head_to_head_desc">، يلعب كل فريق مباراة ضد Head to head في الدوري فريق آخر في الدوري في كل جولة. تعتمد نتيجة المباراة على نتيجة الجولة لكل فريق مطروحًا منها أي نقاط تحويل .تم إنفاقها للتحضير للجولة \n يتم إنشاء جدول المواجهات في بداية الجولة الأولى من الدوري. بمجرد إنشاء الجدول الزمني ، يتم قفل الدوري ولن تتمكن الفرق من الانضمام أو المغادرة. </string>
     <string name="create">إنشاء</string>
     <string name="max_team_num">الحد الأقصى لعدد الفرق</string>
+    <string name="league_management">إدارة الدوري</string>
+    <string name="my_leagues">دورياتي</string>
+    <string name="league_created_title">تم إنشاء الدوري بنجاح</string>
+    <string name="content_join_desc">قم بإرسال كود الدوري إلي اصدقائك حتي يتمكنوا من الانضمام</string>
+    <string name="code_league">كود الدوري :</string>
 </resources>
