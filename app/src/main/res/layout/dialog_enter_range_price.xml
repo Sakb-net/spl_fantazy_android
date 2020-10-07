@@ -24,77 +24,75 @@
         app:layout_constraintTop_toTopOf="parent">
 
 
-
-
         <TextView
-            android:gravity="center"
-            android:textStyle="bold"
             android:id="@+id/enter_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
+            android:gravity="center"
             android:text="@string/price_from_to"
             android:textColor="@color/colorPrimary"
             android:textSize="16sp"
+            android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <EditText
-            android:background="@drawable/edittext_border"
-            android:padding="8dp"
-            android:hint="@string/from"
-            app:layout_constraintEnd_toStartOf="@id/enter_price_to"
-            app:layout_constraintHorizontal_bias="0"
             android:id="@+id/enter_price_from"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginTop="14dp"
             android:layout_marginEnd="8dp"
+            android:background="@drawable/edittext_border"
+            android:hint="@string/from"
+            android:imeOptions="actionDone"
+            android:inputType="numberDecimal"
+            android:padding="8dp"
             android:textColor="#3C3C3C"
             android:textSize="16sp"
-            android:inputType="numberDecimal"
-            android:imeOptions="actionDone"
+            app:layout_constraintEnd_toStartOf="@id/enter_price_to"
+            app:layout_constraintHorizontal_bias="0"
 
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/enter_tv"/>
+            app:layout_constraintTop_toBottomOf="@id/enter_tv" />
 
         <EditText
-            android:background="@drawable/edittext_border"
-            android:padding="8dp"
-            android:hint="@string/to"
-            app:layout_constraintHorizontal_bias="1"
             android:id="@+id/enter_price_to"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginTop="14dp"
             android:layout_marginEnd="8dp"
+            android:background="@drawable/edittext_border"
+            android:hint="@string/to"
+            android:imeOptions="actionDone"
+            android:inputType="numberDecimal"
+            android:padding="8dp"
             android:textColor="#3C3C3C"
             android:textSize="16sp"
-            android:inputType="numberDecimal"
-            android:imeOptions="actionDone"
-
             app:layout_constraintEnd_toEndOf="parent"
+
+            app:layout_constraintHorizontal_bias="1"
             app:layout_constraintStart_toEndOf="@id/enter_price_from"
-            app:layout_constraintTop_toBottomOf="@id/enter_tv"/>
+            app:layout_constraintTop_toBottomOf="@id/enter_tv" />
 
         <TextView
             android:id="@+id/positiveEnterRangeBtn"
             android:layout_width="wrap_content"
             android:layout_height="35dp"
-            android:paddingStart="@dimen/_24sdp"
-            android:paddingEnd="@dimen/_24sdp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="16dp"
             android:layout_marginEnd="8dp"
             android:layout_marginBottom="8dp"
-
             android:background="@drawable/rec_green_color_dialog"
             android:gravity="center"
+
+            android:paddingStart="@dimen/_24sdp"
+            android:paddingEnd="@dimen/_24sdp"
             android:text="@string/okkk"
             android:textColor="@color/white"
             app:layout_constraintBottom_toBottomOf="parent"

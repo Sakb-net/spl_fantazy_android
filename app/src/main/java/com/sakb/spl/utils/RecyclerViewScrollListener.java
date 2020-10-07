@@ -16,7 +16,7 @@ public abstract class RecyclerViewScrollListener extends RecyclerView.OnScrollLi
         super.onScrolled(recyclerView, dx, dy);
 
         // to handle scroll from bottom to top only
-        if(dy>0) {
+        if (dy > 0) {
             if (mEnabled) {
                 RecyclerView.LayoutManager manager = recyclerView.getLayoutManager();
 

@@ -15,7 +15,7 @@ class InstructionsAdapter :
         InstructionsDiffCallback()
     ) {
 
-    var onClickListener: ((position : Int,HowToPlayResponse.ContentRole) -> Unit)? = null
+    var onClickListener: ((position: Int, HowToPlayResponse.ContentRole) -> Unit)? = null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) =
         InstructionsViewHolder(
@@ -34,24 +34,23 @@ class InstructionsAdapter :
 
     class InstructionsViewHolder(
         private val binding: InstructionsItemRecyclerBinding,
-        private val onClickListener: ((position : Int,HowToPlayResponse.ContentRole) -> Unit)?
+        private val onClickListener: ((position: Int, HowToPlayResponse.ContentRole) -> Unit)?
     ) : RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(data : HowToPlayResponse.ContentRole) = data.run {
+        fun bind(data: HowToPlayResponse.ContentRole) = data.run {
             binding.title.text = title
             binding.content.text = content
-            if (isActivated==true){
+            if (isActivated == true) {
                 binding.content.visibility = View.VISIBLE
                 binding.img.setImageResource(R.drawable.ic_expand_more_white_24dp)
-            }
-            else{
+            } else {
                 binding.content.visibility = View.GONE
                 binding.img.setImageResource(R.drawable.ic_navigate_next_black_24dp)
             }
             binding.executePendingBindings()
             itemView.setOnClickListener {
                 Timber.e("role = clicked")
-                onClickListener?.invoke(adapterPosition,this)
+                onClickListener?.invoke(adapterPosition, this)
             }
         }
     }

@@ -63,11 +63,11 @@ class MyTeamFragment : BaseFragment() {
 
         loadTeamPlayers()
         // load team statues
-       /// loadTeamStatuesObserver()
+        /// loadTeamStatuesObserver()
         // change
         changePlayersStatuesObserver()
         // check available to swap
-       /// availablePayerToSwapStatuesObserver()
+        /// availablePayerToSwapStatuesObserver()
         ///availablePayerToSwapResponseDataObserver()
         addCaptainOrViceCaptainObserver()
         openSubstitutesDialog()
@@ -77,8 +77,8 @@ class MyTeamFragment : BaseFragment() {
         viewModel.MyTeamPlayersListLiveData.observe(this, Observer { data ->
             var all_found = true
             data?.data?.forEach {
-                it?.forEach {
-                    if (it.found_player?:0<=0)
+                it.forEach {
+                    if (it.found_player ?: 0 <= 0)
                         all_found = false
                 }
             }
@@ -88,8 +88,7 @@ class MyTeamFragment : BaseFragment() {
                 binding.buttonsLinearLayout.visibility = View.VISIBLE
                 initListeners(data)
                 updateUi(data)
-            }
-            else {
+            } else {
                 binding.emptyView.visibility = View.VISIBLE
                 binding.nestedContainer.visibility = View.GONE
                 binding.buttonsLinearLayout.visibility = View.GONE
@@ -111,34 +110,30 @@ class MyTeamFragment : BaseFragment() {
 
 
         binding.menuBtn.setOnClickListener {
-           // context?.toast("Reset...")
+            // context?.toast("Reset...")
             viewModel.selectedPlayer = 0
             viewModel.resetActivePlayer()
 
-            binding.menuBtn.setBackgroundTintList(
-                ContextCompat.getColorStateList(
-                    context!!,
-                    R.color.colorGreenDark
-                )
+            binding.menuBtn.backgroundTintList = ContextCompat.getColorStateList(
+                requireContext(),
+                R.color.colorGreenDark
             )
 
-            binding.preview.setBackgroundTintList(
-                ContextCompat.getColorStateList(
-                    context!!,
-                    R.color.white
-                )
+            binding.preview.backgroundTintList = ContextCompat.getColorStateList(
+                requireContext(),
+                R.color.white
             )
 
             binding.menuBtn.setTextColor(
                 ContextCompat.getColor(
-                    context!!,
+                    requireContext(),
                     R.color.white
                 )
             )
 
             binding.preview.setTextColor(
                 ContextCompat.getColor(
-                    context!!,
+                    requireContext(),
                     R.color.black
                 )
             )
@@ -147,7 +142,7 @@ class MyTeamFragment : BaseFragment() {
             binding.stadIv.setImageDrawable(null)
             binding.stadIv.setBackgroundColor(
                 ContextCompat.getColor(
-                    context!!,
+                    requireContext(),
                     R.color.white
                 )
             )
@@ -164,8 +159,7 @@ class MyTeamFragment : BaseFragment() {
                             context?.toast("Reset...")
                             viewModel.selectedPlayer = 0
                             viewModel.resetActivePlayer()
-                        }
-                        else if (player.alPha == 1.0f) {
+                        } else if (player.alPha == 1.0f) {
 
                             if (viewModel.selectedPlayer == 1) {
                                 context?.toast("change now from server then reset!")
@@ -185,9 +179,8 @@ class MyTeamFragment : BaseFragment() {
                                 })
 
 
-                            }
-                            else {
-                                if (parentPosition==4)
+                            } else {
+                                if (parentPosition == 4)
                                     context?.showSplMyTeamSwapDialog({
                                         it?.dismiss()
                                         context?.toast("change $pos plz!")
@@ -212,7 +205,6 @@ class MyTeamFragment : BaseFragment() {
                                                 )
                                             )
                                         })
-
                                 else
                                     context?.showSplMyTeamDialog(
                                         changeBtn = {
@@ -279,12 +271,11 @@ class MyTeamFragment : BaseFragment() {
                         }
 
 
-
                     }
 
 
                 }
-                binding.rvParent.setAdapter(_adapter)
+                binding.rvParent.adapter = _adapter
 
             }
         }
@@ -295,30 +286,26 @@ class MyTeamFragment : BaseFragment() {
             viewModel.selectedPlayer = 0
             viewModel.resetActivePlayer()
 
-            binding.preview.setBackgroundTintList(
-                ContextCompat.getColorStateList(
-                    context!!,
-                    R.color.colorGreenDark
-                )
+            binding.preview.backgroundTintList = ContextCompat.getColorStateList(
+                requireContext(),
+                R.color.colorGreenDark
             )
 
-            binding.menuBtn.setBackgroundTintList(
-                ContextCompat.getColorStateList(
-                    context!!,
-                    R.color.white
-                )
+            binding.menuBtn.backgroundTintList = ContextCompat.getColorStateList(
+                requireContext(),
+                R.color.white
             )
 
             binding.preview.setTextColor(
                 ContextCompat.getColor(
-                    context!!,
+                    requireContext(),
                     R.color.white
                 )
             )
 
             binding.menuBtn.setTextColor(
                 ContextCompat.getColor(
-                    context!!,
+                    requireContext(),
                     R.color.black
                 )
             )
@@ -415,7 +402,7 @@ class MyTeamFragment : BaseFragment() {
                     }
 
                 }
-                binding.rvParent.setAdapter(adapter)
+                binding.rvParent.adapter = adapter
 
                 binding.swapBg.visibility = View.VISIBLE
                 binding.rvSwapList.adapter = MyTeamSwapPlayersItemAdapter(
@@ -481,49 +468,55 @@ class MyTeamFragment : BaseFragment() {
     }
 
     private fun openCaptainTripleSheet() {
-        context?.showWarningDialog(R.drawable.xtripple, R.string.tripple_captain_card, R.string.triple_content,{
-                dialog ->  dialog?.dismiss()
-        },{
-                dialog ->  dialog?.dismiss()
-        })
+        context?.showWarningDialog(
+            R.drawable.xtripple,
+            R.string.tripple_captain_card,
+            R.string.triple_content,
+            { dialog ->
+                dialog?.dismiss()
+            },
+            { dialog ->
+                dialog?.dismiss()
+            })
     }
 
     private fun openButtonBoostDialog() {
 
-        context?.showWarningDialog(R.drawable.rocket, R.string.benchboost_text_view, R.string.boost_content,{
-            dialog ->  dialog?.dismiss()
-        },{
-            dialog ->  dialog?.dismiss()
-        })
+        context?.showWarningDialog(
+            R.drawable.rocket,
+            R.string.benchboost_text_view,
+            R.string.boost_content,
+            { dialog ->
+                dialog?.dismiss()
+            },
+            { dialog ->
+                dialog?.dismiss()
+            })
     }
 
     private fun updateUi(data: MyteamPlayersResponse) {
         binding.rvParent.isNestedScrollingEnabled = false
         if (viewModel.isMenuPreviewEnabled) {
-            binding.menuBtn.setBackgroundTintList(
-                ContextCompat.getColorStateList(
-                    context!!,
-                    R.color.colorGreenDark
-                )
+            binding.menuBtn.backgroundTintList = ContextCompat.getColorStateList(
+                requireContext(),
+                R.color.colorGreenDark
             )
 
-            binding.preview.setBackgroundTintList(
-                ContextCompat.getColorStateList(
-                    context!!,
-                    R.color.white
-                )
+            binding.preview.backgroundTintList = ContextCompat.getColorStateList(
+                requireContext(),
+                R.color.white
             )
 
             binding.menuBtn.setTextColor(
                 ContextCompat.getColor(
-                    context!!,
+                    requireContext(),
                     R.color.white
                 )
             )
 
             binding.preview.setTextColor(
                 ContextCompat.getColor(
-                    context!!,
+                    requireContext(),
                     R.color.black
                 )
             )
@@ -531,7 +524,7 @@ class MyTeamFragment : BaseFragment() {
             binding.stadIv.setImageDrawable(null)
             binding.stadIv.setBackgroundColor(
                 ContextCompat.getColor(
-                    context!!,
+                    requireContext(),
                     R.color.white
                 )
             )
@@ -545,7 +538,7 @@ class MyTeamFragment : BaseFragment() {
 
                         // if is transparent
                         if (player.isSelected) {
-                           // context?.toast("Reset...")
+                            // context?.toast("Reset...")
                             viewModel.selectedPlayer = 0
                             viewModel.resetActivePlayer()
                         } else if (player.alPha == 1.0f) {
@@ -567,11 +560,10 @@ class MyTeamFragment : BaseFragment() {
                                 })
 
 
-                            }
-                            else {
+                            } else {
 
 
-                                if (parentPosition!=4)
+                                if (parentPosition != 4)
                                     context?.showSplMyTeamDialog(
                                         changeBtn = {
                                             it?.dismiss()
@@ -620,7 +612,6 @@ class MyTeamFragment : BaseFragment() {
                                                 )
                                             )
                                         })
-
                                 else
                                     context?.showSplMyTeamSwapDialog({
                                         it?.dismiss()
@@ -658,11 +649,10 @@ class MyTeamFragment : BaseFragment() {
 
 
                 }
-                binding.rvParent.setAdapter(_adapter)
+                binding.rvParent.adapter = _adapter
 
             }
-        }
-        else {
+        } else {
             binding.stadIv.setImageResource(R.drawable.pitch)
             data.data?.let {
                 adapter = MyTeamPlayersAdapter(it).apply {
@@ -751,7 +741,7 @@ class MyTeamFragment : BaseFragment() {
                     }
 
                 }
-                binding.rvParent.setAdapter(adapter)
+                binding.rvParent.adapter = adapter
 
                 binding.swapBg.visibility = View.VISIBLE
                 binding.rvSwapList.adapter = MyTeamSwapPlayersItemAdapter(
@@ -786,7 +776,7 @@ class MyTeamFragment : BaseFragment() {
                             } else {
                                 context?.showSplMyTeamSwapDialog({
                                     it?.dismiss()
-                                 //   context?.toast("change $childPos plz!")
+                                    //   context?.toast("change $childPos plz!")
                                     viewModel.selectedPlayer = 1
                                     viewModel.playerLinkOne = "" + data.link_player
                                     viewModel.checkAvailablePlayerToSwap(
@@ -818,24 +808,24 @@ class MyTeamFragment : BaseFragment() {
         }
     }
 
- /*   private fun loadTeamStatuesObserver() {
-        viewModel.MyTeamPlayerResultLiveData.observe(this, Observer<Event<NetworkState>> {
-            it.getContentIfNotHandled()?.let {
-                // Only proceed if the event has never been handled
-                when (it.status) {
-                    Status.RUNNING -> (context as MainActivity).showProgress()
-                    Status.SUCCESS -> {
-                        (context as MainActivity).hideProgress()
-                    }
-                    Status.FAILED -> {
-                        (context as MainActivity).hideProgress()
-                        context?.toast("" + it.message)
-                    }
+    /*   private fun loadTeamStatuesObserver() {
+           viewModel.MyTeamPlayerResultLiveData.observe(this, Observer<Event<NetworkState>> {
+               it.getContentIfNotHandled()?.let {
+                   // Only proceed if the event has never been handled
+                   when (it.status) {
+                       Status.RUNNING -> (context as MainActivity).showProgress()
+                       Status.SUCCESS -> {
+                           (context as MainActivity).hideProgress()
+                       }
+                       Status.FAILED -> {
+                           (context as MainActivity).hideProgress()
+                           context?.toast("" + it.message)
+                       }
 
-                }
-            }
-        })
-    }*/
+                   }
+               }
+           })
+       }*/
 
 
 //    override fun onDestroyView() {
@@ -843,52 +833,50 @@ class MyTeamFragment : BaseFragment() {
 //        binding = null
 //    }
 
-    private fun openSubstitutesDialog(){
-        viewModel.substitutesList.observe(this, Observer  {
+    private fun openSubstitutesDialog() {
+        viewModel.substitutesList.observe(this, Observer {
 
 
-                Timber.e("data ----------"+it.toString())
-                context?.showSplSubstitutesDialog(it,dismissed = {
-                    it?.dismiss()
-                    context?.toast("Reset...")
-                    viewModel.selectedPlayer = 0
-                    viewModel.resetActivePlayer()
-                },
-                    selectedPlayer = {dialog, _, player ->
-                        dialog?.dismiss()
+            Timber.e("data ----------" + it.toString())
+            context?.showSplSubstitutesDialog(it, dismissed = {
+                it?.dismiss()
+                context?.toast("Reset...")
+                viewModel.selectedPlayer = 0
+                viewModel.resetActivePlayer()
+            },
+                selectedPlayer = { dialog, _, player ->
+                    dialog?.dismiss()
 
 //                        context?.toast("change now from server then reset!")
 
-                        context?.showDialog(getString(R.string.save_changes), { it ->
-                            it?.dismiss()
-                            viewModel.changePlayers(
-                                viewModel.playerLinkOne, "" + player.link_player
-                            )
+                    context?.showDialog(getString(R.string.save_changes), { it ->
+                        it?.dismiss()
+                        viewModel.changePlayers(
+                            viewModel.playerLinkOne, "" + player.link_player
+                        )
 
 
-                        }, { it ->
-                            it?.dismiss()
-                            //  findNavController().navigateUp()
+                    }, { it ->
+                        it?.dismiss()
+                        //  findNavController().navigateUp()
 
-                        })
+                    })
 
-                    }
-                )
+                }
+            )
 
         })
     }
 
     private fun changePlayersStatuesObserver() {
-        viewModel.validateChangeResultStateLiveData.observe(this, Observer {data->
+        viewModel.validateChangeResultStateLiveData.observe(this, Observer { data ->
 
-                        viewModel.selectedPlayer = 0
-                    //    val data = it.message as AddDirectInsideChange
-                        data.msgAdd?.let {
-                            context?.toast(it)
-                        }
-                        //(context as MainActivity).hideProgress()
-
-
+            viewModel.selectedPlayer = 0
+            //    val data = it.message as AddDirectInsideChange
+            data.msgAdd?.let {
+                context?.toast(it)
+            }
+            //(context as MainActivity).hideProgress()
 
 
         })
@@ -917,34 +905,29 @@ class MyTeamFragment : BaseFragment() {
 
     private fun addCaptainOrViceCaptainObserver() {
         viewModel.addCaptainOrViseState.observe(
-            this, Observer {data->
+            this, Observer { data ->
 
 
-
-
-                            context?.toast("" + data.data?.msgAdd)
-
-
-
+                context?.toast("" + data.data?.msgAdd)
 
 
             })
     }
 
-  /*  private fun availablePayerToSwapResponseDataObserver() {
-        viewModel.checkAvailablePlayerToSwapData.observe(this, Observer { data ->
+    /*  private fun availablePayerToSwapResponseDataObserver() {
+          viewModel.checkAvailablePlayerToSwapData.observe(this, Observer { data ->
 
-            data.data?.let {
-                Timber.e("=======$${it.allHide}")
-                //  viewModel.updateActivePlayerForChange(childPos, parentPos, data)
-            }
+              data.data?.let {
+                  Timber.e("=======$${it.allHide}")
+                  //  viewModel.updateActivePlayerForChange(childPos, parentPos, data)
+              }
 
-        })
-    }*/
+          })
+      }*/
 
 
     private fun Context.showSplSubstitutesDialog(
-        data :  List<MyteamPlayersResponse.Player>
+        data: List<MyteamPlayersResponse.Player>
         /*  parentPositions: Int = -1,
           onItemClicked: ((pos: Int, parentPosition: Int, MyteamPlayersResponse.Player) -> Unit)? = null,
           onChangeClick: ((pos: Int, parentPosition: Int, MyteamPlayersResponse.Player) -> Unit)? = null,
@@ -953,8 +936,9 @@ class MyTeamFragment : BaseFragment() {
           onRestorePlayerClicked: ((pos: Int, parentPosition: Int, MyteamPlayersResponse.Player) -> Unit)? = null*/
         //,
         // changeBtn: (dialog: AlertDialog?) -> Unit,
-        , dismissed: (dialog: AlertDialog?) -> Unit
-        ,selectedPlayer: (dialog: AlertDialog?, pos : Int, player : MyteamPlayersResponse.Player) -> Unit
+        ,
+        dismissed: (dialog: AlertDialog?) -> Unit,
+        selectedPlayer: (dialog: AlertDialog?, pos: Int, player: MyteamPlayersResponse.Player) -> Unit
 
     ) {
         val view = LayoutInflater.from(this).inflate(R.layout.dialog_spl_substitutes_view, null)
@@ -969,13 +953,14 @@ class MyTeamFragment : BaseFragment() {
         )
 
         var isHandled = false
-        view.substitutesRv.adapter = MyTeamSubstitutesAdapter(data/*,-1parentPositions, onItemClicked, onChangeClick, onOpenProfileClicked, onResetClicked,onRestorePlayerClicked*/).apply {
+        view.substitutesRv.adapter =
+            MyTeamSubstitutesAdapter(data/*,-1parentPositions, onItemClicked, onChangeClick, onOpenProfileClicked, onResetClicked,onRestorePlayerClicked*/).apply {
 
-            onItemClicked = {pos, player ->
-                isHandled = true
-                selectedPlayer(dialog,pos,player)
+                onItemClicked = { pos, player ->
+                    isHandled = true
+                    selectedPlayer(dialog, pos, player)
+                }
             }
-        }
 
         // view.changePlayerSwapBtn.setOnClickListener { changeBtn(dialog) }
         // view.playerProfileSwapBtn.setOnClickListener { playerProfileBtn(dialog) }

@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.MergeAdapter
@@ -13,7 +12,6 @@ import com.sakb.spl.base.BaseFragment
 import com.sakb.spl.data.model.HomeResponse
 import com.sakb.spl.databinding.HomeFragmentBinding
 import com.sakb.spl.ui.home.adapters.*
-import com.sakb.spl.utils.toast
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class HomeFragment : BaseFragment() {
@@ -44,7 +42,7 @@ class HomeFragment : BaseFragment() {
     private fun createHeaderAdapter() = headerAdapter.apply {
         onChooseTeamClickListener = {
             // todo
-           findNavController().navigate(R.id.action_homeFragment_to_chooseTeamPlayersFragment)
+            findNavController().navigate(R.id.action_homeFragment_to_chooseTeamPlayersFragment)
         }
     }
 
@@ -77,11 +75,13 @@ class HomeFragment : BaseFragment() {
             //  findNavController().navigate(R.id.action_homeFragment_to_chooseTeamPlayersFragment)
         }
     }
+
     private fun createTitlesVideosAdapter() = titlesVideosAdapter.apply {
         onClickListener = {
             //  findNavController().navigate(R.id.action_homeFragment_to_chooseTeamPlayersFragment)
         }
     }
+
     private fun createVideosAdapter() = videosAdapter.apply {
         onClickListener = {
             //  findNavController().navigate(R.id.action_homeFragment_to_chooseTeamPlayersFragment)
@@ -89,13 +89,15 @@ class HomeFragment : BaseFragment() {
     }
 
     private fun initRecyclerView() {
-        val mergeAdapter = MergeAdapter(createHeaderAdapter(),
-            createHeaderFixturesAdapter(),createFixturesAdapter(),
+        val mergeAdapter = MergeAdapter(
+            createHeaderAdapter(),
+            createHeaderFixturesAdapter(), createFixturesAdapter(),
             createFooterFixturesAdapter(),
             createTitlesAdapter(),
             createNewsAdapter(),
             createTitlesVideosAdapter(),
-            createVideosAdapter())
+            createVideosAdapter()
+        )
         binding.recyclerView.itemAnimator = null
         binding.recyclerView.adapter = mergeAdapter
     }
@@ -104,15 +106,14 @@ class HomeFragment : BaseFragment() {
         super.onActivityCreated(savedInstanceState)
 
         viewModel.homeLiveData.observe(this, Observer {
-                updateUI(it)
-            })
+            updateUI(it)
+        })
         viewModel.loadHmeData()
     }
 
     private fun updateUI(data: HomeResponse?) {
         data?.data?.fixtures?.let {
-            if (!it.isNullOrEmpty()){
-
+            if (!it.isNullOrEmpty()) {
                 it[0]?.apply {
                     val headerFixturesTitlesList = mutableListOf<HomeResponse.Fixture>()
                     headerFixturesTitlesList.add(this)
@@ -120,12 +121,9 @@ class HomeFragment : BaseFragment() {
                     fixturesAdapter.submitList(this.matchGroup)
                 }
             }
-
         }
-
-
         data?.data?.news?.let {
-            if (!it.isNullOrEmpty()){
+            if (!it.isNullOrEmpty()) {
                 val list = mutableListOf<String>()
                 list.add(getString(R.string.latest_news))
                 titlesAdapter.submitList(list)
@@ -134,7 +132,7 @@ class HomeFragment : BaseFragment() {
         }
 
         data?.data?.videos?.let {
-            if (!it.isNullOrEmpty()){
+            if (!it.isNullOrEmpty()) {
                 val list = mutableListOf<String>()
                 list.add(getString(R.string.latest_videos))
                 titlesVideosAdapter.submitList(list)

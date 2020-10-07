@@ -6,18 +6,17 @@ import com.sakb.spl.data.model.HowToPlayResponse
 class InstructionsDiffCallback : DiffUtil.ItemCallback<HowToPlayResponse.ContentRole>() {
 
 
-
     override fun areItemsTheSame(
         oldItem: HowToPlayResponse.ContentRole,
         newItem: HowToPlayResponse.ContentRole
     ): Boolean {
-       return oldItem.title == newItem.title
+        return oldItem.title == newItem.title
     }
 
     override fun areContentsTheSame(
         oldItem: HowToPlayResponse.ContentRole,
         newItem: HowToPlayResponse.ContentRole
     ): Boolean {
-       return oldItem == newItem
+        return oldItem == newItem
     }
 }

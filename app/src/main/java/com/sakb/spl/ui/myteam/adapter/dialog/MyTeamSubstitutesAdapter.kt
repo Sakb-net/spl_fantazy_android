@@ -46,15 +46,13 @@ class MyTeamSubstitutesAdapter(
 
                 holder.textViewClub.text = children[position].type_loc_player
 
-                if (children[position].type_key_coatch=="captain"){
+                if (children[position].type_key_coatch == "captain") {
                     holder.imageViewCaptain.visibility = View.VISIBLE
                     holder.imageViewViceCaptain.visibility = View.GONE
-                }
-                else if (children[position].type_key_coatch=="sub_captain"){
+                } else if (children[position].type_key_coatch == "sub_captain") {
                     holder.imageViewCaptain.visibility = View.GONE
                     holder.imageViewViceCaptain.visibility = View.VISIBLE
-                }
-                else{
+                } else {
                     holder.imageViewCaptain.visibility = View.GONE
                     holder.imageViewViceCaptain.visibility = View.GONE
                 }
@@ -72,23 +70,19 @@ class MyTeamSubstitutesAdapter(
                 holder.textView.text = children[position].name_player
                 holder.textViewCost.text = holder.itemView.context.getString(R.string.price)
                     .plus("\n").plus(children[position].cost_player.toString())
-                holder.textViewPoints.text =  holder.itemView.context.getString(R.string.points_total)
-                    .plus("\n").plus(children[position].point_player.toString())
+                holder.textViewPoints.text =
+                    holder.itemView.context.getString(R.string.points_total)
+                        .plus("\n").plus(children[position].point_player.toString())
 
                 holder.textViewFixs.text =
-                        "fix"
-                    .plus("\n").plus("44.77")
+                    "fix"
+                        .plus("\n").plus("44.77")
 
             }
             else -> {
                 holder.textView.text = children[position].type_loc_player
             }
         }
-
-
-
-
-
 
 
         //  val child = playerMaster.
@@ -104,14 +98,14 @@ class MyTeamSubstitutesAdapter(
         val textViewPoints: TextView = itemView.pointTv
         val textViewFixs: TextView = itemView.fixTv
         val textViewClub: TextView = itemView.clubTv
-        val imageViewCaptain : ImageView = itemView.captainIv
-        val imageViewViceCaptain : ImageView = itemView.viceIv
+        val imageViewCaptain: ImageView = itemView.captainIv
+        val imageViewViceCaptain: ImageView = itemView.viceIv
         //  val imageView: ImageView = itemView.ima
 
 
         init {
             itemView.setOnClickListener {
-               onItemClicked?.invoke(adapterPosition,children[adapterPosition])
+                onItemClicked?.invoke(adapterPosition, children[adapterPosition])
             }
         }
 

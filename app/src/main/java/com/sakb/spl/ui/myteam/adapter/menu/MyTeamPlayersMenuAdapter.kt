@@ -18,11 +18,13 @@ class MyTeamPlayersMenuAdapter(
     private var parents: List<List<MyteamPlayersResponse.Player>?>
 ) : RecyclerView.Adapter<MyTeamPlayersMenuAdapter.ViewHolder>() {
 
-    var onItemClicked: ((pos: Int, parentPosition: Int, MyteamPlayersResponse.Player) -> Unit)? = null
+    var onItemClicked: ((pos: Int, parentPosition: Int, MyteamPlayersResponse.Player) -> Unit)? =
+        null
     var onChangeClick: ((pos: Int, parentPosition: Int, MyteamPlayersResponse.Player) -> Unit)? =
         null
     var onOpenProfileClicked: ((pos: Int, MyteamPlayersResponse.Player) -> Unit)? = null
-    var onResetClicked: ((pos: Int, parentPosition: Int, MyteamPlayersResponse.Player) -> Unit)? = null
+    var onResetClicked: ((pos: Int, parentPosition: Int, MyteamPlayersResponse.Player) -> Unit)? =
+        null
     var onRestorePlayerClicked: ((pos: Int, parentPosition: Int, MyteamPlayersResponse.Player) -> Unit)? =
         null
 
@@ -51,11 +53,11 @@ class MyTeamPlayersMenuAdapter(
                     holder.type.text = it[0].type_loc_player
                     when (position) {
                         0 -> holder.header.setBackgroundColor(
-                                ContextCompat.getColor(
-                                    holder.itemView.context,
-                                    R.color.colorSky
-                                )
+                            ContextCompat.getColor(
+                                holder.itemView.context,
+                                R.color.colorSky
                             )
+                        )
 
                         1 -> holder.header.setBackgroundColor(
                             ContextCompat.getColor(
@@ -77,12 +79,13 @@ class MyTeamPlayersMenuAdapter(
                             )
                         )
 
-                        4 -> {holder.header.setBackgroundColor(
-                        ContextCompat.getColor(
-                            holder.itemView.context,
-                            R.color.colorYellowDark
-                        )
-                    )
+                        4 -> {
+                            holder.header.setBackgroundColor(
+                                ContextCompat.getColor(
+                                    holder.itemView.context,
+                                    R.color.colorYellowDark
+                                )
+                            )
                             holder.type.text = "substitutes"
                         }
                     }

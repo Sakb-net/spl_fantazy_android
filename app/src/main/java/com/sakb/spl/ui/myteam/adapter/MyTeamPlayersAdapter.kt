@@ -14,11 +14,13 @@ class MyTeamPlayersAdapter(
     private var parents: List<List<MyteamPlayersResponse.Player>?>
 ) : RecyclerView.Adapter<MyTeamPlayersAdapter.ViewHolder>() {
 
-    var onItemClicked: ((pos: Int, parentPosition: Int, MyteamPlayersResponse.Player) -> Unit)? = null
+    var onItemClicked: ((pos: Int, parentPosition: Int, MyteamPlayersResponse.Player) -> Unit)? =
+        null
     var onChangeClick: ((pos: Int, parentPosition: Int, MyteamPlayersResponse.Player) -> Unit)? =
         null
     var onOpenProfileClicked: ((pos: Int, MyteamPlayersResponse.Player) -> Unit)? = null
-    var onResetClicked: ((pos: Int, parentPosition: Int, MyteamPlayersResponse.Player) -> Unit)? = null
+    var onResetClicked: ((pos: Int, parentPosition: Int, MyteamPlayersResponse.Player) -> Unit)? =
+        null
     var onRestorePlayerClicked: ((pos: Int, parentPosition: Int, MyteamPlayersResponse.Player) -> Unit)? =
         null
 
@@ -32,7 +34,7 @@ class MyTeamPlayersAdapter(
     }
 
     override fun getItemCount(): Int {
-        return if (parents.size>4) 4 else parents.size
+        return if (parents.size > 4) 4 else parents.size
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {

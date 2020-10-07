@@ -13,8 +13,8 @@ import com.google.android.youtube.player.YouTubePlayer
 import com.google.android.youtube.player.YouTubePlayerSupportFragment
 import com.sakb.spl.R
 import com.sakb.spl.base.BaseActivity
-import com.sakb.spl.databinding.ActivityDetailsVideoBinding
 import com.sakb.spl.constants.Constants
+import com.sakb.spl.databinding.ActivityDetailsVideoBinding
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import timber.log.Timber
 
@@ -28,15 +28,14 @@ class DetailsVideoActivity : BaseActivity() {
 
 
     private var mYoutubePlayer: YouTubePlayer? = null
-    private var frag : YouTubePlayerSupportFragment? = null
-    private var upload_id : String? = ""
-    private var titleTv : String? = ""
-    private var createdAt : String? = ""
-    private var desc : String ?= ""
-    private var link : String? = ""
-    private var video : String? = ""
+    private var frag: YouTubePlayerSupportFragment? = null
+    private var upload_id: String? = ""
+    private var titleTv: String? = ""
+    private var createdAt: String? = ""
+    private var desc: String? = ""
+    private var link: String? = ""
+    private var video: String? = ""
     override val viewModel by viewModel<DetailsVideosViewModel>()
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -52,31 +51,27 @@ class DetailsVideoActivity : BaseActivity() {
         desc = intent.getStringExtra("desc")
         link = intent.getStringExtra("link")
         video = intent.getStringExtra("video")
-        frag = supportFragmentManager.findFragmentById(R.id.player_fragment) as YouTubePlayerSupportFragment
+        frag =
+            supportFragmentManager.findFragmentById(R.id.player_fragment) as YouTubePlayerSupportFragment
 
 
-        if(upload_id==""){
+        if (upload_id == "") {
 
             binding.yVideoll.visibility = View.INVISIBLE
             binding.jzvdVideoll.visibility = View.VISIBLE
 
-            binding.jzVideo.setUp(Constants.baseUrl+video, "", JzvdStd.SCREEN_NORMAL)
+            binding.jzVideo.setUp(Constants.baseUrl + video, "", JzvdStd.SCREEN_NORMAL)
 
-         Timber.e("img==> "+ Constants.baseUrl+video)
+            Timber.e("img==> " + Constants.baseUrl + video)
             Glide.with(binding.jzVideo.posterImageView)
-                .load(Constants.baseUrl+video)
-               // .centerCrop()
-                .into( binding.jzVideo.posterImageView)
+                .load(Constants.baseUrl + video)
+                // .centerCrop()
+                .into(binding.jzVideo.posterImageView)
 
-
-        }else {
-
+        } else {
 
             binding.jzvdVideoll.visibility = View.INVISIBLE
             binding.yVideoll.visibility = View.VISIBLE
-
-
-
 
             onInitializedListener = object : YouTubePlayer.OnInitializedListener {
                 override fun onInitializationSuccess(
@@ -94,7 +89,10 @@ class DetailsVideoActivity : BaseActivity() {
 
                 }
 
-                override fun onInitializationFailure(p0: YouTubePlayer.Provider?, p1: YouTubeInitializationResult?) {
+                override fun onInitializationFailure(
+                    p0: YouTubePlayer.Provider?,
+                    p1: YouTubeInitializationResult?
+                ) {
                     ///Timber.e("////////////////"+p0?.toString())
                     /// Timber.e("////////////////"+p1?.toString())
 
@@ -103,25 +101,18 @@ class DetailsVideoActivity : BaseActivity() {
                 }
             }
             /////////////
-            frag!!.initialize(getString(R.string.GOOGLE_API_KEY), onInitializedListener)
+            frag?.initialize(getString(R.string.GOOGLE_API_KEY), onInitializedListener)
 
         }
-
-
-
-
-
-
-
         title = "Video"
-        binding.toolbar.setTitle("")
+        binding.toolbar.title = ""
         binding.titleTv.text = titleTv
         binding.createdAtTv.text = createdAt
         binding.descriptionTv.text = desc
 
         setSupportActionBar(binding.toolbar)
-        getSupportActionBar()?.setDisplayHomeAsUpEnabled(true)
-        getSupportActionBar()?.setDisplayShowHomeEnabled(true)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        supportActionBar?.setDisplayShowHomeEnabled(true)
         changeViewsFonts()
 
 
@@ -135,22 +126,23 @@ class DetailsVideoActivity : BaseActivity() {
 //        }
 
 
-      //  getObservableData()
+        //  getObservableData()
 
-      /*  binding.shareBtn.setOnClickListener {
-            val intent = Intent(Intent.ACTION_SEND)
-            intent.type = "text/plain"
-            intent.putExtra(Intent.EXTRA_SUBJECT, ""+getString(R.string.app_name))
-            intent.putExtra(Intent.EXTRA_TEXT, ""+binding.titleTv.text)
-            startActivity(Intent.createChooser(intent, "choose one"))
-        }*/
-      /*  val video : videosResponse.Data? = intent.getParcelableExtra("obj")
+        /*  binding.shareBtn.setOnClickListener {
+              val intent = Intent(Intent.ACTION_SEND)
+              intent.type = "text/plain"
+              intent.putExtra(Intent.EXTRA_SUBJECT, ""+getString(R.string.app_name))
+              intent.putExtra(Intent.EXTRA_TEXT, ""+binding.titleTv.text)
+              startActivity(Intent.createChooser(intent, "choose one"))
+          }*/
+        /*  val video : videosResponse.Data? = intent.getParcelableExtra("obj")
 
-        binding.titleTv.text = video?.name
-        binding.createdAtTv.text = video?.createdAt
-        binding.descriptionTv.text = video?.content*/
+          binding.titleTv.text = video?.name
+          binding.createdAtTv.text = video?.createdAt
+          binding.descriptionTv.text = video?.content*/
 
     }
+
     private fun changeViewsFonts() {
 //        Util.changeViewTypeFace(this@DetailsVideoActivity,
 //            Constants.FONT_REGULAR,
@@ -218,6 +210,7 @@ class DetailsVideoActivity : BaseActivity() {
         }
         super.onBackPressed()
     }
+
     override fun onPause() {
         super.onPause()
         Jzvd.releaseAllVideos()

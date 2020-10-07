@@ -56,7 +56,7 @@ class EditProfileViewModel(private val repository: SplRepository) : BaseViewMode
 
     // update profile
     fun updateProfile(
-       best_team: String, display_name: String,
+        best_team: String, display_name: String,
         email: String,
         image: String
     ) {
@@ -71,7 +71,7 @@ class EditProfileViewModel(private val repository: SplRepository) : BaseViewMode
             .applyLoadingState()
             .subscribe(
                 { data ->
-                    showSuccessMessage(data?.Message?:"")
+                    showSuccessMessage(data?.Message ?: "")
                 },
                 { throwable ->
                     handleApiException(throwable)
@@ -87,7 +87,7 @@ class EditProfileViewModel(private val repository: SplRepository) : BaseViewMode
         image: String
     ) {
 
-        repository.uploadImage( image)
+        repository.uploadImage(image)
             .subscribeOn(Schedulers.io())
             .applyLoadingState()
             .subscribe(
@@ -99,16 +99,6 @@ class EditProfileViewModel(private val repository: SplRepository) : BaseViewMode
                 }
             ).addToDisposableBag()
     }
-
-
-
-
-
-
-
-
-
-
 
 
     init {

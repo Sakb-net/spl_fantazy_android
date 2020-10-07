@@ -11,13 +11,13 @@ class ChangePasswordViewModel(private val repository: SplRepository) : BaseViewM
         new_password: String
     ) {
         repository.changePassword(
-          old_password, new_password
+            old_password, new_password
         )
             .subscribeOn(Schedulers.io())
             .applyLoadingState()
             .subscribe(
                 { data ->
-                    showSuccessMessage(data?.Message?:"")
+                    showSuccessMessage(data?.Message ?: "")
                 },
                 { throwable ->
                     handleApiException(throwable)

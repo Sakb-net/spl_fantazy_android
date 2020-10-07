@@ -1,6 +1,5 @@
 package com.sakb.spl.di
 
-import com.sakb.spl.ui.main.MainViewModel
 import com.sakb.spl.ui.addplayer.AddPlayerViewModel
 import com.sakb.spl.ui.changepassword.ChangePasswordViewModel
 import com.sakb.spl.ui.chooseteam.ChooseTeamViewModel
@@ -17,6 +16,7 @@ import com.sakb.spl.ui.howtoplay.HowToPlayViewModel
 import com.sakb.spl.ui.league.LeagueViewModel
 import com.sakb.spl.ui.login.LoginViewModel
 import com.sakb.spl.ui.logout.LogOutViewModel
+import com.sakb.spl.ui.main.MainViewModel
 import com.sakb.spl.ui.matches.MatchesViewModel
 import com.sakb.spl.ui.mypoints.MyPointsViewModel
 import com.sakb.spl.ui.myprofile.MyProfileViewModel
@@ -151,12 +151,9 @@ val viewModelModule = module {
     viewModel {
         JoinToPowerfulLeagueViewModel()
     }
-  viewModel {
-      CreateHeadToHeadLeagueViewModel()
+    viewModel {
+        CreateHeadToHeadLeagueViewModel()
     }
-
-
-
 
 
 }

@@ -8,4 +8,5 @@ data class UploadImgResponse(
     @SerializedName("Message")
     val message: String? = "",
     @SerializedName("StatusCode")
-    val statusCode: Int)
+    val statusCode: Int
+)

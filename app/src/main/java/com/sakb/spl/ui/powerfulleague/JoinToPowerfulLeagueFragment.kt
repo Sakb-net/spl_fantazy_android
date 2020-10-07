@@ -11,14 +11,11 @@ import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.sakb.spl.R
 import com.sakb.spl.base.BaseFragment
-import com.sakb.spl.databinding.DialogViewConfirmationBinding
 import com.sakb.spl.databinding.JoinNowDialogBinding
 import com.sakb.spl.databinding.JoinToPowerfulLeagueFragmentBinding
 import com.sakb.spl.ui.powerfulleague.adapter.PowerfulLeagueAdapter
 import com.sakb.spl.ui.powerfulleague.adapter.PowerfulLeagueUIModel
 import com.sakb.spl.utils.DividerItemDecorationNoLast
-import com.sakb.spl.utils.RecyclerSectionItemDecoration
-import com.sakb.spl.utils.showConfirmationDialog
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 

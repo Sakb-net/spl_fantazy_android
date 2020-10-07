@@ -1,7 +1,6 @@
 package com.sakb.spl.ui.mypoints.adapters
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
@@ -11,11 +10,11 @@ import com.sakb.spl.ui.mypoints.callback.MyPointsDiffCallback
 import timber.log.Timber
 
 class MyPointsAdapter :
-    ListAdapter< PlayerMasterResponse.Data, MyPointsAdapter.InstructionsViewHolder>(
+    ListAdapter<PlayerMasterResponse.Data, MyPointsAdapter.InstructionsViewHolder>(
         MyPointsDiffCallback()
     ) {
 
-    var onClickListener: ((position : Int, PlayerMasterResponse.Data) -> Unit)? = null
+    var onClickListener: ((position: Int, PlayerMasterResponse.Data) -> Unit)? = null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) =
         InstructionsViewHolder(
@@ -34,16 +33,17 @@ class MyPointsAdapter :
 
     inner class InstructionsViewHolder(
         private val binding: MyPointChildItemBinding,
-        private val onClickListener: ((position : Int,PlayerMasterResponse.Data) -> Unit)?
+        private val onClickListener: ((position: Int, PlayerMasterResponse.Data) -> Unit)?
     ) : RecyclerView.ViewHolder(binding.root) {
 
         init {
             itemView.setOnClickListener {
                 Timber.e("role = clicked")
-                onClickListener?.invoke(absoluteAdapterPosition,  getItem(absoluteAdapterPosition))
+                onClickListener?.invoke(absoluteAdapterPosition, getItem(absoluteAdapterPosition))
             }
         }
-        fun bind(data : PlayerMasterResponse.Data) = data.run {
+
+        fun bind(data: PlayerMasterResponse.Data) = data.run {
 //            binding.title.text = title
 //            binding.content.text = content
 //            if (isActivated==true){

@@ -48,7 +48,6 @@ class SplApplication : Application() {
     }
 
 
-
     private fun setupTimber() {
         if (BuildConfig.DEBUG) {
             Timber.plant(Timber.DebugTree())

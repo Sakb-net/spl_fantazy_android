@@ -6,11 +6,12 @@ import com.sakb.spl.data.repository.SplRepository
 import com.sakb.spl.utils.SingleLiveEvent
 import io.reactivex.schedulers.Schedulers
 
-class HowToPlayViewModel (private  val repository: SplRepository) : BaseViewModel() {
+class HowToPlayViewModel(private val repository: SplRepository) : BaseViewModel() {
 
     var instructionsListLiveData = SingleLiveEvent<List<HowToPlayResponse.ContentRole>>()
+
     init {
-       // howToPlayUseCase.instructions(PrefManager.getLanguage())
+        // howToPlayUseCase.instructions(PrefManager.getLanguage())
     }
 
     fun instructions() {
@@ -36,16 +37,17 @@ class HowToPlayViewModel (private  val repository: SplRepository) : BaseViewMode
     }
 
     private fun updateColapseStatee(position: Int) {
-        val list =   instructionsListLiveData.value
+        val list = instructionsListLiveData.value
         val newList = list?.mapIndexed { index, RoleUiModel ->
-            when{
-                index == position-> {
+            when {
+                index == position -> {
                     RoleUiModel.copy(isActivated = RoleUiModel.isActivated?.not())
                 }
                 else -> {
                     RoleUiModel.copy()
                 }
-            }}
+            }
+        }
 
         instructionsListLiveData.postValue(newList)
     }

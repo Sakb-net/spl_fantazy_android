@@ -73,7 +73,10 @@ class RadioOptionsDialog : DialogFragment(), DialogInterface.OnClickListener {
 
     private fun setResult(selected: Int) {
         val listener = (targetFragment ?: activity) as? OnSelectedItemListener
-        listener?.onSelectedOption(requestCode, selected) ?: Log.e(TAG, "Unable to send result, implement `OnSelectedItemListener` or set `target`")
+        listener?.onSelectedOption(requestCode, selected) ?: Log.e(
+            TAG,
+            "Unable to send result, implement `OnSelectedItemListener` or set `target`"
+        )
         dismiss()
     }
 

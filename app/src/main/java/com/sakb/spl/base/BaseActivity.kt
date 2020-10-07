@@ -40,13 +40,18 @@ abstract class BaseActivity : AppCompatActivity() {
             Snacky.getSuccessSnacky(activity = this, message = message)?.show()
         })
         viewModel.errorEvent.observe(this, Observer { message ->
-            Snacky.getErrorSnacky(activity = this, message = message?:getString(R.string.something_wrong))?.show()
+            Snacky.getErrorSnacky(
+                activity = this,
+                message = message ?: getString(R.string.something_wrong)
+            )?.show()
         })
         viewModel.noConnectionErrorEvent.observe(this, Observer {
-            Snacky.getErrorSnacky(activity = this,message = getString(R.string.need_internet))?.show()
+            Snacky.getErrorSnacky(activity = this, message = getString(R.string.need_internet))
+                ?.show()
         })
         viewModel.unAuthorizedErrorEvent.observe(this, Observer {
-            Snacky.getErrorSnacky(activity =this,message = getString(R.string.you_must_to_login))?.show()
+            Snacky.getErrorSnacky(activity = this, message = getString(R.string.you_must_to_login))
+                ?.show()
         })
     }
 

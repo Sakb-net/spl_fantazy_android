@@ -28,7 +28,6 @@ class HelpFragment : BaseFragment() {
     }
 
 
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -49,9 +48,10 @@ class HelpFragment : BaseFragment() {
 
         binding.recyclerView.adapter = adapter
         binding.recyclerView.itemAnimator = null
-        binding.recyclerView.layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL,false)
-        adapter.onClickListener = {position, contentRole ->
-            Timber.e("pos is======== "+position)
+        binding.recyclerView.layoutManager =
+            LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
+        adapter.onClickListener = { position, contentRole ->
+            Timber.e("pos is======== " + position)
             viewModel.updateColapseState(position)
         }
         loadInstructionsStatuesObserver()
@@ -63,7 +63,7 @@ class HelpFragment : BaseFragment() {
 
 
         viewModel.helpListLiveData.observe(this, Observer {
-           // Timber.e("observed = role "+it?.toString())
+            // Timber.e("observed = role "+it?.toString())
             adapter.submitList(it)
             // adapter.notifyDataSetChanged()
         })

@@ -1,4 +1,5 @@
 package com.sakb.spl.ui.terms
+
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -15,11 +16,9 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 class TermsFragment : BaseFragment() {
 
 
-    private  var _binding : FragmentTermsBinding ?= null
+    private var _binding: FragmentTermsBinding? = null
     private val binding = _binding!!
     override val viewModel by viewModel<TermsViewModel>()
-
-
 
 
     override fun onCreateView(
@@ -27,8 +26,8 @@ class TermsFragment : BaseFragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        _binding  = DataBindingUtil.inflate(inflater, R.layout.fragment_terms, container, false)
-        binding.toolbarTitle.text =getString(R.string.terms)
+        _binding = DataBindingUtil.inflate(inflater, R.layout.fragment_terms, container, false)
+        binding.toolbarTitle.text = getString(R.string.terms)
         return binding.root
     }
 
@@ -38,20 +37,17 @@ class TermsFragment : BaseFragment() {
         initListener()
         viewModel.terms()
 
-        viewModel.termsResultLiveData.observe(this, Observer {data->
-                // toast(""+it.status)
+        viewModel.termsResultLiveData.observe(this, Observer { data ->
+            // toast(""+it.status)
 
 
-
-                       // context?.toast(""+data.message)
-                        if (data.statusCode==1){
-                            binding.terms.text = data.data?.content
-                        }
-
+            // context?.toast(""+data.message)
+            if (data.statusCode == 1) {
+                binding.terms.text = data.data?.content
+            }
 
 
-
-            })
+        })
     }
 
     private fun initListener() {
@@ -64,7 +60,6 @@ class TermsFragment : BaseFragment() {
         super.onDestroyView()
         _binding = null
     }
-
 
 
 }

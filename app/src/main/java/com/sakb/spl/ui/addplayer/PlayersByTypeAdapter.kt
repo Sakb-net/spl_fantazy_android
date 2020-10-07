@@ -1,4 +1,5 @@
 package com.sakb.spl.ui.addplayer
+
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.annotation.NonNull
@@ -14,9 +15,10 @@ import timber.log.Timber
  * Created by dev.mahmoud_ashraf on 10/7/2019.
  */
 class PlayersByTypeAdapter(
-    private var players: List<PlayerByTypeResponse.PlayersGroup?> ?= null) :
+    private var players: List<PlayerByTypeResponse.PlayersGroup?>? = null
+) :
     RecyclerView.Adapter<PlayersByTypeAdapter.PlayersViewHolder>() {
-    var onItemClick: ((pos: Int, data:PlayerByTypeResponse.PlayersGroup?) -> Unit)? = null
+    var onItemClick: ((pos: Int, data: PlayerByTypeResponse.PlayersGroup?) -> Unit)? = null
 
     @NonNull
     override fun onCreateViewHolder(@NonNull viewGroup: ViewGroup, i: Int): PlayersViewHolder {
@@ -39,46 +41,47 @@ class PlayersByTypeAdapter(
     }
 
 
-    inner class PlayersViewHolder(val binding: ListItemPlayerByTypeBinding) : RecyclerView.ViewHolder(binding.root) {
+    inner class PlayersViewHolder(val binding: ListItemPlayerByTypeBinding) :
+        RecyclerView.ViewHolder(binding.root) {
 
-      //  private val textView: TextView
-     //   private val imageView: ImageView
+        //  private val textView: TextView
+        //   private val imageView: ImageView
 
         init {
             binding.addPlayerBtn.setOnClickListener {
-                Timber.e("clicked!!========="+adapterPosition)
-                onItemClick?.invoke(adapterPosition,players!![adapterPosition])
+                Timber.e("clicked!!=========" + adapterPosition)
+                onItemClick?.invoke(adapterPosition, players!![adapterPosition])
             }
-       //     textView = itemView.findViewById(R.id.textView)
-         //   imageView = itemView.findViewById(R.id.imageView)
+            //     textView = itemView.findViewById(R.id.textView)
+            //   imageView = itemView.findViewById(R.id.imageView)
         }
 
         fun bind(player: PlayerByTypeResponse.PlayersGroup) {
             binding.nameTv.text = player.name
-            binding.clubTv.text = player.team?.plus(" - ")?.plus(player.type_player )
+            binding.clubTv.text = player.team?.plus(" - ")?.plus(player.type_player)
             binding.priceTv.text = player.cost.toString()
             // Todo
             binding.pointTv.text = player.point.toString()
-           /* if (checkedPosition == -1) {
-                imageView.setBackgroundResource(R.drawable.circle)
-            } else {
-                if (checkedPosition == adapterPosition) {
-                    imageView.setBackgroundResource(R.drawable.circle_point)
-                } else {
-                    imageView.setBackgroundResource(R.drawable.circle)
-                }
-            }
-            textView.setText(employee.name)
-            textView.setTag(employee.link)*/
+            /* if (checkedPosition == -1) {
+                 imageView.setBackgroundResource(R.drawable.circle)
+             } else {
+                 if (checkedPosition == adapterPosition) {
+                     imageView.setBackgroundResource(R.drawable.circle_point)
+                 } else {
+                     imageView.setBackgroundResource(R.drawable.circle)
+                 }
+             }
+             textView.setText(employee.name)
+             textView.setTag(employee.link)*/
 
-        /*    itemView.setOnClickListener {
-            /*    imageView.setBackgroundResource(R.drawable.circle_point)
-                if (checkedPosition != adapterPosition) {
-                    notifyItemChanged(checkedPosition)
-                    checkedPosition = adapterPosition
-                    onItemClick?.invoke(adapterPosition, employee)
+            /*    itemView.setOnClickListener {
+                /*    imageView.setBackgroundResource(R.drawable.circle_point)
+                    if (checkedPosition != adapterPosition) {
+                        notifyItemChanged(checkedPosition)
+                        checkedPosition = adapterPosition
+                        onItemClick?.invoke(adapterPosition, employee)
+                    }*/
                 }*/
-            }*/
         }
     }
 }

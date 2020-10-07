@@ -18,8 +18,7 @@ import com.sakb.spl.data.model.Club;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ClubAdapter extends RecyclerView.Adapter<ClubAdapter.ClubViewHolder> implements Filterable
-{
+public class ClubAdapter extends RecyclerView.Adapter<ClubAdapter.ClubViewHolder> implements Filterable {
     private static final int TYPE_ROW = 0;
     private static final int TYPE_ROW_COLORFUL = 1;
 
@@ -27,18 +26,15 @@ public class ClubAdapter extends RecyclerView.Adapter<ClubAdapter.ClubViewHolder
     private List<Club> filteredClubList;
     private Context context;
 
-    public ClubAdapter(Context context, List<Club> clubList)
-    {
+    public ClubAdapter(Context context, List<Club> clubList) {
         this.context = context;
         this.clubList = clubList;
         this.filteredClubList = clubList;
     }
 
     @Override
-    public int getItemViewType(int position)
-    {
-        if (position % 2 == 0)
-        {
+    public int getItemViewType(int position) {
+        if (position % 2 == 0) {
             return TYPE_ROW_COLORFUL;
         }
 
@@ -46,14 +42,11 @@ public class ClubAdapter extends RecyclerView.Adapter<ClubAdapter.ClubViewHolder
     }
 
     @Override
-    public ClubViewHolder onCreateViewHolder(ViewGroup viewGroup, int viewType)
-    {
-        if (viewType == TYPE_ROW)
-        {
+    public ClubViewHolder onCreateViewHolder(ViewGroup viewGroup, int viewType) {
+        if (viewType == TYPE_ROW) {
             View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.row_club, viewGroup, false);
             return new ClubViewHolder(view);
-        } else
-        {
+        } else {
             View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.row_club_colorful,
                     viewGroup, false);
             return new ClubViewHolder(view);
@@ -61,8 +54,7 @@ public class ClubAdapter extends RecyclerView.Adapter<ClubAdapter.ClubViewHolder
     }
 
     @Override
-    public void onBindViewHolder(ClubViewHolder holder, int position)
-    {
+    public void onBindViewHolder(ClubViewHolder holder, int position) {
         Club club = filteredClubList.get(position);
 
         holder.txtName.setText(club.name);
@@ -76,51 +68,24 @@ public class ClubAdapter extends RecyclerView.Adapter<ClubAdapter.ClubViewHolder
     }
 
     @Override
-    public int getItemCount()
-    {
+    public int getItemCount() {
         return filteredClubList.size();
     }
 
-    public class ClubViewHolder extends RecyclerView.ViewHolder
-    {
-        public TextView txtName, txtLocation, txtStadiumName, txtLeagueName, txtCoachName, txtStarPlayerName;
-        public ImageView imgLogo;
-
-        public ClubViewHolder(View view)
-        {
-            super(view);
-            txtName = view.findViewById(R.id.txtName);
-            txtLocation = view.findViewById(R.id.txtLocation);
-            txtStadiumName = view.findViewById(R.id.txtStadiumName);
-            txtLeagueName = view.findViewById(R.id.txtLeagueName);
-            txtCoachName = view.findViewById(R.id.txtCoachName);
-            txtStarPlayerName = view.findViewById(R.id.txtStarPlayerName);
-
-            imgLogo = view.findViewById(R.id.imgLogo);
-        }
-    }
-
     @Override
-    public Filter getFilter()
-    {
-        return new Filter()
-        {
+    public Filter getFilter() {
+        return new Filter() {
             @Override
-            protected FilterResults performFiltering(CharSequence charSequence)
-            {
+            protected FilterResults performFiltering(CharSequence charSequence) {
                 String charString = charSequence.toString();
-                if (charString.isEmpty())
-                {
+                if (charString.isEmpty()) {
                     filteredClubList = clubList;
-                } else
-                {
+                } else {
                     List<Club> filteredList = new ArrayList<>();
-                    for (Club club : clubList)
-                    {
+                    for (Club club : clubList) {
                         // name match condition. this might differ depending on your requirement
                         // here we are looking for name
-                        if (club.name.toLowerCase().contains(charString.toLowerCase()) )
-                        {
+                        if (club.name.toLowerCase().contains(charString.toLowerCase())) {
                             filteredList.add(club);
                         }
                     }
@@ -134,13 +99,29 @@ public class ClubAdapter extends RecyclerView.Adapter<ClubAdapter.ClubViewHolder
             }
 
             @Override
-            protected void publishResults(CharSequence charSequence, FilterResults filterResults)
-            {
+            protected void publishResults(CharSequence charSequence, FilterResults filterResults) {
                 filteredClubList = (ArrayList<Club>) filterResults.values;
 
                 // refresh the list with filtered data
                 notifyDataSetChanged();
             }
         };
+    }
+
+    public class ClubViewHolder extends RecyclerView.ViewHolder {
+        public TextView txtName, txtLocation, txtStadiumName, txtLeagueName, txtCoachName, txtStarPlayerName;
+        public ImageView imgLogo;
+
+        public ClubViewHolder(View view) {
+            super(view);
+            txtName = view.findViewById(R.id.txtName);
+            txtLocation = view.findViewById(R.id.txtLocation);
+            txtStadiumName = view.findViewById(R.id.txtStadiumName);
+            txtLeagueName = view.findViewById(R.id.txtLeagueName);
+            txtCoachName = view.findViewById(R.id.txtCoachName);
+            txtStarPlayerName = view.findViewById(R.id.txtStarPlayerName);
+
+            imgLogo = view.findViewById(R.id.imgLogo);
+        }
     }
 }

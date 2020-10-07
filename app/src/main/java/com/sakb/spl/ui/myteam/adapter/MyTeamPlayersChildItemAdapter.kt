@@ -11,8 +11,8 @@ import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.sakb.spl.R
-import com.sakb.spl.data.model.MyteamPlayersResponse
 import com.sakb.spl.constants.Constants
+import com.sakb.spl.data.model.MyteamPlayersResponse
 import kotlinx.android.synthetic.main.child_item_myteam_recycler.view.*
 
 class MyTeamPlayersChildItemAdapter(
@@ -22,7 +22,7 @@ class MyTeamPlayersChildItemAdapter(
     var onItemClicked: ((pos: Int, parentPosition: Int, MyteamPlayersResponse.Player) -> Unit)? = null,
     var onChangeClick: ((pos: Int, parentPosition: Int, MyteamPlayersResponse.Player) -> Unit)? = null,
     var onOpenProfileClicked: ((pos: Int, MyteamPlayersResponse.Player) -> Unit)? = null,
-    var onResetClicked : ((pos: Int, parentPosition: Int, MyteamPlayersResponse.Player) -> Unit)?,
+    var onResetClicked: ((pos: Int, parentPosition: Int, MyteamPlayersResponse.Player) -> Unit)?,
     var onRestorePlayerClicked: ((pos: Int, parentPosition: Int, MyteamPlayersResponse.Player) -> Unit)? = null
 
 
@@ -42,23 +42,25 @@ class MyTeamPlayersChildItemAdapter(
         when (children[position].found_player) {
             1 -> {
 
-                if (children[position].isActiveToSwap){
-                    holder.container.setBackgroundColor(ContextCompat.getColor(holder.itemView.context,R.color.colorYellow))
-                }
-                else{
-                    holder.container.setBackground(null)
+                if (children[position].isActiveToSwap) {
+                    holder.container.setBackgroundColor(
+                        ContextCompat.getColor(
+                            holder.itemView.context,
+                            R.color.colorYellow
+                        )
+                    )
+                } else {
+                    holder.container.background = null
 
                 }
 
-                if (children[position].type_key_coatch=="captain"){
-                 holder.imageViewCaptain.visibility = View.VISIBLE
+                if (children[position].type_key_coatch == "captain") {
+                    holder.imageViewCaptain.visibility = View.VISIBLE
                     holder.imageViewViceCaptain.visibility = View.GONE
-                }
-              else if (children[position].type_key_coatch=="sub_captain"){
+                } else if (children[position].type_key_coatch == "sub_captain") {
                     holder.imageViewCaptain.visibility = View.GONE
                     holder.imageViewViceCaptain.visibility = View.VISIBLE
-                }
-                else{
+                } else {
                     holder.imageViewCaptain.visibility = View.GONE
                     holder.imageViewViceCaptain.visibility = View.GONE
                 }
@@ -98,7 +100,7 @@ class MyTeamPlayersChildItemAdapter(
 
         init {
             itemView.setOnClickListener {
-                onItemClicked?.invoke(adapterPosition,parentPositions,children[adapterPosition])
+                onItemClicked?.invoke(adapterPosition, parentPositions, children[adapterPosition])
             }
 
 

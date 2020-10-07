@@ -17,15 +17,16 @@ class PlayerProfileViewModel(
 
     var playerInfoResultLiveData = SingleLiveEvent<PlayerResponse>()
 
-  /*  fun playerInfoz(
-        access_token: String,
-        player_link: String,
-        lang: String
-    ) = playerInfoUseCase.playerInfo(access_token, player_link, lang)*/
+    /*  fun playerInfoz(
+          access_token: String,
+          player_link: String,
+          lang: String
+      ) = playerInfoUseCase.playerInfo(access_token, player_link, lang)*/
 
     fun playerInfo(
-                      player_link: String) {
-        repository.playerInfo( player_link)
+        player_link: String
+    ) {
+        repository.playerInfo(player_link)
             .subscribeOn(Schedulers.io())
             .applyLoadingState()
             .subscribe(

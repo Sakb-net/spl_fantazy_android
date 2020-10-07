@@ -24,9 +24,9 @@ abstract class BaseFragment : Fragment() {
 
     private fun setupLoadingObserver() {
         viewModel.loadingState.observe(viewLifecycleOwner, Observer { isVisible ->
-            if (isVisible){
+            if (isVisible) {
                 loadingView?.show()
-            } else{
+            } else {
                 loadingView?.dismiss()
             }
         })
@@ -39,25 +39,31 @@ abstract class BaseFragment : Fragment() {
 
     private fun setupMessagesObserver() {
         viewModel.successEvent.observe(viewLifecycleOwner, Observer { message ->
-            Snacky.getSuccessSnacky(activity = requireActivity(),message = message)?.show()
+            Snacky.getSuccessSnacky(activity = requireActivity(), message = message)?.show()
 
         })
 
         viewModel.errorEvent.observe(viewLifecycleOwner, Observer { message ->
-            Snacky.getErrorSnacky(activity = requireActivity(),message = message?:getString(R.string.something_wrong))?.show()
+            Snacky.getErrorSnacky(
+                activity = requireActivity(),
+                message = message ?: getString(R.string.something_wrong)
+            )?.show()
         })
 
         viewModel.noConnectionErrorEvent.observe(viewLifecycleOwner, Observer {
-            Snacky.getErrorSnacky(activity = requireActivity(),message = getString(R.string.need_internet))?.show()
+            Snacky.getErrorSnacky(
+                activity = requireActivity(),
+                message = getString(R.string.need_internet)
+            )?.show()
         })
 
         viewModel.unAuthorizedErrorEvent.observe(viewLifecycleOwner, Observer {
-            Snacky.getErrorSnacky(activity = requireActivity(),message = getString(R.string.you_must_to_login))?.show()
+            Snacky.getErrorSnacky(
+                activity = requireActivity(),
+                message = getString(R.string.you_must_to_login)
+            )?.show()
         })
     }
-
-
-
 
 
 }

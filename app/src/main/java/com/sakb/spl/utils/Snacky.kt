@@ -9,8 +9,9 @@ object Snacky {
 
     fun getSuccessSnacky(
         activity: Activity,
-        message: String): Snackbar? {
-       return Snacky.builder()
+        message: String
+    ): Snackbar? {
+        return Snacky.builder()
             .setActivity(activity)
             .setText(message)
             .setDuration(Snacky.LENGTH_SHORT)
@@ -19,7 +20,8 @@ object Snacky {
 
     fun getErrorSnacky(
         activity: Activity,
-        message: String): Snackbar? {
+        message: String
+    ): Snackbar? {
         return Snacky.builder()
             .setActivity(activity)
             .setText(message)

@@ -16,7 +16,7 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class CreateClassicLeagueFragment : BaseFragment() {
 
-    private lateinit var binding : CreateClassicLeagueFragmentBinding
+    private lateinit var binding: CreateClassicLeagueFragmentBinding
     override val viewModel by viewModel<CreateClassicLeagueViewModel>()
 
 
@@ -24,7 +24,12 @@ class CreateClassicLeagueFragment : BaseFragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding  = DataBindingUtil.inflate(inflater, R.layout.create_classic_league_fragment, container, false)
+        binding = DataBindingUtil.inflate(
+            inflater,
+            R.layout.create_classic_league_fragment,
+            container,
+            false
+        )
         return binding.root
     }
 
@@ -40,8 +45,11 @@ class CreateClassicLeagueFragment : BaseFragment() {
     }
 
     private fun openConfirmationDialog() {
-        context?.showConfirmationDialog(R.drawable.ic_done, "تم الانضمام بنجاح لدوري \" المحترفين\""){
-                dialog ->  dialog?.dismiss()
+        context?.showConfirmationDialog(
+            R.drawable.ic_done,
+            "تم الانضمام بنجاح لدوري \" المحترفين\""
+        ) { dialog ->
+            dialog?.dismiss()
         }
     }
 
@@ -54,15 +62,15 @@ class CreateClassicLeagueFragment : BaseFragment() {
         val options = option.toTypedArray()
 
         var selectedItem = 0
-        val builder = AlertDialog.Builder(requireContext(),R.style.MaterialThemeDialog)
+        val builder = AlertDialog.Builder(requireContext(), R.style.MaterialThemeDialog)
         builder.setTitle(getString(R.string.select_round))
-        builder.setSingleChoiceItems(options
-            , 0
+        builder.setSingleChoiceItems(
+            options, 0
         ) { _: DialogInterface, item: Int ->
             selectedItem = item
         }
         builder.setPositiveButton(R.string.okkk) { dialogInterface: DialogInterface, _: Int ->
-            binding.roundEt.setText(options[selectedItem])
+            binding.roundEt.text = options[selectedItem]
             ///todo  viewModel.selectedTeamPosition = selectedItem
             dialogInterface.dismiss()
         }

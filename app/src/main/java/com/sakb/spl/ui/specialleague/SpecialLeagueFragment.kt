@@ -33,8 +33,11 @@ class SpecialLeagueFragment : BaseFragment() {
     }
 
     private fun openConfirmationDialog() {
-        context?.showConfirmationDialog(R.drawable.ic_done, "تم الانضمام بنجاح لدوري \" المحترفين\""){
-                dialog ->  dialog?.dismiss()
+        context?.showConfirmationDialog(
+            R.drawable.ic_done,
+            "تم الانضمام بنجاح لدوري \" المحترفين\""
+        ) { dialog ->
+            dialog?.dismiss()
         }
     }
 }

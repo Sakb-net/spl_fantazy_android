@@ -8,10 +8,9 @@ import com.sakb.spl.utils.SingleLiveEvent
 import io.reactivex.schedulers.Schedulers
 
 
-class TermsViewModel (private val repository: SplRepository)
-    : BaseViewModel() {
+class TermsViewModel(private val repository: SplRepository) : BaseViewModel() {
 
-    var termsResultLiveData =  SingleLiveEvent<TermsResponse>()
+    var termsResultLiveData = SingleLiveEvent<TermsResponse>()
     fun terms() {
         repository.terms()
             .subscribeOn(Schedulers.io())

@@ -1,8 +1,8 @@
 package com.sakb.spl.di
 
-import com.sakb.spl.data.remote.SplApiEndpoints
 import com.sakb.spl.constants.Constants
 import com.sakb.spl.data.local.PrefManager
+import com.sakb.spl.data.remote.SplApiEndpoints
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -45,7 +45,7 @@ fun provideOkHttpClient(interceptor: Interceptor): OkHttpClient {
             requestBuilder.header("type-dev", Constants.type_dev)
             requestBuilder.header("val-dev", Constants.val_dev)
             requestBuilder.header("lang", PrefManager.getLanguage())
-            requestBuilder.header("access-token", PrefManager.getUser()?.data?.accessToken?:"")
+            requestBuilder.header("access-token", PrefManager.getUser()?.data?.accessToken ?: "")
 
 
             val response = chain.proceed(requestBuilder.build())
@@ -55,4 +55,5 @@ fun provideOkHttpClient(interceptor: Interceptor): OkHttpClient {
 }
 
 fun provideSplApi(retrofit: Retrofit): SplApiEndpoints = retrofit.create(
-    SplApiEndpoints::class.java)
+    SplApiEndpoints::class.java
+)

@@ -9,24 +9,24 @@
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
-        android:elevation="0dp"
-        android:clickable="true"
-        android:foreground="?attr/selectableItemBackground"
-        android:background="?attr/selectableItemBackground"
-        app:cardCornerRadius="0dp"
-        app:cardElevation="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_height="wrap_content"
-        android:focusable="true">
+        android:background="?attr/selectableItemBackground"
+        android:clickable="true"
+        android:elevation="0dp"
+        android:focusable="true"
+        android:foreground="?attr/selectableItemBackground"
+        app:cardCornerRadius="0dp"
+        app:cardElevation="0dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_marginTop="@dimen/_10sdp"
-            android:layout_marginBottom="@dimen/_10sdp"
             android:id="@+id/constraintLayout"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:layout_marginBottom="@dimen/_10sdp">
 
 
             <TextView
@@ -53,23 +53,17 @@
                 style="@style/TextAppearance.AppCompat.Small"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
                 android:fontFamily="@font/helvetica_reg"
+
+
                 android:includeFontPadding="false"
 
-
-                android:layout_marginEnd="8dp"
-
-                app:layout_constraintHorizontal_bias="1.0"
+                android:text="@string/more"
                 android:textColor="@color/colorGrey"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                android:text="@string/more" />
-
-
-
-
-
-
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintTop_toTopOf="parent" />
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>

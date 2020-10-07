@@ -114,8 +114,14 @@ class PlayersMasterChildItemMenuAdapter(
                                                 AddPlayerActivity.ACTIONTYPE,
                                                 AddPlayerActivity.REPLACE
                                             )
-                                            .putExtra(AddPlayerActivity.DELETEDPLAYER,children[adapterPosition].link_player)
-                                            .putExtra(AddPlayerActivity.ELDAWRYlINK,children[adapterPosition].eldwry_link)
+                                            .putExtra(
+                                                AddPlayerActivity.DELETEDPLAYER,
+                                                children[adapterPosition].link_player
+                                            )
+                                            .putExtra(
+                                                AddPlayerActivity.ELDAWRYlINK,
+                                                children[adapterPosition].eldwry_link
+                                            )
                                             .putExtra(
                                                 "type_loc_player",
                                                 children[adapterPosition].type_loc_player

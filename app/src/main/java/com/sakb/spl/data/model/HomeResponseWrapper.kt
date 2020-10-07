@@ -1,5 +1,4 @@
 package com.sakb.spl.data.model
-import com.google.gson.annotations.SerializedName
 
 
 /**
@@ -7,5 +6,5 @@ import com.google.gson.annotations.SerializedName
  */
 data class HomeResponseWrapper(
     var type: Int = 0,
-    var data : Any? = null
+    var data: Any? = null
 )

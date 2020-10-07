@@ -19,7 +19,7 @@ data class PlayerMasterResponse(
         var eldwry_name: String? = "",
         var empty_class: String? = "",
         var found_player: Int? = 0,
-        var alPha : Float=1.0f,
+        var alPha: Float = 1.0f,
         var image_player: String? = "",
         var link_player: String? = "",
         var location_key_player: String? = "",

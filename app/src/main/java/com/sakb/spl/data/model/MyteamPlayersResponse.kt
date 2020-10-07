@@ -1,4 +1,5 @@
 package com.sakb.spl.data.model
+
 import com.google.gson.annotations.SerializedName
 
 
@@ -42,9 +43,9 @@ data class MyteamPlayersResponse(
         var type_key_coatch: String? = "",
         var type_loc_player: String? = "",
         var type_player: String? = "",
-        var alPha : Float=1.0f,
-        var isActiveToSwap : Boolean = false,
-        var isSelected : Boolean = false
+        var alPha: Float = 1.0f,
+        var isActiveToSwap: Boolean = false,
+        var isSelected: Boolean = false
     )
 
 }

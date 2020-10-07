@@ -13,57 +13,56 @@ import timber.log.Timber
  * Created by dev.mahmoud_ashraf on 10/8/2019.
  */
 
-class MyTeamViewModel (
+class MyTeamViewModel(
     private val repository: SplRepository
-  /*  private val myTeamPlayerUseCase: MyTeamPlayerUseCase*/
+    /*  private val myTeamPlayerUseCase: MyTeamPlayerUseCase*/
 ) : BaseViewModel() {
 
 
     var playerLinkOne: String = ""
     var selectedPlayer: Int = 0
-    var firstPlayerLink: String ?= ""
+    var firstPlayerLink: String? = ""
     var isMenuPreviewEnabled: Boolean = false
-
 
 
     var MyTeamPlayersListLiveData = SingleLiveEvent<MyteamPlayersResponse>()
     fun loadMyTeamPlayers(
-   ){
-       repository.myTeamPlayer()
-           .subscribeOn(Schedulers.io())
-           .applyLoadingState()
-           .subscribe(
-               { data ->
+    ) {
+        repository.myTeamPlayer()
+            .subscribeOn(Schedulers.io())
+            .applyLoadingState()
+            .subscribe(
+                { data ->
 
-                   MyTeamPlayersListLiveData.value = data
+                    MyTeamPlayersListLiveData.value = data
 
-               },
-               { throwable ->
-                   handleApiException(throwable)
-               }
-           ).addToDisposableBag()
-   }
-
-
-
-    var substitutesList = SingleLiveEvent<List<MyteamPlayersResponse.Player>>() //myTeamPlayerUseCase.substitutesListLiveData
+                },
+                { throwable ->
+                    handleApiException(throwable)
+                }
+            ).addToDisposableBag()
+    }
 
 
+    var substitutesList =
+        SingleLiveEvent<List<MyteamPlayersResponse.Player>>() //myTeamPlayerUseCase.substitutesListLiveData
 
-  //  var checkAvailablePlayerToSwapStatusLiveData = myTeamPlayerUseCase.checkInsideChangeResponseResultLiveData()
-  //  var checkAvailablePlayerToSwapData = myTeamPlayerUseCase.checkInsideChangeResponseData()
+
+    //  var checkAvailablePlayerToSwapStatusLiveData = myTeamPlayerUseCase.checkInsideChangeResponseResultLiveData()
+    //  var checkAvailablePlayerToSwapData = myTeamPlayerUseCase.checkInsideChangeResponseData()
 
     fun checkAvailablePlayerToSwap(
         //player_link: String,
         type_loc_player: String,
         childPos: Int,
         parentPos: Int,
-        isMainPlayer : Boolean
+        isMainPlayer: Boolean
     ) = checkInsideChange(/* player_link,*/   childPos,
-        parentPos, isMainPlayer,type_loc_player)
+        parentPos, isMainPlayer, type_loc_player
+    )
 
 
-    private   fun checkInsideChange(
+    private fun checkInsideChange(
         //player_link: String,
         childPos: Int,
         parentPos: Int,
@@ -375,18 +374,17 @@ class MyTeamViewModel (
     }
 
 
-
-
     fun loadAvailablePlayerToSwap(
-       // player_link: String,
+        // player_link: String,
         type_loc_player: String,
         childPos: Int,
         parentPos: Int,
-        isMainPlayer : Boolean
+        isMainPlayer: Boolean
     ) = checkAndLoadInsideChange( /*player_link, */  childPos,
-        parentPos, isMainPlayer,type_loc_player)
+        parentPos, isMainPlayer, type_loc_player
+    )
 
-    private  fun checkAndLoadInsideChange(
+    private fun checkAndLoadInsideChange(
         //player_link: String,
         childPos: Int,
         parentPos: Int,
@@ -646,13 +644,13 @@ class MyTeamViewModel (
 
 
         val substitutesList = MyTeamPlayersListLiveData.value?.data
-        substitutesList?.let {data->
+        substitutesList?.let { data ->
 
             val updatedSubstitutesList = mutableListOf<MyteamPlayersResponse.Player>()
 
             data.forEach {
-                it.forEach { player->
-                    if (!player.isSelected && player.isActiveToSwap){
+                it.forEach { player ->
+                    if (!player.isSelected && player.isActiveToSwap) {
                         updatedSubstitutesList.add(player)
                     }
                 }
@@ -666,14 +664,12 @@ class MyTeamViewModel (
         }
 
 
-
-
     }
 
     fun resetActivePlayer() = resetActivePlayers()
 
-   private fun resetActivePlayers() {
-       MyTeamPlayersListLiveData.postValue(MyTeamPlayersListLiveData.value.apply {
+    private fun resetActivePlayers() {
+        MyTeamPlayersListLiveData.postValue(MyTeamPlayersListLiveData.value.apply {
 
 
             this?.data?.mapIndexed { _, list ->
@@ -687,25 +683,19 @@ class MyTeamViewModel (
     }
 
 
-
-
-
-
-
-
     //add direct change
     var validateChangeResultStateLiveData = SingleLiveEvent<AddDirectInsideChange>()
-   // var validateChangePlayersList = myTeamPlayerUseCase.validateChangePlayersList()
+    // var validateChangePlayersList = myTeamPlayerUseCase.validateChangePlayersList()
 
     fun changePlayers(
-        player_link_one : String,
-        player_link_two : String
-    ) = changePlayerss( player_link_one, player_link_two )
+        player_link_one: String,
+        player_link_two: String
+    ) = changePlayerss(player_link_one, player_link_two)
 
     private fun changePlayerss(
-        player_link_one : String,
-        player_link_two : String
-    ){
+        player_link_one: String,
+        player_link_two: String
+    ) {
         repository.addDirectInsideChange(
             player_link_one,
             player_link_two
@@ -719,7 +709,7 @@ class MyTeamViewModel (
                         this?.data = data.data
                     })
 
-           validateChangeResultStateLiveData.value = data
+                    validateChangeResultStateLiveData.value = data
 
                 },
                 { throwable ->
@@ -730,26 +720,17 @@ class MyTeamViewModel (
     }
 
 
-
-
-
-
-
-
-
-
-
     // add captain
     var addCaptainOrViseState = SingleLiveEvent<AddCaptainOrVise>()
 
     fun addCaptainOrViceCaptain(
-        position : Int,
-        parentPosition : Int,
+        position: Int,
+        parentPosition: Int,
         player_link: String,
         type: String
     ) {
         repository.addCaptainOrViceCaptain(
-             player_link, type
+            player_link, type
         )
             .subscribeOn(Schedulers.io())
             .applyLoadingState()
@@ -758,11 +739,11 @@ class MyTeamViewModel (
 
                     data?.let {
 
-                        if (it.data?.okUpdate==1){
+                        if (it.data?.okUpdate == 1) {
 
                             MyTeamPlayersListLiveData.postValue(MyTeamPlayersListLiveData.value.apply {
 
-                                if (type=="captain") {
+                                if (type == "captain") {
 
                                     this?.data?.mapIndexed { parentIndex, list ->
                                         list.mapIndexed { index, player ->
@@ -776,9 +757,7 @@ class MyTeamViewModel (
                                         }
                                     }
 
-                                }
-
-                                else{
+                                } else {
                                     this?.data?.mapIndexed { parentIndex, list ->
                                         list.mapIndexed { index, player ->
                                             when {
@@ -794,9 +773,9 @@ class MyTeamViewModel (
                                 }
 
 
-
                             })
-                        }}
+                        }
+                    }
 
 
 

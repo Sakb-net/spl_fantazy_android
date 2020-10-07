@@ -10,7 +10,7 @@ import kotlinx.android.synthetic.main.view_empty.view.*
 /**
  * Widget used to display an empty state to the user
  */
-class EmptyView: RelativeLayout {
+class EmptyView : RelativeLayout {
 
     var emptyListener: EmptyListener? = null
 

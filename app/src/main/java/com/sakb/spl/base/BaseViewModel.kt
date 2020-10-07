@@ -34,12 +34,13 @@ open class BaseViewModel : ViewModel() {
     protected fun showSuccessMessage(message: String) {
         successEvent.value = message
     }
+
     protected fun showErrorMessage(message: String?) {
         errorEvent.value = message
     }
 
     // generic function to handle error
-     protected fun handleApiException(throwable: Throwable) {
+    protected fun handleApiException(throwable: Throwable) {
         when (throwable) {
             is IOException -> {
                 handleNoConnectionError()
@@ -47,7 +48,10 @@ open class BaseViewModel : ViewModel() {
             is HttpException -> {
                 when (throwable.code()) {
                     400 -> {
-                        val errorResponse = Gson().fromJson(throwable.response()?.errorBody()?.string(), ErrorResponse::class.java)
+                        val errorResponse = Gson().fromJson(
+                            throwable.response()?.errorBody()?.string(),
+                            ErrorResponse::class.java
+                        )
                         showErrorMessage(errorResponse.Message)
                     }
                     401 -> {

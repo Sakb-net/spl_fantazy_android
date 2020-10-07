@@ -47,7 +47,10 @@ class DividerItemDecorationNoLast
         val a = context?.obtainStyledAttributes(ATTRS)
         mDivider = a?.getDrawable(0)
         if (mDivider == null) {
-            Log.w(TAG, "@android:attr/listDivider was not set in the theme used for this " + "DividerItemDecorationNoLast. Please set that attribute all call setDrawable()")
+            Log.w(
+                TAG,
+                "@android:attr/listDivider was not set in the theme used for this " + "DividerItemDecorationNoLast. Please set that attribute all call setDrawable()"
+            )
         }
         a?.recycle()
         setOrientation(orientation)
@@ -62,7 +65,8 @@ class DividerItemDecorationNoLast
     fun setOrientation(orientation: Int) {
         if (orientation != HORIZONTAL && orientation != VERTICAL) {
             throw IllegalArgumentException(
-                "Invalid orientation. It should be either HORIZONTAL or VERTICAL")
+                "Invalid orientation. It should be either HORIZONTAL or VERTICAL"
+            )
         }
         mOrientation = orientation
     }
@@ -80,7 +84,7 @@ class DividerItemDecorationNoLast
     }
 
     override fun onDraw(c: Canvas, parent: RecyclerView, state: RecyclerView.State) {
-        if (parent?.layoutManager == null || mDivider == null) {
+        if (parent.layoutManager == null || mDivider == null) {
             return
         }
         if (mOrientation == VERTICAL) {
@@ -98,8 +102,10 @@ class DividerItemDecorationNoLast
         if (parent.clipToPadding) {
             left = parent.paddingLeft
             right = parent.width - parent.paddingRight
-            canvas.clipRect(left, parent.paddingTop, right,
-                parent.height - parent.paddingBottom)
+            canvas.clipRect(
+                left, parent.paddingTop, right,
+                parent.height - parent.paddingBottom
+            )
         } else {
             left = 0
             right = parent.width
@@ -125,8 +131,10 @@ class DividerItemDecorationNoLast
         if (parent.clipToPadding) {
             top = parent.paddingTop
             bottom = parent.height - parent.paddingBottom
-            canvas.clipRect(parent.paddingLeft, top,
-                parent.width - parent.paddingRight, bottom)
+            canvas.clipRect(
+                parent.paddingLeft, top,
+                parent.width - parent.paddingRight, bottom
+            )
         } else {
             top = 0
             bottom = parent.height

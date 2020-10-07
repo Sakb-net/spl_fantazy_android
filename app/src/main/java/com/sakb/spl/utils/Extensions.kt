@@ -18,8 +18,9 @@ import java.io.ByteArrayOutputStream
 fun Context.toast(text: String) {
     Toast.makeText(this, text, Toast.LENGTH_LONG).show()
 }
+
 fun Context.centerToast(text: String) {
-   val toast = Toast.makeText(this, text, Toast.LENGTH_LONG)
+    val toast = Toast.makeText(this, text, Toast.LENGTH_LONG)
     toast.setGravity(Gravity.CENTER, 0, 0)
     toast.show()
 }

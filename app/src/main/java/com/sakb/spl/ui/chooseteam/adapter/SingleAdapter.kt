@@ -65,8 +65,8 @@ notifyDataSetChanged()
                     imageView.setBackgroundResource(R.drawable.circle)
                 }
             }
-            textView.setText(employee.name)
-            textView.setTag(employee.link)
+            textView.text = employee.name
+            textView.tag = employee.link
 
             itemView.setOnClickListener {
                 imageView.setBackgroundResource(R.drawable.circle_point)

@@ -39,7 +39,7 @@ class LeagueFragment : BaseFragment() {
         }
 
         binding.powerfulLeague.setOnClickListener {
-        findNavController().navigate(R.id.action_leagueFragment_to_joinToPowerfulLeagueFragment)
+            findNavController().navigate(R.id.action_leagueFragment_to_joinToPowerfulLeagueFragment)
         }
 
         binding.classicButton.setOnClickListener {
@@ -51,7 +51,6 @@ class LeagueFragment : BaseFragment() {
         }
 
     }
-
 
 
 }

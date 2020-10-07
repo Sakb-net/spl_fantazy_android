@@ -7,6 +7,7 @@ import org.koin.dsl.module
 val repositoryModule = module {
     single { provideRepository(get()) }
 }
-fun provideRepository(remote: SplApiEndpoints) : SplRepository {
-     return SplRepository(remote)
+
+fun provideRepository(remote: SplApiEndpoints): SplRepository {
+    return SplRepository(remote)
 }

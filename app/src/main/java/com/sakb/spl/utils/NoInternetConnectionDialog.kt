@@ -7,8 +7,10 @@ import androidx.appcompat.app.AlertDialog
 import com.sakb.spl.R
 import kotlinx.android.synthetic.main.dialog_no_internet_connection.*
 
-class NoInternetConnectionDialog(context: Context,
-                                 private val callback: NoInternetDialogCallback?): AlertDialog(context) {
+class NoInternetConnectionDialog(
+    context: Context,
+    private val callback: NoInternetDialogCallback?
+) : AlertDialog(context) {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -17,7 +19,7 @@ class NoInternetConnectionDialog(context: Context,
             callback?.retry()
             dismiss()
         }
-        if(callback == null) btnRetry.visibility = View.INVISIBLE
+        if (callback == null) btnRetry.visibility = View.INVISIBLE
         else btnRetry.visibility = View.VISIBLE
     }
 

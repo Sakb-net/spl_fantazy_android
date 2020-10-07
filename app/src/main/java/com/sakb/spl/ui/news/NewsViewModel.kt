@@ -1,15 +1,15 @@
 package com.sakb.spl.ui.news
 
 import com.sakb.spl.base.BaseViewModel
+import com.sakb.spl.constants.Constants
 import com.sakb.spl.data.model.NewsResponse
 import com.sakb.spl.data.repository.SplRepository
-import com.sakb.spl.constants.Constants
 import com.sakb.spl.utils.SingleLiveEvent
 import io.reactivex.schedulers.Schedulers
 import timber.log.Timber
 
 
-class NewsViewModel (private val repository: SplRepository) : BaseViewModel() {
+class NewsViewModel(private val repository: SplRepository) : BaseViewModel() {
 
 
     val newsLiveData = SingleLiveEvent<MutableList<NewsResponse.Data?>>()
@@ -19,18 +19,18 @@ class NewsViewModel (private val repository: SplRepository) : BaseViewModel() {
         // loadHmeData(PAGE_NUMBER)
     }
 
-    fun  initLoading(){
+    fun initLoading() {
         PAGE_NUMBER = 0
         loadHmeData()
     }
 
-    fun loadMore(){
+    fun loadMore() {
         PAGE_NUMBER++
         loadHmeData()
     }
 
     private fun loadHmeData() {
-        Timber.e("PAGE_NUMBER = "+ PAGE_NUMBER)
+        Timber.e("PAGE_NUMBER = " + PAGE_NUMBER)
         repository.news(PAGE_NUMBER.toString(), Constants.PAGE_LIMIT)
             .subscribeOn(Schedulers.io())
             .applyLoadingState()
@@ -48,7 +48,7 @@ class NewsViewModel (private val repository: SplRepository) : BaseViewModel() {
 
                 },
                 { throwable ->
-                   handleApiException(throwable)
+                    handleApiException(throwable)
                 }
             ).addToDisposableBag()
     }

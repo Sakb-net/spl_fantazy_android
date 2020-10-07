@@ -1,19 +1,16 @@
 package com.sakb.spl.ui.news
 
-import android.content.Context
+
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.RecyclerView
 import com.sakb.spl.base.BaseFragment
 import com.sakb.spl.databinding.FragmentNewsBinding
 import com.sakb.spl.ui.news.adapter.NewsAdapter
 import com.sakb.spl.utils.RecyclerViewScrollListener
-
-
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import timber.log.Timber
 
@@ -32,7 +29,8 @@ class NewsFragment : BaseFragment() {
                 scrollListener.disableScrollListener()
                 viewModel.loadMore()
             }
-        } }
+        }
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -69,16 +67,10 @@ class NewsFragment : BaseFragment() {
     }
 
 
-
-
-
-
-
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
     }
-
 
 
 }

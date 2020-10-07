@@ -28,10 +28,8 @@ class StatisticsFragment : BaseFragment() {
     lateinit var clubAdapter: ClubAdapter
 
 
-
-  //  private  var _binding: FragmentStatisitcsBinding?=null
+    //  private  var _binding: FragmentStatisitcsBinding?=null
 //    private  val binding = _binding!!
-
 
 
     override fun onCreateView(
@@ -46,7 +44,6 @@ class StatisticsFragment : BaseFragment() {
     }
 
 
-
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         //  changeViewsFonts()
@@ -58,17 +55,14 @@ class StatisticsFragment : BaseFragment() {
         setUpRecyclerView()
 
         rvClub.addOnScrollListener(object : RecyclerView.OnScrollListener() {
-           override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
+            override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
                 super.onScrolled(recyclerView, dx, dy)
 
                 scrollX += dx
 
-               headerScroll.scrollTo(scrollX, 0)
+                headerScroll.scrollTo(scrollX, 0)
             }
 
-           override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
-                super.onScrollStateChanged(recyclerView, newState)
-            }
         })
     }
 

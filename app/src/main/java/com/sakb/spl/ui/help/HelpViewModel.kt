@@ -6,20 +6,19 @@ import com.sakb.spl.data.repository.SplRepository
 import com.sakb.spl.utils.SingleLiveEvent
 import io.reactivex.schedulers.Schedulers
 
-class HelpViewModel (
-    private  val repository: SplRepository
+class HelpViewModel(
+    private val repository: SplRepository
 ) : BaseViewModel() {
 
 
     init {
-       // howToPlayUseCase.instructions(PrefManager.getLanguage())
+        // howToPlayUseCase.instructions(PrefManager.getLanguage())
     }
 
 
-
-
     ///////////////
-    var helpListLiveData = SingleLiveEvent<List<HowToPlayResponse.ContentHelp>>()//howToPlayUseCase.helpListLiveData()
+    var helpListLiveData =
+        SingleLiveEvent<List<HowToPlayResponse.ContentHelp>>()//howToPlayUseCase.helpListLiveData()
 
     fun help() {
         repository.instruction()
@@ -43,19 +42,20 @@ class HelpViewModel (
         updateHelpColapseState(position)
     }
 
-   private fun updateHelpColapseState(position: Int) {
-        val list =   helpListLiveData.value
+    private fun updateHelpColapseState(position: Int) {
+        val list = helpListLiveData.value
         val newList = list?.mapIndexed { index, RoleUiModel ->
-            when{
-                index == position-> {
+            when {
+                index == position -> {
                     RoleUiModel.copy(isActivated = RoleUiModel.isActivated.not())
                 }
                 else -> {
                     RoleUiModel.copy()
                 }
-            }}
+            }
+        }
 
-       helpListLiveData.value = newList
+        helpListLiveData.value = newList
     }
 
 

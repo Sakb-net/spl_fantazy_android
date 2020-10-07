@@ -2,7 +2,7 @@ package com.sakb.spl.ui.home.diffcallback
 
 import androidx.recyclerview.widget.DiffUtil
 
-class TitlesHeaderDiffCallback : DiffUtil.ItemCallback< String>() {
+class TitlesHeaderDiffCallback : DiffUtil.ItemCallback<String>() {
     override fun areItemsTheSame(
         oldItem: String,
         newItem: String
@@ -11,10 +11,10 @@ class TitlesHeaderDiffCallback : DiffUtil.ItemCallback< String>() {
     }
 
     override fun areContentsTheSame(
-        oldItem:String,
+        oldItem: String,
         newItem: String
     ): Boolean {
-       return oldItem == newItem
+        return oldItem == newItem
     }
 
 

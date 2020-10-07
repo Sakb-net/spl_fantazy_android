@@ -1,6 +1,5 @@
 package  com.sakb.spl.ui.chooseteamplayers
 
-import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -8,12 +7,10 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
-import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import com.google.gson.Gson
 import com.sakb.spl.R
 import com.sakb.spl.base.BaseFragment
-import com.sakb.spl.data.local.PrefManager
 import com.sakb.spl.data.model.AddPlayerResponse
 import com.sakb.spl.data.model.ChangePlayerResponse
 import com.sakb.spl.databinding.ChooseTeamPlayersFragmentBinding
@@ -25,7 +22,6 @@ import com.sakb.spl.utils.toast
 import kotlinx.android.synthetic.main.choose_team_players_fragment.*
 import org.greenrobot.eventbus.EventBus
 import org.greenrobot.eventbus.Subscribe
-import org.koin.androidx.viewmodel.compat.ViewModelCompat.viewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import timber.log.Timber
 
@@ -33,13 +29,10 @@ import timber.log.Timber
 class ChooseTeamPlayersFragment : BaseFragment() {
 
 
-
-
     private var _binding: ChooseTeamPlayersFragmentBinding? = null
     private val binding get() = _binding!!
 
     private lateinit var adapter: MyTeamPlayersMasterAdapter
-
 
 
     override val viewModel by viewModel<ChooseTeamPlayersViewModel>()
@@ -54,7 +47,7 @@ class ChooseTeamPlayersFragment : BaseFragment() {
             container,
             false
         )
-       // binding.toolbarTitle.text = getString(R.string.choose_team)
+        // binding.toolbarTitle.text = getString(R.string.choose_team)
 
         return binding.root
 
@@ -72,7 +65,7 @@ class ChooseTeamPlayersFragment : BaseFragment() {
 
     @Subscribe
     fun onPlayerAdded(event: AddPlayerResponse) {
-       // context?.toast("coming!" + event.players?.size)
+        // context?.toast("coming!" + event.players?.size)
         //  viewModel.updatePayersMaster(event.players)
         event.let {
             // adapter.updateData(it)
@@ -93,7 +86,7 @@ class ChooseTeamPlayersFragment : BaseFragment() {
 
     @Subscribe
     fun onPlayerChanged(event: ChangePlayerResponse) {
-       // context?.toast("coming!" + event.data?.size)
+        // context?.toast("coming!" + event.data?.size)
         //  viewModel.updatePayersMaster(event.players)
         event.let {
             // adapter.updateData(it)
@@ -139,18 +132,14 @@ class ChooseTeamPlayersFragment : BaseFragment() {
             binding.payTotal.text = data.pay_total_cost.toString()
 
             binding.menuBtn.setOnClickListener {
-                binding.menuBtn.setBackgroundTintList(
-                    ContextCompat.getColorStateList(
-                        requireContext(),
-                        R.color.colorGreenDark
-                    )
+                binding.menuBtn.backgroundTintList = ContextCompat.getColorStateList(
+                    requireContext(),
+                    R.color.colorGreenDark
                 )
 
-                binding.preview.setBackgroundTintList(
-                    ContextCompat.getColorStateList(
-                        requireContext(),
-                        R.color.white
-                    )
+                binding.preview.backgroundTintList = ContextCompat.getColorStateList(
+                    requireContext(),
+                    R.color.white
                 )
 
                 binding.menuBtn.setTextColor(
@@ -200,7 +189,7 @@ class ChooseTeamPlayersFragment : BaseFragment() {
 
 
                     }
-                    rv_parent.setAdapter(_adapter)
+                    rv_parent.adapter = _adapter
 
                     /**  rv_parent.apply {
                     adapter = adapter
@@ -209,18 +198,14 @@ class ChooseTeamPlayersFragment : BaseFragment() {
             }
 
             binding.preview.setOnClickListener {
-                binding.preview.setBackgroundTintList(
-                    ContextCompat.getColorStateList(
-                        requireContext(),
-                        R.color.colorGreenDark
-                    )
+                binding.preview.backgroundTintList = ContextCompat.getColorStateList(
+                    requireContext(),
+                    R.color.colorGreenDark
                 )
 
-                binding.menuBtn.setBackgroundTintList(
-                    ContextCompat.getColorStateList(
-                        requireContext(),
-                        R.color.white
-                    )
+                binding.menuBtn.backgroundTintList = ContextCompat.getColorStateList(
+                    requireContext(),
+                    R.color.white
                 )
 
                 binding.preview.setTextColor(
@@ -271,7 +256,7 @@ class ChooseTeamPlayersFragment : BaseFragment() {
 
                     }
 
-                    rv_parent.setAdapter(adapter)
+                    rv_parent.adapter = adapter
 
                     /**  rv_parent.apply {
                     adapter = adapter
@@ -327,7 +312,7 @@ class ChooseTeamPlayersFragment : BaseFragment() {
 
 
                     }
-                    rv_parent.setAdapter(_adapter)
+                    rv_parent.adapter = _adapter
                 }
             } else {
                 binding.stadIv.setImageResource(R.drawable.pitch)
@@ -356,7 +341,7 @@ class ChooseTeamPlayersFragment : BaseFragment() {
 
                     }
 
-                    rv_parent.setAdapter(adapter)
+                    rv_parent.adapter = adapter
 
                     /**  rv_parent.apply {
                     adapter = adapter
@@ -365,7 +350,6 @@ class ChooseTeamPlayersFragment : BaseFragment() {
             }
 
         })
-
 
 
         // handle save button

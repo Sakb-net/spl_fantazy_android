@@ -17,7 +17,7 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class MatchesFragment : BaseFragment() {
 
-    private lateinit var binding : MatchesFragmentBinding
+    private lateinit var binding: MatchesFragmentBinding
     override val viewModel by viewModel<MatchesViewModel>()
     private val matchesAdapter by lazy { MatchesAdapter() }
 
@@ -25,7 +25,7 @@ class MatchesFragment : BaseFragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding  = DataBindingUtil.inflate(inflater, R.layout.matches_fragment, container, false)
+        binding = DataBindingUtil.inflate(inflater, R.layout.matches_fragment, container, false)
         return binding.root
     }
 
@@ -37,12 +37,48 @@ class MatchesFragment : BaseFragment() {
         }
         // fake data
         val list = mutableListOf<HomeResponse.MatchGroup>()
-        list.add(HomeResponse.MatchGroup("2020-05-27",nameFirst = "الاهلي",nameSecond = "الاتحاد"))
-        list.add(HomeResponse.MatchGroup("2020-05-27",nameFirst = "الاهلي",nameSecond = "الاتحاد"))
-        list.add(HomeResponse.MatchGroup("2020-05-27",nameFirst = "الاهلي",nameSecond = "الاتحاد"))
-        list.add(HomeResponse.MatchGroup("2020-05-27",nameFirst = "الاهلي",nameSecond = "الاتحاد"))
-        list.add(HomeResponse.MatchGroup("2020-05-27",nameFirst = "الاهلي",nameSecond = "الاتحاد"))
-        list.add(HomeResponse.MatchGroup("2020-03-27",nameFirst = "الاهلي",nameSecond = "الاتحاد"))
+        list.add(
+            HomeResponse.MatchGroup(
+                "2020-05-27",
+                nameFirst = "الاهلي",
+                nameSecond = "الاتحاد"
+            )
+        )
+        list.add(
+            HomeResponse.MatchGroup(
+                "2020-05-27",
+                nameFirst = "الاهلي",
+                nameSecond = "الاتحاد"
+            )
+        )
+        list.add(
+            HomeResponse.MatchGroup(
+                "2020-05-27",
+                nameFirst = "الاهلي",
+                nameSecond = "الاتحاد"
+            )
+        )
+        list.add(
+            HomeResponse.MatchGroup(
+                "2020-05-27",
+                nameFirst = "الاهلي",
+                nameSecond = "الاتحاد"
+            )
+        )
+        list.add(
+            HomeResponse.MatchGroup(
+                "2020-05-27",
+                nameFirst = "الاهلي",
+                nameSecond = "الاتحاد"
+            )
+        )
+        list.add(
+            HomeResponse.MatchGroup(
+                "2020-03-27",
+                nameFirst = "الاهلي",
+                nameSecond = "الاتحاد"
+            )
+        )
 
         matchesAdapter.submitList(list)
     }
@@ -54,7 +90,7 @@ class MatchesFragment : BaseFragment() {
     }
 
     private fun dialogRounds() {
-     // todo   val options = viewModel.teamsNames.toTypedArray()
+        // todo   val options = viewModel.teamsNames.toTypedArray()
         val option = mutableListOf<String>()
         option.add("الجولة 1 ")
         option.add("الجولة 2 ")
@@ -62,16 +98,16 @@ class MatchesFragment : BaseFragment() {
         val options = option.toTypedArray()
 
         var selectedItem = 0
-        val builder = AlertDialog.Builder(requireContext(),R.style.MaterialThemeDialog)
+        val builder = AlertDialog.Builder(requireContext(), R.style.MaterialThemeDialog)
         builder.setTitle(getString(R.string.select_round))
-        builder.setSingleChoiceItems(options
-            , 0
+        builder.setSingleChoiceItems(
+            options, 0
         ) { _: DialogInterface, item: Int ->
             selectedItem = item
         }
         builder.setPositiveButton(R.string.okkk) { dialogInterface: DialogInterface, _: Int ->
             binding.roundTitleTv.text = options[selectedItem]
-           ///todo  viewModel.selectedTeamPosition = selectedItem
+            ///todo  viewModel.selectedTeamPosition = selectedItem
             dialogInterface.dismiss()
         }
         builder.setNegativeButton(R.string.cancell) { dialogInterface: DialogInterface, _: Int ->

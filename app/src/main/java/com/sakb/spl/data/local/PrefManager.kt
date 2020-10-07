@@ -13,7 +13,6 @@ object PrefManager {
     private const val SRF_KEY_REMEMBER_FLAG = "SRF_KEY_REMEMBER_FLAG"
     private const val SRF_KEY_langs_arr = "SRF_KEY_langs_arr"
 
-
     private const val SRF_KEY_CategoryAndSub = "SRF_KEY_CategoryAndSub"
     private const val FTOKEN = "Token"
     private const val Language = "lang"
@@ -28,30 +27,28 @@ object PrefManager {
 
     var sharedPreferences: SharedPreferences? = null
         private set
+
     fun initialize(context: Context) {
         sharedPreferences = context.getSharedPreferences(SRF_SHARED_NAME, MODE_PRIVATE)
     }
 
 
-    fun saveLanguage(string: String) = sharedPreferences?.edit()?.putString(Language, string)?.apply()
+    fun saveLanguage(string: String) =
+        sharedPreferences?.edit()?.putString(Language, string)?.apply()
 
     fun getLanguage(): String = sharedPreferences?.getString(Language, "ar") ?: "ar"
 
     fun saveUser(user: LoginResponse?) =
         sharedPreferences?.edit()?.putString(SRF_KEY_USER, Gson().toJson(user))?.apply()
 
-    fun getUser():LoginResponse? = Gson().fromJson(
+    fun getUser(): LoginResponse? = Gson().fromJson(
         sharedPreferences?.getString(SRF_KEY_USER, ""),
         LoginResponse::class.java
     )
 
-   fun clear() {
+    fun clear() {
         sharedPreferences?.edit()?.clear()?.apply()
     }
-
-
-
-
 
 
 }

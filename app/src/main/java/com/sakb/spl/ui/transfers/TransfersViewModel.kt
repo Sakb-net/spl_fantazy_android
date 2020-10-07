@@ -10,7 +10,7 @@ import com.sakb.spl.utils.SingleLiveEvent
 import io.reactivex.schedulers.Schedulers
 
 
-class TransfersViewModel ( private val repository: SplRepository) : BaseViewModel() {
+class TransfersViewModel(private val repository: SplRepository) : BaseViewModel() {
 
 
     var isMenuPreviewEnabled: Boolean = false
@@ -44,15 +44,9 @@ class TransfersViewModel ( private val repository: SplRepository) : BaseViewMode
     }
 
 
-
-
-
-
-
-
     // handle save team
     //var SaveTeamStateLiveData = myTeamPlayerUseCase.validateSaveTeamStateLiveData()
-    var SaveTeamResponseLiveData =  SingleLiveEvent<AddTeamResponse>()
+    var SaveTeamResponseLiveData = SingleLiveEvent<AddTeamResponse>()
     /*  fun saveTeamzzz(
           access_token: String,
           name_team: String,
@@ -60,10 +54,11 @@ class TransfersViewModel ( private val repository: SplRepository) : BaseViewMode
       ) = myTeamPlayerUseCase.saveTeam(access_token, name_team, lang)*/
 
     fun saveTeam(
-                   name_team: String) {
+        name_team: String
+    ) {
 
         repository.saveTeam(
-             name_team
+            name_team
         )
             .subscribeOn(Schedulers.io())
             .applyLoadingState()
@@ -79,9 +74,6 @@ class TransfersViewModel ( private val repository: SplRepository) : BaseViewMode
     }
 
 
-
-
-
     /*
     operations on data source
      */
@@ -93,7 +85,8 @@ class TransfersViewModel ( private val repository: SplRepository) : BaseViewMode
     fun updateData(it: ChangePlayerResponse) {
         updatePlayersList(it)
     }
-    private   fun updatePlayersList(it: AddPlayerResponse) {
+
+    private fun updatePlayersList(it: AddPlayerResponse) {
         MyTeamPlayersListResultLiveData.postValue(MyTeamPlayersListResultLiveData.value.apply {
             this?.data = it.players
             this?.total_team_play = it.data?.total_team_play
@@ -122,10 +115,10 @@ class TransfersViewModel ( private val repository: SplRepository) : BaseViewMode
         updateAlphaData(alpha, pos, parentPos/*, data*/)
     }
 
-    private  fun updateAlphaData(
-        alphaValue : Float,
+    private fun updateAlphaData(
+        alphaValue: Float,
         pos: Int,
-        parentPos : Int
+        parentPos: Int
         //,
         //data: PlayerMasterResponse.Data
     ) {
@@ -136,8 +129,6 @@ class TransfersViewModel ( private val repository: SplRepository) : BaseViewMode
 
         })
     }
-
-
 
 
 }

@@ -5,10 +5,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
-
 import com.sakb.spl.R
 import com.sakb.spl.base.BaseFragment
-import com.sakb.spl.data.local.PrefManager
 import com.sakb.spl.databinding.FragmentChangePasswordBinding
 import org.koin.androidx.viewmodel.ext.android.viewModel
 

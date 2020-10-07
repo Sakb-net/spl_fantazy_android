@@ -9,7 +9,8 @@ import com.sakb.spl.data.repository.SplRepository
 import com.sakb.spl.utils.SingleLiveEvent
 import io.reactivex.schedulers.Schedulers
 
-class ChooseTeamPlayersViewModel (   private val repository: SplRepository
+class ChooseTeamPlayersViewModel(
+    private val repository: SplRepository
 /*private val myTeamPlayerUseCase: MyTeamPlayerMasterUseCase*/
 ) : BaseViewModel() {
 
@@ -18,16 +19,16 @@ class ChooseTeamPlayersViewModel (   private val repository: SplRepository
 
 
     // handle load team players
-   // var MyTeamPlayerResultLiveData = myTeamPlayerUseCase.validateMyTeamPlayersLiveData()
-   // var MyTeamPlayersListLiveData = myTeamPlayerUseCase.validateMyTeamPlayersList()
+    // var MyTeamPlayerResultLiveData = myTeamPlayerUseCase.validateMyTeamPlayersLiveData()
+    // var MyTeamPlayersListLiveData = myTeamPlayerUseCase.validateMyTeamPlayersList()
 
-  /**  fun loadMyTeamPlayersx(
-        access_token: String,
-        lang: String
+    /**  fun loadMyTeamPlayersx(
+    access_token: String,
+    lang: String
     ) = myTeamPlayerUseCase.myTeamPlayer(access_token, lang)*/
 
 
-  var MyTeamPlayersListResultLiveData = SingleLiveEvent<PlayerMasterResponse>()
+    var MyTeamPlayersListResultLiveData = SingleLiveEvent<PlayerMasterResponse>()
 
     fun loadMyTeamPlayers() {
 
@@ -61,6 +62,7 @@ class ChooseTeamPlayersViewModel (   private val repository: SplRepository
                 }
             ).addToDisposableBag()
     }
+
     fun deleteAllTeamPlayers() {
 
         repository.deleteAllTeamPlayers()
@@ -79,28 +81,21 @@ class ChooseTeamPlayersViewModel (   private val repository: SplRepository
     }
 
 
-
-
-
-
-
-
-
-
     // handle save team
     //var SaveTeamStateLiveData = myTeamPlayerUseCase.validateSaveTeamStateLiveData()
-    var SaveTeamResponseLiveData =  SingleLiveEvent<AddTeamResponse>()
-  /*  fun saveTeamzzz(
-        access_token: String,
-        name_team: String,
-        lang: String
-    ) = myTeamPlayerUseCase.saveTeam(access_token, name_team, lang)*/
+    var SaveTeamResponseLiveData = SingleLiveEvent<AddTeamResponse>()
+    /*  fun saveTeamzzz(
+          access_token: String,
+          name_team: String,
+          lang: String
+      ) = myTeamPlayerUseCase.saveTeam(access_token, name_team, lang)*/
 
     fun saveTeam(
-                   name_team: String) {
+        name_team: String
+    ) {
 
         repository.saveTeam(
-             name_team
+            name_team
         )
             .subscribeOn(Schedulers.io())
             .applyLoadingState()
@@ -116,9 +111,6 @@ class ChooseTeamPlayersViewModel (   private val repository: SplRepository
     }
 
 
-
-
-
     /*
     operations on data source
      */
@@ -130,8 +122,9 @@ class ChooseTeamPlayersViewModel (   private val repository: SplRepository
     fun updateData(it: ChangePlayerResponse) {
         updatePlayersList(it)
     }
- private   fun updatePlayersList(it: AddPlayerResponse) {
-     MyTeamPlayersListResultLiveData.postValue(MyTeamPlayersListResultLiveData.value.apply {
+
+    private fun updatePlayersList(it: AddPlayerResponse) {
+        MyTeamPlayersListResultLiveData.postValue(MyTeamPlayersListResultLiveData.value.apply {
             this?.data = it.players
             this?.total_team_play = it.data?.total_team_play
             this?.pay_total_cost = it.data?.pay_total_cost
@@ -158,13 +151,13 @@ class ChooseTeamPlayersViewModel (   private val repository: SplRepository
         updateAlphaData(alpha, pos, parentPos, data)
     }
 
-  private  fun updateAlphaData(
-        alphaValue : Float,
+    private fun updateAlphaData(
+        alphaValue: Float,
         pos: Int,
-        parentPos : Int,
+        parentPos: Int,
         data: PlayerMasterResponse.Data
     ) {
-      MyTeamPlayersListResultLiveData.postValue(MyTeamPlayersListResultLiveData.value.apply {
+        MyTeamPlayersListResultLiveData.postValue(MyTeamPlayersListResultLiveData.value.apply {
             this?.data?.get(parentPos)?.get(pos)?.apply {
                 alPha = alphaValue
             }

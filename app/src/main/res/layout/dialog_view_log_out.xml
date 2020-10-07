@@ -3,8 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    >
+    android:layout_height="wrap_content">
 
 
     <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -34,10 +33,8 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            tools:text="your_loction_will_be_confidential_this_app_does_not_let_anyone_see_your_loction_to_enable_your_loction_please_click_on_the_butto_below"
             android:id="@+id/dialogTextTitle"
             android:layout_width="0dp"
-            android:textStyle="bold"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
@@ -46,12 +43,14 @@
             android:gravity="center"
             android:textColor="@color/colorPrimary"
             android:textSize="14sp"
+            android:textStyle="bold"
             app:layout_constraintBottom_toTopOf="@+id/positiveLogoutBtn"
             app:layout_constraintEnd_toEndOf="@+id/divider11"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="@+id/divider11"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_chainStyle="packed" />
+            app:layout_constraintVertical_chainStyle="packed"
+            tools:text="your_loction_will_be_confidential_this_app_does_not_let_anyone_see_your_loction_to_enable_your_loction_please_click_on_the_butto_below" />
 
         <TextView
             android:id="@+id/positiveLogoutBtn"

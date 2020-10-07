@@ -79,13 +79,12 @@ class CreateHeadToHeadLeagueFragment : BaseFragment() {
         val builder = AlertDialog.Builder(requireContext(), R.style.MaterialThemeDialog)
         builder.setTitle(getString(R.string.select_round))
         builder.setSingleChoiceItems(
-            options
-            , 0
+            options, 0
         ) { _: DialogInterface, item: Int ->
             selectedItem = item
         }
         builder.setPositiveButton(R.string.okkk) { dialogInterface: DialogInterface, _: Int ->
-            binding.roundEt.setText(options[selectedItem])
+            binding.roundEt.text = options[selectedItem]
             ///todo  viewModel.selectedTeamPosition = selectedItem
             dialogInterface.dismiss()
         }
@@ -108,13 +107,12 @@ class CreateHeadToHeadLeagueFragment : BaseFragment() {
         val builder = AlertDialog.Builder(requireContext(), R.style.MaterialThemeDialog)
         builder.setTitle(getString(R.string.max_team_num))
         builder.setSingleChoiceItems(
-            options
-            , 0
+            options, 0
         ) { _: DialogInterface, item: Int ->
             selectedItem = item
         }
         builder.setPositiveButton(R.string.okkk) { dialogInterface: DialogInterface, _: Int ->
-            binding.maxTeamsEdit.setText(options[selectedItem])
+            binding.maxTeamsEdit.text = options[selectedItem]
             ///todo  viewModel.selectedTeamPosition = selectedItem
             dialogInterface.dismiss()
         }

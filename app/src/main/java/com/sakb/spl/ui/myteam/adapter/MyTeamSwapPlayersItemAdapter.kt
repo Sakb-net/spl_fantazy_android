@@ -10,8 +10,8 @@ import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.sakb.spl.R
-import com.sakb.spl.data.model.MyteamPlayersResponse
 import com.sakb.spl.constants.Constants
+import com.sakb.spl.data.model.MyteamPlayersResponse
 import kotlinx.android.synthetic.main.child_item_myteam_recycler.view.*
 import timber.log.Timber
 
@@ -38,20 +38,28 @@ class MyTeamSwapPlayersItemAdapter(
             1 -> {
 
 
-                if (children[position].type_loc_player=="goalkeeper"){
+                if (children[position].type_loc_player == "goalkeeper") {
                     holder.textViewType.text = "GK"
-                }
-                else{
+                } else {
                     holder.textViewType.text = position.toString()
                 }
 
                 if (children[position].isSelected)
-                    holder.container.setBackgroundColor(ContextCompat.getColor(holder.itemView.context,R.color.colorYellow))
-              else  if (children[position].isActiveToSwap){
-                    holder.container.setBackgroundColor(ContextCompat.getColor(holder.itemView.context,R.color.white))
-                }
-                else{
-                    holder.container.setBackground(null)
+                    holder.container.setBackgroundColor(
+                        ContextCompat.getColor(
+                            holder.itemView.context,
+                            R.color.colorYellow
+                        )
+                    )
+                else if (children[position].isActiveToSwap) {
+                    holder.container.setBackgroundColor(
+                        ContextCompat.getColor(
+                            holder.itemView.context,
+                            R.color.white
+                        )
+                    )
+                } else {
+                    holder.container.background = null
 
                 }
                 // change alpha color
@@ -89,7 +97,7 @@ class MyTeamSwapPlayersItemAdapter(
         init {
             itemView.setOnClickListener {
                 Timber.e("================${children[adapterPosition].isSelected}")
-                onItemClicked?.invoke(adapterPosition,parentPositions,children[adapterPosition])
+                onItemClicked?.invoke(adapterPosition, parentPositions, children[adapterPosition])
             }
         }
 

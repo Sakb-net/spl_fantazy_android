@@ -12,11 +12,11 @@ import io.reactivex.schedulers.Schedulers
  * Created by dev.mahmoud_ashraf on 10/8/2019.
  */
 
-class AddPlayerViewModel  (
+class AddPlayerViewModel(
     private val repository: SplRepository
-  /*  private val useCase: playersByTypeUseCase,
-    private val addPlayerUseCase: AddPlayerUseCase,
-    private val changePlayerUseCase: ChangePlayerUseCase*/
+    /*  private val useCase: playersByTypeUseCase,
+      private val addPlayerUseCase: AddPlayerUseCase,
+      private val changePlayerUseCase: ChangePlayerUseCase*/
 ) : BaseViewModel() {
 
     var initSpinnerBefore: Boolean = false
@@ -29,16 +29,19 @@ class AddPlayerViewModel  (
     val ResultLiveData = SingleLiveEvent<PlayerByTypeResponse?>()
 
 
+    fun getPlayers(
+        type_key: String,
+        order_play: String,
+        link_team: String,
+        from_price: String,
+        to_price: String
+    ) {
 
-    fun getPlayers(type_key: String,
-                     order_play: String,
-                     link_team: String,
-                     from_price: String,
-                     to_price: String) {
-
-        repository.getPlayerByType( type_key, order_play, link_team,
+        repository.getPlayerByType(
+            type_key, order_play, link_team,
             from_price,
-            to_price)
+            to_price
+        )
             .subscribeOn(Schedulers.io())
             .applyLoadingState()
             .subscribe(
@@ -53,20 +56,20 @@ class AddPlayerViewModel  (
     }
 
 
-
     // Add Player
     var AddPlayerResultLiveData = SingleLiveEvent<AddPlayerResponse?>()
 
-   /** fun addPlayerX(
-        access_token: String,
-        player_link: String,
-        lang: String
+    /** fun addPlayerX(
+    access_token: String,
+    player_link: String,
+    lang: String
     ) = addPlayerUseCase.addPlayer(access_token, player_link, lang)*/
 
     fun addPlayer(player_link: String) {
 
         repository.addPlayer(
-            player_link)
+            player_link
+        )
             .subscribeOn(Schedulers.io())
             .applyLoadingState()
             .subscribe(
@@ -81,35 +84,35 @@ class AddPlayerViewModel  (
     }
 
 
-
-
-
     // change player
-    var changePlayerResultLiveData =  SingleLiveEvent<ChangePlayerResponse?>()
+    var changePlayerResultLiveData = SingleLiveEvent<ChangePlayerResponse?>()
 
-   /* fun changePlayerx(
-        access_token: String,
+    /* fun changePlayerx(
+         access_token: String,
+         eldwry_link: String,
+         delet_player_link: String,
+         add_player_link: String,
+         lang: String
+     ) = changePlayerUseCase.changePlayer(
+         access_token,
+         eldwry_link,
+         delet_player_link,
+         add_player_link,
+         lang
+     )*/
+
+
+    fun changePlayer(
         eldwry_link: String,
         delet_player_link: String,
-        add_player_link: String,
-        lang: String
-    ) = changePlayerUseCase.changePlayer(
-        access_token,
-        eldwry_link,
-        delet_player_link,
-        add_player_link,
-        lang
-    )*/
-
-
-    fun changePlayer(eldwry_link: String,
-                       delet_player_link: String,
-                       add_player_link: String) {
+        add_player_link: String
+    ) {
 
         repository.changePlayer(
             eldwry_link,
             delet_player_link,
-            add_player_link)
+            add_player_link
+        )
             .subscribeOn(Schedulers.io())
             .applyLoadingState()
             .subscribe(
@@ -122,7 +125,6 @@ class AddPlayerViewModel  (
                 }
             ).addToDisposableBag()
     }
-
 
 
 }

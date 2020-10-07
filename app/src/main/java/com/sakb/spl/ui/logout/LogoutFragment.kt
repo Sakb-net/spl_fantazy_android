@@ -28,12 +28,12 @@ class LogoutFragment : BaseFragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        context?.showDialogLogOut(getString(R.string.are_sure_logout), {
-                it ->it?.dismiss()
+        context?.showDialogLogOut(getString(R.string.are_sure_logout), { it ->
+            it?.dismiss()
             performLogout()
 
-        },{
-                it -> it?.dismiss()
+        }, { it ->
+            it?.dismiss()
             findNavController().navigateUp()
 
         })

@@ -5,10 +5,8 @@ import android.graphics.Rect;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.sakb.spl.R;
@@ -19,12 +17,12 @@ import com.sakb.spl.R;
 
 public class RecyclerSectionItemDecoration extends RecyclerView.ItemDecoration {
 
-    private final int             headerOffset;
-    private final boolean         sticky;
+    private final int headerOffset;
+    private final boolean sticky;
     private final SectionCallback sectionCallback;
 
     private View headerView;
- //   private ConstraintLayout header;
+    //   private ConstraintLayout header;
 
     public RecyclerSectionItemDecoration(int headerHeight, boolean sticky, @NonNull SectionCallback sectionCallback) {
         headerOffset = headerHeight;
@@ -48,7 +46,7 @@ public class RecyclerSectionItemDecoration extends RecyclerView.ItemDecoration {
 
         if (headerView == null) {
             headerView = inflateHeaderView(parent);
-        //    header = (ConstraintLayout) headerView.findViewById(R.id.list_item_section_text);
+            //    header = (ConstraintLayout) headerView.findViewById(R.id.list_item_section_text);
             fixLayoutSize(headerView, parent);
         }
 
@@ -58,7 +56,7 @@ public class RecyclerSectionItemDecoration extends RecyclerView.ItemDecoration {
             final int position = parent.getChildAdapterPosition(child);
 
             CharSequence title = sectionCallback.getSectionHeader(position);
-         //   header.setText(title);
+            //   header.setText(title);
             if (!previousHeader.equals(title) || sectionCallback.isSection(position)) {
                 drawHeader(c, child, headerView);
                 previousHeader = title;

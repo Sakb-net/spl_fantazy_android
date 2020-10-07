@@ -16,8 +16,8 @@ class RegisterViewModel(private val repository: SplRepository) : BaseViewModel()
     var provider: String = ""
 
     var registerResultLiveData = SingleLiveEvent<RegisterResponse>()
-    fun register(name : String,email: String,phone : String, pass : String) {
-        repository.RegisterUser(name, email,phone, pass)
+    fun register(name: String, email: String, phone: String, pass: String) {
+        repository.RegisterUser(name, email, phone, pass)
             .subscribeOn(Schedulers.io())
             .applyLoadingState()
             .subscribe(
@@ -31,10 +31,9 @@ class RegisterViewModel(private val repository: SplRepository) : BaseViewModel()
     }
 
 
-
     var loginSocialResultLiveData = SingleLiveEvent<SocialResponse>()
-    fun loginSocial(provider: String, provider_id : String, name: String) {
-        repository.RegisterLoginSocial(provider,provider_id, name)
+    fun loginSocial(provider: String, provider_id: String, name: String) {
+        repository.RegisterLoginSocial(provider, provider_id, name)
             .subscribeOn(Schedulers.io())
             .applyLoadingState()
             .subscribe(
@@ -46,7 +45,6 @@ class RegisterViewModel(private val repository: SplRepository) : BaseViewModel()
                 }
             ).addToDisposableBag()
     }
-
 
 
 }

@@ -9,71 +9,62 @@
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
-        android:elevation="8dp"
-        android:clickable="true"
-        android:foreground="?attr/selectableItemBackground"
-        android:background="?attr/selectableItemBackground"
-        app:cardCornerRadius="4dp"
-
-
-        android:layout_marginTop="16dp"
         android:layout_height="wrap_content"
-        android:focusable="true">
+        android:layout_marginTop="16dp"
+        android:background="?attr/selectableItemBackground"
+        android:clickable="true"
+        android:elevation="8dp"
+
+
+        android:focusable="true"
+        android:foreground="?attr/selectableItemBackground"
+        app:cardCornerRadius="4dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
 
-            android:background="@drawable/home_gradient_drawable"
             android:id="@+id/constraintLayout"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-
-
+            android:layout_height="wrap_content"
+            android:background="@drawable/home_gradient_drawable">
 
 
             <TextView
-                android:layout_marginTop="@dimen/_12sdp"
-                android:layout_marginBottom="@dimen/_12sdp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                android:layout_marginStart="8dp"
-                android:fontFamily="@font/helvetica_reg"
-                android:includeFontPadding="false"
                 android:id="@+id/textViewStart"
-              android:textSize="12sp"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="@dimen/_12sdp"
+                android:layout_marginBottom="@dimen/_12sdp"
+                android:fontFamily="@font/helvetica_reg"
                 android:gravity="start"
-                tools:text="hellooooooooo"
+                android:includeFontPadding="false"
                 android:textAlignment="viewStart"
                 android:textColor="@color/white"
+                android:textSize="12sp"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@id/textViewEnd"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="hellooooooooo" />
 
             <TextView
-                android:layout_marginTop="@dimen/_12sdp"
-                android:layout_marginBottom="@dimen/_12sdp"
-                app:layout_constraintBottom_toBottomOf="parent"
                 android:id="@+id/textViewEnd"
-                android:textSize="12sp"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/helvetica_reg"
-                android:includeFontPadding="false"
+                android:layout_marginTop="@dimen/_12sdp"
                 android:layout_marginEnd="8dp"
+                android:layout_marginBottom="@dimen/_12sdp"
+                android:fontFamily="@font/helvetica_reg"
                 android:gravity="end"
+                android:includeFontPadding="false"
                 android:textAlignment="viewEnd"
-                app:layout_constraintStart_toEndOf="@id/textViewStart"
                 android:textColor="@color/white"
+                android:textSize="12sp"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/textViewStart"
                 app:layout_constraintTop_toTopOf="parent"
                 tools:text="111112" />
-
-
-
-
-
-
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>

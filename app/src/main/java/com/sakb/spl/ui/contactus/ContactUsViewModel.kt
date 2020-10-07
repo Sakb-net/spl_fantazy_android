@@ -18,7 +18,7 @@ class ContactUsViewModel(private val repository: SplRepository) : BaseViewModel(
             .applyLoadingState()
             .subscribe(
                 { data ->
-                   contactUsData.value = data
+                    contactUsData.value = data
                 },
                 { throwable ->
                     handleApiException(throwable)
@@ -34,7 +34,7 @@ class ContactUsViewModel(private val repository: SplRepository) : BaseViewModel(
             .applyLoadingState()
             .subscribe(
                 { data ->
-                    showSuccessMessage(data?.Message?:"")
+                    showSuccessMessage(data?.Message ?: "")
                     addState.value = data?.state_add
                 },
                 { throwable ->

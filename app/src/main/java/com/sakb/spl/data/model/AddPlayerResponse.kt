@@ -5,7 +5,7 @@ data class AddPlayerResponse(
     var StatusCode: Int? = 0,
     var `data`: Data? = Data(),
     var players: List<List<PlayerMasterResponse.Data>?>? = listOf()
-    ) {
+) {
     data class Data(
         var add_player: Int? = 0,
         var msg_add: String? = "",

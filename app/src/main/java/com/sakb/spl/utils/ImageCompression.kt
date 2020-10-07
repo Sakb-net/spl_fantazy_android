@@ -2,18 +2,14 @@ package com.sakb.spl.utils
 
 import android.annotation.SuppressLint
 import android.content.Context
-import android.graphics.Bitmap
-import android.graphics.BitmapFactory
-import android.graphics.Canvas
-import android.graphics.Matrix
-import android.graphics.Paint
+import android.graphics.*
 import android.media.ExifInterface
 import android.os.AsyncTask
-
 import java.io.File
 import java.io.FileNotFoundException
 import java.io.FileOutputStream
 import java.io.IOException
+
 /**
  * Created by dev.mahmoud_ashraf on 11/24/2019.
  */
@@ -35,7 +31,7 @@ class ImageCompression(
             }
 
             val mImageName = "IMG_" + System.currentTimeMillis().toString() + ".png"
-            return mediaStorageDir.getAbsolutePath() + "/" + mImageName
+            return mediaStorageDir.absolutePath + "/" + mImageName
 
         }
 
@@ -115,7 +111,12 @@ class ImageCompression(
 
         val canvas = Canvas(scaledBitmap!!)
         canvas.setMatrix(scaleMatrix)
-        canvas.drawBitmap(bmp, middleX - bmp.width / 2, middleY - bmp.height / 2, Paint(Paint.FILTER_BITMAP_FLAG))
+        canvas.drawBitmap(
+            bmp,
+            middleX - bmp.width / 2,
+            middleY - bmp.height / 2,
+            Paint(Paint.FILTER_BITMAP_FLAG)
+        )
 
         bmp.recycle()
 
@@ -130,7 +131,15 @@ class ImageCompression(
                 8 -> matrix.postRotate(270F)
             }
             scaledBitmap =
-                Bitmap.createBitmap(scaledBitmap, 0, 0, scaledBitmap!!.width, scaledBitmap.height, matrix, true)
+                Bitmap.createBitmap(
+                    scaledBitmap,
+                    0,
+                    0,
+                    scaledBitmap.width,
+                    scaledBitmap.height,
+                    matrix,
+                    true
+                )
         } catch (e: IOException) {
             e.printStackTrace()
         }
@@ -154,7 +163,11 @@ class ImageCompression(
         private val maxHeight = 280.0f //1280
         private val maxWidth = 280.0f
 
-        private fun calculateInSampleSize(options: BitmapFactory.Options, reqWidth: Int, reqHeight: Int): Int {
+        private fun calculateInSampleSize(
+            options: BitmapFactory.Options,
+            reqWidth: Int,
+            reqHeight: Int
+        ): Int {
             val height = options.outHeight
             val width = options.outWidth
             var inSampleSize = 1
@@ -179,5 +192,5 @@ class ImageCompression(
 interface ImageCompressionListener {
     fun onStart()
 
-    fun onCompressed(filePath : String)
+    fun onCompressed(filePath: String)
 }

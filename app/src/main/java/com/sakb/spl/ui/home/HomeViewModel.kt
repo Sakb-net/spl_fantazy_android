@@ -11,16 +11,16 @@ class HomeViewModel(private val repository: SplRepository) : BaseViewModel() {
     val homeLiveData = SingleLiveEvent<HomeResponse>()
 
     init {
-      //  loadHmeData()
+        //  loadHmeData()
     }
 
-     fun loadHmeData() {
+    fun loadHmeData() {
         repository.home()
             .subscribeOn(Schedulers.io())
             .applyLoadingState()
             .subscribe(
                 { data ->
-                  homeLiveData.value = data
+                    homeLiveData.value = data
                 },
                 { throwable ->
                     handleApiException(throwable)

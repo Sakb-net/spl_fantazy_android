@@ -1,4 +1,5 @@
 package com.sakb.spl.data.model
+
 import com.google.gson.annotations.SerializedName
 
 

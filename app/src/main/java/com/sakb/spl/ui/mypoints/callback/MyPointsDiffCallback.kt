@@ -10,6 +10,7 @@ class MyPointsDiffCallback : DiffUtil.ItemCallback<PlayerMasterResponse.Data>() 
     ): Boolean {
         return oldItem.link_player == newItem.link_player
     }
+
     override fun areContentsTheSame(
         oldItem: PlayerMasterResponse.Data,
         newItem: PlayerMasterResponse.Data

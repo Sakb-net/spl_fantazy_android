@@ -15,15 +15,15 @@
 
     <com.google.android.material.navigation.NavigationView
         android:id="@+id/nav_view"
-        app:itemTextColor="@color/white"
-        app:itemHorizontalPadding="24dp"
-        android:scrollbars="none"
-        android:background="@drawable/header_menu_bg"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_gravity="start"
+        android:background="@drawable/header_menu_bg"
         android:fitsSystemWindows="true"
+        android:scrollbars="none"
         app:headerLayout="@layout/nav_header_main"
+        app:itemHorizontalPadding="24dp"
+        app:itemTextColor="@color/white"
         app:menu="@menu/activity_main_drawer" />
 
 </androidx.drawerlayout.widget.DrawerLayout>

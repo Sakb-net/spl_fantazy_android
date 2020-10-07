@@ -2,7 +2,11 @@ package com.sakb.spl.data.remote
 
 import com.sakb.spl.data.model.*
 import io.reactivex.Single
-import retrofit2.http.*
+import retrofit2.http.Field
+import retrofit2.http.FormUrlEncoded
+import retrofit2.http.GET
+import retrofit2.http.POST
+
 /**
  * Created by dev.mahmoud_ashraf on 10/3/2019.
  */

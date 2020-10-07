@@ -5,7 +5,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.sakb.spl.R
 import com.sakb.spl.data.model.MyteamPlayersResponse
@@ -18,7 +17,7 @@ class MyTeamPlayersChildItemMenuAdapter(
     var onItemClicked: ((pos: Int, parentPosition: Int, MyteamPlayersResponse.Player) -> Unit)? = null,
     var onChangeClick: ((pos: Int, parentPosition: Int, MyteamPlayersResponse.Player) -> Unit)? = null,
     var onOpenProfileClicked: ((pos: Int, MyteamPlayersResponse.Player) -> Unit)? = null,
-    var onResetClicked : ((pos: Int, parentPosition: Int, MyteamPlayersResponse.Player) -> Unit)?,
+    var onResetClicked: ((pos: Int, parentPosition: Int, MyteamPlayersResponse.Player) -> Unit)?,
     var onRestorePlayerClicked: ((pos: Int, parentPosition: Int, MyteamPlayersResponse.Player) -> Unit)? = null
 ) : RecyclerView.Adapter<MyTeamPlayersChildItemMenuAdapter.ViewHolder>() {
 
@@ -45,15 +44,13 @@ class MyTeamPlayersChildItemMenuAdapter(
 //
 //                }
 
-                if (children[position].type_key_coatch=="captain"){
+                if (children[position].type_key_coatch == "captain") {
                     holder.imageViewCaptain.visibility = View.VISIBLE
                     holder.imageViewViceCaptain.visibility = View.GONE
-                }
-                else if (children[position].type_key_coatch=="sub_captain"){
+                } else if (children[position].type_key_coatch == "sub_captain") {
                     holder.imageViewCaptain.visibility = View.GONE
                     holder.imageViewViceCaptain.visibility = View.VISIBLE
-                }
-                else{
+                } else {
                     holder.imageViewCaptain.visibility = View.GONE
                     holder.imageViewViceCaptain.visibility = View.GONE
                 }
@@ -77,11 +74,6 @@ class MyTeamPlayersChildItemMenuAdapter(
         }
 
 
-
-
-
-
-
         //  val child = playerMaster.
         /*   val child = children[position]
            holder.imageView.setImageResource(child.image)
@@ -94,14 +86,14 @@ class MyTeamPlayersChildItemMenuAdapter(
         val textViewCost: TextView = itemView.priceTv
         val textViewPoints: TextView = itemView.pointTv
         val textViewClub: TextView = itemView.clubTv
-        val imageViewCaptain : ImageView = itemView.captainIv
-        val imageViewViceCaptain : ImageView = itemView.viceIv
+        val imageViewCaptain: ImageView = itemView.captainIv
+        val imageViewViceCaptain: ImageView = itemView.viceIv
         //  val imageView: ImageView = itemView.ima
 
 
         init {
             itemView.setOnClickListener {
-                onItemClicked?.invoke(adapterPosition,parentPositions,children[adapterPosition])
+                onItemClicked?.invoke(adapterPosition, parentPositions, children[adapterPosition])
             }
         }
 

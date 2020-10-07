@@ -3,7 +3,7 @@ package com.sakb.spl.data.model
 data class ChangePlayerResponse(
     var Message: String? = "",
     var StatusCode: Int? = 0,
-    var  `data`: List<List<PlayerMasterResponse.Data>?>? = listOf(),
+    var `data`: List<List<PlayerMasterResponse.Data>?>? = listOf(),
     var image_best_team: String? = "",
     var lineup: List<Any?>? = listOf(),
     var pay_total_cost: Double? = 0.0,

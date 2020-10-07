@@ -13,11 +13,11 @@ class PowerfulLeagueAdapter :
         PowerfulLeagueDiffCallback()
     ) {
 
-    var onClickListener: ((position : Int,PowerfulLeagueUIModel) -> Unit)? = null
+    var onClickListener: ((position: Int, PowerfulLeagueUIModel) -> Unit)? = null
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) : RecyclerView.ViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
 
-        if (viewType== 0)
+        if (viewType == 0)
             return FirstItemViewHolder(
                 RecyclerSectionHeaderBinding.inflate(
                     LayoutInflater.from(parent.context),
@@ -26,7 +26,7 @@ class PowerfulLeagueAdapter :
                 ), onClickListener
             )
         else
-              return  InstructionsViewHolder(
+            return InstructionsViewHolder(
                 PowerfulLeagueItemBinding.inflate(
                     LayoutInflater.from(parent.context),
                     parent,
@@ -40,27 +40,28 @@ class PowerfulLeagueAdapter :
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         val instructions = getItem(position)
-        when(holder){
-            is InstructionsViewHolder ->  holder.bind(instructions)
+        when (holder) {
+            is InstructionsViewHolder -> holder.bind(instructions)
         }
     }
 
     override fun getItemViewType(position: Int): Int {
-        return if (position==0) 0 else 1
+        return if (position == 0) 0 else 1
     }
 
     inner class InstructionsViewHolder(
         private val binding: PowerfulLeagueItemBinding,
-        private val onClickListener: ((position : Int,PowerfulLeagueUIModel) -> Unit)?
+        private val onClickListener: ((position: Int, PowerfulLeagueUIModel) -> Unit)?
     ) : RecyclerView.ViewHolder(binding.root) {
 
         init {
             binding.joinButton.setOnClickListener {
                 Timber.e("role = clicked")
-                onClickListener?.invoke(absoluteAdapterPosition,  getItem(absoluteAdapterPosition))
+                onClickListener?.invoke(absoluteAdapterPosition, getItem(absoluteAdapterPosition))
             }
         }
-        fun bind(data : PowerfulLeagueUIModel) = data.run {
+
+        fun bind(data: PowerfulLeagueUIModel) = data.run {
             binding.name.text = name
             binding.order.text = absoluteAdapterPosition.toString()
             binding.executePendingBindings()
@@ -70,16 +71,17 @@ class PowerfulLeagueAdapter :
 
     inner class FirstItemViewHolder(
         private val binding: RecyclerSectionHeaderBinding,
-        private val onClickListener: ((position : Int,PowerfulLeagueUIModel) -> Unit)?
+        private val onClickListener: ((position: Int, PowerfulLeagueUIModel) -> Unit)?
     ) : RecyclerView.ViewHolder(binding.root) {
 
         init {
-          /*  binding.joinButton.setOnClickListener {
-                Timber.e("role = clicked")
-                onClickListener?.invoke(absoluteAdapterPosition,  getItem(absoluteAdapterPosition))
-            }*/
+            /*  binding.joinButton.setOnClickListener {
+                  Timber.e("role = clicked")
+                  onClickListener?.invoke(absoluteAdapterPosition,  getItem(absoluteAdapterPosition))
+              }*/
         }
-        fun bind(data : PowerfulLeagueUIModel) = data.run {
+
+        fun bind(data: PowerfulLeagueUIModel) = data.run {
             binding.name.text = name
             binding.order.text = absoluteAdapterPosition.toString()
             binding.executePendingBindings()

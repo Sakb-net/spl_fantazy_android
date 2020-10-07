@@ -9,16 +9,15 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.sakb.spl.R
+import com.sakb.spl.constants.Constants
 import com.sakb.spl.data.model.PlayerMasterResponse
 import com.sakb.spl.ui.addplayer.AddPlayerActivity
 import com.sakb.spl.ui.addplayer.AddPlayerActivity.Companion.ACTIONTYPE
 import com.sakb.spl.ui.addplayer.AddPlayerActivity.Companion.DELETEDPLAYER
 import com.sakb.spl.ui.addplayer.AddPlayerActivity.Companion.ELDAWRYlINK
 import com.sakb.spl.ui.addplayer.AddPlayerActivity.Companion.REPLACE
-import com.sakb.spl.constants.Constants
 import com.sakb.spl.utils.showSplDeleteDialog
 import com.sakb.spl.utils.showSplDialog
-
 import kotlinx.android.synthetic.main.child_item_team_master_recycler.view.*
 
 class PlayersMasterChildItemAdapter(
@@ -91,25 +90,35 @@ class PlayersMasterChildItemAdapter(
                                 )
                             }, {
                                 it?.dismiss()
-                                  onRestorePlayerClicked?.invoke(adapterPosition,parentPositions, children[adapterPosition])
+                                onRestorePlayerClicked?.invoke(
+                                    adapterPosition,
+                                    parentPositions,
+                                    children[adapterPosition]
+                                )
                             },
                                 {
                                     it?.dismiss()
 
-                                 /*   if (intent.getStringExtra(ACTIONTYPE)==REPLACE) {
-                                        viewModel.changePlayer(
-                                            "" + user?.data?.accessToken,
-                                            ""+ intent.getStringExtra(ELDAWRYlINK),
-                                            ""+intent.getStringExtra(DELETEDPLAYER),
-                                            ""+ data?.link,
-                                            ""+ lang
-                                        )*/
+                                    /*   if (intent.getStringExtra(ACTIONTYPE)==REPLACE) {
+                                           viewModel.changePlayer(
+                                               "" + user?.data?.accessToken,
+                                               ""+ intent.getStringExtra(ELDAWRYlINK),
+                                               ""+intent.getStringExtra(DELETEDPLAYER),
+                                               ""+ data?.link,
+                                               ""+ lang
+                                           )*/
 
                                     itemView.context.startActivity(
                                         Intent(itemView.context, AddPlayerActivity::class.java)
                                             .putExtra(ACTIONTYPE, REPLACE)
-                                            .putExtra(DELETEDPLAYER,children[adapterPosition].link_player)
-                                            .putExtra(ELDAWRYlINK,children[adapterPosition].eldwry_link)
+                                            .putExtra(
+                                                DELETEDPLAYER,
+                                                children[adapterPosition].link_player
+                                            )
+                                            .putExtra(
+                                                ELDAWRYlINK,
+                                                children[adapterPosition].eldwry_link
+                                            )
                                             .putExtra(
                                                 "type_loc_player",
                                                 children[adapterPosition].type_loc_player

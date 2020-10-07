@@ -1,4 +1,5 @@
 package com.sakb.spl.ui.transfers
+
 import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -10,7 +11,6 @@ import androidx.lifecycle.Observer
 import com.google.gson.Gson
 import com.sakb.spl.R
 import com.sakb.spl.base.BaseFragment
-import com.sakb.spl.data.local.PrefManager
 import com.sakb.spl.data.model.AddPlayerResponse
 import com.sakb.spl.data.model.ChangePlayerResponse
 import com.sakb.spl.databinding.FragmentTransfersBinding
@@ -20,7 +20,6 @@ import com.sakb.spl.ui.transfers.adapter.menu.MyTeamPlayersMasterMenuAdapter
 import com.sakb.spl.utils.showEnterTeamNameDialog
 import com.sakb.spl.utils.showWarningDialog
 import com.sakb.spl.utils.toast
-
 import kotlinx.android.synthetic.main.fragment_transfers.*
 import org.greenrobot.eventbus.EventBus
 import org.greenrobot.eventbus.Subscribe
@@ -34,7 +33,6 @@ class TransfersFragment : BaseFragment() {
     private lateinit var binding: FragmentTransfersBinding
 
     private lateinit var adapter: MyTeamPlayersMasterAdapter
-
 
 
     override val viewModel by viewModel<TransfersViewModel>()
@@ -66,7 +64,7 @@ class TransfersFragment : BaseFragment() {
 
     @Subscribe
     fun onPlayerAdded(event: AddPlayerResponse) {
-      //  context?.toast("coming!" + event?.players?.size)
+        //  context?.toast("coming!" + event?.players?.size)
         //  viewModel.updatePayersMaster(event.players)
         event.let {
             // adapter.updateData(it)
@@ -87,7 +85,7 @@ class TransfersFragment : BaseFragment() {
 
     @Subscribe
     fun onPlayerChanged(event: ChangePlayerResponse) {
-      //  context?.toast("coming!" + event?.data?.size)
+        //  context?.toast("coming!" + event?.data?.size)
         //  viewModel.updatePayersMaster(event.players)
         event.let {
             // adapter.updateData(it)
@@ -129,18 +127,14 @@ class TransfersFragment : BaseFragment() {
             binding.payTotal.text = data.pay_total_cost.toString()
 
             binding.menuBtn.setOnClickListener {
-                binding.menuBtn.setBackgroundTintList(
-                    ContextCompat.getColorStateList(
-                        requireContext(),
-                        R.color.colorGreenDark
-                    )
+                binding.menuBtn.backgroundTintList = ContextCompat.getColorStateList(
+                    requireContext(),
+                    R.color.colorGreenDark
                 )
 
-                binding.preview.setBackgroundTintList(
-                    ContextCompat.getColorStateList(
-                        requireContext(),
-                        R.color.white
-                    )
+                binding.preview.backgroundTintList = ContextCompat.getColorStateList(
+                    requireContext(),
+                    R.color.white
                 )
 
                 binding.menuBtn.setTextColor(
@@ -184,13 +178,13 @@ class TransfersFragment : BaseFragment() {
                         }
 
                         onRestorePlayerClicked = { childPos, parentPos, _ ->
-                           // context?.toast("Restore $childPos plz!")
+                            // context?.toast("Restore $childPos plz!")
                             viewModel.updateAphaData(1.0f, childPos, parentPos/*, data*/)
                         }
 
 
                     }
-                    rv_parent.setAdapter(_adapter)
+                    rv_parent.adapter = _adapter
 
                     /**  rv_parent.apply {
                     adapter = adapter
@@ -199,18 +193,14 @@ class TransfersFragment : BaseFragment() {
             }
 
             binding.preview.setOnClickListener {
-                binding.preview.setBackgroundTintList(
-                    ContextCompat.getColorStateList(
-                        requireContext(),
-                        R.color.colorGreenDark
-                    )
+                binding.preview.backgroundTintList = ContextCompat.getColorStateList(
+                    requireContext(),
+                    R.color.colorGreenDark
                 )
 
-                binding.menuBtn.setBackgroundTintList(
-                    ContextCompat.getColorStateList(
-                        requireContext(),
-                        R.color.white
-                    )
+                binding.menuBtn.backgroundTintList = ContextCompat.getColorStateList(
+                    requireContext(),
+                    R.color.white
                 )
 
                 binding.preview.setTextColor(
@@ -249,19 +239,19 @@ class TransfersFragment : BaseFragment() {
                         }
 
                         onItemDeleteClick = { childPos, parentPos, _ ->
-                          //  context?.toast("del $childPos plz!")
+                            //  context?.toast("del $childPos plz!")
                             viewModel.updateAphaData(0.5f, childPos, parentPos/*, data*/)
                         }
 
                         onRestorePlayerClicked = { childPos, parentPos, _ ->
-                        //    context?.toast("Restore $childPos plz!")
+                            //    context?.toast("Restore $childPos plz!")
                             viewModel.updateAphaData(1.0f, childPos, parentPos/*, data*/)
                         }
 
 
                     }
 
-                    rv_parent.setAdapter(adapter)
+                    rv_parent.adapter = adapter
 
                     /**  rv_parent.apply {
                     adapter = adapter
@@ -313,18 +303,18 @@ class TransfersFragment : BaseFragment() {
                         }
 
                         onItemDeleteClick = { childPos, parentPos, _ ->
-                           // context?.toast("del $childPos plz!")
+                            // context?.toast("del $childPos plz!")
                             viewModel.updateAphaData(0.5f, childPos, parentPos/*, data*/)
                         }
 
                         onRestorePlayerClicked = { childPos, parentPos, _ ->
-                          //  context?.toast("Restore $childPos plz!")
+                            //  context?.toast("Restore $childPos plz!")
                             viewModel.updateAphaData(1.0f, childPos, parentPos/*, data*/)
                         }
 
 
                     }
-                    rv_parent.setAdapter(_adapter)
+                    rv_parent.adapter = _adapter
                 }
             } else {
                 binding.stadIv.setImageResource(R.drawable.pitch)
@@ -341,19 +331,19 @@ class TransfersFragment : BaseFragment() {
                         }
 
                         onItemDeleteClick = { childPos, parentPos, _ ->
-                         //   context?.toast("del $childPos plz!")
+                            //   context?.toast("del $childPos plz!")
                             viewModel.updateAphaData(0.5f, childPos, parentPos/*, data*/)
                         }
 
                         onRestorePlayerClicked = { childPos, parentPos, _ ->
-                          //  context?.toast("Restore $childPos plz!")
+                            //  context?.toast("Restore $childPos plz!")
                             viewModel.updateAphaData(1.0f, childPos, parentPos/*, data*/)
                         }
 
 
                     }
 
-                    rv_parent.setAdapter(adapter)
+                    rv_parent.adapter = adapter
 
                     /**  rv_parent.apply {
                     adapter = adapter
@@ -362,7 +352,6 @@ class TransfersFragment : BaseFragment() {
             }
 
         })
-
 
 
         // handle save button
@@ -376,21 +365,30 @@ class TransfersFragment : BaseFragment() {
     }
 
     private fun openSilverCardDialog() {
-        context?.showWarningDialog(R.drawable.ic_sliver_card, R.string.silver_card,R.string.silver_card_content,{
-                dialog ->  dialog?.dismiss()
-        },{
-                dialog -> dialog?.dismiss()
-        })
+        context?.showWarningDialog(
+            R.drawable.ic_sliver_card,
+            R.string.silver_card,
+            R.string.silver_card_content,
+            { dialog ->
+                dialog?.dismiss()
+            },
+            { dialog ->
+                dialog?.dismiss()
+            })
     }
 
 
-
     private fun openGoldCardDialog() {
-        context?.showWarningDialog(R.drawable.ic_golden_card, R.string.gold_card,R.string.gold_card_content,{
-            dialog ->  dialog?.dismiss()
-        },{
-            dialog -> dialog?.dismiss()
-        })
+        context?.showWarningDialog(
+            R.drawable.ic_golden_card,
+            R.string.gold_card,
+            R.string.gold_card_content,
+            { dialog ->
+                dialog?.dismiss()
+            },
+            { dialog ->
+                dialog?.dismiss()
+            })
     }
 
 

@@ -1,6 +1,6 @@
 package com.sakb.spl.data.model;
-public class Club
-{
+
+public class Club {
     public String name;
     public String logoUrl;
     public String location;
@@ -9,8 +9,7 @@ public class Club
     public String coachName;
     public String starPlayerName;
 
-    public Club(String name, String logoUrl, String location, String stadiumName, String leagueName, String coachName, String starPlayerName)
-    {
+    public Club(String name, String logoUrl, String location, String stadiumName, String leagueName, String coachName, String starPlayerName) {
         this.name = name;
         this.logoUrl = logoUrl;
         this.location = location;

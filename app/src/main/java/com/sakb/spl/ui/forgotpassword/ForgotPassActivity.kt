@@ -12,10 +12,10 @@ import com.sakb.spl.ui.newpass.CreatePassActivity
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
-class ForgotPassActivity :  BaseActivity() {
+class ForgotPassActivity : BaseActivity() {
 
     private lateinit var binding: ActivityForgotPassBinding
-    private lateinit var context : Context
+    private lateinit var context: Context
     private lateinit var dialog: Dialog
     override val viewModel by viewModel<ForgotPassViewModel>()
 
@@ -24,13 +24,13 @@ class ForgotPassActivity :  BaseActivity() {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_forgot_pass)
         context = this
         // viewModel = ViewModelProviders.of(this).get(LoginViewModel::class.java)
-       // changeViewsFonts()
+        // changeViewsFonts()
 
         binding.back.setOnClickListener {
             onBackPressed()
         }
         binding.buttonSend.setOnClickListener {
-            startActivity(Intent(this , CreatePassActivity::class.java))
+            startActivity(Intent(this, CreatePassActivity::class.java))
         }
     }
 

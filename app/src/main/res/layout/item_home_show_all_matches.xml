@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
 
@@ -9,53 +8,44 @@
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
-        android:elevation="8dp"
-        android:clickable="true"
-        android:foreground="?attr/selectableItemBackground"
-        android:background="?attr/selectableItemBackground"
-        app:cardCornerRadius="0dp"
-
-        android:layout_marginTop="8dp"
-
         android:layout_height="wrap_content"
-        android:focusable="true">
+        android:layout_marginTop="8dp"
+        android:background="?attr/selectableItemBackground"
+        android:clickable="true"
+        android:elevation="8dp"
+
+        android:focusable="true"
+
+        android:foreground="?attr/selectableItemBackground"
+        app:cardCornerRadius="0dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
 
-            android:background="@drawable/home_gradient_drawable"
             android:id="@+id/constraintLayout"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:background="@drawable/home_gradient_drawable">
 
             <TextView
-                android:layout_marginTop="@dimen/_10sdp"
-                android:layout_marginBottom="@dimen/_10sdp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                android:layout_marginStart="8dp"
-                android:fontFamily="@font/helvetica_reg"
-                android:includeFontPadding="false"
                 android:id="@+id/textViewStart"
                 style="@style/TextAppearance.AppCompat.Small"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:layout_marginBottom="@dimen/_10sdp"
+                android:fontFamily="@font/helvetica_reg"
+                android:includeFontPadding="false"
+                android:text="@string/show_all_matches"
 
 
+                android:textColor="@color/white"
 
                 app:layout_constrainedWidth="true"
-
-                android:text="@string/show_all_matches"
-                android:textColor="@color/white"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
-
-
-
-
-
-
-
-
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>

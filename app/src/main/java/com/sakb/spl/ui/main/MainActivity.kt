@@ -1,15 +1,15 @@
 package com.sakb.spl.ui.main
 
 import android.os.Bundle
-import com.google.android.material.navigation.NavigationView
+import androidx.appcompat.widget.Toolbar
+import androidx.core.view.GravityCompat
+import androidx.drawerlayout.widget.DrawerLayout
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
-import androidx.drawerlayout.widget.DrawerLayout
-import androidx.appcompat.widget.Toolbar
-import androidx.core.view.GravityCompat
+import com.google.android.material.navigation.NavigationView
 import com.sakb.spl.R
 import com.sakb.spl.base.BaseActivity
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -19,7 +19,7 @@ class MainActivity : BaseActivity() {
     private lateinit var appBarConfiguration: AppBarConfiguration
     override val viewModel by viewModel<MainViewModel>()
 
-    private var drawerLayout: DrawerLayout?=null
+    private var drawerLayout: DrawerLayout? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -28,7 +28,7 @@ class MainActivity : BaseActivity() {
         setSupportActionBar(toolbar)
 
 
-         drawerLayout = findViewById(R.id.drawer_layout)
+        drawerLayout = findViewById(R.id.drawer_layout)
         val navView: NavigationView = findViewById(R.id.nav_view)
         val navController = findNavController(R.id.nav_host_fragment)
         // Passing each menu ID as a set of Ids because each

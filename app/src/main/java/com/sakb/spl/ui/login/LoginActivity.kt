@@ -9,13 +9,13 @@ import androidx.lifecycle.Observer
 import com.ahmedadel.socialmediasignup.SocialMediaSignUp
 import com.ahmedadel.socialmediasignup.callback.SocialMediaSignUpCallback
 import com.ahmedadel.socialmediasignup.model.SocialMediaUser
-import com.sakb.spl.ui.main.MainActivity
 import com.sakb.spl.R
 import com.sakb.spl.base.BaseActivity
 import com.sakb.spl.data.local.PrefManager
 import com.sakb.spl.data.model.LoginResponse
 import com.sakb.spl.databinding.ActivityLoginBinding
 import com.sakb.spl.ui.forgotpassword.ForgotPassActivity
+import com.sakb.spl.ui.main.MainActivity
 import com.sakb.spl.ui.register.RegisterActivity
 import com.sakb.spl.utils.toast
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -74,27 +74,15 @@ class LoginActivity :  BaseActivity() , SocialMediaSignUpCallback {
         }
 
         viewModel.loginResultLiveData.observe(this, Observer {data->
-
-
-
-
                        // toast(""+data.message)
-
                             PrefManager.saveUser(data)
                             startActivity(
                                 Intent(this@LoginActivity, MainActivity::class.java)
                                     .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)
                             )
-
-                        
-
-
             })
 
         viewModel.loginSocialResultLiveData.observe(this, Observer {data->
-
-
-
 
                         toast(""+data.Message)
 

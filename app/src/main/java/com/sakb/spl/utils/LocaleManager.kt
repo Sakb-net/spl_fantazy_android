@@ -7,6 +7,7 @@ import android.os.Build
 import android.preference.PreferenceManager
 import timber.log.Timber
 import java.util.*
+
 /*
 * to use it
 * LocaleManager.setNewLocale(itemView.context, LocaleManager.LANGUAGE_ARABIC)
@@ -51,7 +52,8 @@ object LocaleManager {
         val config = context.resources.configuration
         config.setLocale(locale)
         context.createConfigurationContext(config)
-        context.getResources().updateConfiguration(config, context.getResources().getDisplayMetrics())
+        context.resources
+            .updateConfiguration(config, context.resources.displayMetrics)
         return context
     }
 

@@ -24,56 +24,54 @@
         app:layout_constraintTop_toTopOf="parent">
 
 
-
-
         <TextView
-            android:gravity="center"
-            android:textStyle="bold"
             android:id="@+id/enter_tv"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
+            android:gravity="center"
             android:text="@string/enter_print_name"
             android:textColor="@color/colorAccent"
             android:textSize="16sp"
+            android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <EditText
-            android:background="@drawable/edittext_solid"
-            android:padding="8dp"
             android:id="@+id/enter_et"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginTop="14dp"
             android:layout_marginEnd="8dp"
+            android:background="@drawable/edittext_solid"
+            android:imeOptions="actionDone"
+            android:inputType="text"
+            android:padding="8dp"
             android:textColor="#3C3C3C"
             android:textColorHint="#3C3C3C"
             android:textSize="16sp"
-            android:inputType="text"
-            android:imeOptions="actionDone"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/enter_tv"/>
+            app:layout_constraintTop_toBottomOf="@id/enter_tv" />
 
 
         <TextView
             android:id="@+id/positiveEnterBtn"
             android:layout_width="wrap_content"
             android:layout_height="35dp"
-            android:paddingStart="@dimen/_24sdp"
-            android:paddingEnd="@dimen/_24sdp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="16dp"
             android:layout_marginEnd="8dp"
             android:layout_marginBottom="8dp"
-
             android:background="@drawable/rec_green_color_dialog"
             android:gravity="center"
+
+            android:paddingStart="@dimen/_24sdp"
+            android:paddingEnd="@dimen/_24sdp"
             android:text="@string/okkk"
             android:textColor="@color/white"
             app:layout_constraintBottom_toBottomOf="parent"

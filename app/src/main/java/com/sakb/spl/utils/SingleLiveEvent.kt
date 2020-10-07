@@ -21,6 +21,7 @@ import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Observer
 import java.util.concurrent.atomic.AtomicBoolean
+
 /**
  * A lifecycle-aware observable that sends only new updates after subscription, used for events like
  * navigation and Snackbar messages.
@@ -46,11 +47,13 @@ class SingleLiveEvent<T> : MutableLiveData<T>() {
             }
         })
     }
+
     @MainThread
     override fun setValue(t: T?) {
         mPending.set(true)
         super.setValue(t)
     }
+
     /**
      * Used for cases where T is Void, to make calls cleaner.
      */
@@ -58,6 +61,7 @@ class SingleLiveEvent<T> : MutableLiveData<T>() {
     fun call() {
         value = null
     }
+
     companion object {
         private val TAG = "SingleLiveEvent"
     }

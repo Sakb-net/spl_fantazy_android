@@ -47,11 +47,11 @@ class MyTeamPlayersMasterMenuAdapter(
                 if (it.size > 0) {
                     when (position) {
                         0 -> holder.header.setBackgroundColor(
-                                ContextCompat.getColor(
-                                    holder.itemView.context,
-                                    R.color.colorSky
-                                )
+                            ContextCompat.getColor(
+                                holder.itemView.context,
+                                R.color.colorSky
                             )
+                        )
 
                         1 -> holder.header.setBackgroundColor(
                             ContextCompat.getColor(
@@ -101,6 +101,7 @@ class MyTeamPlayersMasterMenuAdapter(
         val recyclerView: RecyclerView = itemView.rv_child
         val type: TextView = itemView.nameTv
         val header: LinearLayout = itemView.header
+
         init {
             recyclerView.addItemDecoration(
                 DividerItemDecorationNoLast(

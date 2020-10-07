@@ -2,268 +2,258 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
+
     <data>
 
     </data>
 
 
-    <LinearLayout android:layout_width="match_parent"
-        android:orientation="vertical"
-        android:layout_height="match_parent">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
         <androidx.appcompat.widget.Toolbar
-            app:layout_constraintTop_toTopOf="parent"
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:minHeight="?attr/actionBarSize"
             android:background="?attr/colorPrimary"
+            android:minHeight="?attr/actionBarSize"
             app:contentInsetStartWithNavigation="0dp"
-            app:titleTextColor="@color/white"
+            app:layout_constraintTop_toTopOf="parent"
             app:popupTheme="@style/AppTheme.PopupOverlay"
-            >
+            app:titleTextColor="@color/white">
 
 
             <TextView
-                style="@style/TextAppearance.AppCompat.Widget.ActionBar.Title"
                 android:id="@+id/toolbarTitle"
+                style="@style/TextAppearance.AppCompat.Widget.ActionBar.Title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:textStyle="bold"
                 android:text="@string/det"
                 android:textColor="@color/white"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
-
+                android:textStyle="bold" />
 
 
         </androidx.appcompat.widget.Toolbar>
 
 
-
-
         <androidx.core.widget.NestedScrollView
-            android:fillViewport="true"
-            android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:fillViewport="true"
+            android:orientation="vertical">
 
 
-            <LinearLayout android:layout_width="match_parent"
-                android:orientation="vertical"
-                android:layout_height="match_parent">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
 
-                <LinearLayout android:layout_width="match_parent"
-                    android:orientation="vertical"
-                    android:layout_height="wrap_content">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
                     <androidx.cardview.widget.CardView
                         android:layout_width="match_parent"
-                        android:layout_margin="@dimen/_8sdp"
                         android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/_8sdp"
                         app:cardCornerRadius="6dp"
 
-                        app:cardElevation="2dp"
-                        >
+                        app:cardElevation="2dp">
 
                         <LinearLayout
-                            android:orientation="vertical"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            >
+                            android:orientation="vertical">
 
                             <ImageView
-                                android:src="@drawable/placeholder"
                                 android:id="@+id/newsIv"
-
                                 android:layout_width="match_parent"
+
                                 android:layout_height="wrap_content"
                                 android:minHeight="@dimen/_157sdp"
                                 android:scaleType="centerCrop"
-                                />
+                                android:src="@drawable/placeholder" />
 
                             <TextView
-                                android:layout_marginTop="13dp"
-                                android:fontFamily="@font/helvetica_reg"
-                                android:layout_width="match_parent"
-                                android:textSize="15sp"
-                                android:textStyle="bold"
-                                android:textColor="@color/colorAccent"
-
-                                android:layout_marginBottom="8dp"
-                                tools:text="مجلس إدارة النادي الأهلي يعقد اجتماعه الأول"
-                                android:layout_height="wrap_content"
-                                android:layout_marginStart="8dp"
-
                                 android:id="@+id/name"
-                                android:layout_marginEnd="8dp"/>
-
-                            <TextView
-                                android:fontFamily="@font/helvetica_reg"
-                                android:layout_width="wrap_content"
-                                android:textAlignment="viewStart"
+                                android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                tools:text="منذ 2 أسبوع"
-                                app:layout_constrainedWidth="true"
-                                android:textSize="12sp"
+                                android:layout_marginStart="8dp"
+                                android:layout_marginTop="13dp"
+                                android:layout_marginEnd="8dp"
 
                                 android:layout_marginBottom="8dp"
-
+                                android:fontFamily="@font/helvetica_reg"
                                 android:textColor="@color/colorAccent"
-                                android:background="@drawable/rec_strok_gray_light_rounded"
-                                android:layout_marginStart="8dp"
-                                app:layout_constraintStart_toStartOf="parent"
+                                android:textSize="15sp"
 
+                                android:textStyle="bold"
+                                tools:text="مجلس إدارة النادي الأهلي يعقد اجتماعه الأول" />
 
+                            <TextView
                                 android:id="@+id/createdAtTv"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="8dp"
                                 android:layout_marginEnd="8dp"
-                                />
+                                android:layout_marginBottom="8dp"
+                                android:background="@drawable/rec_strok_gray_light_rounded"
 
+                                android:fontFamily="@font/helvetica_reg"
+
+                                android:textAlignment="viewStart"
+                                android:textColor="@color/colorAccent"
+                                android:textSize="12sp"
+                                app:layout_constrainedWidth="true"
+
+
+                                app:layout_constraintStart_toStartOf="parent"
+                                tools:text="منذ 2 أسبوع" />
 
 
                             <TextView
-                                android:fontFamily="@font/helvetica_reg"
                                 android:id="@+id/content"
                                 android:layout_width="match_parent"
-                                android:textSize="14sp"
-                                android:ellipsize="end"
-
-                                android:lineSpacingExtra="4sp"
-                                android:textColor="#707070"
-                                tools:text="هذا النص هو مثال لنص يمكن أن يستبدل في نفس المساحة، لقد تم توليد هذا النص من مولد النص العربى، حيث يمكنك أن تولد مثل هذا النص أو العديد من النصوص الأخرى إضافة إلى زيادة عدد الحروف التى يولدها التطبيق"
                                 android:layout_height="wrap_content"
-
+                                android:layout_marginStart="8dp"
+                                android:layout_marginEnd="8dp"
 
                                 android:layout_marginBottom="8dp"
-                                android:layout_marginStart="8dp"
+                                android:ellipsize="end"
+                                android:fontFamily="@font/helvetica_reg"
+                                android:lineSpacingExtra="4sp"
 
 
-                                android:layout_marginEnd="8dp"/>
+                                android:textColor="#707070"
+                                android:textSize="14sp"
 
+
+                                tools:text="هذا النص هو مثال لنص يمكن أن يستبدل في نفس المساحة، لقد تم توليد هذا النص من مولد النص العربى، حيث يمكنك أن تولد مثل هذا النص أو العديد من النصوص الأخرى إضافة إلى زيادة عدد الحروف التى يولدها التطبيق" />
 
 
                         </LinearLayout>
 
 
-
                     </androidx.cardview.widget.CardView>
 
-                    <View android:layout_width="match_parent"
-                        android:layout_height="@dimen/_8sdp"/>
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_8sdp" />
 
                 </LinearLayout>
 
 
-<!--                <LinearLayout android:layout_width="match_parent"-->
-<!--                    android:layout_marginStart="8dp"-->
-<!--                    android:layout_marginEnd="8dp"-->
-<!--                    android:layout_marginTop="16dp"-->
-<!--                    android:orientation="horizontal"-->
-<!--                    android:gravity="center"-->
-<!--                    android:layout_height="wrap_content">-->
+                <!--                <LinearLayout android:layout_width="match_parent"-->
+                <!--                    android:layout_marginStart="8dp"-->
+                <!--                    android:layout_marginEnd="8dp"-->
+                <!--                    android:layout_marginTop="16dp"-->
+                <!--                    android:orientation="horizontal"-->
+                <!--                    android:gravity="center"-->
+                <!--                    android:layout_height="wrap_content">-->
 
 
-<!--                    &lt;!&ndash;<TextView android:layout_width="wrap_content"&ndash;&gt;-->
-<!--                    &lt;!&ndash;android:id="@+id/titleTv"&ndash;&gt;-->
-<!--                    &lt;!&ndash;android:textSize="@dimen/_14ssp"&ndash;&gt;-->
-<!--                    &lt;!&ndash;tools:text="hello hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh&ndash;&gt;-->
-<!--                    &lt;!&ndash;fffffffffffffffffff&ndash;&gt;-->
-<!--                    &lt;!&ndash;zzzzzz"&ndash;&gt;-->
-<!--                    &lt;!&ndash;android:textColor="#303030"&ndash;&gt;-->
-<!--                    &lt;!&ndash;android:layout_height="wrap_content"&ndash;&gt;-->
-<!--                    &lt;!&ndash;/>&ndash;&gt;-->
-<!--                 &lt;!&ndash;   <ImageView android:layout_width="wrap_content"-->
+                <!--                    &lt;!&ndash;<TextView android:layout_width="wrap_content"&ndash;&gt;-->
+                <!--                    &lt;!&ndash;android:id="@+id/titleTv"&ndash;&gt;-->
+                <!--                    &lt;!&ndash;android:textSize="@dimen/_14ssp"&ndash;&gt;-->
+                <!--                    &lt;!&ndash;tools:text="hello hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh&ndash;&gt;-->
+                <!--                    &lt;!&ndash;fffffffffffffffffff&ndash;&gt;-->
+                <!--                    &lt;!&ndash;zzzzzz"&ndash;&gt;-->
+                <!--                    &lt;!&ndash;android:textColor="#303030"&ndash;&gt;-->
+                <!--                    &lt;!&ndash;android:layout_height="wrap_content"&ndash;&gt;-->
+                <!--                    &lt;!&ndash;/>&ndash;&gt;-->
+                <!--                 &lt;!&ndash;   <ImageView android:layout_width="wrap_content"-->
 
-<!--                        android:id="@+id/share_btn"-->
-<!--                        android:layout_gravity="center"-->
-<!--                        app:srcCompat="@drawable/ic_share"-->
-<!--                        android:layout_height="wrap_content"-->
-<!--                        />&ndash;&gt;-->
-<!--                </LinearLayout>-->
-
-
-             <!--   <TextView android:layout_width="match_parent"
-                    android:id="@+id/descriptionTv"
-                    android:textSize="@dimen/_13ssp"
-                    android:textColor="#616161"
-                    tools:text="الاهليالاهليالاهليالاهليالاهليالاهليالاهليالاهليالاهليالاهليالاهليالاهليالاهليالاهليالاهليالاهليالاهليالاهليالاهليالاهليالاهليالاهليالاهليالاهليالاهليالاهليالاهليالاهليالاهليالاهليالاهليالاهليالاهليالاهليالاهليالاهليالاهلي "
-                    android:lineSpacingExtra="3dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginEnd="8dp"/>
-                <View android:layout_width="match_parent"
-                    android:id="@+id/divider11"
-                    android:background="#EEEEEE"
-                    android:layout_height="1dp"
-                    app:layout_constraintStart_toStartOf="parent"
-                    android:layout_marginStart="8dp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    android:layout_marginEnd="8dp"
-                    android:layout_marginTop="16dp"/>-->
-<!--                <LinearLayout android:layout_width="match_parent"-->
-<!--                  android:visibility="gone"-->
-<!--                    android:orientation="horizontal"-->
-<!--                    android:layout_marginStart="8dp"-->
-<!--                    android:layout_marginTop="16dp"-->
-<!--                    android:layout_marginEnd="8dp"-->
-<!--                    android:layout_marginBottom="8dp"-->
-<!--                    android:layout_height="wrap_content">-->
+                <!--                        android:id="@+id/share_btn"-->
+                <!--                        android:layout_gravity="center"-->
+                <!--                        app:srcCompat="@drawable/ic_share"-->
+                <!--                        android:layout_height="wrap_content"-->
+                <!--                        />&ndash;&gt;-->
+                <!--                </LinearLayout>-->
 
 
-<!--                    <TextView-->
-<!--                        android:layout_marginStart="8dp"-->
-<!--                        android:layout_width="match_parent"-->
-<!--                        android:text="@string/comments"-->
-<!--                        android:fontFamily="@font/helvetica_reg"-->
-<!--                        android:layout_weight="1"-->
-<!--                        android:textSize="@dimen/_14ssp"-->
-<!--                        android:textColor="#3C3C3C"-->
-<!--                        android:layout_height="wrap_content"-->
-<!--                        android:id="@+id/textView8"-->
-
-<!--                        />-->
-
-
-
-<!--                    <com.google.android.material.floatingactionbutton.FloatingActionButton-->
-<!--                        android:id="@+id/add_btn"-->
-<!--                        android:layout_width="wrap_content"-->
-<!--                        android:layout_height="wrap_content"-->
-<!--                        android:src="@drawable/ic_add_comment"-->
-<!--                        android:layout_marginStart="8dp"-->
-<!--                        android:layout_weight="0"-->
-<!--                        app:fabSize="mini"-->
-<!--                        app:borderWidth="1dp"-->
-<!--                        app:elevation="2dp"-->
-<!--                        app:pressedTranslationZ="12dp"-->
-<!--                        app:rippleColor="@android:color/transparent"/>-->
-
-<!--                </LinearLayout>-->
+                <!--   <TextView android:layout_width="match_parent"
+                       android:id="@+id/descriptionTv"
+                       android:textSize="@dimen/_13ssp"
+                       android:textColor="#616161"
+                       tools:text="الاهليالاهليالاهليالاهليالاهليالاهليالاهليالاهليالاهليالاهليالاهليالاهليالاهليالاهليالاهليالاهليالاهليالاهليالاهليالاهليالاهليالاهليالاهليالاهليالاهليالاهليالاهليالاهليالاهليالاهليالاهليالاهليالاهليالاهليالاهليالاهليالاهلي "
+                       android:lineSpacingExtra="3dp"
+                       android:layout_height="wrap_content"
+                       android:layout_marginTop="8dp"
+                       android:layout_marginStart="8dp"
+                       android:layout_marginEnd="8dp"/>
+                   <View android:layout_width="match_parent"
+                       android:id="@+id/divider11"
+                       android:background="#EEEEEE"
+                       android:layout_height="1dp"
+                       app:layout_constraintStart_toStartOf="parent"
+                       android:layout_marginStart="8dp"
+                       app:layout_constraintEnd_toEndOf="parent"
+                       android:layout_marginEnd="8dp"
+                       android:layout_marginTop="16dp"/>-->
+                <!--                <LinearLayout android:layout_width="match_parent"-->
+                <!--                  android:visibility="gone"-->
+                <!--                    android:orientation="horizontal"-->
+                <!--                    android:layout_marginStart="8dp"-->
+                <!--                    android:layout_marginTop="16dp"-->
+                <!--                    android:layout_marginEnd="8dp"-->
+                <!--                    android:layout_marginBottom="8dp"-->
+                <!--                    android:layout_height="wrap_content">-->
 
 
+                <!--                    <TextView-->
+                <!--                        android:layout_marginStart="8dp"-->
+                <!--                        android:layout_width="match_parent"-->
+                <!--                        android:text="@string/comments"-->
+                <!--                        android:fontFamily="@font/helvetica_reg"-->
+                <!--                        android:layout_weight="1"-->
+                <!--                        android:textSize="@dimen/_14ssp"-->
+                <!--                        android:textColor="#3C3C3C"-->
+                <!--                        android:layout_height="wrap_content"-->
+                <!--                        android:id="@+id/textView8"-->
 
-             <!--   <ProgressBar android:layout_width="wrap_content"
-                    android:id="@+id/progres"
-                    android:visibility="gone"
-                    android:layout_gravity="center"
-                    android:layout_height="wrap_content"/>
-
-                <androidx.recyclerview.widget.RecyclerView
-                  android:visibility="gone"
-                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                    android:id="@+id/commentsRv"
-                    android:layout_width="match_parent"
-                    android:padding="@dimen/_8sdp"
-                    android:clipToPadding="false"
-                    android:focusable="false"
-                    android:nestedScrollingEnabled="false"
-                    android:layout_height="match_parent"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    tools:listitem="@layout/item_comment"/>-->
+                <!--                        />-->
 
 
+                <!--                    <com.google.android.material.floatingactionbutton.FloatingActionButton-->
+                <!--                        android:id="@+id/add_btn"-->
+                <!--                        android:layout_width="wrap_content"-->
+                <!--                        android:layout_height="wrap_content"-->
+                <!--                        android:src="@drawable/ic_add_comment"-->
+                <!--                        android:layout_marginStart="8dp"-->
+                <!--                        android:layout_weight="0"-->
+                <!--                        app:fabSize="mini"-->
+                <!--                        app:borderWidth="1dp"-->
+                <!--                        app:elevation="2dp"-->
+                <!--                        app:pressedTranslationZ="12dp"-->
+                <!--                        app:rippleColor="@android:color/transparent"/>-->
 
+                <!--                </LinearLayout>-->
+
+
+                <!--   <ProgressBar android:layout_width="wrap_content"
+                       android:id="@+id/progres"
+                       android:visibility="gone"
+                       android:layout_gravity="center"
+                       android:layout_height="wrap_content"/>
+
+                   <androidx.recyclerview.widget.RecyclerView
+                     android:visibility="gone"
+                       app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                       android:id="@+id/commentsRv"
+                       android:layout_width="match_parent"
+                       android:padding="@dimen/_8sdp"
+                       android:clipToPadding="false"
+                       android:focusable="false"
+                       android:nestedScrollingEnabled="false"
+                       android:layout_height="match_parent"
+                       app:layout_constraintBottom_toBottomOf="parent"
+                       app:layout_constraintEnd_toEndOf="parent"
+                       app:layout_constraintStart_toStartOf="parent"
+                       tools:listitem="@layout/item_comment"/>-->
 
 
             </LinearLayout>

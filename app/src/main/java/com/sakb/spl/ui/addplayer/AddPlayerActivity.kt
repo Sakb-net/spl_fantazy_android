@@ -53,33 +53,33 @@ class AddPlayerActivity : BaseActivity() {
         viewModel.initSpinnerBefore = false
         viewModel.getPlayers(
 
-             "" + intent.getStringExtra("type_loc_player"),
-            "" ,
-            "" ,
+            "" + intent.getStringExtra("type_loc_player"),
+            "",
+            "",
             "",
             ""
         )
 
-        viewModel.AddPlayerResultLiveData.observe(this, Observer {data->
+        viewModel.AddPlayerResultLiveData.observe(this, Observer { data ->
 
             toast("" + data?.data?.msg_add)
-                        EventBus.getDefault().post(data)
+            EventBus.getDefault().post(data)
 
-                        onBackPressed()
+            onBackPressed()
 
         })
 
-        viewModel.changePlayerResultLiveData.observe(this, Observer {data->
+        viewModel.changePlayerResultLiveData.observe(this, Observer { data ->
 
 
-                    toast("" + data?.result_change?.msg_delete)
-                    EventBus.getDefault().post(data)
+            toast("" + data?.result_change?.msg_delete)
+            EventBus.getDefault().post(data)
 
-                    onBackPressed()
+            onBackPressed()
 
-                      })
+        })
 
-        viewModel.ResultLiveData.observe(this, Observer {data->
+        viewModel.ResultLiveData.observe(this, Observer { data ->
 
             data?.let {
 
@@ -88,7 +88,7 @@ class AddPlayerActivity : BaseActivity() {
                     viewModel.initSpinnerBefore = true
                 }
                 toast("" + data.Message)
-               // Timber.e("" + data.data?.get(0)?.players_group?.size)
+                // Timber.e("" + data.data?.get(0)?.players_group?.size)
                 if (data.data?.get(0)?.players_group != null) {
 
                     val listData = data.data?.get(0)?.players_group!!
@@ -135,10 +135,9 @@ class AddPlayerActivity : BaseActivity() {
 
 
             }
-            })
+        })
 
         initSpinner()
-
 
 
     }
@@ -154,14 +153,14 @@ class AddPlayerActivity : BaseActivity() {
         mutableList.add("___end__")
         val data = mutableList
         Timber.e("init spinner")
-      //  Timber.e("init spinner " +data?.size )
+        //  Timber.e("init spinner " +data?.size )
         val adapter =
             SpinnerHelperAdapter(this, data, android.R.layout.simple_spinner_dropdown_item)
         adapter.setDropDownViewResource(R.layout.item_edited)
         binding.optionsSpinner.adapter = adapter
 
         // show hint
-      //  Timber.e("init spinner " +adapter.count )
+        //  Timber.e("init spinner " +adapter.count )
         binding.optionsSpinner.setSelection(adapter.count)
 
         binding.optionsSpinner.onItemSelectedListener =
@@ -173,13 +172,13 @@ class AddPlayerActivity : BaseActivity() {
                     position: Int,
                     id: Long
                 ) {
-                    Timber.e("xddddd pos "+position)
-                    if (viewModel.recreated){
-                    return
+                    Timber.e("xddddd pos " + position)
+                    if (viewModel.recreated) {
+                        return
                     }
-                   // Timber.e("szzzz "+data.size)
+                    // Timber.e("szzzz "+data.size)
                     toast("pos option " + position)
-                   if (position != (data.size - 1)) {
+                    if (position != (data.size - 1)) {
                         binding.sortByTv.text = data[position]
 
                         //   if (viewModel.lastQuery==data[position])return
@@ -195,7 +194,7 @@ class AddPlayerActivity : BaseActivity() {
 
 
                                 viewModel.getPlayers(
-                                     "" + intent.getStringExtra("type_loc_player"),
+                                    "" + intent.getStringExtra("type_loc_player"),
                                     "" + viewModel.orderPlay,
                                     "" + viewModel.selectedTeamLink,
                                     "",
@@ -231,7 +230,7 @@ class AddPlayerActivity : BaseActivity() {
                                 viewModel.orderPlay = "heigh_price"
 
                                 viewModel.getPlayers(
-                                     "" + intent.getStringExtra("type_loc_player"),
+                                    "" + intent.getStringExtra("type_loc_player"),
                                     "" + viewModel.orderPlay,
                                     "" + viewModel.selectedTeamLink,
                                     "",
@@ -243,18 +242,18 @@ class AddPlayerActivity : BaseActivity() {
                                 "heigh_price", lang
                                 )*/
                             }
-                            getString(R.string.price_from_to) ->{
+                            getString(R.string.price_from_to) -> {
 
-                                showEnterRangeDialog{ dialog, priceFrom, priceTo ->
+                                showEnterRangeDialog { dialog, priceFrom, priceTo ->
                                     dialog?.dismiss()
 
                                     viewModel.getPlayers(
 
-                                         "" + intent.getStringExtra("type_loc_player"),
-                                        "" ,
+                                        "" + intent.getStringExtra("type_loc_player"),
+                                        "",
                                         "" + viewModel.selectedTeamLink,
-                                        ""+priceFrom,
-                                        ""+priceTo
+                                        "" + priceFrom,
+                                        "" + priceTo
                                     )
                                 }
                             }
@@ -262,9 +261,8 @@ class AddPlayerActivity : BaseActivity() {
 
                         }
 
-                    }
-                    else {
-                      //  viewModel.orderPlay = ""
+                    } else {
+                        //  viewModel.orderPlay = ""
 
                         /*     viewModel.getPlayers(
                                  "" + user?.data?.accessToken
@@ -281,9 +279,9 @@ class AddPlayerActivity : BaseActivity() {
 
         binding.sortByTv.setOnClickListener {
             viewModel.recreated = false
-          //  Timber.e("=========="+binding?.optionsSpinner?.selectedItemPosition)
+            //  Timber.e("=========="+binding?.optionsSpinner?.selectedItemPosition)
             binding.optionsSpinner.setSelection(adapter.count)
-          //  if (binding?.optionsSpinner?.selectedItemPosition == adapter.count)
+            //  if (binding?.optionsSpinner?.selectedItemPosition == adapter.count)
             //    binding?.optionsSpinner?.setSelection(-1)
 
             binding.optionsSpinner.performClick()
@@ -320,7 +318,7 @@ class AddPlayerActivity : BaseActivity() {
         binding.teamsSpinner.adapter = adapter
 
         // show hint
-        binding.teamsSpinner.setSelection(adapter.getCount())
+        binding.teamsSpinner.setSelection(adapter.count)
 //        val user = PrefManager.getUser()
 //        val lang = PrefManager.getLanguage()
 
@@ -334,7 +332,7 @@ class AddPlayerActivity : BaseActivity() {
                     id: Long
                 ) {
 
-                    if (viewModel.recreatedTeam){
+                    if (viewModel.recreatedTeam) {
                         return
                     }
                     toast("team pos " + position)
@@ -344,7 +342,7 @@ class AddPlayerActivity : BaseActivity() {
                         viewModel.selectedTeamLink = teams[position]?.link
 
                         viewModel.getPlayers(
-                             "" + intent.getStringExtra("type_loc_player"),
+                            "" + intent.getStringExtra("type_loc_player"),
                             "" + viewModel.orderPlay,
                             "" + viewModel.selectedTeamLink,
                             "",
@@ -377,9 +375,8 @@ class AddPlayerActivity : BaseActivity() {
 
                         }*/
 
-                    }
-                    else {
-                     //   viewModel.selectedTeamLink = ""
+                    } else {
+                        //   viewModel.selectedTeamLink = ""
                         /*   viewModel.getPlayers(""+user?.data?.accessToken
                                ,""+intent.getStringExtra("type_loc_player"),
                                "",lang)*/
@@ -394,7 +391,7 @@ class AddPlayerActivity : BaseActivity() {
         binding.allTeamsTv.setOnClickListener {
             viewModel.recreatedTeam = false
             binding.teamsSpinner.setSelection(adapter.count)
-          //  if (binding?.teamsSpinner?.selectedItemPosition == adapter.count)
+            //  if (binding?.teamsSpinner?.selectedItemPosition == adapter.count)
             //    binding?.teamsSpinner?.setSelection(-1)
 
             binding.teamsSpinner.performClick()
@@ -403,10 +400,10 @@ class AddPlayerActivity : BaseActivity() {
     }
 
     companion object {
-     const val ELDAWRYlINK = "eldawry_link"
-     const val DELETEDPLAYER = "deleted_player"
-     const val ACTIONTYPE = "actiontype"
-     const val REPLACE = "replace"
+        const val ELDAWRYlINK = "eldawry_link"
+        const val DELETEDPLAYER = "deleted_player"
+        const val ACTIONTYPE = "actiontype"
+        const val REPLACE = "replace"
     }
 
 

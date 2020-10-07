@@ -2,10 +2,9 @@
     android:id="@+id/text"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:drawableStart="?android:attr/listChoiceIndicatorSingle"
     android:gravity="start"
-    android:textDirection="locale"
-    android:textAlignment="viewStart"
     android:paddingLeft="5dp"
     android:paddingRight="5dp"
-    android:drawableStart="?android:attr/listChoiceIndicatorSingle"
-    />
+    android:textAlignment="viewStart"
+    android:textDirection="locale" />

@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    >
+    android:layout_height="wrap_content">
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -36,7 +34,6 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            tools:text="hello man how are you you can test this hello man how are you you can test this"
             android:id="@+id/dialogText"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -52,19 +49,20 @@
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="@+id/divider11"
             app:layout_constraintTop_toBottomOf="@+id/dialogIcon"
-            app:layout_constraintVertical_chainStyle="packed" />
+            app:layout_constraintVertical_chainStyle="packed"
+            tools:text="hello man how are you you can test this hello man how are you you can test this" />
 
         <TextView
             android:id="@+id/positiveBtn"
             android:layout_width="wrap_content"
             android:layout_height="35dp"
-            android:paddingEnd="24dp"
-            android:paddingStart="24dp"
             android:layout_marginStart="8dp"
             android:layout_marginEnd="8dp"
             android:layout_marginBottom="8dp"
             android:background="@drawable/rectangle_accent_dialog"
             android:gravity="center"
+            android:paddingStart="24dp"
+            android:paddingEnd="24dp"
             android:text="@string/ok"
             android:textColor="@color/white"
             app:layout_constraintBottom_toBottomOf="parent"
