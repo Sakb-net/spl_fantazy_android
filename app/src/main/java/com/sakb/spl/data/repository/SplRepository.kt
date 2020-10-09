@@ -181,7 +181,6 @@ class SplRepository constructor(
         display_name: String,
         email: String,
         image: String
-
     ): Single<UpdateProfileResponse> {
         return remote.updateProfile(
             best_team = best_team,
@@ -249,5 +248,19 @@ class SplRepository constructor(
         return remote.addContactUsMessage(content)
     }
 
+    fun getFixtures():Single<GetLastFixturesResponse>{
+        return remote.getFixtures()
+    }
 
+    fun getAllSubeldawry():Single<GetAllSubeldawryResponse>{
+        return remote.getAllSubeldawry()
+    }
+
+    fun getAllFixturesBySubeldawry(link_subeldawey :String):Single<GetFixturesBySubeldawryResponse>{
+        return remote.getAllFixturesBySubeldawry(link_subeldawey)
+    }
+
+    fun getStatistics():Single<StatisticsPlayerResponse>{
+        return remote.getStatistics()
+    }
 }

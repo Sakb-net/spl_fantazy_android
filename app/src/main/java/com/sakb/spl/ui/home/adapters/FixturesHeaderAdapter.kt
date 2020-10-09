@@ -4,16 +4,22 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.sakb.spl.data.model.DataItem
 import com.sakb.spl.data.model.HomeResponse
 import com.sakb.spl.databinding.ItemHomeFixtureTitlesBinding
 import com.sakb.spl.ui.home.diffcallback.FixturesHeaderDiffCallback
+import com.sakb.spl.utils.ConvertDateTimeUtils
+import com.sakb.spl.utils.ConvertDateTimeUtils.DATE_CHAR_FORMAT_AR
+import com.sakb.spl.utils.ConvertDateTimeUtils.DATE_CHAR_FORMAT_EN
+import com.sakb.spl.utils.ConvertDateTimeUtils.DATE_DEFAULT_FORMAT
+import com.sakb.spl.utils.LanguageUtil
 
 class FixturesHeaderAdapter :
-    ListAdapter<HomeResponse.Fixture, FixturesHeaderAdapter.FixturesViewHolder>(
+    ListAdapter<DataItem, FixturesHeaderAdapter.FixturesViewHolder>(
         FixturesHeaderDiffCallback()
     ) {
 
-    var onClickListener: ((HomeResponse.Fixture) -> Unit)? = null
+    var onClickListener: ((DataItem) -> Unit)? = null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) =
         FixturesViewHolder(
@@ -25,21 +31,29 @@ class FixturesHeaderAdapter :
         )
 
     override fun onBindViewHolder(holder: FixturesViewHolder, position: Int) {
-        val news = getItem(position)
-        holder.bind(news)
+        val dataItem = getItem(position)
+        holder.bind(dataItem)
     }
 
     class FixturesViewHolder(
         private val binding: ItemHomeFixtureTitlesBinding,
-        private val onNewsListener: ((HomeResponse.Fixture) -> Unit)?
+        private val onDataClick: ((DataItem) -> Unit)?
     ) : RecyclerView.ViewHolder(binding.root) {
 
 
-        fun bind(data: HomeResponse.Fixture) = data.run {
-
-            itemView.setOnClickListener { onNewsListener?.invoke(this) }
-            binding.textViewStart.text = startDateDay?.plus(",")?.plus(startDate)
-            binding.textViewEnd.text = endDateDay?.plus(",")?.plus(endDate)
+        fun bind(data: DataItem) = data.run {
+            val dateNew = if(LanguageUtil.isArabic()){
+                ConvertDateTimeUtils.changeFormat(startDate,DATE_DEFAULT_FORMAT,
+                DATE_CHAR_FORMAT_AR)}
+            else{
+                ConvertDateTimeUtils.changeFormat(startDate,DATE_DEFAULT_FORMAT,
+                    DATE_CHAR_FORMAT_EN)
+            }
+            itemView.setOnClickListener { onDataClick?.invoke(this) }
+            binding.textViewStart.text = langNumWeek
+            binding.textViewEnd.text = if(LanguageUtil.isArabic()){startDateDay?.plus(",")?.plus(dateNew)}else{
+                dateNew?.plus(",")?.plus(startDateDay)
+            }
         }
 
 

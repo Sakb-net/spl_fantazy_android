@@ -12,6 +12,9 @@
         <action
             android:id="@+id/action_homeFragment_to_chooseTeamPlayersFragment"
             app:destination="@id/chooseTeamPlayersFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_moreMatches"
+            app:destination="@id/matchesFragment" />
     </fragment>
 
     <fragment android:id="@+id/videosFragment"
@@ -108,7 +111,22 @@
     <fragment
         android:id="@+id/matchesFragment"
         android:name="com.sakb.spl.ui.matches.MatchesFragment"
-        android:label="@string/matches" />
+        android:label="@string/matches" >
+        <action
+            android:id="@+id/action_matchesFragment_to_matchDetailsFragment"
+            app:destination="@id/matchDetailsFragment"
+        />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/matchDetailsFragment"
+        android:name="com.sakb.spl.ui.matches.MatchDetailsFragment"
+        android:label="@string/match_details"
+        tools:layout="@layout/fragment_match_details">
+        <argument android:name="matchDetails"
+            app:argType="com.sakb.spl.data.model.DataItemSubFix"/>
+    </fragment>
     <fragment
         android:id="@+id/leagueFragment"
         android:name="com.sakb.spl.ui.league.LeagueFragment"

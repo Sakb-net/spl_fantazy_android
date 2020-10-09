@@ -7,19 +7,23 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.sakb.spl.R
 import com.sakb.spl.constants.Constants
+import com.sakb.spl.data.model.DataItem
+import com.sakb.spl.data.model.DataItemSubFix
 import com.sakb.spl.data.model.HomeResponse
 import com.sakb.spl.databinding.RoundNextMatchItemBinding
 import com.sakb.spl.databinding.RoundPrevMatchItemBinding
 import com.sakb.spl.ui.matches.diffcallback.FixturesDiffCallback
+import com.sakb.spl.utils.ConvertDateTimeUtils
 import timber.log.Timber
 import java.text.SimpleDateFormat
 import java.util.*
 
-class MatchesAdapter : ListAdapter<HomeResponse.MatchGroup, RecyclerView.ViewHolder>(
+class MatchesAdapter : ListAdapter<DataItemSubFix, RecyclerView.ViewHolder>(
     FixturesDiffCallback()
 ) {
 
-    var onClickListener: ((HomeResponse.MatchGroup) -> Unit)? = null
+    var onPervMatchListener: ((DataItemSubFix) -> Unit)? = null
+    var onNextMatchListener: ((DataItemSubFix) -> Unit)? = null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         when (viewType) {
@@ -28,14 +32,14 @@ class MatchesAdapter : ListAdapter<HomeResponse.MatchGroup, RecyclerView.ViewHol
                     LayoutInflater.from(parent.context),
                     parent,
                     false
-                ), onClickListener
+                ), onNextMatchListener
             )
             else -> return PrevMatchesViewHolder(
                 RoundPrevMatchItemBinding.inflate(
                     LayoutInflater.from(parent.context),
                     parent,
                     false
-                ), onClickListener
+                ), onPervMatchListener
             )
         }
 
@@ -53,11 +57,11 @@ class MatchesAdapter : ListAdapter<HomeResponse.MatchGroup, RecyclerView.ViewHol
 
     class PrevMatchesViewHolder(
         private val binding: RoundPrevMatchItemBinding,
-        private val onNewsListener: ((HomeResponse.MatchGroup) -> Unit)?
+        private val onPervMatchListener: ((DataItemSubFix) -> Unit)?
     ) : RecyclerView.ViewHolder(binding.root) {
-        fun bind(data: HomeResponse.MatchGroup) = data.run {
+        fun bind(data: DataItemSubFix) = data.run {
 
-            itemView.setOnClickListener { onNewsListener?.invoke(this) }
+            itemView.setOnClickListener { onPervMatchListener?.invoke(this) }
 
             binding.team1Tv.text = nameFirst
             binding.team2Tv.text = nameSecond
@@ -74,11 +78,11 @@ class MatchesAdapter : ListAdapter<HomeResponse.MatchGroup, RecyclerView.ViewHol
 
     class NextMatchesViewHolder(
         private val binding: RoundNextMatchItemBinding,
-        private val onNewsListener: ((HomeResponse.MatchGroup) -> Unit)?
+        private val onNextMatchListener: ((DataItemSubFix) -> Unit)?
     ) : RecyclerView.ViewHolder(binding.root) {
-        fun bind(data: HomeResponse.MatchGroup) = data.run {
+        fun bind(data: DataItemSubFix) = data.run {
 
-            itemView.setOnClickListener { onNewsListener?.invoke(this) }
+            itemView.setOnClickListener { onNextMatchListener?.invoke(this) }
 
             binding.team1Tv.text = nameFirst
             binding.team2Tv.text = nameSecond
@@ -88,7 +92,11 @@ class MatchesAdapter : ListAdapter<HomeResponse.MatchGroup, RecyclerView.ViewHol
             Glide.with(binding.team2Iv).load(Constants.baseUrl + imageSecond)
                 .placeholder(R.drawable.placeholder).error(R.drawable.placeholder).override(150)
                 .into(binding.team2Iv)
-            binding.dateResult.text = this.date?.plus("\n")?.plus(time)
+            val timeNew = ConvertDateTimeUtils.changeFormat(this.time,
+                ConvertDateTimeUtils.TIME_24_FORMAT,
+                ConvertDateTimeUtils.TIME_FORMAT
+            )
+            binding.dateResult.text = timeNew
 
         }
     }
@@ -134,6 +142,7 @@ class MatchesAdapter : ListAdapter<HomeResponse.MatchGroup, RecyclerView.ViewHol
     }
 
     fun onClear() {
-        onClickListener = null
+        onNextMatchListener = null
+        onPervMatchListener = null
     }
 }

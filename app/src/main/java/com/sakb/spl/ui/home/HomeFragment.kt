@@ -9,6 +9,8 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.MergeAdapter
 import com.sakb.spl.R
 import com.sakb.spl.base.BaseFragment
+import com.sakb.spl.data.model.DataItem
+import com.sakb.spl.data.model.GetLastFixturesResponse
 import com.sakb.spl.data.model.HomeResponse
 import com.sakb.spl.databinding.HomeFragmentBinding
 import com.sakb.spl.ui.home.adapters.*
@@ -54,7 +56,7 @@ class HomeFragment : BaseFragment() {
 
     private fun createFooterFixturesAdapter() = footerFixturesAdapter.apply {
         onClickListener = {
-            //   findNavController().navigate(R.id.action_homeFragment_to_chooseTeamPlayersFragment)
+               findNavController().navigate(R.id.action_homeFragment_to_moreMatches)
         }
     }
 
@@ -108,7 +110,26 @@ class HomeFragment : BaseFragment() {
         viewModel.homeLiveData.observe(this, Observer {
             updateUI(it)
         })
-        viewModel.loadHmeData()
+
+        viewModel.fixturesResponse.observe(viewLifecycleOwner, Observer {
+            updateUI(it)
+        })
+       // viewModel.loadHmeData()
+        viewModel.loadLastFixtureData()
+    }
+
+    private fun updateUI(data: GetLastFixturesResponse?) {
+        data?.data?.let {
+            if(!it.isNullOrEmpty()){
+                it[0]?.apply {
+                    val headerFixturesTitlesList = mutableListOf<DataItem>()
+                    headerFixturesTitlesList.add(this)
+                    headerFixturesAdapter.submitList(headerFixturesTitlesList)
+                    fixturesAdapter.submitList(this.matchGroup)
+                }
+            }
+        }
+        initRecyclerView()
     }
 
     private fun updateUI(data: HomeResponse?) {
@@ -117,8 +138,8 @@ class HomeFragment : BaseFragment() {
                 it[0]?.apply {
                     val headerFixturesTitlesList = mutableListOf<HomeResponse.Fixture>()
                     headerFixturesTitlesList.add(this)
-                    headerFixturesAdapter.submitList(headerFixturesTitlesList)
-                    fixturesAdapter.submitList(this.matchGroup)
+                    //headerFixturesAdapter.submitList(headerFixturesTitlesList)
+                    //fixturesAdapter.submitList(this.matchGroup)
                 }
             }
         }

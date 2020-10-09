@@ -34,7 +34,6 @@ class ChooseTeamPlayersFragment : BaseFragment() {
 
     private lateinit var adapter: MyTeamPlayersMasterAdapter
 
-
     override val viewModel by viewModel<ChooseTeamPlayersViewModel>()
 
     override fun onCreateView(

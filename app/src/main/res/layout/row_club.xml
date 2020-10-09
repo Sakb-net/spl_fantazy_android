@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="wrap_content"
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
     android:layout_height="@dimen/row_height"
     android:background="@android:color/white"
     android:orientation="horizontal">
 
-    <TextView
+    <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/txtName"
         android:layout_width="@dimen/cell_width"
         android:layout_height="match_parent"
@@ -13,14 +13,14 @@
         android:gravity="center|start"
         android:textColor="@color/colorPrimaryText" />
 
-    <ImageView
+    <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/imgLogo"
         android:layout_width="@dimen/cell_width"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:layout_margin="@dimen/margin"
-        android:scaleType="centerCrop" />
+        android:layout_gravity="center" />
 
-    <TextView
+    <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/txtLocation"
         android:layout_width="@dimen/cell_width"
         android:layout_height="match_parent"
@@ -28,7 +28,7 @@
         android:gravity="center|start"
         android:textColor="@color/colorSecondaryText" />
 
-    <TextView
+    <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/txtStadiumName"
         android:layout_width="@dimen/cell_width"
         android:layout_height="match_parent"
@@ -36,7 +36,7 @@
         android:gravity="center|start"
         android:textColor="@color/colorSecondaryText" />
 
-    <TextView
+    <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/txtLeagueName"
         android:layout_width="@dimen/cell_width"
         android:layout_height="match_parent"
@@ -44,7 +44,7 @@
         android:gravity="center|start"
         android:textColor="@color/colorSecondaryText" />
 
-    <TextView
+    <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/txtCoachName"
         android:layout_width="@dimen/cell_width"
         android:layout_height="match_parent"
@@ -52,7 +52,7 @@
         android:gravity="center|start"
         android:textColor="@color/colorSecondaryText" />
 
-    <TextView
+    <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/txtStarPlayerName"
         android:layout_width="@dimen/cell_width"
         android:layout_height="match_parent"
@@ -60,4 +60,4 @@
         android:gravity="center|start"
         android:textColor="@color/colorSecondaryText" />
 
-</LinearLayout>
+</androidx.appcompat.widget.LinearLayoutCompat>

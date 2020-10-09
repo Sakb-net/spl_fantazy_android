@@ -6,8 +6,10 @@ import android.os.Bundle
 import androidx.databinding.DataBindingUtil
 import com.sakb.spl.R
 import com.sakb.spl.base.BaseActivity
+import com.sakb.spl.data.local.PrefManager
 import com.sakb.spl.databinding.ActivitySplashBinding
 import com.sakb.spl.ui.login.LoginActivity
+import com.sakb.spl.ui.main.MainActivity
 import io.reactivex.Observable
 import io.reactivex.Observer
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -46,7 +48,11 @@ class SplashActivity : BaseActivity() {
                 }
 
                 override fun onComplete() {
-                    val intent = Intent(this@SplashActivity, LoginActivity::class.java)
+                    val intent = if(PrefManager.getUser()!=null){
+                        Intent(this@SplashActivity, MainActivity::class.java)
+                    }else{
+                        Intent(this@SplashActivity, LoginActivity::class.java)
+                    }
                     intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)
                     startActivity(intent)
                     overridePendingTransition(0, 0)

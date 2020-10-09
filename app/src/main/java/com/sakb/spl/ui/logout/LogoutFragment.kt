@@ -35,7 +35,6 @@ class LogoutFragment : BaseFragment() {
         }, { it ->
             it?.dismiss()
             findNavController().navigateUp()
-
         })
     }
 

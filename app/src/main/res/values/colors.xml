@@ -12,6 +12,7 @@
     <color name="homeTextColor">#1b1b18</color>
     <color name="black">#000</color>
     <color name="white">#fff</color>
+    <color name="shadow">#4D224614</color>
     <color name="dark_transperant">#66000000</color>
     <color name="itemSelected">#e4e3e3</color>
     <color name="colorDescription">#797979</color>

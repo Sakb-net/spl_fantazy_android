@@ -5,10 +5,13 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.sakb.spl.R
 import com.sakb.spl.base.BaseFragment
 import com.sakb.spl.data.model.Club
+import com.sakb.spl.databinding.FragmentStatisitcsBinding
+import com.sakb.spl.databinding.MatchesFragmentBinding
 import com.sakb.spl.utils.DividerItemDecoration
 import com.sakb.spl.utils.FixedGridLayoutManager
 import kotlinx.android.synthetic.main.fragment_statisitcs.*
@@ -16,31 +19,24 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
 class StatisticsFragment : BaseFragment() {
+    private lateinit var binding: FragmentStatisitcsBinding
 
     override val viewModel by viewModel<StatisticsViewModel>()
-
 
     internal var scrollX = 0
 
     internal var clubList: MutableList<Club> = ArrayList<Club>()
 
-
     lateinit var clubAdapter: ClubAdapter
-
-
-    //  private  var _binding: FragmentStatisitcsBinding?=null
-//    private  val binding = _binding!!
-
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        //_binding = FragmentStatisitcsBinding.inflate(inflater, container, false)
-        //return binding.root
-        return inflater.inflate(R.layout.fragment_statisitcs, container, false)
-
+        binding = DataBindingUtil.inflate(inflater,R.layout.fragment_statisitcs, container, false)
+        return binding.root
+        //return inflater.inflate(R.layout.fragment_statisitcs, container, false)
     }
 
 
@@ -48,22 +44,15 @@ class StatisticsFragment : BaseFragment() {
         super.onActivityCreated(savedInstanceState)
         //  changeViewsFonts()
         initListener()
-
-
         prepareClubData()
-
         setUpRecyclerView()
-
-        rvClub.addOnScrollListener(object : RecyclerView.OnScrollListener() {
-            override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
-                super.onScrolled(recyclerView, dx, dy)
-
-                scrollX += dx
-
-                headerScroll.scrollTo(scrollX, 0)
-            }
-
-        })
+//        rvClub.addOnScrollListener(object : RecyclerView.OnScrollListener() {
+//            override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
+//                super.onScrolled(recyclerView, dx, dy)
+//                scrollX += dx
+//            }
+//
+//        })
     }
 
     private fun initListener() {
@@ -260,14 +249,5 @@ class StatisticsFragment : BaseFragment() {
                 DividerItemDecoration.VERTICAL
             )
         )
-
-
     }
-
-/*
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
-    }*/
-
 }

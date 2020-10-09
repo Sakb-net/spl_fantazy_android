@@ -254,4 +254,11 @@
     <string name="league_created_title">تم إنشاء الدوري بنجاح</string>
     <string name="content_join_desc">قم بإرسال كود الدوري إلي اصدقائك حتي يتمكنوا من الانضمام</string>
     <string name="code_league">كود الدوري :</string>
+    <string name="up">Upper</string>
+    <string name="points">My Points</string>
+    <string name="sell">بيع</string>
+    <string name="match_details">تفاصيل المباره</string>
+    <string name="goals">الأهداف</string>
+    <string name="assist">المساهمات</string>
+    <string name="Conceded">التصديات</string>
 </resources>

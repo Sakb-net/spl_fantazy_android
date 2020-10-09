@@ -2,10 +2,7 @@ package com.sakb.spl.data.remote
 
 import com.sakb.spl.data.model.*
 import io.reactivex.Single
-import retrofit2.http.Field
-import retrofit2.http.FormUrlEncoded
-import retrofit2.http.GET
-import retrofit2.http.POST
+import retrofit2.http.*
 
 /**
  * Created by dev.mahmoud_ashraf on 10/3/2019.
@@ -204,4 +201,18 @@ interface SplApiEndpoints {
     fun addContactUsMessage(
         @Field("content") content : String
     ): Single<AddContactUsMessageResponse>
+
+    @GET("api/v1/fixtures")
+    fun getFixtures():Single<GetLastFixturesResponse>
+
+    @GET("api/v1/subeldwry")
+    fun getAllSubeldawry():Single<GetAllSubeldawryResponse>
+
+    @GET("api/v1/subeldwry/{link}/fixtures")
+    fun getAllFixturesBySubeldawry(
+        @Path("link") link_subeldawry: String
+    ):Single<GetFixturesBySubeldawryResponse>
+
+    @POST("api/v1/statistics")
+    fun getStatistics():Single<StatisticsPlayerResponse>
 }

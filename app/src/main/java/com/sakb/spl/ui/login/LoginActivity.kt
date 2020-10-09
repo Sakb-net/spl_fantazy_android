@@ -33,8 +33,6 @@ class LoginActivity :  BaseActivity() , SocialMediaSignUpCallback {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_login)
         context = this
-
-
         binding.signUp.setOnClickListener {
             startActivity(Intent(this , RegisterActivity::class.java))
         }
@@ -83,27 +81,17 @@ class LoginActivity :  BaseActivity() , SocialMediaSignUpCallback {
             })
 
         viewModel.loginSocialResultLiveData.observe(this, Observer {data->
-
                         toast(""+data.Message)
-
-                        PrefManager.saveUser(        LoginResponse(data = LoginResponse.Data(
-
+                        PrefManager.saveUser(LoginResponse(data = LoginResponse.Data(
                             accessToken = data.data?.access_token,
                             address = data.data?.address,
                             city = data.data?.city,
-
                             displayName = data.data?.display_name,
                             email = data.data?.email,
                             gender = data.data?.gender,
-
                             image = data.data?.image,
-
                             newFcmToken= data.data?.new_fcm_token,
-
-
-
                             phone= data.data?.phone,
-
                             state = data.data?.state
                         ))
                         )
@@ -111,20 +99,14 @@ class LoginActivity :  BaseActivity() , SocialMediaSignUpCallback {
                             Intent(this@LoginActivity, MainActivity::class.java)
                                 .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)
                         )
-
-
-
-
             })
     }
 
     override fun onSuccess(p0: SocialMediaSignUp.SocialMediaType?, socialMediaUser : SocialMediaUser?) {
-
         setSocialMediaContent(socialMediaUser)
     }
 
     private fun setSocialMediaContent(socialMediaUser: SocialMediaUser?) {
-
         Timber.e("success === "+
                 "User Id : "+socialMediaUser?.userId+
                 "\n"+ "Access Token :" + socialMediaUser?.getAccessToken() + "\n" +
@@ -142,7 +124,6 @@ class LoginActivity :  BaseActivity() , SocialMediaSignUpCallback {
     override fun onError(p0: Throwable?) {
         p0?.printStackTrace()
         toast(getString(R.string.something_wrong))
-
     }
 
     /*private fun changeViewsFonts() {
@@ -151,6 +132,4 @@ class LoginActivity :  BaseActivity() , SocialMediaSignUpCallback {
         binding.PasswordEtt.transformationMethod = PasswordTransformationMethod()
 
     }*/
-
-
 }

@@ -308,4 +308,11 @@
     <string name="league_created_title">The league was created successfully</string>
     <string name="content_join_desc">Send the league code to your friends so they can join</string>
     <string name="code_league">League code :</string>
+    <string name="up">Upper</string>
+    <string name="points">My Points</string>
+    <string name="sell">Sell</string>
+    <string name="match_details">Match Details</string>
+    <string name="goals">Goals</string>
+    <string name="assist">Assists</string>
+    <string name="Conceded">Concededs</string>
 </resources>

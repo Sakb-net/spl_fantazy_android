@@ -6,18 +6,25 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.sakb.spl.constants.Constants
+import com.sakb.spl.data.model.GetLastFixturesResponse
 import com.sakb.spl.data.model.HomeResponse
+import com.sakb.spl.data.model.MatchGroupItem
 import com.sakb.spl.databinding.ItemHomeMatchBinding
 import com.sakb.spl.ui.home.diffcallback.FixturesDiffCallback
+import com.sakb.spl.utils.ConvertDateTimeUtils
+import com.sakb.spl.utils.ConvertDateTimeUtils.TIME_24_FORMAT
+import com.sakb.spl.utils.ConvertDateTimeUtils.TIME_FORMAT
+import com.sakb.spl.utils.LanguageUtil
+import com.sakb.spl.utils.LocaleManager
 import timber.log.Timber
 import java.text.SimpleDateFormat
 import java.util.*
 
-class FixturesAdapter : ListAdapter<HomeResponse.MatchGroup, FixturesAdapter.FixturesViewHolder>(
+class FixturesAdapter : ListAdapter<MatchGroupItem, FixturesAdapter.FixturesViewHolder>(
     FixturesDiffCallback()
 ) {
 
-    var onClickListener: ((HomeResponse.MatchGroup) -> Unit)? = null
+    var onClickListener: ((MatchGroupItem) -> Unit)? = null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) =
         FixturesViewHolder(
@@ -29,19 +36,27 @@ class FixturesAdapter : ListAdapter<HomeResponse.MatchGroup, FixturesAdapter.Fix
         )
 
     override fun onBindViewHolder(holder: FixturesViewHolder, position: Int) {
-        val news = getItem(position)
-        holder.bind(news)
+        val matchGroupItem = getItem(position)
+        holder.bind(matchGroupItem)
+    }
+
+    override fun getItemCount(): Int {
+        return if(super.getItemCount()>=3){
+            3
+        }else{
+            super.getItemCount()
+        }
     }
 
     class FixturesViewHolder(
         private val binding: ItemHomeMatchBinding,
-        private val onNewsListener: ((HomeResponse.MatchGroup) -> Unit)?
+        private val onMatchClick: ((MatchGroupItem) -> Unit)?
     ) : RecyclerView.ViewHolder(binding.root) {
 
 
-        fun bind(data: HomeResponse.MatchGroup) = data.run {
+        fun bind(data: MatchGroupItem) = data.run {
 
-            itemView.setOnClickListener { onNewsListener?.invoke(this) }
+            itemView.setOnClickListener { onMatchClick?.invoke(this) }
 
             binding.team1Tv.text = nameFirst
             binding.team2Tv.text = nameSecond
@@ -66,11 +81,13 @@ class FixturesAdapter : ListAdapter<HomeResponse.MatchGroup, FixturesAdapter.Fix
 
                 Timber.e("##$result")
 
+                val timeNew = ConvertDateTimeUtils.changeFormat(this.time,TIME_24_FORMAT,TIME_FORMAT)
+
                 if (result != null && result < 0) {
                     binding.dateResult.text = firstGoon?.toString()?.plus(":")?.plus(secondGoon)
                 } else {
-                    binding.dateResult.text =
-                        this.date?.plus("\n")?.plus(time)
+                    binding.dateResult.text = timeNew
+                        //this.date?.plus("\n")?.plus(time)
                 }
             }
         }

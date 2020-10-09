@@ -99,7 +99,7 @@ val viewModelModule = module {
     }
 
     viewModel {
-        StatisticsViewModel()
+        StatisticsViewModel(get())
     }
 
     viewModel {
@@ -137,7 +137,7 @@ val viewModelModule = module {
     }
 
     viewModel {
-        MatchesViewModel()
+        MatchesViewModel(get())
     }
     viewModel {
         LeagueViewModel()
