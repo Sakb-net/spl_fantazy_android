@@ -9,11 +9,12 @@ import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.appcompat.widget.AppCompatImageView;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.bumptech.glide.Glide;
 import com.sakb.spl.R;
-import com.sakb.spl.data.model.Club;
+import com.sakb.spl.data.model.AllDataItem;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,11 +23,11 @@ public class ClubAdapter extends RecyclerView.Adapter<ClubAdapter.ClubViewHolder
     private static final int TYPE_ROW = 0;
     private static final int TYPE_ROW_COLORFUL = 1;
 
-    private List<Club> clubList;
-    private List<Club> filteredClubList;
+    private List<AllDataItem> clubList;
+    private List<AllDataItem> filteredClubList;
     private Context context;
 
-    public ClubAdapter(Context context, List<Club> clubList) {
+    public ClubAdapter(Context context, List<AllDataItem> clubList) {
         this.context = context;
         this.clubList = clubList;
         this.filteredClubList = clubList;
@@ -55,16 +56,20 @@ public class ClubAdapter extends RecyclerView.Adapter<ClubAdapter.ClubViewHolder
 
     @Override
     public void onBindViewHolder(ClubViewHolder holder, int position) {
-        Club club = filteredClubList.get(position);
-
-        holder.txtName.setText(club.name);
-        holder.txtLocation.setText(club.location);
-        holder.txtStadiumName.setText(club.stadiumName);
-        holder.txtLeagueName.setText(club.leagueName);
-        holder.txtCoachName.setText(club.coachName);
-        holder.txtStarPlayerName.setText(club.starPlayerName);
-
-        Glide.with(context).load(club.logoUrl).into(holder.imgLogo);
+        AllDataItem club = filteredClubList.get(position);
+        holder.txtName.setText(club.getName());
+        holder.txtClub.setText(club.getTeam());
+        holder.txtPrice.setText(club.getCost().toString());
+        holder.txtSell.setText(club.getSellCost().toString());
+        holder.txtBuy.setText(club.getBuyCost().toString());
+        holder.txtFrom.setText(club.getForm().toString());
+        holder.txtPoint.setText(club.getPoint().toString());
+        holder.txtNextMatch.setText(club.getTeamCode());
+        if(club.getStatePlayer().equals("normal")){
+            holder.tvStates.setImageDrawable(ContextCompat.getDrawable(context, R.drawable.ic_info));
+        }else {
+            holder.tvStates.setImageDrawable(ContextCompat.getDrawable(context, R.drawable.ic_danger));
+        }
     }
 
     @Override
@@ -81,11 +86,11 @@ public class ClubAdapter extends RecyclerView.Adapter<ClubAdapter.ClubViewHolder
                 if (charString.isEmpty()) {
                     filteredClubList = clubList;
                 } else {
-                    List<Club> filteredList = new ArrayList<>();
-                    for (Club club : clubList) {
+                    List<AllDataItem> filteredList = new ArrayList<>();
+                    for (AllDataItem club : clubList) {
                         // name match condition. this might differ depending on your requirement
                         // here we are looking for name
-                        if (club.name.toLowerCase().contains(charString.toLowerCase())) {
+                        if (club.getName().toLowerCase().contains(charString.toLowerCase())) {
                             filteredList.add(club);
                         }
                     }
@@ -100,7 +105,7 @@ public class ClubAdapter extends RecyclerView.Adapter<ClubAdapter.ClubViewHolder
 
             @Override
             protected void publishResults(CharSequence charSequence, FilterResults filterResults) {
-                filteredClubList = (ArrayList<Club>) filterResults.values;
+                filteredClubList = (ArrayList<AllDataItem>) filterResults.values;
 
                 // refresh the list with filtered data
                 notifyDataSetChanged();
@@ -109,19 +114,19 @@ public class ClubAdapter extends RecyclerView.Adapter<ClubAdapter.ClubViewHolder
     }
 
     public class ClubViewHolder extends RecyclerView.ViewHolder {
-        public TextView txtName, txtLocation, txtStadiumName, txtLeagueName, txtCoachName, txtStarPlayerName;
-        public ImageView imgLogo;
-
+        public TextView txtName, txtClub, txtSell, txtBuy, txtFrom, txtPoint, txtNextMatch, txtPrice;
+        public AppCompatImageView tvStates;
         public ClubViewHolder(View view) {
             super(view);
+            tvStates = view.findViewById(R.id.tvStates);
             txtName = view.findViewById(R.id.txtName);
-            txtLocation = view.findViewById(R.id.txtLocation);
-            txtStadiumName = view.findViewById(R.id.txtStadiumName);
-            txtLeagueName = view.findViewById(R.id.txtLeagueName);
-            txtCoachName = view.findViewById(R.id.txtCoachName);
-            txtStarPlayerName = view.findViewById(R.id.txtStarPlayerName);
-
-            imgLogo = view.findViewById(R.id.imgLogo);
+            txtClub = view.findViewById(R.id.txtClub);
+            txtSell = view.findViewById(R.id.txtSell);
+            txtBuy = view.findViewById(R.id.txtBuy);
+            txtFrom = view.findViewById(R.id.txtFrom);
+            txtPoint = view.findViewById(R.id.txtPoint);
+            txtNextMatch = view.findViewById(R.id.txtNextMatch);
+            txtPrice = view.findViewById(R.id.txtPrice);
         }
     }
 }

@@ -9,6 +9,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.MergeAdapter
 import com.sakb.spl.R
 import com.sakb.spl.base.BaseFragment
+import com.sakb.spl.data.local.PrefManager
 import com.sakb.spl.data.model.DataItem
 import com.sakb.spl.data.model.GetLastFixturesResponse
 import com.sakb.spl.data.model.HomeResponse
@@ -32,6 +33,10 @@ class HomeFragment : BaseFragment() {
     private val titlesVideosAdapter by lazy { TitlesHeaderAdapter() }
     private val videosAdapter by lazy { VideosAdapter() }
 
+    private val user by lazy {
+        PrefManager.getUser()
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -45,6 +50,15 @@ class HomeFragment : BaseFragment() {
         onChooseTeamClickListener = {
             // todo
             findNavController().navigate(R.id.action_homeFragment_to_chooseTeamPlayersFragment)
+        }
+        onPointClickListener = {
+            findNavController().navigate(R.id.action_homeFragment_to_myPoints)
+        }
+        onMyTeamClickListener = {
+            findNavController().navigate(R.id.action_homeFragment_to_myTeam)
+        }
+        onTransClickListener = {
+            findNavController().navigate(R.id.action_homeFragment_to_trans)
         }
     }
 
@@ -120,7 +134,7 @@ class HomeFragment : BaseFragment() {
 
     private fun updateUI(data: GetLastFixturesResponse?) {
         data?.data?.let {
-            if(!it.isNullOrEmpty()){
+            if (!it.isNullOrEmpty()) {
                 it[0]?.apply {
                     val headerFixturesTitlesList = mutableListOf<DataItem>()
                     headerFixturesTitlesList.add(this)
@@ -163,6 +177,9 @@ class HomeFragment : BaseFragment() {
         initRecyclerView()
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+    }
 
     override fun onDestroyView() {
         super.onDestroyView()

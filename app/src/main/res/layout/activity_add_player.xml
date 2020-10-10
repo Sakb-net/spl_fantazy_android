@@ -132,7 +132,6 @@
                         android:textAlignment="center"
                         android:visibility="invisible"
                         app:layout_constraintBottom_toBottomOf="@id/filterLL"
-
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="@id/filterLL"
                         app:layout_constraintTop_toTopOf="@id/filterLL" />
@@ -151,7 +150,6 @@
                         android:textAlignment="center"
                         android:visibility="invisible"
                         app:layout_constraintBottom_toBottomOf="@id/filterLL"
-
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="@id/filterLL"
                         app:layout_constraintTop_toTopOf="@id/filterLL" />

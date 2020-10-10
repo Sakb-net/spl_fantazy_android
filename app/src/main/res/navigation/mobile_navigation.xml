@@ -5,16 +5,27 @@
             android:id="@+id/nav_graph"
             app:startDestination="@id/homeFragment">
 
-    <fragment android:id="@+id/homeFragment"
-              android:name="com.sakb.spl.ui.home.HomeFragment"
-              android:label="@string/home"
-              tools:layout="@layout/home_fragment">
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.sakb.spl.ui.home.HomeFragment"
+        android:label="@string/home"
+        tools:layout="@layout/home_fragment">
         <action
             android:id="@+id/action_homeFragment_to_chooseTeamPlayersFragment"
             app:destination="@id/chooseTeamPlayersFragment" />
         <action
             android:id="@+id/action_homeFragment_to_moreMatches"
             app:destination="@id/matchesFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_myPoints"
+            app:destination="@id/myPointsFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_myTeam"
+            app:destination="@id/myTeamFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_trans"
+            app:destination="@id/transfersFragment" />
+
     </fragment>
 
     <fragment android:id="@+id/videosFragment"
@@ -43,11 +54,18 @@
         android:id="@+id/myPointsFragment"
         android:name="com.sakb.spl.ui.mypoints.MyPointsFragment"
         android:label="@string/my_points" />
+
     <fragment
         android:id="@+id/statisticsFragment"
         android:name="com.sakb.spl.ui.statistics.StatisticsFragment"
         android:label="@string/statistics"
-        tools:layout="@layout/fragment_statisitcs"/>
+        tools:layout="@layout/fragment_statisitcs" />
+
+    <fragment
+        android:id="@+id/awardFragment"
+        android:name="com.sakb.spl.ui.award.AwardFragment"
+        android:label="@string/award"
+        tools:layout="@layout/fragment_award" />
 
     <fragment
         android:id="@+id/logoutFragment"
@@ -55,7 +73,8 @@
         android:label="@string/logout"
         tools:layout="@layout/fragment_logout" />
 
-    <fragment android:id="@+id/contactUsFragment"
+    <fragment
+        android:id="@+id/contactUsFragment"
         android:name="com.sakb.spl.ui.contactus.ContactUsFragment"
         android:label="@string/contactus_title"
         tools:layout="@layout/fragment_contact_us"/>

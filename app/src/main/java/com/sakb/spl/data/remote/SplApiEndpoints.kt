@@ -213,6 +213,14 @@ interface SplApiEndpoints {
         @Path("link") link_subeldawry: String
     ):Single<GetFixturesBySubeldawryResponse>
 
+    @FormUrlEncoded
     @POST("api/v1/statistics")
-    fun getStatistics():Single<StatisticsPlayerResponse>
+    fun getStatistics(
+        @Field("link_team") link_team: String,
+        @Field("order_play") order_play: String,
+        @Field("loc_player") loc_player: String
+    ): Single<StatisticsPlayerResponse>
+
+    @POST("/api/v1/award")
+    fun award(): Single<AwardResponse>
 }

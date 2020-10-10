@@ -252,15 +252,23 @@ class SplRepository constructor(
         return remote.getFixtures()
     }
 
-    fun getAllSubeldawry():Single<GetAllSubeldawryResponse>{
+    fun getAllSubeldawry(): Single<GetAllSubeldawryResponse> {
         return remote.getAllSubeldawry()
     }
 
-    fun getAllFixturesBySubeldawry(link_subeldawey :String):Single<GetFixturesBySubeldawryResponse>{
+    fun getAllFixturesBySubeldawry(link_subeldawey: String): Single<GetFixturesBySubeldawryResponse> {
         return remote.getAllFixturesBySubeldawry(link_subeldawey)
     }
 
-    fun getStatistics():Single<StatisticsPlayerResponse>{
-        return remote.getStatistics()
+    fun getStatistics(
+        link_team: String = "",
+        order_play: String = "",
+        loc_player: String = ""
+    ): Single<StatisticsPlayerResponse> {
+        return remote.getStatistics(link_team, order_play, loc_player)
+    }
+
+    fun getAward(): Single<AwardResponse> {
+        return remote.award()
     }
 }

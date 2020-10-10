@@ -1,10 +1,13 @@
 package com.sakb.spl.base
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import com.sakb.spl.R
+import com.sakb.spl.data.local.PrefManager
+import com.sakb.spl.ui.login.LoginActivity
 import com.sakb.spl.utils.Dialogs
 import com.sakb.spl.utils.Snacky
 
@@ -58,6 +61,11 @@ abstract class BaseFragment : Fragment() {
         })
 
         viewModel.unAuthorizedErrorEvent.observe(viewLifecycleOwner, Observer {
+            PrefManager.saveUser(null)
+            val logoutIntent = Intent(context, LoginActivity::class.java)
+                .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)
+            context?.startActivity(logoutIntent)
+            activity?.finish()
             Snacky.getErrorSnacky(
                 activity = requireActivity(),
                 message = getString(R.string.you_must_to_login)

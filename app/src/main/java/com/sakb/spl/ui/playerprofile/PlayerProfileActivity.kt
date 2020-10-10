@@ -60,4 +60,8 @@ class PlayerProfileActivity : BaseActivity() {
 
 
     }
+
+    companion object{
+        const val KEY_PLAYER_INFO = "key_player_info"
+    }
 }

@@ -264,18 +264,13 @@ class ChooseTeamPlayersFragment : BaseFragment() {
             }
 
             binding.buttonChooseTeam.setOnClickListener {
-
+                //TODO Important change chooseTeam form 0 to 1
                 context?.showEnterTeamNameDialog { dialog, name ->
                     dialog?.dismiss()
                     viewModel.saveTeam(
-
                         name
-
                     )
-
-
                 }
-
             }
 
             if (viewModel.isMenuPreviewEnabled) {

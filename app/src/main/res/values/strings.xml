@@ -308,11 +308,23 @@
     <string name="league_created_title">The league was created successfully</string>
     <string name="content_join_desc">Send the league code to your friends so they can join</string>
     <string name="code_league">League code :</string>
-    <string name="up">Upper</string>
-    <string name="points">My Points</string>
     <string name="sell">Sell</string>
     <string name="match_details">Match Details</string>
     <string name="goals">Goals</string>
     <string name="assist">Assists</string>
     <string name="Conceded">Concededs</string>
+    <string name="point">Points</string>
+    <string name="all_players">All Players</string>
+    <string name="lowest_point">Lowest Point</string>
+    <string name="heighest_point">Heighest Point</string>
+    <string name="low_price">Low Price</string>
+    <string name="heigh_price">Heigh Price</string>
+    <string name="goalkeeper">Goalkeeper</string>
+    <string name="defender">Defender</string>
+    <string name="line">Line</string>
+    <string name="attacker">Attacker</string>
+    <string name="award">Award</string>
+    <string name="average">Average</string>
+    <string name="your_score">Your Score</string>
+    <string name="heighest">Heighest</string>
 </resources>

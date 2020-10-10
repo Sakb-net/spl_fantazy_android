@@ -36,6 +36,8 @@ data class LoginResponse(
         @SerializedName("phone")
         val phone: String? = null,
         @SerializedName("state")
-        val state: String? = null
+        val state: String? = null,
+        @SerializedName("choose_team")
+        var chooseTeam: Int? = null
     )
 }

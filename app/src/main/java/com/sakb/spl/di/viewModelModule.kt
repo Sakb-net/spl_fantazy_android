@@ -1,6 +1,7 @@
 package com.sakb.spl.di
 
 import com.sakb.spl.ui.addplayer.AddPlayerViewModel
+import com.sakb.spl.ui.award.AwardViewModel
 import com.sakb.spl.ui.changepassword.ChangePasswordViewModel
 import com.sakb.spl.ui.chooseteam.ChooseTeamViewModel
 import com.sakb.spl.ui.chooseteamplayers.ChooseTeamPlayersViewModel
@@ -154,6 +155,8 @@ val viewModelModule = module {
     viewModel {
         CreateHeadToHeadLeagueViewModel()
     }
-
+    viewModel {
+        AwardViewModel(get())
+    }
 
 }

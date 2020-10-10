@@ -8,83 +8,23 @@
         android:layout_height="match_parent"
         android:orientation="vertical"
         tools:context=".presentation.home.HomeFragment">
-
-
-        <!--  <FrameLayout
-                  android:id="@+id/custom_ttolbar"
-                  android:layout_width="match_parent"
-                  android:layout_height="wrap_content"
-          >
-
-              <ImageView android:layout_width="match_parent"
-                         android:background="@drawable/header_bg"
-                         android:scaleType="centerCrop"
-                         android:layout_height="wrap_content"/>
-
-
-
-          </FrameLayout>-->
-
         <androidx.appcompat.widget.LinearLayoutCompat
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:background="@color/white"
             android:orientation="vertical">
 
-            <!--<LinearLayout
-                    android:layout_marginTop="40dp"
-                    android:gravity="start|center"
-                    android:layout_gravity="start|center"
-                    android:layout_marginStart="16dp"
-                    android:layout_width="match_parent"
-                    android:orientation="horizontal"
-                    android:layout_height="wrap_content">
-
-                <ImageView
-                        android:focusable="true"
-                        android:clickable="true"
-                        android:background="?android:selectableItemBackground"
-                        android:padding="12dp"
-                        android:id="@+id/menu"
-                        android:layout_width="wrap_content"
-                        android:src="@drawable/menu"
-                        android:layout_height="wrap_content"/>
-
-                <TextView
-                        android:layout_marginStart="10dp"
-                        style="@style/TextAppearance.AppCompat.Widget.ActionBar.Title"
-                        android:id="@+id/toolbarTitle"
-                        android:textStyle="bold"
-                        tools:text="fffffffffffff"
-                        android:textColor="@color/white"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"/>
-
-            </LinearLayout>-->
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recyclerView"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginStart="16dp"
-                android:layout_marginEnd="16dp"
+                android:layout_marginStart="@dimen/_16sdp"
+                android:layout_marginEnd="@dimen/_16sdp"
                 android:background="@drawable/layout_corner"
                 android:elevation="12dp"
                 android:orientation="vertical"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
-
-
-            <!--
-                <LinearLayout
-
-
-                    android:id="@+id/linearContainer"
-                        android:layout_width="match_parent"
-                              android:layout_height="match_parent"
-                              android:orientation="vertical"
-               />
-            -->
-
-
         </androidx.appcompat.widget.LinearLayoutCompat>
 
 

@@ -1,63 +1,99 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="wrap_content"
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_height="@dimen/row_height"
+    android:layout_width="match_parent"
     android:background="@color/colorRow"
-    android:orientation="horizontal">
+    android:orientation="horizontal"
+    android:weightSum="7.25">
 
-    <TextView
-        android:id="@+id/txtName"
-        android:layout_width="@dimen/cell_width"
-        android:layout_height="match_parent"
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/tvStates"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
         android:layout_marginStart="@dimen/margin"
-        android:gravity="center|start"
+        android:layout_weight="0.25"
+        app:srcCompat="@drawable/ic_info" />
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="0dp"
+        android:layout_weight="1.75"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/txtName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin"
+            android:gravity="center"
+            android:layout_marginBottom="@dimen/_5sdp"
+            android:textColor="@color/bludeSelectedSetting" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/txtClub"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin"
+            android:gravity="center"
+            android:textColor="@color/colorPrimaryText" />
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/txtPrice"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="0.75"
+        android:layout_marginStart="@dimen/margin"
+        android:gravity="center"
         android:textColor="@color/colorPrimaryText" />
 
-    <ImageView
-        android:id="@+id/imgLogo"
-        android:layout_width="@dimen/cell_width"
-        android:layout_height="match_parent"
-        android:layout_margin="@dimen/margin"
-        android:scaleType="center" />
-
-    <TextView
-        android:id="@+id/txtLocation"
-        android:layout_width="@dimen/cell_width"
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/txtSell"
+        android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_marginStart="@dimen/margin"
-        android:gravity="center|start"
+        android:layout_weight="0.75"
+        android:gravity="center"
         android:textColor="@color/colorSecondaryText" />
 
-    <TextView
-        android:id="@+id/txtStadiumName"
-        android:layout_width="@dimen/cell_width"
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/txtBuy"
+        android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_marginStart="@dimen/margin"
-        android:gravity="center|start"
+        android:layout_weight="0.75"
+        android:gravity="center"
         android:textColor="@color/colorSecondaryText" />
 
-    <TextView
-        android:id="@+id/txtLeagueName"
-        android:layout_width="@dimen/cell_width"
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/txtFrom"
+        android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_marginStart="@dimen/margin"
-        android:gravity="center|start"
+        android:layout_weight="0.75"
+        android:gravity="center"
         android:textColor="@color/colorSecondaryText" />
 
-    <TextView
-        android:id="@+id/txtCoachName"
-        android:layout_width="@dimen/cell_width"
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/txtPoint"
+        android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_marginStart="@dimen/margin"
-        android:gravity="center|start"
+        android:layout_weight="0.75"
+        android:gravity="center"
         android:textColor="@color/colorSecondaryText" />
 
-    <TextView
-        android:id="@+id/txtStarPlayerName"
-        android:layout_width="@dimen/cell_width"
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/txtNextMatch"
+        android:layout_width="0dp"
+        android:layout_marginEnd="@dimen/margin"
         android:layout_height="match_parent"
         android:layout_marginStart="@dimen/margin"
-        android:gravity="center|start"
+        android:layout_weight="1.5"
+        android:gravity="center"
         android:textColor="@color/colorSecondaryText" />
 
-</LinearLayout>
+</androidx.appcompat.widget.LinearLayoutCompat>
