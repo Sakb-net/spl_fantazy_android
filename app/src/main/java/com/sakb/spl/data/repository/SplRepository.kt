@@ -240,6 +240,13 @@ class SplRepository constructor(
         return remote.home("", "")
     }
 
+    fun homePointEldwry():Single<HomePointEldawryResponse>{
+        return remote.homePointEldwry()
+    }
+    fun publicPointEldwry():Single<PublicPointEldaweryResponse>{
+        return remote.publicPointEldwry()
+    }
+
     fun contactUs(): Single<ContactUsResponse> {
         return remote.contactUsData()
     }
@@ -259,6 +266,10 @@ class SplRepository constructor(
     fun getAllFixturesBySubeldawry(link_subeldawey: String): Single<GetFixturesBySubeldawryResponse> {
         return remote.getAllFixturesBySubeldawry(link_subeldawey)
     }
+    fun getFixturesBy(link_subeldawey: String): Single<GetFixtuersResponse> {
+        return remote.getFixturesBy(link_subeldawey)
+    }
+
 
     fun getStatistics(
         link_team: String = "",
@@ -270,5 +281,17 @@ class SplRepository constructor(
 
     fun getAward(): Single<AwardResponse> {
         return remote.award()
+    }
+
+    fun getPointsEldawry():Single<PointsEldwryResponse>{
+        return remote.getPointsEldawry()
+    }
+
+    fun getPointSubeldawry(link_team: String):Single<GetPointSubeldawryResponse>{
+        return remote.getPointsSubEldawry(link_team)
+    }
+
+    fun checkCardStatus():Single<CardStatusResponse>{
+        return remote.checkCardsStatus()
     }
 }

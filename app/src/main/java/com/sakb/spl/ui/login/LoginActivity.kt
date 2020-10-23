@@ -3,6 +3,7 @@ package com.sakb.spl.ui.login
 import android.app.Dialog
 import android.content.Context
 import android.content.Intent
+import android.graphics.BitmapFactory
 import android.os.Bundle
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
@@ -17,6 +18,8 @@ import com.sakb.spl.databinding.ActivityLoginBinding
 import com.sakb.spl.ui.forgotpassword.ForgotPassActivity
 import com.sakb.spl.ui.main.MainActivity
 import com.sakb.spl.ui.register.RegisterActivity
+import com.sakb.spl.utils.ImageUtils
+import com.sakb.spl.utils.LanguageUtil
 import com.sakb.spl.utils.toast
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import timber.log.Timber
@@ -36,6 +39,14 @@ class LoginActivity :  BaseActivity() , SocialMediaSignUpCallback {
         binding.signUp.setOnClickListener {
             startActivity(Intent(this , RegisterActivity::class.java))
         }
+
+        var backIcon = BitmapFactory.decodeResource(resources,R.drawable.back)
+        backIcon = if(LanguageUtil.isArabic()){
+            ImageUtils.rotateImage(backIcon,0f)
+        } else{
+            ImageUtils.rotateImage(backIcon,180f)
+        }
+        binding.back.setImageBitmap(backIcon)
         binding.back.setOnClickListener {
             onBackPressed()
         }

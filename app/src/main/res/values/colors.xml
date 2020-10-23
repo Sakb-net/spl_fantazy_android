@@ -8,6 +8,7 @@
     <color name="text_color_time">#BBBBBB</color>
     <color name="colorGrey">#616161</color>
 
+    <color name="colorGreyNew">#B2B2B2</color>
     <color name="bludeSelectedSetting">#4880cd</color>
     <color name="homeTextColor">#1b1b18</color>
     <color name="black">#000</color>
@@ -54,4 +55,9 @@
 
     <color name="colorGreenDark">#00B966</color>
     <color name="colorOfBlack">#515151</color>
+
+    <color name="colorBlack68">#AD000000</color>
+    <color name="colorGreenDark68">#02522A</color>
+    <color name="colorGrayDark68">#333333</color>
+    <color name="colorWhite50">#80FFFFFF</color>
 </resources>

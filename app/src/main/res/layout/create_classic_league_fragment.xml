@@ -16,7 +16,7 @@
             android:layout_height="match_parent"
             android:background="@color/colorPrimary">
 
-            <TextView
+            <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/banner_text_view"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -28,7 +28,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <LinearLayout
+            <androidx.appcompat.widget.LinearLayoutCompat
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="32dp"
@@ -41,8 +41,7 @@
                 app:layout_constraintTop_toBottomOf="@id/banner_text_view"
                 app:layout_constraintVertical_bias="0">
 
-
-                <TextView
+                <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/tv_titele_contactus"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -55,7 +54,7 @@
                     android:textSize="18sp"
                     android:textStyle="bold" />
 
-                <TextView
+                <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/tv_description"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -67,7 +66,6 @@
                     android:textColor="@color/colorOfBlack"
                     android:textSize="16sp" />
 
-
                 <androidx.cardview.widget.CardView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -76,12 +74,12 @@
                     app:cardCornerRadius="8dp"
                     app:cardElevation="4dp">
 
-                    <LinearLayout
+                    <androidx.appcompat.widget.LinearLayoutCompat
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="vertical">
 
-                        <TextView
+                        <androidx.appcompat.widget.AppCompatTextView
                             android:id="@+id/tv_code"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
@@ -101,10 +99,7 @@
                             android:hint="@string/enter_the_league_name_here"
                             android:inputType="text"
                             android:maxLines="1"
-                            android:padding="8dp"
-
-
-                            />
+                            android:padding="8dp" />
 
                         <View
                             android:layout_width="match_parent"
@@ -113,8 +108,7 @@
                             android:layout_marginEnd="13dp"
                             android:background="@color/form_ed" />
 
-
-                        <TextView
+                        <androidx.appcompat.widget.AppCompatTextView
                             android:id="@+id/tv_calc_points"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
@@ -134,7 +128,7 @@
                             android:clickable="true"
                             android:focusable="true">
 
-                            <TextView
+                            <androidx.appcompat.widget.AppCompatTextView
                                 android:id="@+id/roundEt"
                                 style="@style/contactus_form"
                                 android:layout_marginTop="8dp"
@@ -142,10 +136,7 @@
                                 android:drawableEnd="@drawable/ic_expand_more_primary_24dp"
                                 android:enabled="false"
                                 android:maxLines="1"
-                                android:padding="8dp"
-
-
-                                />
+                                android:padding="8dp" />
                         </FrameLayout>
 
                         <View
@@ -155,8 +146,7 @@
                             android:layout_marginEnd="13dp"
                             android:background="@color/form_ed" />
 
-
-                        <Button
+                        <androidx.appcompat.widget.AppCompatButton
                             android:id="@+id/buttonSend"
                             style="@style/green_button_style"
                             android:layout_width="wrap_content"
@@ -166,13 +156,11 @@
                             android:layout_marginBottom="24dp"
                             android:text="@string/send"
                             app:layout_constraintHorizontal_bias="0.5" />
-                    </LinearLayout>
+                    </androidx.appcompat.widget.LinearLayoutCompat>
 
                 </androidx.cardview.widget.CardView>
 
-
-            </LinearLayout>
-
+            </androidx.appcompat.widget.LinearLayoutCompat>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.core.widget.NestedScrollView>

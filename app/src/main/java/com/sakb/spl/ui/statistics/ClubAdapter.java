@@ -1,12 +1,12 @@
 package com.sakb.spl.ui.statistics;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Filter;
 import android.widget.Filterable;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.appcompat.widget.AppCompatImageView;
@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.sakb.spl.R;
 import com.sakb.spl.data.model.AllDataItem;
+import com.sakb.spl.ui.playerprofile.PlayerProfileActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -44,14 +45,14 @@ public class ClubAdapter extends RecyclerView.Adapter<ClubAdapter.ClubViewHolder
 
     @Override
     public ClubViewHolder onCreateViewHolder(ViewGroup viewGroup, int viewType) {
+        View view;
         if (viewType == TYPE_ROW) {
-            View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.row_club, viewGroup, false);
-            return new ClubViewHolder(view);
+            view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.row_club, viewGroup, false);
         } else {
-            View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.row_club_colorful,
+            view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.row_club_colorful,
                     viewGroup, false);
-            return new ClubViewHolder(view);
         }
+        return new ClubViewHolder(view);
     }
 
     @Override
@@ -65,9 +66,16 @@ public class ClubAdapter extends RecyclerView.Adapter<ClubAdapter.ClubViewHolder
         holder.txtFrom.setText(club.getForm().toString());
         holder.txtPoint.setText(club.getPoint().toString());
         holder.txtNextMatch.setText(club.getTeamCode());
-        if(club.getStatePlayer().equals("normal")){
+        holder.itemView.setOnClickListener(v -> {
+            context.startActivity(
+                    new Intent(context, PlayerProfileActivity.class).putExtra(
+                    "link",
+                    club.getLink()
+            ));
+        });
+        if (club.getStatePlayer().equals("normal")) {
             holder.tvStates.setImageDrawable(ContextCompat.getDrawable(context, R.drawable.ic_info));
-        }else {
+        } else {
             holder.tvStates.setImageDrawable(ContextCompat.getDrawable(context, R.drawable.ic_danger));
         }
     }

@@ -8,25 +8,398 @@
         android:layout_height="match_parent"
         android:orientation="vertical"
         tools:context=".presentation.home.HomeFragment">
-        <androidx.appcompat.widget.LinearLayoutCompat
+
+        <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_marginStart="@dimen/_16sdp"
+            android:layout_marginEnd="@dimen/_16sdp"
             android:background="@color/white"
-            android:orientation="vertical">
+            android:scrollbars="vertical">
 
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recyclerView"
+            <androidx.appcompat.widget.LinearLayoutCompat
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginStart="@dimen/_16sdp"
-                android:layout_marginEnd="@dimen/_16sdp"
-                android:background="@drawable/layout_corner"
-                android:elevation="12dp"
-                android:orientation="vertical"
-                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
-        </androidx.appcompat.widget.LinearLayoutCompat>
+                android:background="@color/white"
+                android:orientation="vertical">
 
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recyclerView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/layout_corner"
+                    android:elevation="12dp"
+                    android:orientation="vertical"
+                    android:scrollbars="none"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
 
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:id="@+id/llInfoTeam"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:layout_marginBottom="@dimen/_10sdp"
+                    android:orientation="vertical"
+                    android:visibility="gone">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/home_gradient_drawable"
+                        android:gravity="center"
+                        android:padding="@dimen/_5sdp"
+                        android:text="@string/my_team_info"
+                        android:textColor="@color/white" />
+
+                    <androidx.appcompat.widget.LinearLayoutCompat
+                        android:id="@+id/llWeek"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/bg_info_cell"
+                        android:orientation="horizontal"
+                        android:paddingTop="@dimen/_12sdp"
+                        android:paddingBottom="@dimen/_12sdp"
+                        android:visibility="gone"
+                        android:weightSum="1">
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/weekTitle"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_marginStart="@dimen/_18sdp"
+                            android:layout_weight="0.5"
+                            android:gravity="start" />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/weekBody"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_marginEnd="@dimen/_29sdp"
+                            android:layout_weight="0.5"
+                            android:gravity="end" />
+                    </androidx.appcompat.widget.LinearLayoutCompat>
+
+                    <androidx.appcompat.widget.LinearLayoutCompat
+                        android:id="@+id/llTotalPoint"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/bg_info_cell"
+                        android:orientation="horizontal"
+                        android:paddingTop="@dimen/_12sdp"
+                        android:paddingBottom="@dimen/_12sdp"
+                        android:visibility="gone"
+                        android:weightSum="1">
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/TotalPointTitle"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_marginStart="@dimen/_18sdp"
+                            android:layout_weight="0.5"
+                            android:gravity="start"
+                            android:text="@string/total_point" />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/TotalPointBody"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_marginEnd="@dimen/_29sdp"
+                            android:layout_weight="0.5"
+                            android:gravity="end" />
+                    </androidx.appcompat.widget.LinearLayoutCompat>
+
+                    <androidx.appcompat.widget.LinearLayoutCompat
+                        android:id="@+id/llOrder"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/bg_info_cell"
+                        android:orientation="horizontal"
+                        android:paddingTop="@dimen/_12sdp"
+                        android:paddingBottom="@dimen/_12sdp"
+                        android:visibility="gone"
+                        android:weightSum="1">
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/OrderTitle"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_marginStart="@dimen/_18sdp"
+                            android:layout_weight="0.5"
+                            android:gravity="start"
+                            android:text="@string/order_rank" />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/OrderBody"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_marginEnd="@dimen/_29sdp"
+                            android:layout_weight="0.5"
+                            android:gravity="end" />
+                    </androidx.appcompat.widget.LinearLayoutCompat>
+
+                    <androidx.appcompat.widget.LinearLayoutCompat
+                        android:id="@+id/llFreeTrans"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/bg_info_cell"
+                        android:orientation="horizontal"
+                        android:paddingTop="@dimen/_12sdp"
+                        android:paddingBottom="@dimen/_12sdp"
+                        android:visibility="gone"
+                        android:weightSum="1">
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/FreeTransTitle"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_marginStart="@dimen/_18sdp"
+                            android:layout_weight="0.5"
+                            android:gravity="start"
+                            android:text="@string/free_trans" />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/FreeTransBody"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_marginEnd="@dimen/_29sdp"
+                            android:layout_weight="0.5"
+                            android:gravity="end" />
+                    </androidx.appcompat.widget.LinearLayoutCompat>
+
+                    <androidx.appcompat.widget.LinearLayoutCompat
+                        android:id="@+id/llNoTransfer"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/bg_info_cell"
+                        android:orientation="horizontal"
+                        android:paddingTop="@dimen/_12sdp"
+                        android:paddingBottom="@dimen/_12sdp"
+                        android:visibility="gone"
+                        android:weightSum="1">
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/NoTransferTitle"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_marginStart="@dimen/_18sdp"
+                            android:layout_weight="0.5"
+                            android:gravity="start"
+                            android:text="@string/no_trans" />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/NoTransferBody"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_marginEnd="@dimen/_29sdp"
+                            android:layout_weight="0.5"
+                            android:gravity="end" />
+                    </androidx.appcompat.widget.LinearLayoutCompat>
+
+                    <androidx.appcompat.widget.LinearLayoutCompat
+                        android:id="@+id/llCost"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/bg_info_cell"
+                        android:orientation="horizontal"
+                        android:paddingTop="@dimen/_12sdp"
+                        android:paddingBottom="@dimen/_12sdp"
+                        android:visibility="gone"
+                        android:weightSum="1">
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/CostTitle"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_marginStart="@dimen/_18sdp"
+                            android:layout_weight="0.5"
+                            android:gravity="start"
+                            android:text="@string/remaining_amount" />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/CostBody"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_marginEnd="@dimen/_29sdp"
+                            android:layout_weight="0.5"
+                            android:gravity="end" />
+                    </androidx.appcompat.widget.LinearLayoutCompat>
+
+                    <androidx.appcompat.widget.LinearLayoutCompat
+                        android:id="@+id/llTeamValue"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/bg_info_cell"
+                        android:orientation="horizontal"
+                        android:paddingTop="@dimen/_12sdp"
+                        android:paddingBottom="@dimen/_12sdp"
+                        android:visibility="gone"
+                        android:weightSum="1">
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/TeamValueTitle"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_marginStart="@dimen/_18sdp"
+                            android:layout_weight="0.5"
+                            android:gravity="start"
+                            android:text="@string/team_value" />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/TeamValueBody"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_marginEnd="@dimen/_29sdp"
+                            android:layout_weight="0.5"
+                            android:gravity="end" />
+                    </androidx.appcompat.widget.LinearLayoutCompat>
+
+                    <androidx.appcompat.widget.LinearLayoutCompat
+                        android:id="@+id/llTotalTrans"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/bg_info_cell"
+                        android:orientation="horizontal"
+                        android:paddingTop="@dimen/_12sdp"
+                        android:paddingBottom="@dimen/_12sdp"
+                        android:visibility="gone"
+                        android:weightSum="1">
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/TotalTransTitle"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_marginStart="@dimen/_18sdp"
+                            android:layout_weight="0.5"
+                            android:gravity="start"
+                            android:text="@string/total_transfer" />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/TotalTransBody"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_marginEnd="@dimen/_29sdp"
+                            android:layout_weight="0.5"
+                            android:gravity="end" />
+                    </androidx.appcompat.widget.LinearLayoutCompat>
+
+                    <androidx.appcompat.widget.LinearLayoutCompat
+                        android:id="@+id/llCaptenCard"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/bg_info_cell"
+                        android:orientation="horizontal"
+                        android:paddingTop="@dimen/_12sdp"
+                        android:paddingBottom="@dimen/_12sdp"
+                        android:visibility="gone"
+                        android:weightSum="1">
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/CaptenCardTitle"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_marginStart="@dimen/_18sdp"
+                            android:layout_weight="0.5"
+                            android:gravity="start"
+                            android:text="@string/tripple_captain_card" />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/CaptenCardBody"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_marginEnd="@dimen/_29sdp"
+                            android:layout_weight="0.5"
+                            android:gravity="end" />
+                    </androidx.appcompat.widget.LinearLayoutCompat>
+
+                    <androidx.appcompat.widget.LinearLayoutCompat
+                        android:id="@+id/llPointChange"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/bg_info_cell"
+                        android:orientation="horizontal"
+                        android:paddingTop="@dimen/_12sdp"
+                        android:paddingBottom="@dimen/_12sdp"
+                        android:visibility="gone"
+                        android:weightSum="1">
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/PointChangeTitle"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_marginStart="@dimen/_18sdp"
+                            android:layout_weight="0.5"
+                            android:gravity="start"
+                            android:text="@string/point_card" />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/PointChangeBody"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_marginEnd="@dimen/_29sdp"
+                            android:layout_weight="0.5"
+                            android:gravity="end" />
+                    </androidx.appcompat.widget.LinearLayoutCompat>
+
+                    <androidx.appcompat.widget.LinearLayoutCompat
+                        android:id="@+id/llCardSilver"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/bg_info_cell"
+                        android:orientation="horizontal"
+                        android:paddingTop="@dimen/_12sdp"
+                        android:paddingBottom="@dimen/_12sdp"
+                        android:visibility="gone"
+                        android:weightSum="1">
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/CardSilverTitle"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_marginStart="@dimen/_18sdp"
+                            android:layout_weight="0.5"
+                            android:gravity="start"
+                            android:text="@string/silver_card" />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/CardSilverBody"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_marginEnd="@dimen/_29sdp"
+                            android:layout_weight="0.5"
+                            android:gravity="end" />
+                    </androidx.appcompat.widget.LinearLayoutCompat>
+
+                    <androidx.appcompat.widget.LinearLayoutCompat
+                        android:id="@+id/llCardGold"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/bg_info_cell"
+                        android:orientation="horizontal"
+                        android:paddingTop="@dimen/_12sdp"
+                        android:paddingBottom="@dimen/_12sdp"
+                        android:visibility="gone"
+                        android:weightSum="1">
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/CardGoldTitle"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_marginStart="@dimen/_18sdp"
+                            android:layout_weight="0.5"
+                            android:gravity="start"
+                            android:text="@string/gold_card" />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/CardGoldBody"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_marginEnd="@dimen/_29sdp"
+                            android:layout_weight="0.5"
+                            android:gravity="end" />
+                    </androidx.appcompat.widget.LinearLayoutCompat>
+
+                </androidx.appcompat.widget.LinearLayoutCompat>
+            </androidx.appcompat.widget.LinearLayoutCompat>
+        </androidx.core.widget.NestedScrollView>
     </FrameLayout>
 </layout>

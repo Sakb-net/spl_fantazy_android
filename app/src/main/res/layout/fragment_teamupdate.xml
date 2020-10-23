@@ -12,7 +12,7 @@
         android:layout_height="match_parent"
         android:background="#003365">
 
-        <ImageView
+        <androidx.appcompat.widget.AppCompatImageView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/header_bg"
@@ -21,8 +21,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-
-        <LinearLayout
+        <androidx.appcompat.widget.LinearLayoutCompat
             android:id="@+id/title_linear_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -35,7 +34,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
-            <ImageView
+            <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/menu"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -45,7 +44,7 @@
                 android:padding="12dp"
                 android:src="@drawable/menu" />
 
-            <TextView
+            <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/toolbarTitle"
                 style="@style/TextAppearance.AppCompat.Widget.ActionBar.Title"
                 android:layout_width="wrap_content"
@@ -57,9 +56,9 @@
                 android:textStyle="bold"
                 tools:text="fffffffffffff" />
 
-        </LinearLayout>
+        </androidx.appcompat.widget.LinearLayoutCompat>
 
-        <TextView
+        <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/banner_text_view"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -71,7 +70,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/title_linear_layout" />
 
-        <LinearLayout
+        <androidx.appcompat.widget.LinearLayoutCompat
             android:id="@+id/count_linear_layout"
             android:layout_width="match_parent"
             android:layout_height="@dimen/_70sdp"
@@ -83,7 +82,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/banner_text_view">
 
-            <TextView
+            <androidx.appcompat.widget.AppCompatTextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -93,7 +92,7 @@
                 android:textColor="@color/black"
                 android:textSize="@dimen/_14ssp" />
 
-            <TextView
+            <androidx.appcompat.widget.AppCompatTextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -104,9 +103,9 @@
                 android:textColor="@color/black"
                 android:textSize="@dimen/_14ssp" />
 
-        </LinearLayout>
+        </androidx.appcompat.widget.LinearLayoutCompat>
 
-        <LinearLayout
+        <androidx.appcompat.widget.LinearLayoutCompat
             android:id="@+id/buttons_linear_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -118,7 +117,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/count_linear_layout">
 
-            <Button
+            <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/preview"
                 style="@style/button_green"
                 android:layout_width="wrap_content"
@@ -129,7 +128,7 @@
                 app:backgroundTint="@color/colorGreenDark"
                 app:layout_constraintTop_toBottomOf="@+id/tv_forgotPass" />
 
-            <Button
+            <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/menuBtn"
                 style="@style/button_green"
                 android:layout_width="wrap_content"
@@ -143,10 +142,9 @@
                 android:textColor="@color/black"
                 app:backgroundTint="@color/white"
                 app:layout_constraintTop_toBottomOf="@+id/tv_forgotPass" />
-        </LinearLayout>
+        </androidx.appcompat.widget.LinearLayoutCompat>
 
-
-        <ImageView
+        <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/stadIv"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -158,7 +156,6 @@
             app:layout_constraintTop_toBottomOf="@id/buttons_linear_layout" />
 
         <androidx.recyclerview.widget.RecyclerView
-
             android:id="@+id/rv_parent"
             android:layout_width="match_parent"
             android:layout_height="0dp"
@@ -170,7 +167,7 @@
             app:layout_constraintTop_toTopOf="@id/stadIv"
             tools:listitem="@layout/parent_item_team_recycler" />
 
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/buttonChooseTeam"
             style="@style/button_green"
             android:layout_width="wrap_content"
@@ -178,7 +175,6 @@
             android:layout_marginTop="16dp"
             android:text="@string/save"
             app:backgroundTint="@color/colorButton"
-
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/stadIv" />

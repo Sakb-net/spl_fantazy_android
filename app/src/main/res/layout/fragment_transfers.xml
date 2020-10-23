@@ -221,7 +221,7 @@
             android:layout_marginStart="12dp"
             android:layout_marginBottom="12dp"
             android:background="#FFD4A745"
-
+            android:visibility="gone"
             android:paddingStart="8dp"
             android:paddingEnd="8dp"
             android:text="@string/gold_card"
@@ -234,14 +234,12 @@
             style="@style/button_green"
             android:layout_width="wrap_content"
             android:layout_gravity="center"
-
             android:layout_marginStart="12dp"
             android:layout_marginBottom="12dp"
             android:background="#FFCCCCCC"
             android:paddingStart="8dp"
             android:paddingEnd="8dp"
-
-
+            android:visibility="gone"
             android:text="@string/silver_card"
             android:textColor="@color/black"
             app:layout_constraintBottom_toBottomOf="parent"

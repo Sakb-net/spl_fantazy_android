@@ -68,12 +68,7 @@ fun Context.showEnterRangeDialog(positive: (dialog: AlertDialog?, priceFrom: Str
     val dialog = alertDialog.create()
     dialog.setCanceledOnTouchOutside(true)
     dialog.window?.setBackgroundDrawableResource(android.R.color.transparent)
-//    Util.changeViewTypeFace(this,
-//        Constants.FONT_REGULAR,
-//        view.positiveBtn)
-    //  view.dialogIcon.setImageResource(drawableRes)
-    // view.dialogText.text = resID
-    // view.total_price.text = total
+
     view.positiveEnterRangeBtn.setOnClickListener {
         positive(
             dialog, view.enter_price_from.text.toString(),
@@ -81,8 +76,6 @@ fun Context.showEnterRangeDialog(positive: (dialog: AlertDialog?, priceFrom: Str
 
         )
     }
-    //if (drawableRes == R.drawable.dialog_check) view.negativeButton.visibility =View.GONE
-    //   view.negativeButton.setOnClickListener{negative(dialog)}
     dialog.show()
 }
 
@@ -95,10 +88,8 @@ fun Context.showDialogLogOut(
     val alertDialog = AlertDialog.Builder(this).setView(view).setCancelable(false)
     val dialog = alertDialog.create()
     dialog.window?.setBackgroundDrawableResource(android.R.color.transparent)
-    // view.dialogIcon.setImageResource(drawableRes)
     view.dialogTextTitle.text = resID
     view.positiveLogoutBtn.setOnClickListener { positive(dialog) }
-    //if (drawableRes == R.drawable.dialog_check) view.negativeButton.visibility =View.GONE
     view.negativeButton.setOnClickListener { negative(dialog) }
     dialog.show()
 }
@@ -110,15 +101,7 @@ fun Context.showEnterTeamNameDialog(positive: (dialog: AlertDialog?, name: Strin
     val dialog = alertDialog.create()
     dialog.setCanceledOnTouchOutside(true)
     dialog.window?.setBackgroundDrawableResource(android.R.color.transparent)
-//    Util.changeViewTypeFace(this,
-//        Constants.FONT_REGULAR,
-//        view.positiveBtn)
-    //  view.dialogIcon.setImageResource(drawableRes)
-    // view.dialogText.text = resID
-    // view.total_price.text = total
     view.positiveEnterBtn.setOnClickListener { positive(dialog, view.enter_et.text.toString()) }
-    //if (drawableRes == R.drawable.dialog_check) view.negativeButton.visibility =View.GONE
-    //   view.negativeButton.setOnClickListener{negative(dialog)}
     dialog.show()
 }
 

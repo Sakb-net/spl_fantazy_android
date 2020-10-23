@@ -11,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <ImageView
+        <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/head_backg"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -21,53 +21,13 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-
-        <!--  <LinearLayout
-              android:id="@+id/title_linear_layout"
-              app:layout_constraintTop_toTopOf="parent"
-              android:layout_marginTop="40dp"
-              android:gravity="start|center"
-              android:layout_gravity="start|center"
-              app:layout_constraintEnd_toEndOf="parent"
-              app:layout_constraintStart_toStartOf="parent"
-              android:layout_marginStart="16dp"
-              android:layout_width="match_parent"
-              android:orientation="horizontal"
-              android:layout_height="wrap_content">
-
-              <ImageView
-                  android:focusable="true"
-                  android:clickable="true"
-                  android:background="?android:selectableItemBackground"
-                  android:padding="12dp"
-                  android:id="@+id/menu"
-                  android:layout_width="wrap_content"
-                  android:src="@drawable/menu"
-                  android:layout_height="wrap_content" />
-
-              <TextView
-                  android:fontFamily="@font/helvetica_reg"
-                  android:includeFontPadding="false"
-                  android:layout_marginStart="10dp"
-                  style="@style/TextAppearance.AppCompat.Widget.ActionBar.Title"
-                  android:id="@+id/toolbarTitle"
-                  android:textStyle="bold"
-                  tools:text="fffffffffffff"
-                  android:textColor="@color/white"
-                  android:layout_width="wrap_content"
-                  android:layout_height="wrap_content" />
-
-          </LinearLayout>-->
-
-
-        <LinearLayout
+        <androidx.appcompat.widget.LinearLayoutCompat
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_marginStart="16dp"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="16dp"
             android:background="@drawable/layout_bg"
-
             android:elevation="0dp"
             android:orientation="vertical"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -77,12 +37,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
-
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
 
-                    <ImageView
+                    <androidx.appcompat.widget.AppCompatImageView
                         android:id="@+id/profile_image"
                         android:layout_width="@dimen/_75sdp"
                         android:layout_height="@dimen/_75sdp"
@@ -91,9 +50,8 @@
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
 
-                    <TextView
+                    <androidx.appcompat.widget.AppCompatTextView
                         android:id="@+id/name"
-
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="16dp"
@@ -110,8 +68,7 @@
                         app:layout_constraintTop_toBottomOf="@+id/profile_image"
                         tools:text="mahmoud Ashraf" />
 
-
-                    <TextView
+                    <androidx.appcompat.widget.AppCompatTextView
                         android:id="@+id/edit_profile"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -131,7 +88,7 @@
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/name" />
 
-                    <TextView
+                    <androidx.appcompat.widget.AppCompatTextView
                         android:id="@+id/email"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
@@ -147,7 +104,7 @@
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/edit_profile" />
 
-                    <TextView
+                    <androidx.appcompat.widget.AppCompatTextView
                         android:id="@+id/email_val"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
@@ -175,7 +132,7 @@
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@id/email_val" />
 
-                    <TextView
+                    <androidx.appcompat.widget.AppCompatTextView
                         android:id="@+id/address"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
@@ -191,7 +148,7 @@
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/view_mail" />
 
-                    <TextView
+                    <androidx.appcompat.widget.AppCompatTextView
                         android:id="@+id/address_val"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
@@ -220,7 +177,7 @@
                         app:layout_constraintTop_toBottomOf="@id/address_val" />
 
 
-                    <TextView
+                    <androidx.appcompat.widget.AppCompatTextView
                         android:id="@+id/pass"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
@@ -237,7 +194,7 @@
                         app:layout_constraintTop_toBottomOf="@+id/view_address" />
 
 
-                    <TextView
+                    <androidx.appcompat.widget.AppCompatTextView
                         android:id="@+id/pass_val"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
@@ -269,8 +226,7 @@
                         app:layout_constraintTop_toBottomOf="@id/pass_val"
                         app:layout_constraintVertical_bias="0" />
 
-                    <TextView
-
+                    <androidx.appcompat.widget.AppCompatTextView
                         android:id="@+id/change_pass"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -293,39 +249,11 @@
                         app:layout_constraintStart_toEndOf="@id/pass"
                         app:layout_constraintTop_toBottomOf="@id/view_address" />
 
-                    <!--   <com.google.android.material.button.MaterialButton
-                           android:textStyle="bold"
-                           android:layout_marginTop="48dp"
-                           android:id="@+id/edit_profile"
-                           app:layout_constraintVertical_bias="0"
-                           android:layout_width="0dp"
-                           android:layout_height="wrap_content"
-                           android:textAllCaps="false"
-                           android:backgroundTint="@color/colorAccent"
-                           android:insetTop="0dp"
-                           android:insetBottom="0dp"
-                           app:cornerRadius="7dp"
-                           android:layout_marginStart="24dp"
-                           android:layout_marginEnd="24dp"
-                           android:layout_marginBottom="@dimen/_48sdp"
-                           android:gravity="center"
-                           android:text="@string/edit_profile"
-                           android:textColor="@color/white"
-                           app:layout_constraintBottom_toBottomOf="parent"
-                           app:layout_constraintEnd_toEndOf="parent"
-                           app:layout_constraintHorizontal_bias="0"
-                           app:layout_constraintStart_toStartOf="parent"
-                           app:layout_constraintTop_toBottomOf="@+id/view_pass" />-->
-
-
                 </androidx.constraintlayout.widget.ConstraintLayout>
-
 
             </androidx.core.widget.NestedScrollView>
 
-
-        </LinearLayout>
-
+        </androidx.appcompat.widget.LinearLayoutCompat>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

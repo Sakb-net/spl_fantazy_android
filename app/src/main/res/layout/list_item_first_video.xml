@@ -23,14 +23,13 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <ImageView
+            <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/imageViewThumb"
                 android:layout_width="match_parent"
                 android:layout_height="250dp"
                 android:scaleType="centerCrop"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-
                 tools:srcCompat="@tools:sample/avatars" />
 
             <View
@@ -42,8 +41,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <TextView
-
+            <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/textViewTitle"
                 style="@style/TextAppearance.AppCompat.Small"
                 android:layout_width="0dp"
@@ -64,7 +62,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 tools:text="Uziasxxxxxxxxxxzzzxxxxxxxxxxxxxxxxxxxxxxxxxxx0000xx" />
 
-            <TextView
+            <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/textViewSubtitle"
                 style="@style/TextAppearance.AppCompat.Small"
                 android:layout_width="0dp"
@@ -78,13 +76,10 @@
                 android:textAlignment="viewStart"
                 android:textColor="@color/white"
                 app:layout_constraintBottom_toTopOf="@id/textViewTitle"
-
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 tools:text="Uzias" />
 
-
         </androidx.constraintlayout.widget.ConstraintLayout>
-
     </androidx.cardview.widget.CardView>
 </layout>

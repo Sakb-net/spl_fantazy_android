@@ -18,13 +18,12 @@
         app:cardCornerRadius="0dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
-
             android:id="@+id/constraintLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/home_gradient_drawable">
 
-            <TextView
+            <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/textViewStart"
                 style="@style/TextAppearance.AppCompat.Small"
                 android:layout_width="wrap_content"
@@ -35,18 +34,12 @@
                 android:fontFamily="@font/helvetica_reg"
                 android:includeFontPadding="false"
                 android:text="@string/show_all_matches"
-
-
                 android:textColor="@color/white"
-
                 app:layout_constrainedWidth="true"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
-
-
         </androidx.constraintlayout.widget.ConstraintLayout>
-
     </androidx.cardview.widget.CardView>
 </layout>

@@ -3,93 +3,43 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
-
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".presentation.videos.VideosFragment">
-
-
         <FrameLayout
             android:id="@+id/custom_ttolbar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
-
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/header_bg"
                 android:scaleType="centerCrop" />
-
-
         </FrameLayout>
 
-
-        <LinearLayout
+        <androidx.appcompat.widget.LinearLayoutCompat
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
 
-            <!--                <LinearLayout-->
-            <!--                    android:layout_marginTop="40dp"-->
-            <!--                    android:gravity="start|center"-->
-            <!--                    android:layout_gravity="start|center"-->
-            <!--                    android:layout_marginStart="16dp"-->
-            <!--                    android:layout_width="match_parent"-->
-            <!--                    android:orientation="horizontal"-->
-            <!--                    android:layout_height="wrap_content">-->
-
-            <!--                    <ImageView-->
-            <!--                        android:focusable="true"-->
-            <!--                        android:clickable="true"-->
-            <!--                        android:background="?android:selectableItemBackground"-->
-            <!--                        android:padding="12dp"-->
-            <!--                        android:id="@+id/menu"-->
-            <!--                        android:layout_width="wrap_content"-->
-            <!--                        android:src="@drawable/menu"-->
-            <!--                        android:layout_height="wrap_content" />-->
-
-            <!--                    <TextView-->
-            <!--                        android:fontFamily="@font/helvetica_reg"-->
-            <!--                        android:includeFontPadding="false"-->
-            <!--                        android:layout_marginStart="10dp"-->
-            <!--                        style="@style/TextAppearance.AppCompat.Widget.ActionBar.Title"-->
-            <!--                        android:id="@+id/toolbarTitle"-->
-            <!--                        android:textStyle="bold"-->
-            <!--                        tools:text="fffffffffffff"-->
-            <!--                        android:textColor="@color/white"-->
-            <!--                        android:layout_width="wrap_content"-->
-            <!--                        android:layout_height="wrap_content" />-->
-
-            <!--                </LinearLayout>-->
-
-
-            <LinearLayout
+            <androidx.appcompat.widget.LinearLayoutCompat
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginStart="16dp"
                 android:layout_marginEnd="16dp"
-
                 android:background="@drawable/layout_bg"
                 android:elevation="0dp"
                 android:orientation="vertical">
-
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-                    <!--                        <androidx.swiperefreshlayout.widget.SwipeRefreshLayout-->
-                    <!--                            android:id="@+id/swipeRefreshLayout"-->
-                    <!--                            android:layout_width="match_parent"-->
-                    <!--                            android:layout_height="match_parent">-->
-
                     <include
                         android:id="@+id/video_list"
                         layout="@layout/include_videos_list" />
-
-                    <!--                        </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>-->
 
                     <include
                         android:id="@+id/network_state_view"
@@ -103,11 +53,9 @@
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
+            </androidx.appcompat.widget.LinearLayoutCompat>
 
-            </LinearLayout>
-
-        </LinearLayout>
-
+        </androidx.appcompat.widget.LinearLayoutCompat>
 
     </FrameLayout>
 </layout>

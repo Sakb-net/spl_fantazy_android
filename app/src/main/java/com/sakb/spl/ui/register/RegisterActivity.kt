@@ -1,6 +1,7 @@
 package com.sakb.spl.ui.register
 
 import android.content.Intent
+import android.graphics.BitmapFactory
 import android.os.Bundle
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
@@ -15,6 +16,8 @@ import com.sakb.spl.data.model.LoginResponse
 import com.sakb.spl.databinding.ActivityRegisterBinding
 import com.sakb.spl.ui.chooseteam.ChooseFavTeamActivity
 import com.sakb.spl.ui.main.MainActivity
+import com.sakb.spl.utils.ImageUtils
+import com.sakb.spl.utils.LanguageUtil
 import com.sakb.spl.utils.toast
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import timber.log.Timber
@@ -31,6 +34,13 @@ class RegisterActivity : BaseActivity(), SocialMediaSignUpCallback {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_register)
 
+        var backIcon = BitmapFactory.decodeResource(resources,R.drawable.back)
+        backIcon = if(LanguageUtil.isArabic()){
+            ImageUtils.rotateImage(backIcon,0f)
+        } else{
+            ImageUtils.rotateImage(backIcon,180f)
+        }
+        binding.back.setImageBitmap(backIcon)
         binding.back.setOnClickListener {
             onBackPressed()
         }

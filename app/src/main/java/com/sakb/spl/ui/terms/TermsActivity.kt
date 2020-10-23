@@ -26,13 +26,11 @@ class TermsActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_terms)
         binding.toolbarTitle.text = getString(R.string.terms)
-        changeViewsFonts()
         context = this
         viewModel.terms()
 
         viewModel.termsResultLiveData.observe(this, Observer { data ->
-            // context?.toast(""+data.message)
-            // if (data.statusCode==1){
+
             binding.terms.text = data.data?.content?.trim()
 
             binding.buttonStart.setOnClickListener {
@@ -45,18 +43,9 @@ class TermsActivity : BaseActivity() {
                     toast(getString(R.string.you_must_accept_terms_conditions))
 
             }
-            //}
 
 
         })
-    }
-
-
-    private fun changeViewsFonts() {
-//        Util.changeViewTypeFace(this@TermsActivity, Constants.FONT_REGULAR,
-//            binding.toolbarTitle)
-
-
     }
 
 }

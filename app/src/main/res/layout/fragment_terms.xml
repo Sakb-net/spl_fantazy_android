@@ -2,42 +2,35 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
-
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".presentation.contactus.ContactUsFragment">
-
-
         <FrameLayout
             android:id="@+id/custom_ttolbar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <ImageView
+            <androidx.appcompat.widget.AppCompatImageView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/header_bg"
                 android:scaleType="centerCrop" />
-
-
         </FrameLayout>
-
 
         <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:fillViewport="true">
 
-            <LinearLayout
+            <androidx.appcompat.widget.LinearLayoutCompat
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-
                 android:clipToPadding="false"
                 android:fitsSystemWindows="true"
                 android:orientation="vertical">
 
-                <LinearLayout
+                <androidx.appcompat.widget.LinearLayoutCompat
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="start|center"
@@ -46,7 +39,7 @@
                     android:gravity="start|center"
                     android:orientation="horizontal">
 
-                    <ImageView
+                    <androidx.appcompat.widget.AppCompatImageView
                         android:id="@+id/menu"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -56,7 +49,7 @@
                         android:padding="12dp"
                         android:src="@drawable/menu" />
 
-                    <TextView
+                    <androidx.appcompat.widget.AppCompatTextView
                         android:id="@+id/toolbarTitle"
                         style="@style/TextAppearance.AppCompat.Widget.ActionBar.Title"
                         android:layout_width="wrap_content"
@@ -68,22 +61,19 @@
                         android:textStyle="bold"
                         tools:text="fffffffffffff" />
 
-                </LinearLayout>
+                </androidx.appcompat.widget.LinearLayoutCompat>
 
-
-                <LinearLayout
+                <androidx.appcompat.widget.LinearLayoutCompat
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="16dp"
                     android:layout_marginEnd="16dp"
-
                     android:background="@drawable/layout_bg"
                     android:elevation="12dp"
                     android:orientation="vertical">
 
-
-                    <TextView
+                    <androidx.appcompat.widget.AppCompatTextView
                         android:id="@+id/terms"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
@@ -97,10 +87,9 @@ vcvcvc
 vcvcvcvc
 vcvcvcvcvcvc" />
 
+                </androidx.appcompat.widget.LinearLayoutCompat>
 
-                </LinearLayout>
-
-            </LinearLayout>
+            </androidx.appcompat.widget.LinearLayoutCompat>
 
         </androidx.core.widget.NestedScrollView>
 

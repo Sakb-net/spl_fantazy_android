@@ -175,6 +175,11 @@ interface SplApiEndpoints {
         @Field("limit_fix") limit_fix: String
     ): Single<HomeResponse>
 
+    @GET("/api/v1/home_points_eldwry")
+    fun homePointEldwry():Single<HomePointEldawryResponse>
+
+    @GET("/api/v1/public_points_eldwry")
+    fun publicPointEldwry():Single<PublicPointEldaweryResponse>
 
     @FormUrlEncoded
     @POST("/api/v1/comments")
@@ -213,6 +218,11 @@ interface SplApiEndpoints {
         @Path("link") link_subeldawry: String
     ):Single<GetFixturesBySubeldawryResponse>
 
+    @GET("api/v1/fixtures/{link}")
+    fun getFixturesBy(
+        @Path("link") link_subeldawry: String
+    ):Single<GetFixtuersResponse>
+
     @FormUrlEncoded
     @POST("api/v1/statistics")
     fun getStatistics(
@@ -223,4 +233,14 @@ interface SplApiEndpoints {
 
     @POST("/api/v1/award")
     fun award(): Single<AwardResponse>
+
+    @GET("/api/v1/points_eldwry")
+    fun getPointsEldawry(): Single<PointsEldwryResponse>
+
+    @FormUrlEncoded
+    @POST("/api/v1/points_subeldwry")
+    fun getPointsSubEldawry(@Field("subeldwry_link") link_team: String): Single<GetPointSubeldawryResponse>
+
+    @GET("/api/v1/check_btns_status")
+    fun checkCardsStatus():Single<CardStatusResponse>
 }

@@ -84,7 +84,7 @@ class StatisticsFragment : BaseFragment() {
     private fun initTeamsSpinner(teamResponse: GetTeamResponse) {
 
 
-        var teams = teamResponse.data
+        val teams = teamResponse.data
         teams?.add(GetTeamResponse.Data("", "___end__"))
 
         val adapter =

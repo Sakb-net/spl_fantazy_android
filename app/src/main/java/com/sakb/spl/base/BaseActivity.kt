@@ -1,5 +1,8 @@
 package com.sakb.spl.base
 
+import android.content.Context
+import android.content.Intent
+import android.content.res.Configuration
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
@@ -7,9 +10,12 @@ import com.sakb.spl.R
 import com.sakb.spl.utils.Dialogs
 import com.sakb.spl.utils.LocaleManager
 import com.sakb.spl.utils.Snacky
+import com.zeugmasolutions.localehelper.LocaleAwareCompatActivity
+import com.zeugmasolutions.localehelper.LocaleHelperActivityDelegateImpl
+import java.util.*
 
 
-abstract class BaseActivity : AppCompatActivity() {
+abstract class BaseActivity : LocaleAwareCompatActivity() {
 
     protected abstract val viewModel: BaseViewModel
 
@@ -18,8 +24,6 @@ abstract class BaseActivity : AppCompatActivity() {
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        // handle change locale at runtime
-        LocaleManager.setLocale(this)
         super.onCreate(savedInstanceState)
         setupLoadingObserver()
         setupMessagesObserver()
@@ -53,6 +57,12 @@ abstract class BaseActivity : AppCompatActivity() {
             Snacky.getErrorSnacky(activity = this, message = getString(R.string.you_must_to_login))
                 ?.show()
         })
+    }
+    fun restartActivity() {
+        finish()
+        val newIntent = intent
+        newIntent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
+        startActivity(newIntent)
     }
 
     override fun onDestroy() {

@@ -7,14 +7,14 @@
 
     </data>
 
-    <LinearLayout
+    <androidx.appcompat.widget.LinearLayoutCompat
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:paddingTop="12dp"
         android:paddingBottom="12dp">
 
-        <ImageView
+        <androidx.appcompat.widget.AppCompatImageView
             android:layout_width="20dp"
             android:layout_height="20dp"
             android:layout_gravity="center"
@@ -22,41 +22,40 @@
             android:layout_marginEnd="8dp"
             app:srcCompat="@drawable/ic_info" />
 
-        <LinearLayout
+        <androidx.appcompat.widget.LinearLayoutCompat
             android:layout_width="match_parent"
-
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_weight=".8"
             android:orientation="vertical">
 
-            <TextView
+            <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/nameTv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:ellipsize="end"
                 android:maxLines="1"
-                android:text="mohamed00000000000000"
+                tools:text="mohamed00000000000000"
                 android:textColor="#007466"
                 android:textSize="14.5sp" />
 
-            <LinearLayout
+            <androidx.appcompat.widget.LinearLayoutCompat
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
 
-                <TextView
+                <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/clubTv"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="#515151"
                     tools:text="mohamed0" />
-            </LinearLayout>
+            </androidx.appcompat.widget.LinearLayoutCompat>
 
 
-        </LinearLayout>
+        </androidx.appcompat.widget.LinearLayoutCompat>
 
-        <TextView
+        <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/priceTv"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -68,7 +67,7 @@
             android:textColor="#0A0A0A"
             tools:text="5.44" />
 
-        <TextView
+        <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/pointTv"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -80,7 +79,7 @@
             android:textColor="#0A0A0A"
             tools:text="44.7" />
 
-        <TextView
+        <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/fixTv"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -88,10 +87,8 @@
             android:layout_marginStart="8dp"
             android:layout_weight="1"
             android:gravity="start"
-            android:text="44.7"
+            tools:text="44.7"
             android:textAlignment="viewStart"
             android:textColor="#0A0A0A" />
-
-
-    </LinearLayout>
+    </androidx.appcompat.widget.LinearLayoutCompat>
 </layout>

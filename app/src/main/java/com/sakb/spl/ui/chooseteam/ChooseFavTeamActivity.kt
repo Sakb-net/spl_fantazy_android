@@ -23,13 +23,9 @@ import timber.log.Timber
 class ChooseFavTeamActivity : BaseActivity() {
 
     private lateinit var binding: ActivityChooseFavTeamBinding
-    private lateinit var context: Context
-    private lateinit var dialog: Dialog
 
     override val viewModel by viewModel<ChooseTeamViewModel>()
 
-
-    private val teamsList = mutableListOf<teams>()
     private var adapter: SingleAdapter? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -46,7 +42,6 @@ class ChooseFavTeamActivity : BaseActivity() {
 
 
         binding.recyclerView.layoutManager = LinearLayoutManager(this)
-        //    binding.recyclerView.addItemDecoration(DividerItemDecorationNoLast(this, LinearLayoutManager.VERTICAL))
 
         viewModel.getTeams()
 
@@ -56,43 +51,16 @@ class ChooseFavTeamActivity : BaseActivity() {
             adapter = SingleAdapter(data?.data)
             binding.recyclerView.adapter = adapter
             adapter?.onItemClick = { _, data ->
-                //val user = PrefManager.getUser()
                 viewModel.updateProfile("" + data.link)
             }
-
-            //createList()
-
-
         })
 
         viewModel.updateProfileResultLiveData.observe(this, Observer { data ->
-            // toast(""+it.status)
-
             toast("" + data.Message)
             startActivity(
                 Intent(this@ChooseFavTeamActivity, TermsActivity::class.java)
                     .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)
             )
-
-            //createList()
-
-
         })
-
-        /*
-        to get selected
-        */
-        // showToast(adapter.selected!!.name)
     }
-
-    /* private fun createList() {
-         for (i in 0..19) {
-             val team = teams()
-             team.name=("Team " + (i + 1))
-             teamsList.add(team)
-         }
-         adapter?.setEmployees(teamsList)
-     }*/
-
-
 }

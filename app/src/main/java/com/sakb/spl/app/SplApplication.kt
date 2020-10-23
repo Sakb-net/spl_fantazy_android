@@ -10,17 +10,18 @@ import com.sakb.spl.di.networkModule
 import com.sakb.spl.di.repositoryModule
 import com.sakb.spl.di.viewModelModule
 import com.sakb.spl.utils.LocaleManager
+import com.zeugmasolutions.localehelper.LocaleAwareApplication
+import com.zeugmasolutions.localehelper.LocaleHelperApplicationDelegate
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
 import org.koin.core.context.startKoin
 import timber.log.Timber
 
-class SplApplication : Application() {
+class SplApplication : LocaleAwareApplication() {
 
     override fun onCreate() {
         super.onCreate()
         PrefManager.initialize(this)
-        LocaleManager.setLocale(this)
         startKoin {
             // Koin logger
             androidLogger()
@@ -37,16 +38,6 @@ class SplApplication : Application() {
         }
         setupTimber()
     }
-
-    override fun attachBaseContext(base: Context) {
-        super.attachBaseContext(LocaleManager.setLocale(base))
-    }
-
-    override fun onConfigurationChanged(newConfig: Configuration) {
-        super.onConfigurationChanged(newConfig)
-        LocaleManager.setLocale(this)
-    }
-
 
     private fun setupTimber() {
         if (BuildConfig.DEBUG) {

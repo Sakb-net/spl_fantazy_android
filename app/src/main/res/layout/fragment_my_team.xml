@@ -3,7 +3,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
+<data>
 
+</data>
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -18,44 +20,6 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
-
-
-        <!--   <LinearLayout
-               android:id="@+id/title_linear_layout"
-               app:layout_constraintTop_toTopOf="parent"
-               android:layout_marginTop="40dp"
-               android:gravity="start|center"
-               android:layout_gravity="start|center"
-               app:layout_constraintEnd_toEndOf="parent"
-               app:layout_constraintStart_toStartOf="parent"
-               android:layout_marginStart="16dp"
-               android:layout_width="match_parent"
-               android:orientation="horizontal"
-               android:layout_height="wrap_content">
-
-               <ImageView
-                   android:focusable="true"
-                   android:clickable="true"
-                   android:background="?android:selectableItemBackground"
-                   android:padding="12dp"
-                   android:id="@+id/menu"
-                   android:layout_width="wrap_content"
-                   android:src="@drawable/menu"
-                   android:layout_height="wrap_content" />
-
-               <TextView
-                   android:fontFamily="@font/helvetica_reg"
-                   android:includeFontPadding="false"
-                   android:layout_marginStart="10dp"
-                   style="@style/TextAppearance.AppCompat.Widget.ActionBar.Title"
-                   android:id="@+id/toolbarTitle"
-                   android:textStyle="bold"
-                   tools:text="fffffffffffff"
-                   android:textColor="@color/white"
-                   android:layout_width="wrap_content"
-                   android:layout_height="wrap_content" />
-
-           </LinearLayout>-->
 
         <TextView
             android:id="@+id/banner_text_view"
@@ -107,17 +71,13 @@
             style="@style/button_green"
             android:layout_width="wrap_content"
             android:layout_gravity="center"
-
             android:layout_marginTop="24dp"
             android:background="@drawable/rec_green_color_dialog"
-
             android:paddingStart="8dp"
             android:paddingEnd="8dp"
             android:text="@string/choose_team"
-
             android:textAllCaps="false"
             app:layout_constraintBottom_toBottomOf="@id/view_bg"
-
             app:layout_constraintEnd_toEndOf="@id/view_bg"
             app:layout_constraintStart_toStartOf="@id/view_bg"
             app:layout_constraintTop_toBottomOf="@id/empty_view_title"
@@ -130,78 +90,6 @@
             android:layout_height="0dp"
             android:visibility="gone"
             app:constraint_referenced_ids="view_bg,empty_image,empty_view_title,buttonOpenChooseTeam" />
-
-        <!--  <LinearLayout
-              android:minHeight="60dp"
-              android:id="@+id/count_linear_layout"
-              app:layout_constraintEnd_toEndOf="parent"
-              app:layout_constraintStart_toStartOf="parent"
-              app:layout_constraintTop_toBottomOf="@id/banner_text_view"
-              android:layout_gravity="center"
-              android:background="@color/white"
-              android:gravity="center"
-              android:layout_width="match_parent"
-              android:layout_height="wrap_content"
-              android:orientation="horizontal">
-
-              <LinearLayout
-                  android:layout_gravity="center"
-                  android:gravity="center"
-                  android:layout_weight="1"
-                  android:orientation="vertical"
-                  android:layout_width="wrap_content"
-                  android:layout_height="wrap_content">
-                  <TextView
-                      android:layout_gravity="center"
-                      android:gravity="center"
-                      android:text="@string/players_num"
-                      android:textColor="@color/black"
-                      android:layout_width="wrap_content"
-                      android:layout_height="wrap_content" />
-
-                  <TextView
-                      android:id="@+id/player_num"
-                      android:layout_gravity="center"
-                      android:gravity="center"
-                      tools:text="11"
-
-                      android:layout_marginTop="4dp"
-                      android:textStyle="bold"
-                      android:textColor="#ED3B39"
-                      android:layout_width="wrap_content"
-                      android:layout_height="wrap_content" />
-              </LinearLayout>
-
-
-              <LinearLayout
-                  android:layout_gravity="center"
-                  android:gravity="center"
-                  android:layout_weight="1"
-                  android:orientation="vertical"
-                  android:layout_width="wrap_content"
-                  android:layout_height="wrap_content">
-                  <TextView
-                      android:gravity="center"
-                      android:layout_gravity="center"
-                      android:layout_weight="1"
-                      android:text="@string/remaining_amount"
-                      android:textColor="@color/black"
-                      android:layout_width="wrap_content"
-                      android:layout_height="wrap_content" />
-                  <TextView
-                      android:id="@+id/pay_total"
-                      android:layout_gravity="center"
-                      android:gravity="center"
-                      tools:text="100"
-
-                      android:layout_marginTop="4dp"
-                      android:textStyle="bold"
-                      android:textColor="#28A96C"
-                      android:layout_width="wrap_content"
-                      android:layout_height="wrap_content" />
-              </LinearLayout>
-
-          </LinearLayout>-->
 
         <LinearLayout
             android:id="@+id/buttons_linear_layout"
@@ -244,7 +132,6 @@
         </LinearLayout>
 
         <androidx.core.widget.NestedScrollView
-
             android:id="@+id/nested_container"
             android:layout_width="0dp"
             android:layout_height="0dp"
@@ -259,18 +146,13 @@
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
-
-
                 <ImageView
-
                     android:id="@+id/stadIv"
                     android:layout_width="0dp"
                     android:layout_height="0dp"
                     android:layout_marginTop="24dp"
                     android:layout_marginBottom="24dp"
                     android:scaleType="centerCrop"
-
-
                     android:src="@drawable/pitch"
                     app:layout_constraintBottom_toBottomOf="@id/rv_swapList"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -278,7 +160,6 @@
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <androidx.recyclerview.widget.RecyclerView
-
                     android:id="@+id/rv_parent"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
@@ -295,7 +176,7 @@
                     android:id="@+id/swap_bg"
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
-                    android:background="#B2B2B2"
+                    android:background="@drawable/bg_subtitle_gray"
                     app:layout_constraintBottom_toBottomOf="@id/rv_swapList"
                     app:layout_constraintEnd_toEndOf="@id/stadIv"
                     app:layout_constraintStart_toStartOf="@id/stadIv"
@@ -316,44 +197,32 @@
                     tools:listitem="@layout/child_item_myteam_recycler" />
 
 
-                <Button
+                <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/buttonBenchBoost"
                     style="@style/button_green"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_gravity="center"
-
-                    android:layout_marginStart="12dp"
-                    android:layout_marginTop="12dp"
-
-                    android:layout_marginBottom="12dp"
-
-
+                    android:layout_margin="@dimen/_8sdp"
                     android:background="@drawable/rec_green_color_dialog"
-                    android:paddingStart="8dp"
-                    android:paddingEnd="8dp"
+                    android:padding="@dimen/_8sdp"
                     android:text="@string/benchboost_text_view"
+                    android:textSize="@dimen/_10ssp"
+                    android:textAllCaps="false"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toStartOf="@id/buttonTrippleCaptain"
-                    app:layout_constraintHorizontal_chainStyle="packed"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/rv_swapList" />
 
-                <Button
+                <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/buttonTrippleCaptain"
                     style="@style/button_green"
-                    android:layout_width="wrap_content"
-                    android:layout_gravity="center"
-
-                    android:layout_marginStart="24dp"
-
-                    android:layout_marginTop="12dp"
-                    android:layout_marginBottom="12dp"
-
-
+                    android:layout_width="0dp"
+                    android:layout_margin="@dimen/_8sdp"
                     android:background="@drawable/rec_green_color_dialog"
-                    android:paddingStart="8dp"
-                    android:paddingEnd="8dp"
+                    android:padding="@dimen/_8sdp"
+                    android:textAllCaps="false"
                     android:text="@string/tripple_captain_card"
+                    android:textSize="@dimen/_10ssp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@id/buttonBenchBoost"

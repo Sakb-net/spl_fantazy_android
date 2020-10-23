@@ -15,7 +15,7 @@
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
-        android:background="@drawable/dialog_background"
+        android:background="@drawable/dialog_background_primary"
         android:maxWidth="300dp"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -26,14 +26,14 @@
 
         <TextView
             android:id="@+id/enter_tv"
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
             android:gravity="center"
             android:text="@string/enter_print_name"
-            android:textColor="@color/colorAccent"
+            android:textColor="@color/white"
             android:textSize="16sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
@@ -54,6 +54,7 @@
             android:textColor="#3C3C3C"
             android:textColorHint="#3C3C3C"
             android:textSize="16sp"
+            android:hint="@string/write_your_team_name"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/enter_tv" />

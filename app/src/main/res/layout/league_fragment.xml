@@ -16,7 +16,7 @@
             android:layout_height="match_parent"
             android:background="@drawable/groupbg">
 
-            <TextView
+            <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/join_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -32,7 +32,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <TextView
+            <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/join_description_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -49,7 +49,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/join_text" />
 
-            <Button
+            <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/special_league_button"
                 style="@style/green_button_style"
                 android:layout_width="wrap_content"
@@ -65,7 +65,7 @@
                 app:layout_constraintTop_toBottomOf="@id/join_description_text" />
 
 
-            <Button
+            <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/powerful_league"
                 style="@style/green_button_style"
                 android:layout_width="wrap_content"
@@ -75,14 +75,14 @@
                 android:layout_marginEnd="24dp"
                 android:text="@string/powerful_league"
                 android:textAllCaps="false"
+                android:visibility="gone"
                 app:layout_constrainedWidth="true"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0"
                 app:layout_constraintStart_toEndOf="@id/special_league_button"
                 app:layout_constraintTop_toBottomOf="@id/join_description_text" />
 
-
-            <ImageView
+            <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/curve_image"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -93,8 +93,7 @@
                 app:layout_constraintTop_toBottomOf="@id/special_league_button"
                 app:srcCompat="@drawable/ic_subtraction" />
 
-
-            <TextView
+            <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/create_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -111,7 +110,7 @@
                 app:layout_constraintTop_toBottomOf="@id/curve_image" />
 
 
-            <TextView
+            <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/create_description_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -128,7 +127,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/create_text" />
 
-            <Button
+            <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/head_button"
                 style="@style/green_button_style"
                 android:layout_width="wrap_content"
@@ -139,6 +138,7 @@
                 android:layout_marginBottom="24dp"
                 android:text="@string/head_to_head"
                 android:textAllCaps="false"
+                android:visibility="gone"
                 app:layout_constrainedWidth="true"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@id/classic_button"
@@ -147,7 +147,7 @@
                 app:layout_constraintTop_toBottomOf="@id/create_description_text"
                 app:layout_constraintVertical_bias="0" />
 
-            <Button
+            <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/classic_button"
                 style="@style/green_button_style"
                 android:layout_width="wrap_content"
@@ -161,7 +161,6 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="1"
                 app:layout_constraintTop_toBottomOf="@id/create_description_text" />
-
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.core.widget.NestedScrollView>

@@ -3,6 +3,7 @@ package com.sakb.spl.ui.myteam
 import com.sakb.spl.base.BaseViewModel
 import com.sakb.spl.data.model.AddCaptainOrVise
 import com.sakb.spl.data.model.AddDirectInsideChange
+import com.sakb.spl.data.model.CardStatusResponse
 import com.sakb.spl.data.model.MyteamPlayersResponse
 import com.sakb.spl.data.repository.SplRepository
 import com.sakb.spl.utils.SingleLiveEvent
@@ -26,8 +27,7 @@ class MyTeamViewModel(
 
 
     var MyTeamPlayersListLiveData = SingleLiveEvent<MyteamPlayersResponse>()
-    fun loadMyTeamPlayers(
-    ) {
+    fun loadMyTeamPlayers() {
         repository.myTeamPlayer()
             .subscribeOn(Schedulers.io())
             .applyLoadingState()
@@ -789,4 +789,20 @@ class MyTeamViewModel(
 
     }
 
+
+    var cardStatusResponse = SingleLiveEvent<CardStatusResponse>()
+
+    fun loadCardStatus(){
+        repository.checkCardStatus()
+            .subscribeOn(Schedulers.io())
+            .applyLoadingState()
+            .subscribe(
+                { data ->
+                    cardStatusResponse.value = data
+                },
+                { throwable ->
+                    handleApiException(throwable)
+                }
+            ).addToDisposableBag()
+    }
 }

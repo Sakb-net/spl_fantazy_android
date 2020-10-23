@@ -41,7 +41,7 @@
                         android:elevation="12dp"
                         android:orientation="vertical">
 
-                        <LinearLayout
+                        <androidx.appcompat.widget.LinearLayoutCompat
                             android:id="@+id/filterLL"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
@@ -50,7 +50,7 @@
                             android:orientation="horizontal"
                             android:weightSum="3">
 
-                            <TextView
+                            <androidx.appcompat.widget.AppCompatTextView
                                 android:id="@+id/sortBy_Tv"
                                 android:layout_width="0dp"
                                 android:layout_height="match_parent"
@@ -67,7 +67,7 @@
                                 android:text="@string/sort_"
                                 android:textSize="14sp" />
 
-                            <TextView
+                            <androidx.appcompat.widget.AppCompatTextView
                                 android:id="@+id/allTeams_Tv"
                                 android:layout_width="0dp"
                                 android:layout_height="match_parent"
@@ -84,7 +84,7 @@
                                 android:text="@string/all_teams"
                                 android:textSize="14sp" />
 
-                            <TextView
+                            <androidx.appcompat.widget.AppCompatTextView
                                 android:id="@+id/allPlayers_Tv"
                                 android:layout_width="0dp"
                                 android:layout_height="match_parent"
@@ -103,8 +103,8 @@
                                 android:textSize="14sp" />
 
 
-                        </LinearLayout>
-                        <Spinner
+                        </androidx.appcompat.widget.LinearLayoutCompat>
+                        <androidx.appcompat.widget.AppCompatSpinner
                             android:id="@+id/player_spinner"
                             android:layout_width="0dp"
                             android:layout_height="0dp"
@@ -117,7 +117,8 @@
                             android:spinnerMode="dialog"
                             android:textAlignment="center"
                             android:visibility="invisible" />
-                        <Spinner
+
+                        <androidx.appcompat.widget.AppCompatSpinner
                             android:id="@+id/options_spinner"
                             android:layout_width="0dp"
                             android:layout_height="0dp"
@@ -131,7 +132,7 @@
                             android:textAlignment="center"
                             android:visibility="invisible" />
 
-                        <Spinner
+                        <androidx.appcompat.widget.AppCompatSpinner
                             android:id="@+id/teams_spinner"
                             android:layout_width="0dp"
                             android:layout_height="0dp"
@@ -172,7 +173,7 @@
                                             android:layout_weight="2"
                                             android:textAllCaps="true"
                                             android:textColor="@android:color/white"
-                                            android:textSize="@dimen/_10ssp"
+                                            android:textSize="@dimen/_8ssp"
                                             android:textStyle="normal" />
 
                                         <androidx.appcompat.widget.AppCompatTextView
@@ -184,7 +185,7 @@
                                             android:text="@string/price"
                                             android:layout_weight="0.75"
                                             android:textAllCaps="true"
-                                            android:textSize="@dimen/_10ssp"
+                                            android:textSize="@dimen/_8ssp"
                                             android:textColor="@android:color/white"
                                             android:textStyle="normal" />
 
@@ -196,7 +197,7 @@
                                             android:gravity="center"
                                             android:layout_weight="0.75"
                                             android:text="@string/sell"
-                                            android:textSize="@dimen/_10ssp"
+                                            android:textSize="@dimen/_8ssp"
                                             android:textAllCaps="true"
                                             android:textColor="@android:color/white"
                                             android:textStyle="normal" />
@@ -208,7 +209,7 @@
                                             android:layout_marginStart="@dimen/margin"
                                             android:gravity="center"
                                             android:text="@string/buy"
-                                            android:textSize="@dimen/_10ssp"
+                                            android:textSize="@dimen/_8ssp"
                                             android:layout_weight="0.75"
                                             android:textAllCaps="true"
                                             android:textColor="@android:color/white"
@@ -222,7 +223,7 @@
                                             android:gravity="center"
                                             android:text="@string/from"
                                             android:layout_weight="0.75"
-                                            android:textSize="@dimen/_10ssp"
+                                            android:textSize="@dimen/_8ssp"
                                             android:textAllCaps="true"
                                             android:textColor="@android:color/white"
                                             android:textStyle="normal" />
@@ -235,7 +236,7 @@
                                             android:gravity="center"
                                             android:text="@string/point"
                                             android:layout_weight="0.75"
-                                            android:textSize="@dimen/_10ssp"
+                                            android:textSize="@dimen/_8ssp"
                                             android:textAllCaps="true"
                                             android:textColor="@android:color/white"
                                             android:textStyle="normal" />
@@ -249,7 +250,7 @@
                                             android:gravity="center"
                                             android:text="@string/next_match_"
                                             android:layout_weight="1.5"
-                                            android:textSize="@dimen/_10ssp"
+                                            android:textSize="@dimen/_8ssp"
                                             android:textAllCaps="true"
                                             android:textColor="@android:color/white"
                                             android:textStyle="normal" />

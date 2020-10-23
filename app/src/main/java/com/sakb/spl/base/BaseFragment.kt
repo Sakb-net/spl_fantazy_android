@@ -15,6 +15,9 @@ import com.sakb.spl.utils.Snacky
 abstract class BaseFragment : Fragment() {
 
     protected abstract val viewModel: BaseViewModel
+    open val user by  lazy {
+        PrefManager.getUser()
+    }
     private val loadingView by lazy {
         Dialogs.getProgressDialog(requireContext(), R.string.loading_custom_title, false)
     }

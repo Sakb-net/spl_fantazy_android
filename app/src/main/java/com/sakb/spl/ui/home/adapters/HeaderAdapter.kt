@@ -5,15 +5,16 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.sakb.spl.data.local.PrefManager
+import com.sakb.spl.data.model.HomePoints
 import com.sakb.spl.databinding.ItemHomeHeaderBinding
 
-class HeaderAdapter : RecyclerView.Adapter<HeaderAdapter.HeaderViewHolder>() {
+class HeaderAdapter() : RecyclerView.Adapter<HeaderAdapter.HeaderViewHolder>() {
 
     var onChooseTeamClickListener: (() -> Unit)? = null
     var onPointClickListener: (() -> Unit)? = null
     var onMyTeamClickListener: (() -> Unit)? = null
     var onTransClickListener: (() -> Unit)? = null
-
+    var homePoints: HomePoints? = null
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) =
         HeaderViewHolder(
             ItemHomeHeaderBinding.inflate(
@@ -27,8 +28,7 @@ class HeaderAdapter : RecyclerView.Adapter<HeaderAdapter.HeaderViewHolder>() {
         )
 
     override fun onBindViewHolder(holderHeader: HeaderViewHolder, position: Int) {
-        holderHeader.bind()
-
+        holderHeader.bind(homePoints)
     }
 
     override fun getItemCount() = HEADER
@@ -44,8 +44,8 @@ class HeaderAdapter : RecyclerView.Adapter<HeaderAdapter.HeaderViewHolder>() {
             PrefManager.getUser()
         }
 
-        fun bind() {
-            if (user?.data?.chooseTeam == 0) {
+        fun bind(homePoints: HomePoints?) {
+            if (user?.data?.chooseTeam == null || user?.data?.chooseTeam == 0) {
                 binding.buttonChooseTeam.visibility = View.VISIBLE
                 binding.llPoints.visibility = View.GONE
                 binding.llChooseTeam.visibility = View.GONE
@@ -69,6 +69,12 @@ class HeaderAdapter : RecyclerView.Adapter<HeaderAdapter.HeaderViewHolder>() {
             binding.llInsideTrans?.setOnClickListener {
                 onTransClickListener?.invoke()
             }
+
+            homePoints?.let {
+                binding.upValue.text = it.totalAvg.toString()
+                binding.highestBody.text = it.heighPoint.toString()
+                binding.pointBody.text = it.totalSum.toString()
+            }
         }
     }
 
@@ -77,6 +83,11 @@ class HeaderAdapter : RecyclerView.Adapter<HeaderAdapter.HeaderViewHolder>() {
         onMyTeamClickListener = null
         onPointClickListener = null
         onTransClickListener = null
+    }
+
+    fun homePoint(homePoints: HomePoints) {
+        this.homePoints = homePoints
+        notifyDataSetChanged()
     }
 
     companion object {

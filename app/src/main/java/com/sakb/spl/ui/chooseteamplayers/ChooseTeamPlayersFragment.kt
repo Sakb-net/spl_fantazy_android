@@ -11,6 +11,7 @@ import androidx.lifecycle.Observer
 import com.google.gson.Gson
 import com.sakb.spl.R
 import com.sakb.spl.base.BaseFragment
+import com.sakb.spl.data.local.PrefManager
 import com.sakb.spl.data.model.AddPlayerResponse
 import com.sakb.spl.data.model.ChangePlayerResponse
 import com.sakb.spl.databinding.ChooseTeamPlayersFragmentBinding
@@ -104,6 +105,18 @@ class ChooseTeamPlayersFragment : BaseFragment() {
 
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        var text = binding.playerNum.text.toString()
+        if(text != "15 / 15"){
+            binding.buttonChooseTeam.isEnabled  = false
+            binding.buttonChooseTeam.background= ContextCompat.getDrawable(requireContext(),R.drawable.button_home_disable)
+        }else{
+            binding.buttonChooseTeam.isEnabled = true
+            binding.buttonChooseTeam.background= ContextCompat.getDrawable(requireContext(),R.drawable.button_home)
+        }
+    }
+
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 //        binding.menu.setOnClickListener {
@@ -129,6 +142,14 @@ class ChooseTeamPlayersFragment : BaseFragment() {
 
             binding.playerNum.text = data.total_team_play.toString().plus(" / 15")
             binding.payTotal.text = data.pay_total_cost.toString()
+            var text = binding.playerNum.text.toString()
+            if(text != "15 / 15"){
+                binding.buttonChooseTeam.isEnabled  = false
+                binding.buttonChooseTeam.background= ContextCompat.getDrawable(requireContext(),R.drawable.button_home_disable)
+            }else{
+                binding.buttonChooseTeam.isEnabled = true
+                binding.buttonChooseTeam.background= ContextCompat.getDrawable(requireContext(),R.drawable.button_home)
+            }
 
             binding.menuBtn.setOnClickListener {
                 binding.menuBtn.backgroundTintList = ContextCompat.getColorStateList(
@@ -350,6 +371,8 @@ class ChooseTeamPlayersFragment : BaseFragment() {
         viewModel.SaveTeamResponseLiveData.observe(this, Observer {
             it?.let { data ->
                 Timber.e("data is ===== ${Gson().toJson(data.data)}")
+                user?.data?.chooseTeam = 1
+                PrefManager.saveUser(user)
                 context?.toast("" + data.data?.msg_add)
             }
         })

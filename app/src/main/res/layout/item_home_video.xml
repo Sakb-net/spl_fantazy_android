@@ -23,18 +23,16 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <ImageView
+            <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/imageViewThumbVideo"
                 android:layout_width="150dp"
                 android:layout_height="150dp"
                 android:scaleType="centerCrop"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-
                 tools:srcCompat="@tools:sample/avatars" />
 
-
-            <TextView
+            <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/textViewTitleVideo"
                 style="@style/TextAppearance.AppCompat.Small"
                 android:layout_width="0dp"
@@ -47,13 +45,11 @@
                 android:paddingTop="16dp"
                 android:paddingEnd="16dp"
                 android:textColor="@color/text_color"
-
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toEndOf="@id/imageViewThumbVideo"
                 app:layout_constraintTop_toTopOf="parent"
                 tools:text="Uziasxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx0000xx" />
-
 
             <View
                 android:layout_width="match_parent"
@@ -64,30 +60,25 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <TextView
+            <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/textViewTimeVideo"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:background="@color/colorAccent"
-
                 android:ellipsize="end"
                 android:fontFamily="@font/helvetica_reg"
                 android:includeFontPadding="false"
                 android:maxLines="1"
                 android:padding="2dp"
                 android:textColor="@color/white"
-                android:textSize="11sp"
-
-
+                android:textSize="@dimen/_11ssp"
                 android:visibility="gone"
-
-
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="@id/imageViewThumbVideo"
                 app:layout_constraintHorizontal_bias="0.0"
                 tools:text="40:00" />
 
-            <TextView
+            <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/textViewSubtitleVideo"
                 style="@style/TextAppearance.AppCompat.Small"
                 android:layout_width="0dp"
@@ -104,9 +95,6 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@id/imageViewThumbVideo"
                 tools:text="Uzias" />
-
-
         </androidx.constraintlayout.widget.ConstraintLayout>
-
     </androidx.cardview.widget.CardView>
 </layout>

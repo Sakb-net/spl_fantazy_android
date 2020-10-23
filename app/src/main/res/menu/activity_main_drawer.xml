@@ -1,21 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
       xmlns:tools="http://schemas.android.com/tools"
-      tools:showIn="navigation_view"
-     >
+      tools:showIn="navigation_view">
 
     <group android:checkableBehavior="single">
         <item
-                android:id="@+id/homeFragment"
-                android:title="@string/home"/>
+            android:id="@+id/homeFragment"
+            android:title="@string/home" />
 
         <item
             android:id="@+id/myTeamFragment"
             android:title="@string/my_team"/>
 
         <item
-                android:id="@+id/myPointsFragment"
-                android:title="@string/my_points"/>
+            android:id="@+id/myPointsFragment"
+            android:title="@string/my_points"/>
 
         <item
             android:id="@+id/transfersFragment"
@@ -26,8 +25,8 @@
             android:title="@string/create_or_join_league"/>
 
         <item
-                android:id="@+id/howToPlayFragment"
-                android:title="@string/how_to_play"/>
+            android:id="@+id/howToPlayFragment"
+            android:title="@string/how_to_play"/>
 
         <item
             android:id="@+id/helpFragment"
@@ -38,28 +37,30 @@
             android:title="@string/award"/>
 
         <item
-                android:id="@+id/newsFragment"
-                android:title="@string/news"/>
-        <item
-                android:id="@+id/videosFragment"
-                android:title="@string/videos"/>
+            android:id="@+id/newsFragment"
+            android:title="@string/news"/>
 
         <item
-                android:id="@+id/statisticsFragment"
-                android:title="@string/statistics"/>
+            android:id="@+id/videosFragment"
+            android:title="@string/videos"/>
 
         <item
-                android:id="@+id/matchesFragment"
-                android:title="@string/fixtures"/>
+            android:id="@+id/statisticsFragment"
+            android:title="@string/statistics" />
 
-      <item
-                android:id="@+id/contactUsFragment"
-                android:title="@string/contactus_title"/>
         <item
-                android:id="@+id/logoutFragment"
-                android:title="@string/logout"/>
+            android:id="@+id/matchesFragment"
+            android:title="@string/fixtures" />
+
+        <item
+            android:id="@+id/contactUsFragment"
+            android:title="@string/contactus_title" />
+        <item
+            android:id="@+id/languageFragment"
+            android:title="@string/language" />
+        <item
+            android:id="@+id/logoutFragment"
+            android:title="@string/logout" />
     </group>
-
-
 
 </menu>

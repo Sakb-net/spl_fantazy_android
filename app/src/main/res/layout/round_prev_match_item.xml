@@ -18,7 +18,7 @@
         android:foreground="?attr/selectableItemBackground"
         app:cardCornerRadius="4dp">
 
-        <LinearLayout
+        <androidx.appcompat.widget.LinearLayoutCompat
             android:id="@+id/linear"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -33,14 +33,14 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/date">
 
-            <LinearLayout
+            <androidx.appcompat.widget.LinearLayoutCompat
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:gravity="center"
                 android:orientation="horizontal">
 
-                <TextView
+                <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/team1_tv"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
@@ -52,18 +52,14 @@
                     android:textColor="@color/colorGrey"
                     tools:text="النادي" />
 
-                <ImageView
+                <androidx.appcompat.widget.AppCompatImageView
                     android:id="@+id/team1_iv"
                     android:layout_width="@dimen/_46sdp"
                     android:layout_height="@dimen/_46sdp"
                     android:layout_gravity="center"
                     tools:src="@mipmap/ic_launcher" />
-
-
-            </LinearLayout>
-
-
-            <LinearLayout
+            </androidx.appcompat.widget.LinearLayoutCompat>
+            <androidx.appcompat.widget.LinearLayoutCompat
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -73,7 +69,7 @@
                 android:gravity="center"
                 android:orientation="horizontal">
 
-                <TextView
+                <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/date_result_team_one"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -84,7 +80,7 @@
                     android:textSize="16sp"
                     tools:text="1" />
 
-                <TextView
+                <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/date_result_team_two"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -95,26 +91,23 @@
                     android:textColor="@color/white"
                     android:textSize="16sp"
                     tools:text="2" />
-            </LinearLayout>
+            </androidx.appcompat.widget.LinearLayoutCompat>
 
-
-            <LinearLayout
+            <androidx.appcompat.widget.LinearLayoutCompat
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:gravity="center"
                 android:orientation="horizontal">
 
-
-                <ImageView
+                <androidx.appcompat.widget.AppCompatImageView
                     android:id="@+id/team2_iv"
                     android:layout_width="@dimen/_46sdp"
                     android:layout_height="@dimen/_46sdp"
                     android:layout_gravity="center"
                     tools:src="@mipmap/ic_launcher" />
 
-
-                <TextView
+                <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/team2_tv"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
@@ -126,10 +119,8 @@
                     android:textColor="@color/colorGrey"
                     tools:text="االهلال " />
 
-            </LinearLayout>
+            </androidx.appcompat.widget.LinearLayoutCompat>
 
-        </LinearLayout>
-
-
+        </androidx.appcompat.widget.LinearLayoutCompat>
     </androidx.cardview.widget.CardView>
 </layout>

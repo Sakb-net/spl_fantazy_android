@@ -16,7 +16,6 @@
             android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-
             android:maxWidth="300dp"
             android:orientation="vertical"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -34,8 +33,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <ImageView
-
+            <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/dialog_image"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -47,8 +45,7 @@
                 app:layout_constraintTop_toTopOf="@id/divider11"
                 app:srcCompat="@drawable/rocket" />
 
-
-            <TextView
+            <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/dialogTextTitle"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -67,7 +64,7 @@
                 app:layout_constraintVertical_chainStyle="packed"
                 tools:text="عنوان رئيسي" />
 
-            <TextView
+            <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/dialogTextContent"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -86,7 +83,7 @@
                 app:layout_constraintVertical_chainStyle="packed"
                 tools:text="حتوي نص كتابي محتوي نص" />
 
-            <TextView
+            <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/dialogTextPrice"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -106,7 +103,7 @@
                 app:layout_constraintVertical_chainStyle="packed"
                 tools:text="ثمن الاشتراك : 50 ريال" />
 
-            <TextView
+            <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/code_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -120,20 +117,16 @@
                 android:textStyle="bold"
                 app:layout_constraintEnd_toStartOf="@id/copy_btn"
                 app:layout_constraintHorizontal_bias="0.0"
-
                 app:layout_constraintHorizontal_chainStyle="packed"
                 app:layout_constraintStart_toStartOf="@+id/divider11"
                 app:layout_constraintTop_toBottomOf="@id/dialogTextPrice"
                 tools:text="75weeQww" />
 
-
-            <ImageView
-
+            <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/copy_btn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
-
                 app:layout_constraintBottom_toBottomOf="@id/code_text"
                 app:layout_constraintEnd_toStartOf="@id/share_btn"
                 app:layout_constraintHorizontal_chainStyle="packed"
@@ -141,12 +134,10 @@
                 app:layout_constraintTop_toTopOf="@id/code_text"
                 app:srcCompat="@drawable/ic_copy" />
 
-
-            <ImageView
+            <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/share_btn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-
                 android:layout_marginStart="8dp"
                 android:layout_marginEnd="8dp"
                 app:layout_constraintBottom_toBottomOf="@id/copy_btn"
@@ -156,8 +147,7 @@
                 app:layout_constraintTop_toTopOf="@id/copy_btn"
                 app:srcCompat="@drawable/ic_sharing" />
 
-
-            <TextView
+            <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/negativeBtn"
                 android:layout_width="0dp"
                 android:layout_height="35dp"
@@ -175,8 +165,7 @@
                 app:layout_constraintStart_toEndOf="@+id/positiveButton"
                 app:layout_constraintTop_toTopOf="@id/positiveButton" />
 
-
-            <TextView
+            <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/positiveButton"
                 android:layout_width="0dp"
                 android:layout_height="35dp"
@@ -195,7 +184,6 @@
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/code_text" />
-
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>

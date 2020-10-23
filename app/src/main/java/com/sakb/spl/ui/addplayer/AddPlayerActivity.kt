@@ -40,19 +40,14 @@ class AddPlayerActivity : BaseActivity() {
         window.decorView.systemUiVisibility =
             View.SYSTEM_UI_FLAG_LAYOUT_STABLE or View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
 
-        ///  binding.recyclerView.layoutManager = LinearLayoutManager(this)
         binding.menu.setOnClickListener {
             onBackPressed()
         }
+
         viewModel.recreated = true
         viewModel.recreatedTeam = true
-//        val user = PrefManager.getUser()
-//        val lang = PrefManager.getLanguage()
-        //  binding.recyclerView.adapter = PlayersByTypeAdapter()
-        //   if (!viewModel.isOptionSelectedBefore)
         viewModel.initSpinnerBefore = false
         viewModel.getPlayers(
-
             "" + intent.getStringExtra("type_loc_player"),
             "",
             "",
@@ -61,22 +56,15 @@ class AddPlayerActivity : BaseActivity() {
         )
 
         viewModel.AddPlayerResultLiveData.observe(this, Observer { data ->
-
             toast("" + data?.data?.msg_add)
             EventBus.getDefault().post(data)
-
             onBackPressed()
-
         })
 
         viewModel.changePlayerResultLiveData.observe(this, Observer { data ->
-
-
             toast("" + data?.result_change?.msg_delete)
             EventBus.getDefault().post(data)
-
             onBackPressed()
-
         })
 
         viewModel.ResultLiveData.observe(this, Observer { data ->
@@ -99,7 +87,7 @@ class AddPlayerActivity : BaseActivity() {
                                 listData.addAll(it.get(i)?.players_group!!)
                     }
 
-                    playersByTypeAdapter = PlayersByTypeAdapter(listData)
+                    playersByTypeAdapter = PlayersByTypeAdapter(listData,this@AddPlayerActivity)
                     playersByTypeAdapter?.onItemClick = { _, data ->
 
                         if (intent.getStringExtra(ACTIONTYPE) == REPLACE) {
@@ -121,30 +109,14 @@ class AddPlayerActivity : BaseActivity() {
                             LinearLayoutManager.VERTICAL
                         )
                     )
-                    //  adapter?.setHasStableIds(true)
                     binding.recyclerView.adapter = playersByTypeAdapter
                 }
-
-
-                /*  adapter?.onItemClick = {pos, data->
-                              val user = PrefManager.getUser()
-                              viewModel.updateProfile(""+user?.data?.accessToken,""+data?.link)
-                          }*/
-
-                //createList()
-
-
             }
         })
-
         initSpinner()
-
-
     }
 
     private fun initSpinner() {
-//        val user = PrefManager.getUser()
-//        val lang = PrefManager.getLanguage()
         val mutableList = mutableListOf<String>()
         mutableList.add(getString(R.string.points_total))
         mutableList.add(getString(R.string.price_is_from_top_to_bottom))
@@ -153,14 +125,11 @@ class AddPlayerActivity : BaseActivity() {
         mutableList.add("___end__")
         val data = mutableList
         Timber.e("init spinner")
-        //  Timber.e("init spinner " +data?.size )
         val adapter =
             SpinnerHelperAdapter(this, data, android.R.layout.simple_spinner_dropdown_item)
         adapter.setDropDownViewResource(R.layout.item_edited)
         binding.optionsSpinner.adapter = adapter
 
-        // show hint
-        //  Timber.e("init spinner " +adapter.count )
         binding.optionsSpinner.setSelection(adapter.count)
 
         binding.optionsSpinner.onItemSelectedListener =
@@ -176,23 +145,12 @@ class AddPlayerActivity : BaseActivity() {
                     if (viewModel.recreated) {
                         return
                     }
-                    // Timber.e("szzzz "+data.size)
                     toast("pos option " + position)
                     if (position != (data.size - 1)) {
                         binding.sortByTv.text = data[position]
-
-                        //   if (viewModel.lastQuery==data[position])return
-
-                        //  viewModel.isOptionSelectedBefore = true
-                        //  viewModel.lastQuery = data[position]
-
                         when (data[position]) {
-
-
                             getString(R.string.points_total) -> {
                                 viewModel.orderPlay = "point"
-
-
                                 viewModel.getPlayers(
                                     "" + intent.getStringExtra("type_loc_player"),
                                     "" + viewModel.orderPlay,
@@ -236,11 +194,6 @@ class AddPlayerActivity : BaseActivity() {
                                     "",
                                     ""
                                 )
-                                /**    viewModel.getPlayers(
-                                "" + user?.data?.accessToken
-                                , "" + intent.getStringExtra("type_loc_player"),
-                                "heigh_price", lang
-                                )*/
                             }
                             getString(R.string.price_from_to) -> {
 
@@ -257,10 +210,7 @@ class AddPlayerActivity : BaseActivity() {
                                     )
                                 }
                             }
-
-
                         }
-
                     } else {
                         //  viewModel.orderPlay = ""
 
@@ -270,58 +220,25 @@ class AddPlayerActivity : BaseActivity() {
                                  "", lang
                              )*/
                     }
-
-
-                    //  binding?.CityTv?.tag = listOfKeys!![position]
                 }
-
             }
 
         binding.sortByTv.setOnClickListener {
             viewModel.recreated = false
-            //  Timber.e("=========="+binding?.optionsSpinner?.selectedItemPosition)
             binding.optionsSpinner.setSelection(adapter.count)
-            //  if (binding?.optionsSpinner?.selectedItemPosition == adapter.count)
-            //    binding?.optionsSpinner?.setSelection(-1)
-
             binding.optionsSpinner.performClick()
         }
 
     }
 
     private fun initTeamsSpinner(playerByTypeResponse: PlayerByTypeResponse) {
-
-        // var tmp : MutableList<cityResponse.Data?>?= data
-
-        /*   var listOfNames : MutableList<String> = mutableListOf()
-           var listOfKeys : MutableList<String> = mutableListOf()
-
-           data?.map {
-               if (it?.name!=null)
-                   listOfNames.add(it.name)
-
-               if (it?.key!=null)
-                   listOfKeys.add(it.key)
-           }*/
-
-        //  listOfNames.add("__end__")
-        //  listOfKeys.add("___end__")
-        var teams = playerByTypeResponse.data!![0]!!.teams
-
+        val teams = playerByTypeResponse.data?.get(0)?.teams
         teams?.add(PlayerByTypeResponse.Team("", "___end__"))
-        //   data?.add("___end__")
-
         val adapter =
             TeamSpinnerAdapter(this, teams!!, android.R.layout.simple_spinner_dropdown_item)
         adapter.setDropDownViewResource(R.layout.item_edited)
-
         binding.teamsSpinner.adapter = adapter
-
-        // show hint
         binding.teamsSpinner.setSelection(adapter.count)
-//        val user = PrefManager.getUser()
-//        val lang = PrefManager.getLanguage()
-
         binding.teamsSpinner.onItemSelectedListener =
             object : AdapterView.OnItemSelectedListener {
                 override fun onNothingSelected(parent: AdapterView<*>?) = Unit
@@ -331,7 +248,6 @@ class AddPlayerActivity : BaseActivity() {
                     position: Int,
                     id: Long
                 ) {
-
                     if (viewModel.recreatedTeam) {
                         return
                     }
@@ -349,40 +265,12 @@ class AddPlayerActivity : BaseActivity() {
                             ""
                         )
 
-
-                        //   if (viewModel.lastQuery==data[position])return
-
-                        //  viewModel.isOptionSelectedBefore = true
-                        //  viewModel.lastQuery = data[position]
-
-                        /**todo   when(data[position]){
-                        getString( R.string.points_total)->{
-                        viewModel.getPlayers(""+user?.data?.accessToken
-                        ,""+intent.getStringExtra("type_loc_player"),
-                        "point",lang)
-                        }
-                        getString(R.string.price_is_from_bottom_to_top) ->{
-                        viewModel.getPlayers(""+user?.data?.accessToken
-                        ,""+intent.getStringExtra("type_loc_player"),
-                        "low_price",lang)
-
-                        }
-                        getString(R.string.price_is_from_top_to_bottom) ->{
-                        viewModel.getPlayers(""+user?.data?.accessToken
-                        ,""+intent.getStringExtra("type_loc_player"),
-                        "heigh_price",lang)
-                        }
-
-                        }*/
-
                     } else {
                         //   viewModel.selectedTeamLink = ""
                         /*   viewModel.getPlayers(""+user?.data?.accessToken
                                ,""+intent.getStringExtra("type_loc_player"),
                                "",lang)*/
                     }
-
-
                     //  binding?.CityTv?.tag = listOfKeys!![position]
                 }
 

@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <LinearLayout
+    <androidx.appcompat.widget.LinearLayoutCompat
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
@@ -19,8 +19,7 @@
             app:popupTheme="@style/AppTheme.PopupOverlay"
             app:titleTextColor="@color/white">
 
-
-            <TextView
+            <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/toolbarTitle"
                 style="@style/TextAppearance.AppCompat.Widget.ActionBar.Title"
                 android:layout_width="wrap_content"
@@ -29,7 +28,6 @@
                 android:text="@string/det"
                 android:textColor="@color/white"
                 android:textStyle="bold" />
-
 
         </androidx.appcompat.widget.Toolbar>
 
@@ -41,8 +39,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/toolbar">
 
-
-            <LinearLayout
+            <androidx.appcompat.widget.LinearLayoutCompat
                 android:id="@+id/yVideoll"
                 android:layout_width="match_parent"
                 android:layout_height="200dp"
@@ -53,9 +50,9 @@
                     android:name="com.google.android.youtube.player.YouTubePlayerSupportFragment"
                     android:layout_width="match_parent"
                     android:layout_height="200dp" />
-            </LinearLayout>
+            </androidx.appcompat.widget.LinearLayoutCompat>
 
-            <LinearLayout
+            <androidx.appcompat.widget.LinearLayoutCompat
                 android:id="@+id/jzvdVideoll"
                 android:layout_width="match_parent"
                 android:layout_height="200dp">
@@ -64,17 +61,15 @@
                     android:id="@+id/jz_video"
                     android:layout_width="match_parent"
                     android:layout_height="200dp" />
-            </LinearLayout>
+            </androidx.appcompat.widget.LinearLayoutCompat>
         </FrameLayout>
-
 
         <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
 
-
-            <LinearLayout
+            <androidx.appcompat.widget.LinearLayoutCompat
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginStart="12dp"
@@ -82,28 +77,26 @@
                 android:layout_marginEnd="12dp"
                 android:orientation="vertical">
 
-                <LinearLayout
+                <androidx.appcompat.widget.LinearLayoutCompat
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:orientation="vertical">
 
-
-                    <TextView
+                    <androidx.appcompat.widget.AppCompatTextView
                         android:id="@+id/titleTv"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:fontFamily="@font/helvetica_reg"
                         android:includeFontPadding="false"
-
                         android:textColor="@color/colorAccent"
                         android:textSize="@dimen/_14ssp"
                         tools:text="hello hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh
 fffffffffffffffffff
 zzzzzz" />
 
-                    <TextView
+                    <androidx.appcompat.widget.AppCompatTextView
                         android:id="@+id/createdAtTv"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -113,30 +106,16 @@ zzzzzz" />
                         android:layout_marginBottom="8dp"
                         android:background="@drawable/rec_strok_gray_light_rounded"
                         android:fontFamily="@font/helvetica_reg"
-
                         android:includeFontPadding="false"
-
                         android:textAlignment="viewStart"
                         android:textColor="@color/colorAccent"
                         android:textSize="@dimen/_12ssp"
                         app:layout_constrainedWidth="true"
-
-
                         app:layout_constraintStart_toStartOf="parent"
                         tools:text="منذ 2 أسبوع" />
+                </androidx.appcompat.widget.LinearLayoutCompat>
 
-                    <!--  <ImageView android:layout_width="30dp"
-                          android:id="@+id/share_btn"
-                          android:layout_weight="0"
-                          android:layout_marginStart="8dp"
-                          android:layout_gravity="start"
-                          app:srcCompat="@drawable/ic_share"
-                          android:layout_height="30dp"
-                          />-->
-                </LinearLayout>
-
-
-                <TextView
+                <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/descriptionTv"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -152,73 +131,8 @@ zzzzzz" />
                     android:textSize="@dimen/_13ssp"
                     tools:text="الاهليالاهليالاهليالاهليالاهليالاهليالاهليالاهليالاهليالاهليالاهليالاهليالاهليالاهليالاهليالاهليالاهليالاهليالاهليالاهليالاهليالاهليالاهليالاهليالاهليالاهليالاهليالاهليالاهليالاهليالاهليالاهليالاهليالاهليالاهليالاهليالاهلي " />
 
-
-                <!--
-                                <View android:layout_width="match_parent"
-                                    android:id="@+id/divider11"
-                                    android:background="#EEEEEE"
-                                    android:layout_height="1dp"
-                                    app:layout_constraintStart_toStartOf="parent"
-                                    android:layout_marginStart="8dp"
-                                    app:layout_constraintEnd_toEndOf="parent"
-                                    android:layout_marginEnd="8dp"
-                                    android:layout_marginTop="16dp"/>
-                                <LinearLayout android:layout_width="match_parent"
-                                    android:orientation="horizontal"
-                                    android:layout_marginStart="8dp"
-                                    android:layout_marginTop="16dp"
-                                    android:layout_marginEnd="8dp"
-                                    android:layout_marginBottom="8dp"
-                                    android:layout_height="wrap_content">
-
-
-                                    <TextView android:layout_width="match_parent"
-                                        android:text="@string/comments"
-                                        android:layout_weight="1"
-                                        android:textSize="@dimen/_14ssp"
-                                        android:textColor="#3C3C3C"
-                                        android:layout_height="wrap_content"
-                                        android:id="@+id/textView8"
-
-                                        />
-
-
-
-                                    <com.google.android.material.floatingactionbutton.FloatingActionButton
-                                        android:id="@+id/add_btn"
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:src="@drawable/ic_add_comment"
-                                        android:layout_marginStart="8dp"
-                                        android:layout_weight="0"
-                                        app:fabSize="mini"
-                                        app:borderWidth="1dp"
-                                        app:elevation="2dp"
-                                        app:pressedTranslationZ="12dp"
-                                        app:rippleColor="@android:color/transparent"/>
-
-                                </LinearLayout>
-                                <ProgressBar android:layout_width="wrap_content"
-                                    android:id="@+id/progres"
-                                    android:layout_gravity="center"
-                                    android:layout_height="wrap_content"/>
-                                <androidx.recyclerview.widget.RecyclerView
-                                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                                    android:id="@+id/commentsRv"
-                                    android:layout_width="match_parent"
-                                    android:padding="@dimen/_8sdp"
-                                    android:clipToPadding="false"
-                                    android:nestedScrollingEnabled="false"
-                                    android:layout_height="wrap_content"
-                                    app:layout_constraintBottom_toBottomOf="parent"
-                                    app:layout_constraintEnd_toEndOf="parent"
-                                    app:layout_constraintStart_toStartOf="parent"
-                                    tools:listitem="@layout/item_comment"/>-->
-
-
-            </LinearLayout>
+            </androidx.appcompat.widget.LinearLayoutCompat>
         </androidx.core.widget.NestedScrollView>
 
-
-    </LinearLayout>
+    </androidx.appcompat.widget.LinearLayoutCompat>
 </layout>

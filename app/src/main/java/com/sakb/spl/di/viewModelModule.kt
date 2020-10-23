@@ -14,6 +14,7 @@ import com.sakb.spl.ui.headtoheadleague.CreateHeadToHeadLeagueViewModel
 import com.sakb.spl.ui.help.HelpViewModel
 import com.sakb.spl.ui.home.HomeViewModel
 import com.sakb.spl.ui.howtoplay.HowToPlayViewModel
+import com.sakb.spl.ui.language.LanguageViewModel
 import com.sakb.spl.ui.league.LeagueViewModel
 import com.sakb.spl.ui.login.LoginViewModel
 import com.sakb.spl.ui.logout.LogOutViewModel
@@ -104,7 +105,7 @@ val viewModelModule = module {
     }
 
     viewModel {
-        MyPointsViewModel()
+        MyPointsViewModel(get())
     }
     viewModel {
         NewPassViewModel()
@@ -157,6 +158,9 @@ val viewModelModule = module {
     }
     viewModel {
         AwardViewModel(get())
+    }
+    viewModel {
+        LanguageViewModel()
     }
 
 }

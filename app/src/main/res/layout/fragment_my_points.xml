@@ -12,7 +12,7 @@
         android:layout_height="match_parent"
         android:background="#003365">
 
-        <ImageView
+        <androidx.appcompat.widget.AppCompatImageView
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:background="@drawable/header_bg"
@@ -23,43 +23,6 @@
             app:layout_constraintTop_toTopOf="parent" />
 
 
-        <!-- <LinearLayout
-             android:id="@+id/title_linear_layout"
-             app:layout_constraintTop_toTopOf="parent"
-             android:layout_marginTop="40dp"
-             android:gravity="start|center"
-             android:layout_gravity="start|center"
-             app:layout_constraintEnd_toEndOf="parent"
-             app:layout_constraintStart_toStartOf="parent"
-             android:layout_marginStart="16dp"
-             android:layout_width="match_parent"
-             android:orientation="horizontal"
-             android:layout_height="wrap_content">
-
-             <ImageView
-                 android:focusable="true"
-                 android:clickable="true"
-                 android:background="?android:selectableItemBackground"
-                 android:padding="12dp"
-                 android:id="@+id/menu"
-                 android:layout_width="wrap_content"
-                 android:src="@drawable/menu"
-                 android:layout_height="wrap_content" />
-
-             <TextView
-                 android:fontFamily="@font/helvetica_reg"
-                 android:includeFontPadding="false"
-                 android:layout_marginStart="10dp"
-                 style="@style/TextAppearance.AppCompat.Widget.ActionBar.Title"
-                 android:id="@+id/toolbarTitle"
-                 android:textStyle="bold"
-                 tools:text="fffffffffffff"
-                 android:textColor="@color/white"
-                 android:layout_width="wrap_content"
-                 android:layout_height="wrap_content" />
-
-         </LinearLayout>-->
-
         <TextView
             android:id="@+id/banner_text_view"
             android:layout_width="match_parent"
@@ -67,7 +30,7 @@
             android:background="@color/white"
             android:gravity="center"
             android:padding="@dimen/_8sdp"
-            android:text="الجولة 6"
+            tools:text="الجولة 6"
             android:textColor="@color/colorPrimary"
             android:textSize="14sp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -126,7 +89,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
-                    android:text="120"
+                    tools:text="120"
                     android:textColor="#33FF63"
                     android:textSize="22sp" />
 
@@ -148,7 +111,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="متوسط النقاط"
+                        android:text="@string/average_point"
                         android:textColor="@color/white" />
 
                     <View
@@ -157,10 +120,11 @@
                         android:layout_weight="1" />
 
                     <TextView
+                        android:id="@+id/avargeTv"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginEnd="16dp"
-                        android:text="20"
+                        tools:text="20"
                         android:textColor="@color/white" />
                 </LinearLayout>
 
@@ -180,7 +144,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="متوسط النقاط"
+                        android:text="@string/heighest_point"
                         android:textColor="@color/white" />
 
                     <View
@@ -189,10 +153,11 @@
                         android:layout_weight="1" />
 
                     <TextView
+                        android:id="@+id/heighestTv"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginEnd="16dp"
-                        android:text="20"
+                        tools:text="20"
                         android:textColor="@color/white" />
                 </LinearLayout>
 
@@ -212,7 +177,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="متوسط النقاط"
+                        android:text="@string/order_rank_by_week"
                         android:textColor="@color/white" />
 
                     <View
@@ -221,10 +186,11 @@
                         android:layout_weight="1" />
 
                     <TextView
+                        android:id="@+id/rankTv"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginEnd="16dp"
-                        android:text="20"
+                        tools:text="20"
                         android:textColor="@color/white" />
                 </LinearLayout>
 
@@ -244,7 +210,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="متوسط النقاط"
+                        android:text="@string/transfers"
                         android:textColor="@color/white" />
 
                     <View
@@ -253,10 +219,11 @@
                         android:layout_weight="1" />
 
                     <TextView
+                        android:id="@+id/transferTv"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginEnd="16dp"
-                        android:text="20"
+                        tools:text="20"
                         android:textColor="@color/white" />
                 </LinearLayout>
 
@@ -265,19 +232,20 @@
 
         </LinearLayout>
 
-        <LinearLayout
+        <androidx.appcompat.widget.LinearLayoutCompat
             android:id="@+id/buttons_linear_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginTop="8dp"
             android:gravity="center"
+            android:visibility="gone"
             android:orientation="horizontal"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/info_linear_layout">
 
-            <Button
+            <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/preview"
                 style="@style/button_green"
                 android:layout_width="wrap_content"
@@ -288,7 +256,7 @@
                 app:backgroundTint="@color/colorGreenDark"
                 app:layout_constraintTop_toBottomOf="@+id/tv_forgotPass" />
 
-            <Button
+            <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/menuBtn"
                 style="@style/button_green"
                 android:layout_width="wrap_content"
@@ -302,36 +270,72 @@
                 android:textColor="@color/black"
                 app:backgroundTint="@color/white"
                 app:layout_constraintTop_toBottomOf="@+id/tv_forgotPass" />
-        </LinearLayout>
+        </androidx.appcompat.widget.LinearLayoutCompat>
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/nested_container"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/pitch"
+        android:layout_marginTop="12dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/buttons_linear_layout">
 
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
-        <ImageView
+        <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/stadIv"
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="0dp"
             android:scaleType="centerCrop"
             android:src="@drawable/pitch"
-            app:layout_constraintBottom_toBottomOf="@id/rv_parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@id/rv_parent" />
-
-        <androidx.recyclerview.widget.RecyclerView
-
-            android:id="@+id/rv_parent"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
-            android:layout_marginBottom="12dp"
-            android:orientation="vertical"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/buttons_linear_layout"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_parent"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:orientation="vertical"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintEnd_toEndOf="@id/stadIv"
+            app:layout_constraintStart_toStartOf="@id/stadIv"
+            app:layout_constraintTop_toTopOf="@id/stadIv"
             app:layout_constraintVertical_bias="0"
             tools:listitem="@layout/parent_item_team_recycler" />
 
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/swap_bg"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:background="@drawable/bg_subtitle_gray"
+            app:layout_constraintBottom_toBottomOf="@id/rv_swapList"
+            app:layout_constraintEnd_toEndOf="@id/stadIv"
+            app:layout_constraintStart_toStartOf="@id/stadIv"
+            app:layout_constraintTop_toTopOf="@id/rv_swapList" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_swapList"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:layoutDirection="ltr"
+            android:orientation="horizontal"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintEnd_toEndOf="@id/stadIv"
+            app:layout_constraintStart_toStartOf="@id/stadIv"
+            app:layout_constraintTop_toBottomOf="@id/rv_parent"
+            app:layout_constraintVertical_bias="0"
+            tools:listitem="@layout/child_item_myteam_recycler" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

@@ -25,7 +25,7 @@ class MyTeamSwapPlayersItemAdapter(
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val v = LayoutInflater.from(parent.context)
-            .inflate(R.layout.child_item_myteam_recycler, parent, false)
+            .inflate(R.layout.child_item_myteam_subtitle_recycler, parent, false)
         return ViewHolder(v)
     }
 

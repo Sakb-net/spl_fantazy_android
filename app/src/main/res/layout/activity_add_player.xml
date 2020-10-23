@@ -2,33 +2,26 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
-
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-
-
         <FrameLayout
             android:id="@+id/custom_ttolbar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <ImageView
+            <androidx.appcompat.widget.AppCompatImageView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/header_bg"
                 android:scaleType="centerCrop" />
-
-
         </FrameLayout>
-
-
-        <LinearLayout
+        <androidx.appcompat.widget.LinearLayoutCompat
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
 
-            <LinearLayout
+            <androidx.appcompat.widget.LinearLayoutCompat
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="start|center"
@@ -37,7 +30,7 @@
                 android:gravity="start|center"
                 android:orientation="horizontal">
 
-                <ImageView
+                <androidx.appcompat.widget.AppCompatImageView
                     android:id="@+id/menu"
                     android:layout_width="@dimen/_24sdp"
                     android:layout_height="@dimen/_24sdp"
@@ -46,7 +39,7 @@
                     android:focusable="true"
                     app:srcCompat="@drawable/ic_chevron_left_black_24dp" />
 
-                <TextView
+                <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/toolbarTitle"
                     style="@style/TextAppearance.AppCompat.Widget.ActionBar.Title"
                     android:layout_width="wrap_content"
@@ -59,25 +52,20 @@
                     android:textColor="@color/white"
                     tools:text="fffffffffffff" />
 
-            </LinearLayout>
+            </androidx.appcompat.widget.LinearLayoutCompat>
 
-
-            <LinearLayout
+            <androidx.appcompat.widget.LinearLayoutCompat
                 android:layout_width="match_parent"
-
                 android:layout_height="match_parent"
-
                 android:layout_marginTop="16dp"
                 android:background="@color/white"
                 android:orientation="vertical">
-
-
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-                    <LinearLayout
+                    <androidx.appcompat.widget.LinearLayoutCompat
                         android:id="@+id/filterLL"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -88,9 +76,10 @@
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent">
 
-                        <TextView
+                        <androidx.appcompat.widget.AppCompatTextView
                             android:id="@+id/sortBy_Tv"
-                            android:layout_width="wrap_content"
+                            android:layout_width="0dp"
+                            android:layout_weight="0.5"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center_vertical"
                             android:layout_marginStart="8dp"
@@ -102,9 +91,10 @@
                             android:text="@string/sort_"
                             android:textSize="16sp" />
 
-                        <TextView
+                        <androidx.appcompat.widget.AppCompatTextView
                             android:id="@+id/allTeams_Tv"
-                            android:layout_width="wrap_content"
+                            android:layout_width="0dp"
+                            android:layout_weight="0.5"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center_vertical"
                             android:layout_marginStart="8dp"
@@ -116,9 +106,9 @@
                             android:text="@string/all_teams"
                             android:textSize="16sp" />
 
-                    </LinearLayout>
+                    </androidx.appcompat.widget.LinearLayoutCompat>
 
-                    <Spinner
+                    <androidx.appcompat.widget.AppCompatSpinner
                         android:id="@+id/options_spinner"
                         android:layout_width="0dp"
                         android:layout_height="0dp"
@@ -136,7 +126,7 @@
                         app:layout_constraintStart_toStartOf="@id/filterLL"
                         app:layout_constraintTop_toTopOf="@id/filterLL" />
 
-                    <Spinner
+                    <androidx.appcompat.widget.AppCompatSpinner
                         android:id="@+id/teams_spinner"
                         android:layout_width="0dp"
                         android:layout_height="0dp"
@@ -154,8 +144,7 @@
                         app:layout_constraintStart_toStartOf="@id/filterLL"
                         app:layout_constraintTop_toTopOf="@id/filterLL" />
 
-
-                    <LinearLayout
+                    <androidx.appcompat.widget.LinearLayoutCompat
                         android:id="@+id/headerll"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -167,7 +156,7 @@
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@id/filterLL">
 
-                        <ImageView
+                        <androidx.appcompat.widget.AppCompatImageView
                             android:layout_width="20dp"
                             android:layout_height="20dp"
                             android:layout_gravity="center"
@@ -176,14 +165,14 @@
                             android:visibility="invisible"
                             app:srcCompat="@drawable/ic_info" />
 
-                        <LinearLayout
+                        <androidx.appcompat.widget.LinearLayoutCompat
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
                             android:layout_weight=".8"
                             android:orientation="vertical">
 
-                            <TextView
+                            <androidx.appcompat.widget.AppCompatTextView
                                 android:id="@+id/nameTv"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
@@ -193,25 +182,23 @@
                                 android:textColor="@color/white"
                                 android:textSize="14.5sp" />
 
-                            <LinearLayout
+                            <androidx.appcompat.widget.LinearLayoutCompat
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:orientation="horizontal"
                                 android:visibility="gone">
 
-                                <TextView
-
+                                <androidx.appcompat.widget.AppCompatTextView
                                     android:id="@+id/clubTv"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:text="mohamed0"
                                     android:textColor="#515151" />
-                            </LinearLayout>
-                        </LinearLayout>
+                            </androidx.appcompat.widget.LinearLayoutCompat>
+                        </androidx.appcompat.widget.LinearLayoutCompat>
 
-                        <TextView
+                        <androidx.appcompat.widget.AppCompatTextView
                             android:id="@+id/priceTv"
-
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
@@ -220,7 +207,7 @@
                             android:text="@string/price"
                             android:textColor="@color/white" />
 
-                        <TextView
+                        <androidx.appcompat.widget.AppCompatTextView
                             android:id="@+id/pointTv"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
@@ -230,22 +217,19 @@
                             android:text="@string/points_total"
                             android:textColor="@color/white" />
 
-                        <ImageView
+                        <androidx.appcompat.widget.AppCompatImageView
                             android:id="@+id/addPlayerBtn"
-
-
                             android:layout_width="24dp"
                             android:layout_height="24dp"
                             android:layout_gravity="center"
                             android:layout_marginStart="8dp"
-
                             android:layout_marginEnd="12dp"
                             android:background="#ED3B39"
                             android:padding="4dp"
                             android:visibility="invisible"
                             app:srcCompat="@drawable/ic_add" />
 
-                    </LinearLayout>
+                    </androidx.appcompat.widget.LinearLayoutCompat>
 
                     <androidx.recyclerview.widget.RecyclerView
                         android:id="@+id/recyclerView"
@@ -256,14 +240,11 @@
                         app:layout_constraintTop_toBottomOf="@id/headerll"
                         tools:listitem="@layout/list_item_player_by_type" />
 
-
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
+            </androidx.appcompat.widget.LinearLayoutCompat>
 
-            </LinearLayout>
-
-        </LinearLayout>
-
+        </androidx.appcompat.widget.LinearLayoutCompat>
 
     </FrameLayout>
 </layout>

@@ -13,8 +13,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-
-            <ImageView
+            <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/back"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -42,31 +41,24 @@
                 android:orientation="vertical"
                 app:layout_constraintGuide_end="32dp" />
 
-
-            <Button
-
+            <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/buttonRegister"
                 style="@style/button_green"
                 android:layout_marginTop="30dp"
                 android:fontFamily="@font/helvetica_reg"
                 android:includeFontPadding="false"
-
-
                 android:text="@string/register"
+                android:textAllCaps="false"
                 app:layout_constraintEnd_toStartOf="@+id/guideline10"
                 app:layout_constraintStart_toStartOf="@+id/guideline9"
-
                 app:layout_constraintTop_toBottomOf="@+id/ConfirmPasswordEt" />
 
-            <TextView
-
+            <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/textView2"
                 android:layout_width="wrap_content"
-
                 android:layout_height="wrap_content"
                 android:layout_marginTop="75dp"
                 android:fontFamily="@font/helvetica_reg"
-
                 android:includeFontPadding="false"
                 android:text="@string/register_title"
                 android:textColor="@color/white"
@@ -84,23 +76,16 @@
                 android:theme="@style/TextLabel"
                 app:layout_constraintEnd_toStartOf="@+id/guideline10"
                 app:layout_constraintStart_toStartOf="@+id/guideline9"
-                app:layout_constraintTop_toBottomOf="@+id/textView2"
-
-
-                >
+                app:layout_constraintTop_toBottomOf="@+id/textView2">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/UserNameEtt"
                     style="@style/formEditText"
-
                     android:layout_width="match_parent"
                     android:fontFamily="@font/helvetica_reg"
                     android:hint="@string/name"
                     android:includeFontPadding="false"
-                    android:inputType="textPersonName"
-
-
-                    >
+                    android:inputType="textPersonName">
 
                     <requestFocus />
 
@@ -115,21 +100,16 @@
                 android:theme="@style/TextLabel"
                 app:layout_constraintEnd_toStartOf="@+id/guideline10"
                 app:layout_constraintStart_toStartOf="@+id/guideline9"
-                app:layout_constraintTop_toBottomOf="@+id/UserNameEt"
-
-
-                >
+                app:layout_constraintTop_toBottomOf="@+id/UserNameEt">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/EmailEtt"
                     style="@style/formEditText"
-
                     android:layout_width="match_parent"
                     android:fontFamily="@font/helvetica_reg"
                     android:hint="@string/email"
                     android:includeFontPadding="false"
                     android:inputType="textEmailAddress">
-
 
                 </com.google.android.material.textfield.TextInputEditText>
             </com.google.android.material.textfield.TextInputLayout>
@@ -142,21 +122,16 @@
                 android:theme="@style/TextLabel"
                 app:layout_constraintEnd_toStartOf="@+id/guideline10"
                 app:layout_constraintStart_toStartOf="@+id/guideline9"
-                app:layout_constraintTop_toBottomOf="@+id/EmailEt"
-
-
-                >
+                app:layout_constraintTop_toBottomOf="@+id/EmailEt">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/PhoneEtt"
                     style="@style/formEditText"
-
                     android:layout_width="match_parent"
                     android:fontFamily="@font/helvetica_reg"
                     android:hint="@string/phone"
                     android:includeFontPadding="false"
                     android:inputType="number">
-
 
                 </com.google.android.material.textfield.TextInputEditText>
             </com.google.android.material.textfield.TextInputLayout>
@@ -169,28 +144,18 @@
                 android:theme="@style/TextLabel"
                 app:layout_constraintEnd_toStartOf="@+id/guideline10"
                 app:layout_constraintStart_toStartOf="@+id/guideline9"
-
                 app:layout_constraintTop_toBottomOf="@+id/PhoneEt"
-
                 app:passwordToggleEnabled="true"
-
-
-                app:passwordToggleTint="@color/white"
-
-
-                >
+                app:passwordToggleTint="@color/white">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/PasswordEtt"
                     style="@style/formEditText"
-
                     android:layout_width="match_parent"
                     android:fontFamily="@font/helvetica_reg"
                     android:hint="@string/password"
                     android:includeFontPadding="false"
-                    android:inputType="textPassword"
-
-                    />
+                    android:inputType="textPassword" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
@@ -201,34 +166,23 @@
                 android:theme="@style/TextLabel"
                 app:layout_constraintEnd_toStartOf="@+id/guideline10"
                 app:layout_constraintStart_toStartOf="@+id/guideline9"
-
                 app:layout_constraintTop_toBottomOf="@+id/PasswordEt"
-
                 app:passwordToggleEnabled="true"
-
-
-                app:passwordToggleTint="@color/white"
-
-
-                >
+                app:passwordToggleTint="@color/white">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/ConfirmPasswordEtt"
                     style="@style/formEditText"
-
                     android:layout_width="match_parent"
                     android:fontFamily="@font/helvetica_reg"
                     android:hint="@string/confirm_password"
                     android:includeFontPadding="false"
-                    android:inputType="textPassword"
-
-                    />
+                    android:inputType="textPassword" />
             </com.google.android.material.textfield.TextInputLayout>
 
-            <TextView
+            <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/textView4"
                 android:layout_width="wrap_content"
-
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="24dp"
@@ -236,23 +190,20 @@
                 android:fontFamily="@font/helvetica_reg"
                 android:includeFontPadding="false"
                 android:text="@string/already_have_an_account"
-
                 android:textColor="@color/white"
                 android:textSize="14sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/sign_in"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintHorizontal_chainStyle="packed"
-
                 app:layout_constraintStart_toEndOf="@+id/guideline9"
                 app:layout_constraintStart_toStartOf="@+id/guideline9"
                 app:layout_constraintTop_toBottomOf="@+id/linear_social"
                 app:layout_constraintVertical_bias="0.0" />
 
-            <TextView
+            <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/sign_in"
                 android:layout_width="wrap_content"
-
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
                 android:layout_marginEnd="8dp"
@@ -268,7 +219,7 @@
                 app:layout_constraintStart_toEndOf="@+id/textView4"
                 app:layout_constraintTop_toTopOf="@+id/textView4" />
 
-            <LinearLayout
+            <androidx.appcompat.widget.LinearLayoutCompat
                 android:id="@+id/linear_social"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -279,30 +230,27 @@
                 app:layout_constraintStart_toStartOf="@+id/guideline9"
                 app:layout_constraintTop_toBottomOf="@+id/linear_or">
 
-                <ImageView
-
+                <androidx.appcompat.widget.AppCompatImageView
                     android:id="@+id/fb_login"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:src="@drawable/facebook" />
 
-
-                <ImageView
+                <androidx.appcompat.widget.AppCompatImageView
                     android:id="@+id/twitter_login"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="20dp"
                     android:src="@drawable/twitter" />
 
-
-                <ImageView
+                <androidx.appcompat.widget.AppCompatImageView
                     android:id="@+id/google_login"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="20dp"
                     android:src="@drawable/google_plus" />
 
-                <ImageView
+                <androidx.appcompat.widget.AppCompatImageView
                     android:id="@+id/snapchat_login"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -310,9 +258,9 @@
                     android:visibility="gone"
                     app:srcCompat="@drawable/ic_snapchat" />
 
-            </LinearLayout>
+            </androidx.appcompat.widget.LinearLayoutCompat>
 
-            <LinearLayout
+            <androidx.appcompat.widget.LinearLayoutCompat
                 android:id="@+id/linear_or"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -330,10 +278,9 @@
                     android:layout_weight="1"
                     android:background="@color/white" />
 
-                <TextView
+                <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/or_tv"
                     android:layout_width="wrap_content"
-
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_marginStart="12dp"
@@ -351,11 +298,7 @@
                     android:layout_gravity="center"
                     android:layout_weight="1"
                     android:background="@color/white" />
-
-
-            </LinearLayout>
-
-
+            </androidx.appcompat.widget.LinearLayoutCompat>
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
 </layout>

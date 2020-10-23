@@ -3,89 +3,46 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
-
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-
         <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
-
 
             <FrameLayout
                 android:id="@+id/custom_ttolbar"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
-                <ImageView
+                <androidx.appcompat.widget.AppCompatImageView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@drawable/header_bg"
                     android:scaleType="centerCrop" />
 
-
             </FrameLayout>
-
 
             <androidx.core.widget.NestedScrollView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:fillViewport="true">
 
-                <LinearLayout
+                <androidx.appcompat.widget.LinearLayoutCompat
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-
                     android:clipToPadding="false"
                     android:fitsSystemWindows="true"
                     android:orientation="vertical">
 
-                    <!--   <LinearLayout
-                           android:layout_marginTop="40dp"
-                           android:gravity="start|center"
-                           android:layout_gravity="start|center"
-                           android:layout_marginStart="16dp"
-                           android:layout_width="match_parent"
-                           android:orientation="horizontal"
-                           android:layout_height="wrap_content">
-
-                           <ImageView
-                               android:focusable="true"
-                               android:clickable="true"
-                               android:background="?android:selectableItemBackground"
-                               android:padding="12dp"
-                               android:id="@+id/menu"
-                               android:layout_width="wrap_content"
-                               android:src="@drawable/menu"
-                               android:layout_height="wrap_content"/>
-
-                           <TextView
-                               android:fontFamily="@font/helvetica_reg"
-                               android:includeFontPadding="false"
-                               android:layout_marginStart="10dp"
-                               style="@style/TextAppearance.AppCompat.Widget.ActionBar.Title"
-                               android:id="@+id/toolbarTitle"
-                               android:textStyle="bold"
-                               tools:text="fffffffffffff"
-                               android:textColor="@color/white"
-                               android:layout_width="wrap_content"
-                               android:layout_height="wrap_content"/>
-
-                       </LinearLayout>-->
-
-
-                    <LinearLayout
+                    <androidx.appcompat.widget.LinearLayoutCompat
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_marginStart="16dp"
-
-
                         android:layout_marginEnd="16dp"
                         android:elevation="12dp"
                         android:orientation="vertical">
-
 
                         <androidx.constraintlayout.widget.ConstraintLayout
                             android:layout_width="match_parent"
@@ -107,11 +64,10 @@
                                 app:layout_constraintGuide_end="32dp" />
 
 
-                            <ImageButton
+                            <androidx.appcompat.widget.AppCompatImageButton
                                 android:id="@+id/fb_iv"
                                 android:layout_width="35dp"
                                 android:layout_height="35dp"
-
                                 android:layout_marginStart="16dp"
                                 android:layout_marginTop="16dp"
                                 android:background="@android:color/transparent"
@@ -127,11 +83,10 @@
                                 app:layout_constraintStart_toStartOf="@+id/guideline9"
                                 app:layout_constraintTop_toTopOf="parent" />
 
-                            <ImageButton
+                            <androidx.appcompat.widget.AppCompatImageButton
                                 android:id="@+id/twitter_iv"
                                 android:layout_width="35dp"
                                 android:layout_height="35dp"
-
                                 android:layout_marginStart="8dp"
                                 android:background="@android:color/transparent"
                                 android:clickable="true"
@@ -145,11 +100,10 @@
                                 app:layout_constraintStart_toEndOf="@+id/fb_iv"
                                 app:layout_constraintTop_toTopOf="@+id/fb_iv" />
 
-                            <ImageButton
+                            <androidx.appcompat.widget.AppCompatImageButton
                                 android:id="@+id/instagram_iv"
                                 android:layout_width="35dp"
                                 android:layout_height="35dp"
-
                                 android:layout_marginStart="8dp"
                                 android:layout_marginEnd="8dp"
                                 android:background="@android:color/transparent"
@@ -164,40 +118,37 @@
                                 app:layout_constraintStart_toEndOf="@+id/twitter_iv"
                                 app:layout_constraintTop_toTopOf="@+id/twitter_iv" />
 
-
                             <androidx.cardview.widget.CardView
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
                                 android:layout_marginStart="8dp"
                                 android:layout_marginTop="8dp"
                                 android:layout_marginEnd="6dp"
-
                                 app:cardCornerRadius="0dp"
                                 app:cardElevation="0dp"
                                 app:layout_constraintEnd_toStartOf="@+id/guideline10"
                                 app:layout_constraintStart_toStartOf="@+id/guideline9"
                                 app:layout_constraintTop_toBottomOf="@+id/twitter_iv">
 
-                                <LinearLayout
+                                <androidx.appcompat.widget.LinearLayoutCompat
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:orientation="vertical">
 
-
-                                    <LinearLayout
+                                    <androidx.appcompat.widget.LinearLayoutCompat
                                         android:layout_width="match_parent"
                                         android:layout_height="wrap_content"
                                         android:layout_marginTop="8dp"
                                         android:orientation="horizontal">
 
-                                        <ImageView
+                                        <androidx.appcompat.widget.AppCompatImageView
                                             android:layout_width="wrap_content"
                                             android:layout_height="wrap_content"
                                             android:layout_gravity="center"
                                             android:src="@drawable/email"
                                             android:tint="@color/colorPrimary" />
 
-                                        <TextView
+                                        <androidx.appcompat.widget.AppCompatTextView
                                             android:id="@+id/emailtv"
                                             android:layout_width="wrap_content"
                                             android:layout_height="wrap_content"
@@ -207,22 +158,22 @@
                                             android:textSize="16sp"
                                             tools:text="info@AlAhly.commmmmmmmmmmmm" />
 
-                                    </LinearLayout>
+                                    </androidx.appcompat.widget.LinearLayoutCompat>
 
-                                    <LinearLayout
+                                    <androidx.appcompat.widget.LinearLayoutCompat
                                         android:layout_width="match_parent"
                                         android:layout_height="wrap_content"
                                         android:layout_marginTop="8dp"
                                         android:orientation="horizontal">
 
-                                        <ImageView
+                                        <androidx.appcompat.widget.AppCompatImageView
                                             android:layout_width="wrap_content"
                                             android:layout_height="wrap_content"
                                             android:layout_gravity="center"
                                             android:src="@drawable/ic_location_on_black_24dp"
                                             android:tint="@color/colorPrimary" />
 
-                                        <TextView
+                                        <androidx.appcompat.widget.AppCompatTextView
                                             android:id="@+id/addresstv"
                                             android:layout_width="wrap_content"
                                             android:layout_height="wrap_content"
@@ -232,9 +183,9 @@
                                             android:textSize="16sp"
                                             tools:text="info@AlAhly.commmmmmmmmmmmm" />
 
-                                    </LinearLayout>
+                                    </androidx.appcompat.widget.LinearLayoutCompat>
 
-                                    <TextView
+                                    <androidx.appcompat.widget.AppCompatTextView
                                         android:id="@+id/tv_titele_contactus"
                                         android:layout_width="match_parent"
                                         android:layout_height="wrap_content"
@@ -246,7 +197,6 @@
                                         android:textColor="@color/head_title"
                                         android:textSize="18sp" />
 
-
                                     <androidx.appcompat.widget.AppCompatEditText
                                         android:id="@+id/MessageContentEt"
                                         style="@style/contactus_form"
@@ -257,10 +207,7 @@
                                         android:includeFontPadding="false"
                                         android:inputType="text"
                                         android:maxLines="1"
-                                        android:padding="8dp"
-
-
-                                        />
+                                        android:padding="8dp" />
 
                                     <View
                                         android:layout_width="match_parent"
@@ -269,7 +216,7 @@
                                         android:layout_marginEnd="13dp"
                                         android:background="@color/form_ed" />
 
-                                    <Button
+                                    <androidx.appcompat.widget.AppCompatButton
                                         android:id="@+id/buttonSend"
                                         style="@style/button_green_small"
                                         android:layout_gravity="center"
@@ -280,15 +227,15 @@
                                         android:text="@string/send"
                                         app:layout_constraintHorizontal_bias="0.5" />
 
-                                </LinearLayout>
+                                </androidx.appcompat.widget.LinearLayoutCompat>
                             </androidx.cardview.widget.CardView>
 
                         </androidx.constraintlayout.widget.ConstraintLayout>
 
 
-                    </LinearLayout>
+                    </androidx.appcompat.widget.LinearLayoutCompat>
 
-                </LinearLayout>
+                </androidx.appcompat.widget.LinearLayoutCompat>
 
             </androidx.core.widget.NestedScrollView>
 

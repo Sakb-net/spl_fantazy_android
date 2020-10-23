@@ -11,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <ImageView
+        <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/head_backg"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -21,52 +21,12 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-
-        <!--  <LinearLayout
-              android:id="@+id/title_linear_layout"
-              app:layout_constraintTop_toTopOf="parent"
-              android:layout_marginTop="40dp"
-              android:gravity="start|center"
-              android:layout_gravity="start|center"
-              app:layout_constraintEnd_toEndOf="parent"
-              app:layout_constraintStart_toStartOf="parent"
-              android:layout_marginStart="16dp"
-              android:layout_width="match_parent"
-              android:orientation="horizontal"
-              android:layout_height="wrap_content">
-
-              <ImageView
-                  android:focusable="true"
-                  android:clickable="true"
-                  android:background="?android:selectableItemBackground"
-                  android:padding="12dp"
-                  android:id="@+id/menu"
-                  android:layout_width="wrap_content"
-                  android:src="@drawable/menu"
-                  android:layout_height="wrap_content" />
-
-              <TextView
-                  android:fontFamily="@font/helvetica_reg"
-                  android:includeFontPadding="false"
-                  android:layout_marginStart="10dp"
-                  style="@style/TextAppearance.AppCompat.Widget.ActionBar.Title"
-                  android:id="@+id/toolbarTitle"
-                  android:textStyle="bold"
-                  tools:text="fffffffffffff"
-                  android:textColor="@color/white"
-                  android:layout_width="wrap_content"
-                  android:layout_height="wrap_content" />
-
-          </LinearLayout>-->
-
-
-        <LinearLayout
+        <androidx.appcompat.widget.LinearLayoutCompat
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_marginStart="16dp"
             android:layout_marginEnd="16dp"
             android:background="@drawable/layout_bg"
-
             android:elevation="0dp"
             android:orientation="vertical"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -76,12 +36,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
-
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
 
-                    <ImageView
+                    <androidx.appcompat.widget.AppCompatImageView
                         android:id="@+id/profile_image"
                         android:layout_width="@dimen/_75sdp"
                         android:layout_height="@dimen/_75sdp"
@@ -90,7 +49,6 @@
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
                         tools:background="@color/colorPrimary" />
-
 
                     <com.google.android.material.floatingactionbutton.FloatingActionButton
                         android:id="@+id/change_photo_btn"
@@ -105,8 +63,7 @@
                         app:srcCompat="@drawable/ic_menu_camera"
                         app:tint="@null" />
 
-
-                    <TextView
+                    <androidx.appcompat.widget.AppCompatTextView
                         android:id="@+id/user_name"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
@@ -122,7 +79,7 @@
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/profile_image" />
 
-                    <EditText
+                    <androidx.appcompat.widget.AppCompatEditText
                         android:id="@+id/user_name_val"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
@@ -151,7 +108,7 @@
                         app:layout_constraintTop_toBottomOf="@id/user_name_val" />
 
 
-                    <TextView
+                    <androidx.appcompat.widget.AppCompatTextView
                         android:id="@+id/email"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
@@ -167,7 +124,7 @@
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/view_user_name" />
 
-                    <EditText
+                    <androidx.appcompat.widget.AppCompatEditText
                         android:id="@+id/email_val"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
@@ -196,7 +153,7 @@
                         app:layout_constraintTop_toBottomOf="@id/email_val" />
 
 
-                    <TextView
+                    <androidx.appcompat.widget.AppCompatTextView
                         android:id="@+id/address"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
@@ -212,7 +169,7 @@
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/view_mail" />
 
-                    <TextView
+                    <androidx.appcompat.widget.AppCompatTextView
                         android:id="@+id/address_val"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
@@ -241,8 +198,7 @@
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@id/address_val" />
 
-
-                    <Button
+                    <androidx.appcompat.widget.AppCompatButton
                         android:id="@+id/edit_profile_btn"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
@@ -268,15 +224,11 @@
                         app:layout_constraintTop_toBottomOf="@+id/view_address"
                         app:layout_constraintVertical_bias="0" />
 
-
                 </androidx.constraintlayout.widget.ConstraintLayout>
-
 
             </androidx.core.widget.NestedScrollView>
 
-
-        </LinearLayout>
-
+        </androidx.appcompat.widget.LinearLayoutCompat>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

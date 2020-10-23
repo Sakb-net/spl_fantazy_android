@@ -9,10 +9,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.MergeAdapter
 import com.sakb.spl.R
 import com.sakb.spl.base.BaseFragment
-import com.sakb.spl.data.local.PrefManager
-import com.sakb.spl.data.model.DataItem
-import com.sakb.spl.data.model.GetLastFixturesResponse
-import com.sakb.spl.data.model.HomeResponse
+import com.sakb.spl.data.model.*
 import com.sakb.spl.databinding.HomeFragmentBinding
 import com.sakb.spl.ui.home.adapters.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -33,9 +30,6 @@ class HomeFragment : BaseFragment() {
     private val titlesVideosAdapter by lazy { TitlesHeaderAdapter() }
     private val videosAdapter by lazy { VideosAdapter() }
 
-    private val user by lazy {
-        PrefManager.getUser()
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -107,12 +101,13 @@ class HomeFragment : BaseFragment() {
     private fun initRecyclerView() {
         val mergeAdapter = MergeAdapter(
             createHeaderAdapter(),
-            createHeaderFixturesAdapter(), createFixturesAdapter(),
-            createFooterFixturesAdapter(),
-            createTitlesAdapter(),
-            createNewsAdapter(),
-            createTitlesVideosAdapter(),
-            createVideosAdapter()
+            createHeaderFixturesAdapter(),
+            createFixturesAdapter(),
+            createFooterFixturesAdapter()//,
+//            createTitlesAdapter(),
+//            createNewsAdapter(),
+//            createTitlesVideosAdapter(),
+//            createVideosAdapter()
         )
         binding.recyclerView.itemAnimator = null
         binding.recyclerView.adapter = mergeAdapter
@@ -126,13 +121,64 @@ class HomeFragment : BaseFragment() {
         })
 
         viewModel.fixturesResponse.observe(viewLifecycleOwner, Observer {
-            updateUI(it)
+            updateFixtureUI(it)
         })
-       // viewModel.loadHmeData()
+
+        viewModel.homePointEldaweryResponse.observe(viewLifecycleOwner, Observer {
+            updateHomeUI(it)
+        })
+
+        viewModel.publicPointEldaweryResponse.observe(viewLifecycleOwner, Observer {
+            updatePublicUI(it)
+        })
+        // viewModel.loadHmeData()
         viewModel.loadLastFixtureData()
+        if (user?.data?.chooseTeam == 1) {
+            viewModel.loadHomePointEldwry()
+            viewModel.loadPublicPointEldwry()
+        }
     }
 
-    private fun updateUI(data: GetLastFixturesResponse?) {
+    private fun updatePublicUI(publicPointEldaweryResponse: PublicPointEldaweryResponse?) {
+        publicPointEldaweryResponse?.data?.let { dataPublic ->
+            binding.llInfoTeam.visibility = View.VISIBLE
+            dataPublic.sumTotalSubeldwry?.let {
+                binding.llWeek.visibility = View.VISIBLE
+                binding.weekBody.text = it.toString()
+            }
+            dataPublic.sumTotalPoints?.let {
+                binding.llTotalPoint.visibility = View.VISIBLE
+                binding.TotalPointBody.text = it.toString()
+            }
+            dataPublic.sortFinalUsers?.let {
+                binding.llOrder.visibility = View.VISIBLE
+                binding.OrderBody.text = it.toString()
+            }
+            dataPublic.countFreeWeekgamesubstitute?.let {
+                binding.llFreeTrans.visibility = View.VISIBLE
+                binding.FreeTransBody.text = it.toString()
+            }
+            dataPublic.gameWeekChanges?.let {
+                binding.llNoTransfer.visibility = View.VISIBLE
+                binding.NoTransferBody.text = it.toString()
+            }
+            dataPublic.totalChanges?.let {
+                binding.llTotalTrans.visibility = View.VISIBLE
+                binding.TotalTransBody.text = it.toString()
+            }
+        }
+    }
+
+    private fun updateHomeUI(homePointEldawryResponse: HomePointEldawryResponse?) {
+        homePointEldawryResponse?.homePoints?.let { homePoints ->
+            headerAdapter.homePoint(homePoints)
+        }
+        homePointEldawryResponse?.data?.let {
+            binding.weekTitle.text = "${getString(R.string.weekNum)} (${it.nameNumWeek})"
+        }
+    }
+
+    private fun updateFixtureUI(data: GetLastFixturesResponse?) {
         data?.data?.let {
             if (!it.isNullOrEmpty()) {
                 it[0]?.apply {

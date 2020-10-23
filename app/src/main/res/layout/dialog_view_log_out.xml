@@ -5,14 +5,10 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
-
-    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-
         android:maxWidth="300dp"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -24,7 +20,6 @@
             android:id="@+id/divider11"
             android:layout_width="0dp"
             android:layout_height="0dp"
-
             android:background="@drawable/dialog_background"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -32,7 +27,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
+        <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/dialogTextTitle"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -52,7 +47,7 @@
             app:layout_constraintVertical_chainStyle="packed"
             tools:text="your_loction_will_be_confidential_this_app_does_not_let_anyone_see_your_loction_to_enable_your_loction_please_click_on_the_butto_below" />
 
-        <TextView
+        <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/positiveLogoutBtn"
             android:layout_width="0dp"
             android:layout_height="35dp"
@@ -69,7 +64,7 @@
             app:layout_constraintStart_toEndOf="@+id/negativeButton"
             app:layout_constraintTop_toBottomOf="@+id/dialogTextTitle" />
 
-        <TextView
+        <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/negativeButton"
             android:layout_width="0dp"
             android:layout_height="35dp"
@@ -84,7 +79,6 @@
             app:layout_constraintEnd_toStartOf="@+id/positiveLogoutBtn"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent" />
-
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

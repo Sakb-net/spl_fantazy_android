@@ -36,7 +36,8 @@
     <fragment
         android:id="@+id/chooseTeamPlayersFragment"
         android:name="com.sakb.spl.ui.chooseteamplayers.ChooseTeamPlayersFragment"
-        android:label="@string/choose_team" />
+        android:label="@string/choose_team"
+        tools:layout="@layout/choose_team_players_fragment"/>
 
     <fragment android:id="@+id/termsFragment"
         android:name="com.sakb.spl.ui.terms.TermsFragment"
@@ -53,7 +54,8 @@
     <fragment
         android:id="@+id/myPointsFragment"
         android:name="com.sakb.spl.ui.mypoints.MyPointsFragment"
-        android:label="@string/my_points" />
+        android:label="@string/my_points"
+        tools:layout="@layout/fragment_my_points"/>
 
     <fragment
         android:id="@+id/statisticsFragment"
@@ -103,12 +105,14 @@
     <fragment
         android:id="@+id/transfersFragment"
         android:name="com.sakb.spl.ui.transfers.TransfersFragment"
-        android:label="@string/transfers" />
+        android:label="@string/transfers"
+        tools:layout="@layout/fragment_transfers"/>
 
     <fragment
         android:id="@+id/myProfileFragment"
         android:name="com.sakb.spl.ui.myprofile.MyProfileFragment"
-        android:label="@string/my_profile" >
+        android:label="@string/my_profile"
+        tools:layout="@layout/fragment_my_profile">
 
 
         <action
@@ -121,21 +125,23 @@
     <fragment
         android:id="@+id/editProfileFragment"
         android:name="com.sakb.spl.ui.editprofile.EditProfileFragment"
-        android:label="@string/edit_profile" />
+        android:label="@string/edit_profile"
+        tools:layout="@layout/fragment_edit_profile"/>
 
     <fragment
         android:id="@+id/changePasswordFragment"
         android:name="com.sakb.spl.ui.changepassword.ChangePasswordFragment"
-        android:label="@string/change_pass" />
+        android:label="@string/change_pass"
+        tools:layout="@layout/fragment_change_password"/>
+
     <fragment
         android:id="@+id/matchesFragment"
         android:name="com.sakb.spl.ui.matches.MatchesFragment"
-        android:label="@string/matches" >
+        android:label="@string/matches"
+        tools:layout="@layout/matches_fragment">
         <action
             android:id="@+id/action_matchesFragment_to_matchDetailsFragment"
-            app:destination="@id/matchDetailsFragment"
-        />
-
+            app:destination="@id/matchDetailsFragment" />
     </fragment>
 
     <fragment
@@ -149,7 +155,8 @@
     <fragment
         android:id="@+id/leagueFragment"
         android:name="com.sakb.spl.ui.league.LeagueFragment"
-        android:label="@string/create_or_join_league" >
+        android:label="@string/create_or_join_league"
+        tools:layout="@layout/league_fragment">
         <action
             android:id="@+id/action_leagueFragment_to_specialLeagueFragment"
             app:destination="@id/specialLeagueFragment" />
@@ -176,10 +183,18 @@
     <fragment
         android:id="@+id/joinToPowerfulLeagueFragment"
         android:name="com.sakb.spl.ui.powerfulleague.JoinToPowerfulLeagueFragment"
-        android:label="@string/Join_the_strongest_leagues" />
+        android:label="@string/Join_the_strongest_leagues"
+        tools:layout="@layout/join_to_powerful_league_fragment"/>
     <fragment
         android:id="@+id/createHeadToHeadLeagueFragment"
         android:name="com.sakb.spl.ui.headtoheadleague.CreateHeadToHeadLeagueFragment"
         android:label="@string/create_head_to_head_label"
         tools:layout="@layout/create_head_to_head_league_fragment" />
+
+    <fragment
+        android:id="@+id/languageFragment"
+        android:name="com.sakb.spl.ui.language.LanguageFragment"
+        android:label="@string/language"
+        tools:layout="@layout/fragment_language" />
+
 </navigation>

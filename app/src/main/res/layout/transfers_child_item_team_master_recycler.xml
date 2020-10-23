@@ -8,52 +8,44 @@
     android:layout_marginEnd="8dp"
     android:layout_marginBottom="8dp">
 
-    <TextView
+    <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/child_textView"
-        android:layout_width="60dp"
+        android:layout_width="@dimen/_60sdp"
         android:layout_height="wrap_content"
-        android:alpha=".85"
-
-        android:background="#000000"
-        android:ellipsize="end"
-        android:gravity="center"
+        android:background="@color/colorGreenDark68"
         android:maxLines="1"
+        android:textAlignment="center"
         android:textColor="@android:color/white"
-        android:textSize="11sp"
+        android:textSize="@dimen/_10ssp"
         app:layout_constraintEnd_toEndOf="@id/child_imageView"
         app:layout_constraintStart_toStartOf="@id/child_imageView"
         app:layout_constraintTop_toBottomOf="@+id/child_imageView"
-        tools:text="medo" />
+        tools:text="medo000000000000000000000000" />
 
-    <TextView
+    <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/child_cost_textView"
-        android:layout_width="60dp"
+        android:layout_width="@dimen/_60sdp"
         android:layout_height="wrap_content"
-        android:background="#000000"
-
+        android:background="@color/colorBlack68"
         android:ellipsize="end"
         android:gravity="center"
         android:maxLines="1"
         android:textColor="@android:color/white"
-
-        android:textSize="11sp"
+        android:textSize="@dimen/_10ssp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@id/child_textView"
         app:layout_constraintStart_toStartOf="@id/child_textView"
         app:layout_constraintTop_toBottomOf="@+id/child_textView"
         tools:text="medo0000" />
 
-    <ImageView
+    <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/child_imageView"
-        android:layout_width="39dp"
-        android:layout_height="41dp"
-        android:layout_marginBottom="8dp"
-        android:padding="4dp"
+        android:layout_width="@dimen/_42sdp"
+        android:layout_height="@dimen/_42sdp"
+        android:layout_marginBottom="@dimen/_8sdp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0"
         app:srcCompat="@drawable/add_player" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
