@@ -7,7 +7,6 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.sakb.spl.R
-import com.sakb.spl.data.model.MyteamPlayersResponse
 import com.sakb.spl.data.model.PlayerMasterItemItem
 import kotlinx.android.synthetic.main.child_item_myteamplayers_recycler_menu.view.*
 

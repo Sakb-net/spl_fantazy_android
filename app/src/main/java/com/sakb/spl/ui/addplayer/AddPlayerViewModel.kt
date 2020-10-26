@@ -87,27 +87,11 @@ class AddPlayerViewModel(
     // change player
     var changePlayerResultLiveData = SingleLiveEvent<ChangePlayerResponse?>()
 
-    /* fun changePlayerx(
-         access_token: String,
-         eldwry_link: String,
-         delet_player_link: String,
-         add_player_link: String,
-         lang: String
-     ) = changePlayerUseCase.changePlayer(
-         access_token,
-         eldwry_link,
-         delet_player_link,
-         add_player_link,
-         lang
-     )*/
-
-
     fun changePlayer(
         eldwry_link: String,
         delet_player_link: String,
         add_player_link: String
     ) {
-
         repository.changePlayer(
             eldwry_link,
             delet_player_link,

@@ -11,9 +11,7 @@ import com.sakb.spl.R
 import com.sakb.spl.base.BaseFragment
 import com.sakb.spl.databinding.FragmentAwardBinding
 import com.sakb.spl.ui.help.adapter.AwardAdapter
-import com.sakb.spl.ui.help.adapter.HelpAdapter
 import org.koin.androidx.viewmodel.ext.android.viewModel
-import timber.log.Timber
 
 
 class AwardFragment : BaseFragment() {
@@ -37,13 +35,14 @@ class AwardFragment : BaseFragment() {
         super.onViewCreated(view, savedInstanceState)
         viewModel.loadAward()
         viewModel.award.observe(viewLifecycleOwner, Observer {
-            it?.data?.let {data->
-                data.contentItems.let { list->
+            it?.data?.let { data ->
+                data.contentItems.let { list ->
                     adapter.submitList(list)
                 }
             }
         })
     }
+
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         binding.rvParent.adapter = adapter

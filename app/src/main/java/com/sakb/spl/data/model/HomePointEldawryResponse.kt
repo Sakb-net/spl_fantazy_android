@@ -48,8 +48,8 @@ data class DataHome(
 	@field:SerializedName("num_week")
 	val numWeek: Int? = null,
 
-	@field:SerializedName("cost")
-	val cost: String? = null,
+	@field:SerializedName("change_point")
+	val changePoint: Int? = null,
 
 	@field:SerializedName("link")
 	val link: String? = null,
@@ -57,8 +57,8 @@ data class DataHome(
 	@field:SerializedName("name")
 	val name: String? = null,
 
-	@field:SerializedName("name_num_week")
-	val nameNumWeek: Int? = null,
+	@field:SerializedName("lang_num_week")
+	val langNumWeek: String? = null,
 
 	@field:SerializedName("created_at")
 	val createdAt: String? = null,

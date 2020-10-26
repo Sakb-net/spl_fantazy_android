@@ -3,7 +3,6 @@ package com.sakb.spl.ui.register
 import android.content.Intent
 import android.graphics.BitmapFactory
 import android.os.Bundle
-import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import com.ahmedadel.socialmediasignup.SocialMediaSignUp
 import com.ahmedadel.socialmediasignup.SocialMediaSignUp.SocialMediaType
@@ -13,49 +12,48 @@ import com.sakb.spl.R
 import com.sakb.spl.base.BaseActivity
 import com.sakb.spl.data.local.PrefManager
 import com.sakb.spl.data.model.LoginResponse
-import com.sakb.spl.databinding.ActivityRegisterBinding
 import com.sakb.spl.ui.chooseteam.ChooseFavTeamActivity
 import com.sakb.spl.ui.main.MainActivity
 import com.sakb.spl.utils.ImageUtils
 import com.sakb.spl.utils.LanguageUtil
 import com.sakb.spl.utils.toast
+import kotlinx.android.synthetic.main.activity_register.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import timber.log.Timber
 
 
 class RegisterActivity : BaseActivity(), SocialMediaSignUpCallback {
 
-    private lateinit var binding: ActivityRegisterBinding
 
     override val viewModel by viewModel<RegisterViewModel>()
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = DataBindingUtil.setContentView(this, R.layout.activity_register)
+      setContentView( R.layout.activity_register)
 
-        var backIcon = BitmapFactory.decodeResource(resources,R.drawable.back)
-        backIcon = if(LanguageUtil.isArabic()){
-            ImageUtils.rotateImage(backIcon,0f)
-        } else{
-            ImageUtils.rotateImage(backIcon,180f)
+        var backIcon = BitmapFactory.decodeResource(resources, R.drawable.back)
+        backIcon = if (LanguageUtil.isArabic()) {
+            ImageUtils.rotateImage(backIcon, 0f)
+        } else {
+            ImageUtils.rotateImage(backIcon, 180f)
         }
-        binding.back.setImageBitmap(backIcon)
-        binding.back.setOnClickListener {
+        back.setImageBitmap(backIcon)
+        back.setOnClickListener {
             onBackPressed()
         }
-        binding.signIn.setOnClickListener {
+        sign_in.setOnClickListener {
             onBackPressed()
         }
 
 
 
-        binding.buttonRegister.setOnClickListener {
-            val email = binding.EmailEtt.text.toString()
-            val name = binding.UserNameEtt.text.toString()
-            val phone = binding.PhoneEtt.text.toString()
-            val pass = binding.PasswordEtt.text.toString()
-            val confirmPass = binding.ConfirmPasswordEtt.text.toString()
+        buttonRegister.setOnClickListener {
+            val email = EmailEtt.text.toString()
+            val name = UserNameEtt.text.toString()
+            val phone = PhoneEtt.text.toString()
+            val pass = PasswordEtt.text.toString()
+            val confirmPass = ConfirmPasswordEtt.text.toString()
 
             if (pass.isEmpty() || confirmPass.isEmpty() || (email.isEmpty() && phone.isEmpty()) || name.isEmpty()) {
                 toast(getString(R.string.all_fileds_must_filled))
@@ -111,21 +109,21 @@ class RegisterActivity : BaseActivity(), SocialMediaSignUpCallback {
 
         })
 
-        binding.fbLogin.setOnClickListener {
+        fb_login.setOnClickListener {
             Timber.e("login with facebook!")
             viewModel.provider = "facebook"
             SocialMediaSignUp.getInstance().connectTo(SocialMediaType.FACEBOOK, null, this)
 
         }
 
-        binding.twitterLogin.setOnClickListener {
+        twitter_login.setOnClickListener {
             Timber.e("login with twitter!")
             viewModel.provider = "twitter"
             SocialMediaSignUp.getInstance().connectTo(SocialMediaType.TWITTER, null, this)
 
         }
 
-        binding.googleLogin.setOnClickListener {
+        google_login.setOnClickListener {
             Timber.e("login with google!")
             viewModel.provider = "google"
             SocialMediaSignUp.getInstance().connectTo(SocialMediaType.GOOGLE_PLUS, null, this)

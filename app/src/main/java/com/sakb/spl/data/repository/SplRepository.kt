@@ -129,9 +129,7 @@ class SplRepository constructor(
         )
     }
 
-    fun myTeamPlayerMaster(
-
-    ): Single<PlayerMasterResponse> {
+    fun myTeamPlayerMaster(): Single<PlayerMasterResponse> {
         return remote.chooseMyTeamPlayer()
     }
 
@@ -293,5 +291,17 @@ class SplRepository constructor(
 
     fun checkCardStatus():Single<CardStatusResponse>{
         return remote.checkCardsStatus()
+    }
+
+    fun activeTripleCard():Single<BaseResponse>{
+        return remote.activeTripleCardsStatus()
+    }
+
+    fun activeBenchCard():Single<BaseResponse>{
+        return remote.activeBenchCardsStatus()
+    }
+
+    fun cancelCards(type_key: String):Single<BaseResponse>{
+        return remote.cancelCardsStatus(type_key)
     }
 }

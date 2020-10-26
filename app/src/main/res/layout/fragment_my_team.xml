@@ -11,7 +11,7 @@
         android:layout_height="match_parent"
         android:background="#003365">
 
-        <ImageView
+        <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/head_backg"
             android:layout_width="match_parent"
             android:layout_height="@dimen/_350sdp"
@@ -21,7 +21,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
+        <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/banner_text_view"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -43,7 +43,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/banner_text_view" />
 
-        <ImageView
+        <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/empty_image"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -91,7 +91,7 @@
             android:visibility="gone"
             app:constraint_referenced_ids="view_bg,empty_image,empty_view_title,buttonOpenChooseTeam" />
 
-        <LinearLayout
+        <androidx.appcompat.widget.LinearLayoutCompat
             android:id="@+id/buttons_linear_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -104,7 +104,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/banner_text_view">
 
-            <Button
+            <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/preview"
                 style="@style/button_green"
                 android:layout_width="wrap_content"
@@ -115,7 +115,7 @@
                 app:backgroundTint="@color/colorGreenDark"
                 app:layout_constraintTop_toBottomOf="@+id/tv_forgotPass" />
 
-            <Button
+            <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/menuBtn"
                 style="@style/button_green"
                 android:layout_width="wrap_content"
@@ -129,7 +129,7 @@
                 android:textColor="@color/black"
                 app:backgroundTint="@color/white"
                 app:layout_constraintTop_toBottomOf="@+id/tv_forgotPass" />
-        </LinearLayout>
+        </androidx.appcompat.widget.LinearLayoutCompat>
 
         <androidx.core.widget.NestedScrollView
             android:id="@+id/nested_container"
@@ -146,7 +146,7 @@
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
-                <ImageView
+                <androidx.appcompat.widget.AppCompatImageView
                     android:id="@+id/stadIv"
                     android:layout_width="0dp"
                     android:layout_height="0dp"
@@ -172,7 +172,7 @@
                     tools:listitem="@layout/parent_item_team_recycler" />
 
 
-                <ImageView
+                <androidx.appcompat.widget.AppCompatImageView
                     android:id="@+id/swap_bg"
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
@@ -228,6 +228,23 @@
                     app:layout_constraintStart_toEndOf="@id/buttonBenchBoost"
                     app:layout_constraintTop_toBottomOf="@id/rv_swapList" />
 
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/buttonCancelCard"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    style="@style/button_green"
+                    android:background="@drawable/rec_green_color_dialog"
+                    android:backgroundTint="@color/red"
+                    android:layout_margin="@dimen/_8sdp"
+                    android:padding="@dimen/_8sdp"
+                    android:textAllCaps="false"
+                    android:visibility="gone"
+                    android:text="@string/cancel_cards"
+                    android:textSize="@dimen/_10ssp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/rv_swapList"/>
 
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.core.widget.NestedScrollView>

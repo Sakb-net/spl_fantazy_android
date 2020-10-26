@@ -5,7 +5,6 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.sakb.spl.data.model.DataItem
-import com.sakb.spl.data.model.HomeResponse
 import com.sakb.spl.databinding.ItemHomeFixtureTitlesBinding
 import com.sakb.spl.ui.home.diffcallback.FixturesHeaderDiffCallback
 import com.sakb.spl.utils.ConvertDateTimeUtils
@@ -42,16 +41,22 @@ class FixturesHeaderAdapter :
 
 
         fun bind(data: DataItem) = data.run {
-            val dateNew = if(LanguageUtil.isArabic()){
-                ConvertDateTimeUtils.changeFormat(startDate,DATE_DEFAULT_FORMAT,
-                DATE_CHAR_FORMAT_AR)}
-            else{
-                ConvertDateTimeUtils.changeFormat(startDate,DATE_DEFAULT_FORMAT,
-                    DATE_CHAR_FORMAT_EN)
+            val dateNew = if (LanguageUtil.isArabic()) {
+                ConvertDateTimeUtils.changeFormat(
+                    startDate, DATE_DEFAULT_FORMAT,
+                    DATE_CHAR_FORMAT_AR
+                )
+            } else {
+                ConvertDateTimeUtils.changeFormat(
+                    startDate, DATE_DEFAULT_FORMAT,
+                    DATE_CHAR_FORMAT_EN
+                )
             }
             itemView.setOnClickListener { onDataClick?.invoke(this) }
             binding.textViewStart.text = langNumWeek
-            binding.textViewEnd.text = if(LanguageUtil.isArabic()){startDateDay?.plus(",")?.plus(dateNew)}else{
+            binding.textViewEnd.text = if (LanguageUtil.isArabic()) {
+                startDateDay?.plus(",")?.plus(dateNew)
+            } else {
                 dateNew?.plus(",")?.plus(startDateDay)
             }
         }

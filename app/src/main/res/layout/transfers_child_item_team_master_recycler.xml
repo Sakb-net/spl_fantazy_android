@@ -4,19 +4,17 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:layout_marginStart="8dp"
-    android:layout_marginEnd="8dp"
-    android:layout_marginBottom="8dp">
+    android:layout_margin="@dimen/_5sdp">
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/child_textView"
-        android:layout_width="@dimen/_60sdp"
+        android:layout_width="@dimen/_45sdp"
         android:layout_height="wrap_content"
         android:background="@color/colorGreenDark68"
         android:maxLines="1"
         android:textAlignment="center"
         android:textColor="@android:color/white"
-        android:textSize="@dimen/_10ssp"
+        android:textSize="@dimen/_8ssp"
         app:layout_constraintEnd_toEndOf="@id/child_imageView"
         app:layout_constraintStart_toStartOf="@id/child_imageView"
         app:layout_constraintTop_toBottomOf="@+id/child_imageView"
@@ -24,14 +22,14 @@
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/child_cost_textView"
-        android:layout_width="@dimen/_60sdp"
+        android:layout_width="@dimen/_45sdp"
         android:layout_height="wrap_content"
         android:background="@color/colorBlack68"
         android:ellipsize="end"
         android:gravity="center"
         android:maxLines="1"
         android:textColor="@android:color/white"
-        android:textSize="@dimen/_10ssp"
+        android:textSize="@dimen/_8ssp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@id/child_textView"
         app:layout_constraintStart_toStartOf="@id/child_textView"
@@ -40,8 +38,8 @@
 
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/child_imageView"
-        android:layout_width="@dimen/_42sdp"
-        android:layout_height="@dimen/_42sdp"
+        android:layout_width="@dimen/_40sdp"
+        android:layout_height="@dimen/_40sdp"
         android:layout_marginBottom="@dimen/_8sdp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

@@ -24,9 +24,9 @@ public class ClubAdapter extends RecyclerView.Adapter<ClubAdapter.ClubViewHolder
     private static final int TYPE_ROW = 0;
     private static final int TYPE_ROW_COLORFUL = 1;
 
-    private List<AllDataItem> clubList;
+    private final List<AllDataItem> clubList;
     private List<AllDataItem> filteredClubList;
-    private Context context;
+    private final Context context;
 
     public ClubAdapter(Context context, List<AllDataItem> clubList) {
         this.context = context;
@@ -69,9 +69,9 @@ public class ClubAdapter extends RecyclerView.Adapter<ClubAdapter.ClubViewHolder
         holder.itemView.setOnClickListener(v -> {
             context.startActivity(
                     new Intent(context, PlayerProfileActivity.class).putExtra(
-                    "link",
-                    club.getLink()
-            ));
+                            "link",
+                            club.getLink()
+                    ));
         });
         if (club.getStatePlayer().equals("normal")) {
             holder.tvStates.setImageDrawable(ContextCompat.getDrawable(context, R.drawable.ic_info));
@@ -124,6 +124,7 @@ public class ClubAdapter extends RecyclerView.Adapter<ClubAdapter.ClubViewHolder
     public class ClubViewHolder extends RecyclerView.ViewHolder {
         public TextView txtName, txtClub, txtSell, txtBuy, txtFrom, txtPoint, txtNextMatch, txtPrice;
         public AppCompatImageView tvStates;
+
         public ClubViewHolder(View view) {
             super(view);
             tvStates = view.findViewById(R.id.tvStates);

@@ -220,11 +220,11 @@
     <string name="choose_team_first">قم باختيار الفريق أولا!</string>
     <string name="create_or_join_league">أنشئ أو انضم لدوري</string>
     <string name="join_league">انضم إلي دوري</string>
-    <string name="join_league_description">انضم لدوري خاص إذا كان معك الكود الخاص به او اشترك في أحد الدوريات الأقوى</string>
+    <string name="join_league_description">انضم لدوري خاص إذا كان معك الكود الخاص به</string>
     <string name="special_league">دوري خاص</string>
     <string name="powerful_league">الدوريات الأقوي</string>
     <string name="create_a_league">إنشاء دوري</string>
-    <string name="create_a_league_to_compete_with_you_and_your_friends_and_invite_them_to_join_you_via_mobile_number_or_code">قم بإنشاء دوري للتنافس بينك وبين أصدقائك و قم بدعوتهم للانضمام لك عن طريق رقم الجوال أو كود</string>
+    <string name="create_a_league_to_compete_with_you_and_your_friends_and_invite_them_to_join_you_via_mobile_number_or_code">قم بإنشاء دوري للتنافس بينك وبين أصدقائك</string>
     <string name="classic">كلاسيك</string>
     <string name="head_to_head">Head to Head</string>
     <string name="join_to_special_league">انضم إلي دوري خاص</string>
@@ -304,4 +304,14 @@
     <string name="language">English</string>
     <string name="are_sure_change_language">هل انت متاكد من تغيير اللغة؟</string>
     <string name="write_your_team_name">إسم الفريق هنا</string>
+    <string name="cancel_cards">إلغاء الكروت</string>
+    <string name="go_to_my_leagues">الذهاب لـ دورياتي</string>
+    <string name="in">In</string>
+    <string name="out">Out</string>
+    <string name="confirm">Confirm</string>
+    <string name="you_are_used">You are used</string>
+    <string name="get_extra_transfers_point">Extra Transfers Point</string>
+    <string name="money_remainig">"Money Remining "</string>
+    <string name="remaining_amount_not_enough">You don\'t have amount to buy this player</string>
+    <string name="this_player_in_your_team">This player is choose Before</string>
 </resources>

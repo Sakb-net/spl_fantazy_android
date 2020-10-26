@@ -1,8 +1,6 @@
 package com.sakb.spl.ui.main
 
-import android.content.Intent
 import android.os.Bundle
-import android.view.MenuItem
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.widget.Toolbar
@@ -19,13 +17,10 @@ import com.sakb.spl.R
 import com.sakb.spl.base.BaseActivity
 import com.sakb.spl.constants.Constants
 import com.sakb.spl.data.local.PrefManager
-import com.sakb.spl.utils.LanguageUtil
-import com.zeugmasolutions.localehelper.LocaleHelper
 import org.koin.androidx.viewmodel.ext.android.viewModel
-import java.util.*
 
 
-class MainActivity : BaseActivity(){
+class MainActivity : BaseActivity() {
 
     private lateinit var appBarConfiguration: AppBarConfiguration
     override val viewModel by viewModel<MainViewModel>()
@@ -35,6 +30,7 @@ class MainActivity : BaseActivity(){
     private val user by lazy {
         PrefManager.getUser()
     }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -74,7 +70,7 @@ class MainActivity : BaseActivity(){
             }
             navController.navigate(R.id.myProfileFragment)
         }
-        val profileImage =header.findViewById<ImageView>(R.id.profile_image)
+        val profileImage = header.findViewById<ImageView>(R.id.profile_image)
         val profileName = header.findViewById<TextView>(R.id.profile_name)
         profileName.text = user?.data?.displayName
         Glide.with(profileImage.context)

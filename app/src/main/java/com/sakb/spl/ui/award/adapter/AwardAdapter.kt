@@ -1,17 +1,11 @@
 package com.sakb.spl.ui.help.adapter
 
-import android.os.Bundle
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.google.android.youtube.player.internal.g
-import com.sakb.spl.R
 import com.sakb.spl.data.model.ContentItemsItem
 import com.sakb.spl.databinding.ItemAwardBinding
-import timber.log.Timber
 
 class AwardAdapter :
     ListAdapter<ContentItemsItem, AwardAdapter.AwardViewHolder>(

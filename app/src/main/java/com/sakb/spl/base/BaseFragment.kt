@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import com.sakb.spl.R
 import com.sakb.spl.data.local.PrefManager
+import com.sakb.spl.data.model.TransfersData
 import com.sakb.spl.ui.login.LoginActivity
 import com.sakb.spl.utils.Dialogs
 import com.sakb.spl.utils.Snacky

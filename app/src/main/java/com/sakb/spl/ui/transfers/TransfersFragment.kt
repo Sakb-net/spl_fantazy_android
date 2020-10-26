@@ -2,52 +2,51 @@ package com.sakb.spl.ui.transfers
 
 import android.content.Intent
 import android.os.Bundle
+import android.os.Parcelable
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.core.content.ContextCompat
-import androidx.databinding.DataBindingUtil
-import androidx.lifecycle.Observer
+import androidx.core.os.bundleOf
+import androidx.navigation.fragment.findNavController
+import com.google.android.youtube.player.internal.d
 import com.google.gson.Gson
 import com.sakb.spl.R
 import com.sakb.spl.base.BaseFragment
-import com.sakb.spl.data.model.AddPlayerResponse
-import com.sakb.spl.data.model.ChangePlayerResponse
-import com.sakb.spl.databinding.FragmentTransfersBinding
+import com.sakb.spl.data.model.*
+import com.sakb.spl.ui.home.HomeFragment.Companion.TRANSFERS_DATA
+import com.sakb.spl.ui.home.HomeFragment.Companion.transfersData
 import com.sakb.spl.ui.playerprofile.PlayerProfileActivity
 import com.sakb.spl.ui.transfers.adapter.MyTeamPlayersMasterAdapter
 import com.sakb.spl.ui.transfers.adapter.menu.MyTeamPlayersMasterMenuAdapter
-import com.sakb.spl.utils.showEnterTeamNameDialog
 import com.sakb.spl.utils.showWarningDialog
 import com.sakb.spl.utils.toast
+import kotlinx.android.parcel.Parcelize
 import kotlinx.android.synthetic.main.fragment_transfers.*
 import org.greenrobot.eventbus.EventBus
 import org.greenrobot.eventbus.Subscribe
-import org.koin.androidx.viewmodel.ext.android.viewModel
+import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 import timber.log.Timber
 
 
 class TransfersFragment : BaseFragment() {
-
-
-    private lateinit var binding: FragmentTransfersBinding
-
     private lateinit var adapter: MyTeamPlayersMasterAdapter
+    override val viewModel by sharedViewModel<TransfersViewModel>()
 
+    lateinit var masterPlayer : PlayerMasterResponse
+    lateinit var newMasterPlayer : PlayerMasterResponse
 
-    override val viewModel by viewModel<TransfersViewModel>()
+    lateinit var playersSubtitle: PlayersSubtitle
 
+    lateinit var playersSubtitleList:ArrayList<PlayersSubtitle>
+
+    var firstTime = true
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = DataBindingUtil.inflate(
-            inflater,
-            R.layout.fragment_transfers,
-            container,
-            false
-        )
-        return binding.root
+        return inflater.inflate(R.layout.fragment_transfers, container, false)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -60,6 +59,10 @@ class TransfersFragment : BaseFragment() {
         EventBus.getDefault().unregister(this)
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        playersSubtitleList = ArrayList()
+    }
     @Subscribe
     fun onPlayerAdded(event: AddPlayerResponse) {
         event.let {
@@ -74,34 +77,48 @@ class TransfersFragment : BaseFragment() {
         }
     }
 
+    @Subscribe
+    fun onEvent(event:PlayersSubtitle ){
+        event.let {
+            playersSubtitle = event
+            viewModel.loadPlayerInfo(event.newPlayerLink)
+        }
+    }
+
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         viewModel.loadMyTeamPlayers()
 
-        viewModel.MyTeamPlayersListResultLiveData.observe(this, Observer { data ->
+        viewModel.MyTeamPlayersListResultLiveData.observe(this, { data ->
             Timber.e("data is ===== ${Gson().toJson(data?.data)}")
 
-            binding.playerNum.text = data.total_team_play.toString().plus(" / 15")
-            binding.payTotal.text = data.pay_total_cost.toString()
-            binding.menuBtn.setOnClickListener {
-                binding.menuBtn.backgroundTintList = ContextCompat.getColorStateList(
+            masterPlayer = data
+            newMasterPlayer = data
+            if(firstTime){
+                transfersData.moneyRemaining = data.pay_total_cost
+                firstTime  = false
+            }
+            player_num.text = transfersData.transferFree.toString()
+            pay_total.text = transfersData.moneyRemaining.toString()
+            menuBtn.setOnClickListener {
+                menuBtn.backgroundTintList = ContextCompat.getColorStateList(
                     requireContext(),
                     R.color.colorGreenDark
                 )
 
-                binding.preview.backgroundTintList = ContextCompat.getColorStateList(
+                preview.backgroundTintList = ContextCompat.getColorStateList(
                     requireContext(),
                     R.color.white
                 )
 
-                binding.menuBtn.setTextColor(
+                menuBtn.setTextColor(
                     ContextCompat.getColor(
                         requireContext(),
                         R.color.white
                     )
                 )
 
-                binding.preview.setTextColor(
+                preview.setTextColor(
                     ContextCompat.getColor(
                         requireContext(),
                         R.color.black
@@ -109,14 +126,14 @@ class TransfersFragment : BaseFragment() {
                 )
                 viewModel.isMenuPreviewEnabled = true
 
-                binding.stadIv.setImageDrawable(null)
-                binding.stadIv.setBackgroundColor(
+                stadIv.setImageDrawable(null)
+                stadIv.setBackgroundColor(
                     ContextCompat.getColor(
                         requireContext(),
                         R.color.white
                     )
                 )
-                data.data?.let {
+                masterPlayer.data?.let {
                     val _adapter = MyTeamPlayersMasterMenuAdapter(it).apply {
                         onOpenProfileClicked = { _, data ->
                             startActivity(
@@ -137,25 +154,25 @@ class TransfersFragment : BaseFragment() {
                 }
             }
 
-            binding.preview.setOnClickListener {
-                binding.preview.backgroundTintList = ContextCompat.getColorStateList(
+            preview.setOnClickListener {
+                preview.backgroundTintList = ContextCompat.getColorStateList(
                     requireContext(),
                     R.color.colorGreenDark
                 )
 
-                binding.menuBtn.backgroundTintList = ContextCompat.getColorStateList(
+                menuBtn.backgroundTintList = ContextCompat.getColorStateList(
                     requireContext(),
                     R.color.white
                 )
 
-                binding.preview.setTextColor(
+                preview.setTextColor(
                     ContextCompat.getColor(
                         requireContext(),
                         R.color.white
                     )
                 )
 
-                binding.menuBtn.setTextColor(
+                menuBtn.setTextColor(
                     ContextCompat.getColor(
                         requireContext(),
                         R.color.black
@@ -163,8 +180,8 @@ class TransfersFragment : BaseFragment() {
                 )
                 viewModel.isMenuPreviewEnabled = false
 
-                binding.stadIv.setImageResource(R.drawable.pitch)
-                data.data?.let {
+                stadIv.setImageResource(R.drawable.pitch)
+                masterPlayer.data?.let {
                     adapter = MyTeamPlayersMasterAdapter(it).apply {
                         onOpenProfileClicked = { _, data ->
                             startActivity(
@@ -185,26 +202,27 @@ class TransfersFragment : BaseFragment() {
                 }
             }
 
-            binding.buttonChooseTeam.setOnClickListener {
-
+            buttonChooseTeam.setOnClickListener {
+//                context?.showEnterTeamNameDialog { dialog, name ->
+//                    dialog?.dismiss()
+//                    viewModel.saveTeam(
+//                        name
+//                    )
+//                }
+                val bundle = bundleOf(PLAYER_SUB to playersSubtitleList)
+                findNavController().navigate(R.id.action_transfersFragment_to_transfersActionFragment,bundle)
             }
 
-            binding.buttonGoldCard.setOnClickListener {
-                openGoldCardDialog()
-            }
-            binding.buttonSilverCard.setOnClickListener {
-                openSilverCardDialog()
-            }
 
             if (viewModel.isMenuPreviewEnabled) {
-                binding.stadIv.setImageDrawable(null)
-                binding.stadIv.setBackgroundColor(
+                stadIv.setImageDrawable(null)
+                stadIv.setBackgroundColor(
                     ContextCompat.getColor(
                         requireContext(),
                         R.color.white
                     )
                 )
-                data.data?.let {
+                masterPlayer.data?.let {
                     val _adapter = MyTeamPlayersMasterMenuAdapter(it).apply {
 
                         onOpenProfileClicked = { _, data ->
@@ -231,8 +249,8 @@ class TransfersFragment : BaseFragment() {
                     rv_parent.adapter = _adapter
                 }
             } else {
-                binding.stadIv.setImageResource(R.drawable.pitch)
-                data.data?.let {
+                stadIv.setImageResource(R.drawable.pitch)
+                masterPlayer.data?.let {
                     adapter = MyTeamPlayersMasterAdapter(it).apply {
 
                         onOpenProfileClicked = { _, data ->
@@ -255,41 +273,73 @@ class TransfersFragment : BaseFragment() {
             }
         })
 
-        viewModel.SaveTeamResponseLiveData.observe(this, Observer {
+        viewModel.SaveTeamResponseLiveData.observe(this, {
             it?.let { data ->
                 Timber.e("data is ===== ${Gson().toJson(data.data)}")
                 context?.toast("" + data.data?.msg_add)
             }
         })
 
+        viewModel.playerResponse.observe(viewLifecycleOwner, {
+            it?.let { newPlayer ->
+                masterPlayer.data?.let {
+                    for (i in 0 until masterPlayer.data?.size!!) {
+                        for (j in 0 until masterPlayer.data?.get(i)?.size!!) {
+                            if(playersSubtitle.newPlayerLink == masterPlayer.data?.get(i)?.get(j)?.link_player){
+                                Toast.makeText(requireContext(), getString(R.string.this_player_in_your_team), Toast.LENGTH_SHORT).show()
+                                break
+                            }
+                            else if (playersSubtitle.oldPlayerLink == masterPlayer.data?.get(i)?.get(j)?.link_player) {
+                                val newItem = newPlayer.data?.playerData
+                                val oldItem = masterPlayer.data?.get(i)?.get(j)
+                                if(transfersData.transferFree?:0 > 0){
+                                    transfersData.transferFree =
+                                        transfersData.transferFree?.minus(1)
+                                    player_num.text = transfersData.transferFree.toString()
+                                }else{
+                                    transfersData.moneyRemaining = transfersData.moneyRemaining?.minus(
+                                        newItem?.cost?.toDouble() ?: 0.0
+                                    )
+                                    if (transfersData.moneyRemaining?:0.0 >= 0.0) {
+                                        pay_total.text = transfersData.moneyRemaining?.toString()
+                                    }
+                                }
+                                if (transfersData.moneyRemaining?:0.0 >= 0.0) {
+                                    playersSubtitleList.add(playersSubtitle)
+                                    oldItem?.cost_player = newItem?.cost?.toDouble()
+                                    oldItem?.link_player = newItem?.link
+                                    oldItem?.image_player = newItem?.image
+                                    oldItem?.name_player = newItem?.name
+                                    oldItem?.point_player = newItem?.point
+                                    oldItem?.state_player = newItem?.statePlayer
+                                    oldItem?.team = newItem?.team
+                                    oldItem?.type_player = newItem?.typePlayer
+                                    oldItem?.alPha = 1.0f
+                                    oldItem?.type_loc_player = newItem?.locationPlayer
+                                    transfersData.daweryLink = oldItem?.eldwry_link
+                                } else {
+                                    Toast.makeText(requireContext(), getString(R.string.remaining_amount_not_enough), Toast.LENGTH_SHORT).show()
+                                }
+                                break
+                            }
+                        }
+                    }
+                }
+                if(playersSubtitleList.size>0){
+                   buttonChooseTeam.isEnabled = true
+                    buttonChooseTeam.background = ContextCompat.getDrawable(requireContext(),R.drawable.button_home)
+                }else{
+                    buttonChooseTeam.isEnabled = false
+                    buttonChooseTeam.background = ContextCompat.getDrawable(requireContext(),R.drawable.button_home_disable)
+                }
+                viewModel.updateData(masterPlayer)
+            }
+        })
     }
 
-    private fun openSilverCardDialog() {
-        context?.showWarningDialog(
-            R.drawable.ic_sliver_card,
-            R.string.silver_card,
-            R.string.silver_card_content,
-            { dialog ->
-                dialog?.dismiss()
-            },
-            { dialog ->
-                dialog?.dismiss()
-            })
+
+    companion object{
+        const val PLAYER_SUB = "player_sub"
     }
-
-
-    private fun openGoldCardDialog() {
-        context?.showWarningDialog(
-            R.drawable.ic_golden_card,
-            R.string.gold_card,
-            R.string.gold_card_content,
-            { dialog ->
-                dialog?.dismiss()
-            },
-            { dialog ->
-                dialog?.dismiss()
-            })
-    }
-
-
 }
+

@@ -1,7 +1,5 @@
 package com.sakb.spl.ui.chooseteam
 
-import android.app.Dialog
-import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
@@ -13,7 +11,6 @@ import com.sakb.spl.R
 import com.sakb.spl.base.BaseActivity
 import com.sakb.spl.databinding.ActivityChooseFavTeamBinding
 import com.sakb.spl.ui.chooseteam.adapter.SingleAdapter
-import com.sakb.spl.ui.chooseteam.adapter.teams
 import com.sakb.spl.ui.terms.TermsActivity
 import com.sakb.spl.utils.toast
 import org.koin.androidx.viewmodel.ext.android.viewModel

@@ -1,7 +1,6 @@
 package com.sakb.spl.ui.home.diffcallback
 
 import androidx.recyclerview.widget.DiffUtil
-import com.sakb.spl.data.model.HomeResponse
 import com.sakb.spl.data.model.MatchGroupItem
 
 class FixturesDiffCallback : DiffUtil.ItemCallback<MatchGroupItem>() {

@@ -8,10 +8,14 @@ class TeamNewSpinnerAdapter(
     val objects: MutableList<GetTeamResponse.Data?>,
     theLayoutResId: Int
 ) :
-    ArrayAdapter<Any>(theContext?.requireContext(), theLayoutResId, objects as List<GetTeamResponse.Data?>) {
+    ArrayAdapter<Any>(
+        theContext.requireContext(),
+        theLayoutResId,
+        objects as List<GetTeamResponse.Data?>
+    ) {
 
     override fun getItem(position: Int): String {
-        return objects[position]?.name?:""
+        return objects[position]?.name ?: ""
     }
 
     override fun getCount(): Int {

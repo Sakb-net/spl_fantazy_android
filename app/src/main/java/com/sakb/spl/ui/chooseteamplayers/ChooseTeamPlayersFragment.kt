@@ -65,44 +65,18 @@ class ChooseTeamPlayersFragment : BaseFragment() {
 
     @Subscribe
     fun onPlayerAdded(event: AddPlayerResponse) {
-        // context?.toast("coming!" + event.players?.size)
-        //  viewModel.updatePayersMaster(event.players)
         event.let {
             // adapter.updateData(it)
             viewModel.updateData(it)
         }
-
-        /**rv_parent.apply {
-        event.players?.let {
-        adapter = MyTeamPlayersMasterAdapter(it).apply {
-        onItemDeleteClick = { pos, data ->
-        context?.toast("del $pos plz!")
-        }
-        }
-        }
-        }*/
-
     }
 
     @Subscribe
     fun onPlayerChanged(event: ChangePlayerResponse) {
-        // context?.toast("coming!" + event.data?.size)
-        //  viewModel.updatePayersMaster(event.players)
         event.let {
             // adapter.updateData(it)
             viewModel.updateData(it)
         }
-
-        /**rv_parent.apply {
-        event.players?.let {
-        adapter = MyTeamPlayersMasterAdapter(it).apply {
-        onItemDeleteClick = { pos, data ->
-        context?.toast("del $pos plz!")
-        }
-        }
-        }
-        }*/
-
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -142,13 +116,15 @@ class ChooseTeamPlayersFragment : BaseFragment() {
 
             binding.playerNum.text = data.total_team_play.toString().plus(" / 15")
             binding.payTotal.text = data.pay_total_cost.toString()
-            var text = binding.playerNum.text.toString()
-            if(text != "15 / 15"){
-                binding.buttonChooseTeam.isEnabled  = false
-                binding.buttonChooseTeam.background= ContextCompat.getDrawable(requireContext(),R.drawable.button_home_disable)
-            }else{
+            val text = binding.playerNum.text.toString()
+            if (text != "15 / 15") {
+                binding.buttonChooseTeam.isEnabled = false
+                binding.buttonChooseTeam.background =
+                    ContextCompat.getDrawable(requireContext(), R.drawable.button_home_disable)
+            } else {
                 binding.buttonChooseTeam.isEnabled = true
-                binding.buttonChooseTeam.background= ContextCompat.getDrawable(requireContext(),R.drawable.button_home)
+                binding.buttonChooseTeam.background =
+                    ContextCompat.getDrawable(requireContext(), R.drawable.button_home)
             }
 
             binding.menuBtn.setOnClickListener {
@@ -184,7 +160,6 @@ class ChooseTeamPlayersFragment : BaseFragment() {
                         R.color.white
                     )
                 )
-                //  binding.stadIv.visibility = View.INVISIBLE
                 data.data?.let {
                     val _adapter = MyTeamPlayersMasterMenuAdapter(it).apply {
 
@@ -210,10 +185,6 @@ class ChooseTeamPlayersFragment : BaseFragment() {
 
                     }
                     rv_parent.adapter = _adapter
-
-                    /**  rv_parent.apply {
-                    adapter = adapter
-                    }*/
                 }
             }
 
@@ -244,13 +215,6 @@ class ChooseTeamPlayersFragment : BaseFragment() {
                 viewModel.isMenuPreviewEnabled = false
 
                 binding.stadIv.setImageResource(R.drawable.pitch)
-                /**  binding.stadIv.setBackgroundColor(
-                ContextCompat.getColor(
-                context!!,
-                R.color.white
-                )
-                )*/
-                //  binding.stadIv.visibility = View.INVISIBLE
                 data.data?.let {
                     adapter = MyTeamPlayersMasterAdapter(it).apply {
 
@@ -277,15 +241,10 @@ class ChooseTeamPlayersFragment : BaseFragment() {
                     }
 
                     rv_parent.adapter = adapter
-
-                    /**  rv_parent.apply {
-                    adapter = adapter
-                    }*/
                 }
             }
 
             binding.buttonChooseTeam.setOnClickListener {
-                //TODO Important change chooseTeam form 0 to 1
                 context?.showEnterTeamNameDialog { dialog, name ->
                     dialog?.dismiss()
                     viewModel.saveTeam(
@@ -302,7 +261,6 @@ class ChooseTeamPlayersFragment : BaseFragment() {
                         R.color.white
                     )
                 )
-                //   binding.stadIv.visibility = View.INVISIBLE
                 data.data?.let {
                     val _adapter = MyTeamPlayersMasterMenuAdapter(it).apply {
 
@@ -314,7 +272,6 @@ class ChooseTeamPlayersFragment : BaseFragment() {
                                 )
                             )
                         }
-
                         onItemDeleteClick = { childPos, parentPos, data ->
                             context?.toast("del $childPos plz!")
                             viewModel.updateAphaData(0.5f, childPos, parentPos, data)
@@ -353,21 +310,14 @@ class ChooseTeamPlayersFragment : BaseFragment() {
                             viewModel.updateAphaData(1.0f, childPos, parentPos, data)
                         }
 
-
                     }
-
                     rv_parent.adapter = adapter
-
-                    /**  rv_parent.apply {
-                    adapter = adapter
-                    }*/
                 }
             }
 
         })
 
 
-        // handle save button
         viewModel.SaveTeamResponseLiveData.observe(this, Observer {
             it?.let { data ->
                 Timber.e("data is ===== ${Gson().toJson(data.data)}")

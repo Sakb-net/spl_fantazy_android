@@ -3,6 +3,7 @@ package com.sakb.spl.base
 import androidx.lifecycle.ViewModel
 import com.google.gson.Gson
 import com.sakb.spl.data.model.ErrorResponse
+import com.sakb.spl.data.model.PlayerMasterResponse
 import com.sakb.spl.utils.SingleLiveEvent
 import io.reactivex.Single
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -86,5 +87,4 @@ open class BaseViewModel : ViewModel() {
     override fun onCleared() {
         compositeDisposable.dispose()
     }
-
 }

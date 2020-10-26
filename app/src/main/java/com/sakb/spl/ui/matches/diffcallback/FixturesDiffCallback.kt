@@ -2,7 +2,6 @@ package com.sakb.spl.ui.matches.diffcallback
 
 import androidx.recyclerview.widget.DiffUtil
 import com.sakb.spl.data.model.DataItemSubFix
-import com.sakb.spl.data.model.HomeResponse
 
 class FixturesDiffCallback : DiffUtil.ItemCallback<DataItemSubFix>() {
     override fun areItemsTheSame(

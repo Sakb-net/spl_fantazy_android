@@ -51,10 +51,7 @@ fun Context.showSplDeleteDialog(
     val alertDialog = AlertDialog.Builder(this).setView(view).setCancelable(true)
     val dialog = alertDialog.create()
     dialog.window?.setBackgroundDrawableResource(android.R.color.transparent)
-    // view.dialogIcon.setImageResource(drawableRes)
-    //  view.dialogText.text = resID
     view.playerProfieBtn.setOnClickListener { playerProfileBtn(dialog) }
-    //if (drawableRes == R.drawable.dialog_check) view.negativeButton.visibility =View.GONE
     view.restorePlayerBtn.setOnClickListener { restoreBtn(dialog) }
     view.replacePlayerBtn.setOnClickListener { replaceBtn(dialog) }
     dialog.show()
@@ -68,7 +65,6 @@ fun Context.showEnterRangeDialog(positive: (dialog: AlertDialog?, priceFrom: Str
     val dialog = alertDialog.create()
     dialog.setCanceledOnTouchOutside(true)
     dialog.window?.setBackgroundDrawableResource(android.R.color.transparent)
-
     view.positiveEnterRangeBtn.setOnClickListener {
         positive(
             dialog, view.enter_price_from.text.toString(),

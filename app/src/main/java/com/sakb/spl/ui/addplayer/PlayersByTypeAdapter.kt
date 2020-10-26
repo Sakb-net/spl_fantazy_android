@@ -31,7 +31,6 @@ class PlayersByTypeAdapter(
             R.layout.list_item_player_by_type, viewGroup, false
         )
         return PlayersViewHolder(binding)
-
     }
 
     override fun onBindViewHolder(@NonNull playersViewHolder: PlayersViewHolder, position: Int) {
@@ -44,40 +43,21 @@ class PlayersByTypeAdapter(
         return players!!.size
     }
 
-
     inner class PlayersViewHolder(val binding: ListItemPlayerByTypeBinding) :
         RecyclerView.ViewHolder(binding.root) {
-
-        //  private val textView: TextView
-        //   private val imageView: ImageView
 
         init {
             binding.addPlayerBtn.setOnClickListener {
                 Timber.e("clicked!!=========" + adapterPosition)
                 onItemClick?.invoke(adapterPosition, players!![adapterPosition])
             }
-            //     textView = itemView.findViewById(R.id.textView)
-            //   imageView = itemView.findViewById(R.id.imageView)
         }
 
         fun bind(player: PlayerByTypeResponse.PlayersGroup) {
             binding.nameTv.text = player.name
             binding.clubTv.text = player.team?.plus(" - ")?.plus(player.type_player)
             binding.priceTv.text = player.cost.toString()
-            // Todo
             binding.pointTv.text = player.point.toString()
-            /* if (checkedPosition == -1) {
-                 imageView.setBackgroundResource(R.drawable.circle)
-             } else {
-                 if (checkedPosition == adapterPosition) {
-                     imageView.setBackgroundResource(R.drawable.circle_point)
-                 } else {
-                     imageView.setBackgroundResource(R.drawable.circle)
-                 }
-             }
-             textView.setText(employee.name)
-             textView.setTag(employee.link)*/
-
             itemView.setOnClickListener {
                 context.startActivity(
                     Intent(context, PlayerProfileActivity::class.java).putExtra(

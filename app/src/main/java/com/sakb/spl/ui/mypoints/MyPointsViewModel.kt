@@ -1,7 +1,6 @@
 package com.sakb.spl.ui.mypoints
 
 import com.sakb.spl.base.BaseViewModel
-import com.sakb.spl.data.model.AwardResponse
 import com.sakb.spl.data.model.GetPointSubeldawryResponse
 import com.sakb.spl.data.model.PointsEldwryResponse
 import com.sakb.spl.data.repository.SplRepository

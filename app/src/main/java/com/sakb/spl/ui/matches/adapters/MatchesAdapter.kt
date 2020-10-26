@@ -7,9 +7,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.sakb.spl.R
 import com.sakb.spl.constants.Constants
-import com.sakb.spl.data.model.DataItem
 import com.sakb.spl.data.model.DataItemSubFix
-import com.sakb.spl.data.model.HomeResponse
 import com.sakb.spl.databinding.RoundNextMatchItemBinding
 import com.sakb.spl.databinding.RoundPrevMatchItemBinding
 import com.sakb.spl.ui.matches.diffcallback.FixturesDiffCallback
@@ -92,7 +90,8 @@ class MatchesAdapter : ListAdapter<DataItemSubFix, RecyclerView.ViewHolder>(
             Glide.with(binding.team2Iv).load(Constants.baseUrl + imageSecond)
                 .placeholder(R.drawable.placeholder).error(R.drawable.placeholder).override(150)
                 .into(binding.team2Iv)
-            val timeNew = ConvertDateTimeUtils.changeFormat(this.time,
+            val timeNew = ConvertDateTimeUtils.changeFormat(
+                this.time,
                 ConvertDateTimeUtils.TIME_24_FORMAT,
                 ConvertDateTimeUtils.TIME_FORMAT
             )

@@ -1,6 +1,5 @@
 package com.sakb.spl.ui.language
 
-import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -10,8 +9,6 @@ import com.sakb.spl.R
 import com.sakb.spl.base.BaseActivity
 import com.sakb.spl.base.BaseFragment
 import com.sakb.spl.data.local.PrefManager
-import com.sakb.spl.ui.login.LoginActivity
-import com.sakb.spl.ui.logout.LogOutViewModel
 import com.sakb.spl.utils.LanguageUtil
 import com.sakb.spl.utils.showDialogLogOut
 import com.zeugmasolutions.localehelper.LocaleHelper
@@ -44,11 +41,11 @@ class LanguageFragment : BaseFragment() {
     }
 
     private fun performChangeLanguage() {
-        if(LanguageUtil.isArabic()){
+        if (LanguageUtil.isArabic()) {
             LocaleHelper.setLocale(this@LanguageFragment.requireContext(), Locale("en"))
             PrefManager.saveLanguage("en")
             (activity as BaseActivity).restartActivity()
-        }else{
+        } else {
             LocaleHelper.setLocale(this@LanguageFragment.requireContext(), Locale("ar"))
             PrefManager.saveLanguage("ar")
             (activity as BaseActivity).restartActivity()

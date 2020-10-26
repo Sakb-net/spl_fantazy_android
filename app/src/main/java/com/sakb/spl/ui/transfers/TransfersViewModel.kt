@@ -1,10 +1,9 @@
 package com.sakb.spl.ui.transfers
 
+import androidx.lifecycle.MutableLiveData
+import com.google.android.youtube.player.internal.t
 import com.sakb.spl.base.BaseViewModel
-import com.sakb.spl.data.model.AddPlayerResponse
-import com.sakb.spl.data.model.AddTeamResponse
-import com.sakb.spl.data.model.ChangePlayerResponse
-import com.sakb.spl.data.model.PlayerMasterResponse
+import com.sakb.spl.data.model.*
 import com.sakb.spl.data.repository.SplRepository
 import com.sakb.spl.utils.SingleLiveEvent
 import io.reactivex.schedulers.Schedulers
@@ -15,6 +14,7 @@ class TransfersViewModel(private val repository: SplRepository) : BaseViewModel(
 
     var isMenuPreviewEnabled: Boolean = false
 
+    var playersSubtitleList :MutableLiveData<MutableList<PlayersSubtitle>> = MutableLiveData()
 
     // handle load team players
     // var MyTeamPlayerResultLiveData = myTeamPlayerUseCase.validateMyTeamPlayersLiveData()
@@ -28,7 +28,6 @@ class TransfersViewModel(private val repository: SplRepository) : BaseViewModel(
 
     var MyTeamPlayersListResultLiveData = SingleLiveEvent<PlayerMasterResponse>()
     fun loadMyTeamPlayers() {
-
         repository.myTeamPlayerMaster()
             .subscribeOn(Schedulers.io())
             .applyLoadingState()
@@ -44,22 +43,9 @@ class TransfersViewModel(private val repository: SplRepository) : BaseViewModel(
     }
 
 
-    // handle save team
-    //var SaveTeamStateLiveData = myTeamPlayerUseCase.validateSaveTeamStateLiveData()
     var SaveTeamResponseLiveData = SingleLiveEvent<AddTeamResponse>()
-    /*  fun saveTeamzzz(
-          access_token: String,
-          name_team: String,
-          lang: String
-      ) = myTeamPlayerUseCase.saveTeam(access_token, name_team, lang)*/
-
-    fun saveTeam(
-        name_team: String
-    ) {
-
-        repository.saveTeam(
-            name_team
-        )
+    fun saveTeam(name_team: String) {
+        repository.saveTeam(name_team)
             .subscribeOn(Schedulers.io())
             .applyLoadingState()
             .subscribe(
@@ -73,16 +59,14 @@ class TransfersViewModel(private val repository: SplRepository) : BaseViewModel(
             ).addToDisposableBag()
     }
 
-
-    /*
-    operations on data source
-     */
-
     fun updateData(it: AddPlayerResponse) {
         updatePlayersList(it)
     }
 
     fun updateData(it: ChangePlayerResponse) {
+        updatePlayersList(it)
+    }
+    fun updateData(it: PlayerMasterResponse) {
         updatePlayersList(it)
     }
 
@@ -104,13 +88,19 @@ class TransfersViewModel(private val repository: SplRepository) : BaseViewModel(
 
     }
 
+    private fun updatePlayersList(it: PlayerMasterResponse) {
+        MyTeamPlayersListResultLiveData.postValue(MyTeamPlayersListResultLiveData.value.apply {
+            this?.data = it.data
+            this?.total_team_play = it.total_team_play
+            this?.pay_total_cost = it.pay_total_cost
+        })
+    }
+
 
     fun updateAphaData(
         alpha: Float,
         pos: Int,
         parentPos: Int
-        //,
-        //data: PlayerMasterResponse.Data
     ) {
         updateAlphaData(alpha, pos, parentPos/*, data*/)
     }
@@ -131,4 +121,79 @@ class TransfersViewModel(private val repository: SplRepository) : BaseViewModel(
     }
 
 
+    val playerResponse = SingleLiveEvent<PlayerResponse>()
+
+    fun loadPlayerInfo(link_player:String) {
+        repository.playerInfo(link_player)
+            .subscribeOn(Schedulers.io())
+            .applyLoadingState()
+            .subscribe(
+                { data ->
+                    playerResponse.value = data
+
+                },
+                { throwable ->
+                    handleApiException(throwable)
+                }
+            ).addToDisposableBag()
+    }
+
+    val playerInResponse = SingleLiveEvent<PlayerResponse>()
+
+    fun loadInPlayerInfo(link_player:String) {
+        repository.playerInfo(link_player)
+            .subscribeOn(Schedulers.io())
+            .applyLoadingState()
+            .subscribe(
+                { data ->
+                    playerInResponse.value = data
+
+                },
+                { throwable ->
+                    handleApiException(throwable)
+                }
+            ).addToDisposableBag()
+    }
+    val playerOutResponse = SingleLiveEvent<PlayerResponse>()
+
+    fun loadOutPlayerInfo(link_player:String) {
+        repository.playerInfo(link_player)
+            .subscribeOn(Schedulers.io())
+            .applyLoadingState()
+            .subscribe(
+                { data ->
+                    playerOutResponse.value = data
+
+                },
+                { throwable ->
+                    handleApiException(throwable)
+                }
+            ).addToDisposableBag()
+    }
+
+    // change player
+    var changePlayerResultLiveData = SingleLiveEvent<ChangePlayerResponse?>()
+
+    fun changePlayer(
+        eldwry_link: String,
+        delet_player_link: String,
+        add_player_link: String
+    ) {
+        repository.changePlayer(
+            eldwry_link,
+            delet_player_link,
+            add_player_link
+        )
+            .subscribeOn(Schedulers.io())
+            .applyLoadingState()
+            .subscribe(
+                { data ->
+                    changePlayerResultLiveData.value = data
+
+                },
+                { throwable ->
+                    handleApiException(throwable)
+                }
+            ).addToDisposableBag()
+    }
 }

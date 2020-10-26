@@ -3,8 +3,8 @@ package com.sakb.spl.ui.chooseteamplayers.adapter.menu
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.LinearLayout
 import android.widget.TextView
+import androidx.appcompat.widget.LinearLayoutCompat
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -100,7 +100,7 @@ class MyTeamPlayersMasterMenuAdapter(
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val recyclerView: RecyclerView = itemView.rv_child
         val type: TextView = itemView.nameTv
-        val header: LinearLayout = itemView.header
+        val header: LinearLayoutCompat = itemView.header
 
         init {
             recyclerView.addItemDecoration(

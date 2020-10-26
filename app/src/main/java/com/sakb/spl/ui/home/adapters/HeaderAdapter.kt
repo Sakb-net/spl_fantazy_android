@@ -8,7 +8,7 @@ import com.sakb.spl.data.local.PrefManager
 import com.sakb.spl.data.model.HomePoints
 import com.sakb.spl.databinding.ItemHomeHeaderBinding
 
-class HeaderAdapter() : RecyclerView.Adapter<HeaderAdapter.HeaderViewHolder>() {
+class HeaderAdapter : RecyclerView.Adapter<HeaderAdapter.HeaderViewHolder>() {
 
     var onChooseTeamClickListener: (() -> Unit)? = null
     var onPointClickListener: (() -> Unit)? = null
@@ -60,13 +60,13 @@ class HeaderAdapter() : RecyclerView.Adapter<HeaderAdapter.HeaderViewHolder>() {
                 }
             }
 
-            binding.llInsidePoints?.setOnClickListener {
+            binding.llInsidePoints.setOnClickListener {
                 onPointClickListener?.invoke()
             }
-            binding.llInsideTeam?.setOnClickListener {
+            binding.llInsideTeam.setOnClickListener {
                 onMyTeamClickListener?.invoke()
             }
-            binding.llInsideTrans?.setOnClickListener {
+            binding.llInsideTrans.setOnClickListener {
                 onTransClickListener?.invoke()
             }
 

@@ -98,23 +98,24 @@
         android:id="@+id/myTeamFragment"
         android:name="com.sakb.spl.ui.myteam.MyTeamFragment"
         android:label="@string/my_team"
-        tools:layout="@layout/fragment_my_team"
-        />
+        tools:layout="@layout/fragment_my_team" />
 
 
     <fragment
         android:id="@+id/transfersFragment"
         android:name="com.sakb.spl.ui.transfers.TransfersFragment"
         android:label="@string/transfers"
-        tools:layout="@layout/fragment_transfers"/>
+        tools:layout="@layout/fragment_transfers">
+        <action
+            android:id="@+id/action_transfersFragment_to_transfersActionFragment"
+            app:destination="@id/transfersActionFragment" />
+    </fragment>
 
     <fragment
         android:id="@+id/myProfileFragment"
         android:name="com.sakb.spl.ui.myprofile.MyProfileFragment"
         android:label="@string/my_profile"
         tools:layout="@layout/fragment_my_profile">
-
-
         <action
             android:id="@+id/action_myProfileFragment_to_editProfileFragment"
             app:destination="@id/editProfileFragment" />
@@ -197,4 +198,12 @@
         android:label="@string/language"
         tools:layout="@layout/fragment_language" />
 
+    <fragment
+        android:id="@+id/transfersActionFragment"
+        android:name="com.sakb.spl.ui.transfers.TransfersActionsFragment"
+        android:label="@string/transfers"
+        tools:layout="@layout/fragment_transfers_actions">
+        <argument android:name="playersSubtitle"
+            app:argType="com.sakb.spl.data.model.PlayersSubtitle" />
+    </fragment>
 </navigation>

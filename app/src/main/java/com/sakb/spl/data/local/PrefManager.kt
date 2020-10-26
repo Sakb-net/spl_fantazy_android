@@ -5,6 +5,7 @@ import android.content.Context.MODE_PRIVATE
 import android.content.SharedPreferences
 import com.google.gson.Gson
 import com.sakb.spl.data.model.LoginResponse
+import com.sakb.spl.data.model.TransfersData
 
 object PrefManager {
     private const val SRF_SHARED_NAME = "SRF_SHARED_NAME"

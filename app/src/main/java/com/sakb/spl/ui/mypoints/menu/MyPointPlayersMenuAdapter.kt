@@ -3,15 +3,13 @@ package com.sakb.spl.ui.mypoints.menu
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.LinearLayout
 import android.widget.TextView
+import androidx.appcompat.widget.LinearLayoutCompat
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.sakb.spl.R
-import com.sakb.spl.data.model.MyteamPlayersResponse
 import com.sakb.spl.data.model.PlayerMasterItemItem
-import com.sakb.spl.ui.myteam.adapter.menu.MyTeamPlayersChildItemMenuAdapter
 import com.sakb.spl.utils.DividerItemDecorationNoLast
 import kotlinx.android.synthetic.main.parent_item_myteamplayers_recycler_menu.view.*
 
@@ -109,7 +107,7 @@ class MyPointPlayersMenuAdapter(
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val recyclerView: RecyclerView = itemView.rv_child
         val type: TextView = itemView.nameTv
-        val header: LinearLayout = itemView.header
+        val header: LinearLayoutCompat = itemView.header
 
         init {
             recyclerView.addItemDecoration(

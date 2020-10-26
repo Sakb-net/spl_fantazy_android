@@ -67,7 +67,6 @@ fun Context.showWarningDialog(
     negative: (dialog: AlertDialog?) -> Unit
 ) {
     val binding = DialogViewWarningBinding.inflate(LayoutInflater.from(this), null, false)
-    //   val view = LayoutInflater.from(this).inflate(R.layout.dialog_view_warning, null)
     val alertDialog = AlertDialog.Builder(this).setView(binding.root).setCancelable(false)
     val dialog = alertDialog.create()
     dialog.window?.setBackgroundDrawableResource(android.R.color.transparent)
@@ -75,7 +74,6 @@ fun Context.showWarningDialog(
     binding.dialogTextTitle.text = this.getString(titleResID)
     binding.dialogTextContent.text = this.getString(contentResID)
     binding.positiveButton.setOnClickListener { positive(dialog) }
-    //if (drawableRes == R.drawable.dialog_check) view.negativeButton.visibility =View.GONE
     binding.negativeBtn.setOnClickListener { negative(dialog) }
     dialog.show()
 }

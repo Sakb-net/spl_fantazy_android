@@ -7,12 +7,10 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
-import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.sakb.spl.R
 import com.sakb.spl.constants.Constants
-import com.sakb.spl.data.model.MyteamPlayersResponse
 import com.sakb.spl.data.model.PlayerMasterItemItem
 import kotlinx.android.synthetic.main.child_item_myteam_recycler.view.*
 

@@ -27,14 +27,13 @@ class SplApplication : LocaleAwareApplication() {
             androidLogger()
             // inject Android context
             androidContext(this@SplApplication)
-            modules(
-                listOf(
-                    applicationModule,
-                    networkModule,
-                    repositoryModule,
-                    viewModelModule
-                )
-            )
+            koin.loadModules(listOf(
+                applicationModule,
+                networkModule,
+                repositoryModule,
+                viewModelModule
+            ))
+            koin.createRootScope()
         }
         setupTimber()
     }

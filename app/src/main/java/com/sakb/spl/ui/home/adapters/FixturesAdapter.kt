@@ -6,16 +6,12 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.sakb.spl.constants.Constants
-import com.sakb.spl.data.model.GetLastFixturesResponse
-import com.sakb.spl.data.model.HomeResponse
 import com.sakb.spl.data.model.MatchGroupItem
 import com.sakb.spl.databinding.ItemHomeMatchBinding
 import com.sakb.spl.ui.home.diffcallback.FixturesDiffCallback
 import com.sakb.spl.utils.ConvertDateTimeUtils
 import com.sakb.spl.utils.ConvertDateTimeUtils.TIME_24_FORMAT
 import com.sakb.spl.utils.ConvertDateTimeUtils.TIME_FORMAT
-import com.sakb.spl.utils.LanguageUtil
-import com.sakb.spl.utils.LocaleManager
 import timber.log.Timber
 import java.text.SimpleDateFormat
 import java.util.*
@@ -41,9 +37,9 @@ class FixturesAdapter : ListAdapter<MatchGroupItem, FixturesAdapter.FixturesView
     }
 
     override fun getItemCount(): Int {
-        return if(super.getItemCount()>=3){
+        return if (super.getItemCount() >= 3) {
             3
-        }else{
+        } else {
             super.getItemCount()
         }
     }
@@ -81,13 +77,14 @@ class FixturesAdapter : ListAdapter<MatchGroupItem, FixturesAdapter.FixturesView
 
                 Timber.e("##$result")
 
-                val timeNew = ConvertDateTimeUtils.changeFormat(this.time,TIME_24_FORMAT,TIME_FORMAT)
+                val timeNew =
+                    ConvertDateTimeUtils.changeFormat(this.time, TIME_24_FORMAT, TIME_FORMAT)
 
                 if (result != null && result < 0) {
                     binding.dateResult.text = firstGoon?.toString()?.plus(":")?.plus(secondGoon)
                 } else {
                     binding.dateResult.text = timeNew
-                        //this.date?.plus("\n")?.plus(time)
+                    //this.date?.plus("\n")?.plus(time)
                 }
             }
         }

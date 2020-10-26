@@ -4,14 +4,17 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.os.bundleOf
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
-import androidx.recyclerview.widget.MergeAdapter
+import androidx.recyclerview.widget.ConcatAdapter
 import com.sakb.spl.R
 import com.sakb.spl.base.BaseFragment
+import com.sakb.spl.data.local.PrefManager
 import com.sakb.spl.data.model.*
 import com.sakb.spl.databinding.HomeFragmentBinding
 import com.sakb.spl.ui.home.adapters.*
+import com.sakb.spl.ui.transfers.TransfersFragment
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class HomeFragment : BaseFragment() {
@@ -52,7 +55,8 @@ class HomeFragment : BaseFragment() {
             findNavController().navigate(R.id.action_homeFragment_to_myTeam)
         }
         onTransClickListener = {
-            findNavController().navigate(R.id.action_homeFragment_to_trans)
+            val bundle = bundleOf(TRANSFERS_DATA to transfersData)
+            findNavController().navigate(R.id.action_homeFragment_to_trans,bundle)
         }
     }
 
@@ -99,7 +103,7 @@ class HomeFragment : BaseFragment() {
     }
 
     private fun initRecyclerView() {
-        val mergeAdapter = MergeAdapter(
+        val mergeAdapter = ConcatAdapter(
             createHeaderAdapter(),
             createHeaderFixturesAdapter(),
             createFixturesAdapter(),
@@ -141,6 +145,7 @@ class HomeFragment : BaseFragment() {
 
     private fun updatePublicUI(publicPointEldaweryResponse: PublicPointEldaweryResponse?) {
         publicPointEldaweryResponse?.data?.let { dataPublic ->
+            transfersData.transferFree = dataPublic.countFreeWeekgamesubstitute
             binding.llInfoTeam.visibility = View.VISIBLE
             dataPublic.sumTotalSubeldwry?.let {
                 binding.llWeek.visibility = View.VISIBLE
@@ -174,7 +179,8 @@ class HomeFragment : BaseFragment() {
             headerAdapter.homePoint(homePoints)
         }
         homePointEldawryResponse?.data?.let {
-            binding.weekTitle.text = "${getString(R.string.weekNum)} (${it.nameNumWeek})"
+            transfersData.changePoint = it.changePoint
+            binding.weekTitle.text = "${getString(R.string.weekNum)} (${it.numWeek})"
         }
     }
 
@@ -232,4 +238,8 @@ class HomeFragment : BaseFragment() {
         _binding = null
     }
 
+    companion object{
+        const val TRANSFERS_DATA = "transfers_data"
+        var transfersData :TransfersData = TransfersData()
+    }
 }

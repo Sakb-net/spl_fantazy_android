@@ -48,9 +48,9 @@ class SplashActivity : BaseActivity() {
                 }
 
                 override fun onComplete() {
-                    val intent = if(PrefManager.getUser()!=null){
+                    val intent = if (PrefManager.getUser() != null) {
                         Intent(this@SplashActivity, MainActivity::class.java)
-                    }else{
+                    } else {
                         Intent(this@SplashActivity, LoginActivity::class.java)
                     }
                     intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)

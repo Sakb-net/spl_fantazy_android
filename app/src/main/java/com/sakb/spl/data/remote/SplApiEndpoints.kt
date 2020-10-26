@@ -243,4 +243,16 @@ interface SplApiEndpoints {
 
     @GET("/api/v1/check_btns_status")
     fun checkCardsStatus():Single<CardStatusResponse>
+
+    @GET("/api/v1/triple_captain_card")
+    fun activeTripleCardsStatus():Single<BaseResponse>
+
+    @GET("/api/v1/bench_players_card")
+    fun activeBenchCardsStatus():Single<BaseResponse>
+
+    @FormUrlEncoded
+    @POST("api/v1/cancel_players_card")
+    fun cancelCardsStatus(
+        @Field("type") type:String
+    ):Single<BaseResponse>
 }

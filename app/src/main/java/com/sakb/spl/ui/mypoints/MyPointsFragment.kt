@@ -1,7 +1,6 @@
 package com.sakb.spl.ui.mypoints
 
 import android.content.DialogInterface
-import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -18,12 +17,6 @@ import com.sakb.spl.databinding.FragmentMyPointsBinding
 import com.sakb.spl.ui.mypoints.adapters.MyPointSwapPlayersItemAdapter
 import com.sakb.spl.ui.mypoints.adapters.MyPointsPlayersAdapter
 import com.sakb.spl.ui.mypoints.menu.MyPointPlayersMenuAdapter
-import com.sakb.spl.ui.myteam.MyTeamFragment
-import com.sakb.spl.ui.myteam.adapter.MyTeamPlayersAdapter
-import com.sakb.spl.ui.myteam.adapter.MyTeamSwapPlayersItemAdapter
-import com.sakb.spl.ui.myteam.adapter.menu.MyTeamPlayersMenuAdapter
-import com.sakb.spl.ui.playerprofile.PlayerProfileActivity
-import com.sakb.spl.utils.toast
 import kotlinx.android.synthetic.main.fragment_my_points.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 

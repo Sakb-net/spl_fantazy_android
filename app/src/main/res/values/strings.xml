@@ -273,11 +273,11 @@
     <string name="choose_team_first">Choose team first!</string>
     <string name="create_or_join_league">Create or join league</string>
     <string name="join_league">Join league</string>
-    <string name="join_league_description">Join a private league if you have its own code or participate in one of the stronger leagues</string>
+    <string name="join_league_description">Join a private league if you have its own code.</string>
     <string name="special_league">Special league</string>
     <string name="powerful_league">Powerful league</string>
     <string name="create_a_league">Create a league</string>
-    <string name="create_a_league_to_compete_with_you_and_your_friends_and_invite_them_to_join_you_via_mobile_number_or_code">Create a league to compete with you and your friends and invite them to join you via mobile number or code</string>
+    <string name="create_a_league_to_compete_with_you_and_your_friends_and_invite_them_to_join_you_via_mobile_number_or_code">Create a league to compete with you and your friends</string>
     <string name="classic">Classic</string>
     <string name="head_to_head">Head to Head</string>
     <string name="join_to_special_league">Join to special league</string>
@@ -357,4 +357,14 @@
     <string name="language">العربية</string>
     <string name="are_sure_change_language">Are you sure to change Language?</string>
     <string name="write_your_team_name">Your Name Team Here</string>
+    <string name="cancel_cards">Cancel Cards</string>
+    <string name="go_to_my_leagues">Go to my leagues</string>
+    <string name="in">In</string>
+    <string name="out">Out</string>
+    <string name="confirm">Confirm</string>
+    <string name="you_are_used">You are used</string>
+    <string name="get_extra_transfers_point">Extra Transfers Point</string>
+    <string name="money_remainig">"Money Remaining "</string>
+    <string name="remaining_amount_not_enough">You don\'t have amount to buy this player</string>
+    <string name="this_player_in_your_team">This player is choose Before</string>
 </resources>

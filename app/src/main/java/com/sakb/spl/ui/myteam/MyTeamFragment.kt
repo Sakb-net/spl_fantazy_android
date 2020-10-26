@@ -38,6 +38,8 @@ class MyTeamFragment : BaseFragment() {
     private lateinit var adapter: MyTeamPlayersAdapter
     override val viewModel by viewModel<MyTeamViewModel>()
 
+    var type = ""
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -57,20 +59,58 @@ class MyTeamFragment : BaseFragment() {
         addCaptainOrViceCaptainObserver()
         openSubstitutesDialog()
 
+
+
         viewModel.cardStatusResponse.observe(viewLifecycleOwner, Observer {
-             if(it.data?.benchCard == 0){
-                 binding.buttonBenchBoost.isEnabled = false
-                 binding.buttonBenchBoost.alpha = 0.5f
-            }else if (it.data?.benchCard == 1){
-                 binding.buttonBenchBoost.isEnabled = true
-                 binding.buttonBenchBoost.alpha = 1f
-            }
-            if (it.data?.tripleCard == 0){
+            if (it.data?.benchCard == 1) {
+                binding.buttonBenchBoost.isEnabled = false
+                binding.buttonBenchBoost.alpha = 0.5f
                 binding.buttonTrippleCaptain.isEnabled = false
                 binding.buttonTrippleCaptain.alpha = 0.5f
-            }else if(it.data?.tripleCard == 1){
+            } else if (it.data?.benchCard == 0) {
+                binding.buttonBenchBoost.isEnabled = true
+                binding.buttonBenchBoost.alpha = 1f
                 binding.buttonTrippleCaptain.isEnabled = true
                 binding.buttonTrippleCaptain.alpha = 1f
+            }
+            if (it.data?.tripleCard == 1) {
+                binding.buttonBenchBoost.isEnabled = false
+                binding.buttonBenchBoost.alpha = 0.5f
+                binding.buttonTrippleCaptain.isEnabled = false
+                binding.buttonTrippleCaptain.alpha = 0.5f
+            } else if (it.data?.tripleCard == 0) {
+                binding.buttonTrippleCaptain.isEnabled = true
+                binding.buttonTrippleCaptain.alpha = 1f
+                binding.buttonBenchBoost.isEnabled = true
+                binding.buttonBenchBoost.alpha = 1f
+            }
+        })
+
+
+        viewModel.activeTripleCardStatus.observe(viewLifecycleOwner, {
+            if (it?.data == true) {
+                type = TRIPLE
+                binding.buttonBenchBoost.visibility = View.GONE
+                binding.buttonTrippleCaptain.visibility = View.GONE
+                binding.buttonCancelCard.visibility = View.VISIBLE
+            }
+        })
+
+        viewModel.activeBenchCardStatus.observe(viewLifecycleOwner, {
+            if (it?.data == true) {
+                type = BENCH
+                binding.buttonBenchBoost.visibility = View.GONE
+                binding.buttonTrippleCaptain.visibility = View.GONE
+                binding.buttonCancelCard.visibility = View.VISIBLE
+            }
+        })
+
+        viewModel.cancelCardStatus.observe(viewLifecycleOwner, {
+            if (it?.data == true) {
+                type = ""
+                binding.buttonBenchBoost.visibility = View.VISIBLE
+                binding.buttonTrippleCaptain.visibility = View.VISIBLE
+                binding.buttonCancelCard.visibility = View.GONE
             }
         })
     }
@@ -110,6 +150,10 @@ class MyTeamFragment : BaseFragment() {
             openCaptainTripleSheet()
         }
 
+        binding.buttonCancelCard.setOnClickListener {
+            //openCancelSheet()
+            viewModel.loadCancelCard(type)
+        }
 
         binding.menuBtn.setOnClickListener {
             viewModel.selectedPlayer = 0
@@ -437,7 +481,7 @@ class MyTeamFragment : BaseFragment() {
         }
     }
 
-    private fun openCaptainTripleSheet() {
+    private fun openCancelSheet() {
         context?.showWarningDialog(
             R.drawable.xtripple,
             R.string.tripple_captain_card,
@@ -450,13 +494,27 @@ class MyTeamFragment : BaseFragment() {
             })
     }
 
-    private fun openButtonBoostDialog() {
+    private fun openCaptainTripleSheet() {
+        context?.showWarningDialog(
+            R.drawable.xtripple,
+            R.string.tripple_captain_card,
+            R.string.triple_content,
+            { dialog ->
+                viewModel.loadActiveTripleCard()
+                dialog?.dismiss()
+            },
+            { dialog ->
+                dialog?.dismiss()
+            })
+    }
 
+    private fun openButtonBoostDialog() {
         context?.showWarningDialog(
             R.drawable.rocket,
             R.string.benchboost_text_view,
             R.string.boost_content,
             { dialog ->
+                viewModel.loadActiveBenchCard()
                 dialog?.dismiss()
             },
             { dialog ->
@@ -890,6 +948,9 @@ class MyTeamFragment : BaseFragment() {
     companion object {
         const val ASSIST: String = "assist"
         const val CAPTAIN: String = "captain"
+
+        const val TRIPLE: String = "triple"
+        const val BENCH: String = "bench"
     }
 
 

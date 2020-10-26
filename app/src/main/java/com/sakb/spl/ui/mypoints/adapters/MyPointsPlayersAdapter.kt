@@ -7,7 +7,6 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.sakb.spl.R
 import com.sakb.spl.data.model.PlayerMasterItemItem
-import com.sakb.spl.ui.myteam.adapter.MyTeamPlayersChildItemAdapter
 import kotlinx.android.synthetic.main.parent_item_myteam_recycler.view.*
 
 
@@ -24,7 +23,7 @@ class MyPointsPlayersAdapter(
     }
 
     override fun getItemCount(): Int {
-        return if (parents?.size?:0 > 4) 4 else parents?.size?:0
+        return if (parents?.size ?: 0 > 4) 4 else parents?.size ?: 0
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
@@ -35,7 +34,8 @@ class MyPointsPlayersAdapter(
             parents?.get(position)?.let {
                 adapter = MyPointPlayersChildItemAdapter(
                     it,
-                    position)
+                    position
+                )
             }
             setRecycledViewPool(viewPool)
         }

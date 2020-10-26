@@ -10,7 +10,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.sakb.spl.R
 import com.sakb.spl.base.BaseFragment
 import com.sakb.spl.databinding.FragmentHelpsBinding
-import com.sakb.spl.ui.help.adapter.AwardAdapter
 import com.sakb.spl.ui.help.adapter.HelpAdapter
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import timber.log.Timber

@@ -1,7 +1,9 @@
 package com.sakb.spl.ui.matches
 
 import com.sakb.spl.base.BaseViewModel
-import com.sakb.spl.data.model.*
+import com.sakb.spl.data.model.GetAllSubeldawryResponse
+import com.sakb.spl.data.model.GetFixtuersResponse
+import com.sakb.spl.data.model.GetFixturesBySubeldawryResponse
 import com.sakb.spl.data.repository.SplRepository
 import com.sakb.spl.utils.SingleLiveEvent
 import io.reactivex.schedulers.Schedulers

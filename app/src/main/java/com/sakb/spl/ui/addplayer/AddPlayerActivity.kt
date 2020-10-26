@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.sakb.spl.R
 import com.sakb.spl.base.BaseActivity
 import com.sakb.spl.data.model.PlayerByTypeResponse
+import com.sakb.spl.data.model.PlayersSubtitle
 import com.sakb.spl.databinding.ActivityAddPlayerBinding
 import com.sakb.spl.utils.DividerItemDecorationNoLast
 import com.sakb.spl.utils.SpinnerHelperAdapter
@@ -48,20 +49,20 @@ class AddPlayerActivity : BaseActivity() {
         viewModel.recreatedTeam = true
         viewModel.initSpinnerBefore = false
         viewModel.getPlayers(
-            "" + intent.getStringExtra("type_loc_player"),
+            "" + intent.getStringExtra(TYPELOCPLAYER),
             "",
             "",
             "",
             ""
         )
 
-        viewModel.AddPlayerResultLiveData.observe(this, Observer { data ->
+        viewModel.AddPlayerResultLiveData.observe(this, { data ->
             toast("" + data?.data?.msg_add)
             EventBus.getDefault().post(data)
             onBackPressed()
         })
 
-        viewModel.changePlayerResultLiveData.observe(this, Observer { data ->
+        viewModel.changePlayerResultLiveData.observe(this, { data ->
             toast("" + data?.result_change?.msg_delete)
             EventBus.getDefault().post(data)
             onBackPressed()
@@ -76,30 +77,36 @@ class AddPlayerActivity : BaseActivity() {
                     viewModel.initSpinnerBefore = true
                 }
                 toast("" + data.Message)
-                // Timber.e("" + data.data?.get(0)?.players_group?.size)
                 if (data.data?.get(0)?.players_group != null) {
 
                     val listData = data.data?.get(0)?.players_group!!
 
                     data.data?.let {
                         if (it.size > 1)
-                            for (i in 1..it.size - 1)
+                            for (i in 1 until it.size)
                                 listData.addAll(it.get(i)?.players_group!!)
                     }
 
                     playersByTypeAdapter = PlayersByTypeAdapter(listData,this@AddPlayerActivity)
                     playersByTypeAdapter?.onItemClick = { _, data ->
-
-                        if (intent.getStringExtra(ACTIONTYPE) == REPLACE) {
-                            viewModel.changePlayer(
-                                "" + intent.getStringExtra(ELDAWRYlINK),
-                                "" + intent.getStringExtra(DELETEDPLAYER),
-                                "" + data?.link
-                            )
-                        } else {
-                            viewModel.addPlayer(
-                                "" + data?.link
-                            )
+                        when {
+                            intent.getStringExtra(ACTIONTYPE) == REPLACE -> {
+                                viewModel.changePlayer(
+                                    "" + intent.getStringExtra(ELDAWRYlINK),
+                                    "" + intent.getStringExtra(DELETEDPLAYER),
+                                    "" + data?.link
+                                )
+                            }
+                            intent.getStringExtra(ACTIONTYPE) == REPLACE_WITHOUT_CHANGE -> {
+                                val playersSubtitle = PlayersSubtitle(intent.getStringExtra(DELETEDPLAYER)?:"",data?.link?:"")
+                                EventBus.getDefault().post(playersSubtitle)
+                                onBackPressed()
+                            }
+                            else -> {
+                                viewModel.addPlayer(
+                                    "" + data?.link
+                                )
+                            }
                         }
                     }
 
@@ -141,54 +148,36 @@ class AddPlayerActivity : BaseActivity() {
                     position: Int,
                     id: Long
                 ) {
-                    Timber.e("xddddd pos " + position)
                     if (viewModel.recreated) {
                         return
                     }
-                    toast("pos option " + position)
                     if (position != (data.size - 1)) {
                         binding.sortByTv.text = data[position]
                         when (data[position]) {
                             getString(R.string.points_total) -> {
                                 viewModel.orderPlay = "point"
                                 viewModel.getPlayers(
-                                    "" + intent.getStringExtra("type_loc_player"),
+                                    "" + intent.getStringExtra(TYPELOCPLAYER),
                                     "" + viewModel.orderPlay,
                                     "" + viewModel.selectedTeamLink,
                                     "",
                                     ""
                                 )
-                                /*   viewModel.getPlayers(
-                                       "" + user?.data?.accessToken
-                                       , "" + intent.getStringExtra("type_loc_player"),
-                                       "point", lang
-                                   )*/
                             }
                             getString(R.string.price_is_from_bottom_to_top) -> {
                                 viewModel.orderPlay = "low_price"
-
                                 viewModel.getPlayers(
-
-                                    "" + intent.getStringExtra("type_loc_player"),
+                                    "" + intent.getStringExtra(TYPELOCPLAYER),
                                     "" + viewModel.orderPlay,
                                     "" + viewModel.selectedTeamLink,
                                     "",
                                     ""
                                 )
-
-                                /* viewModel.getPlayers(
-                                     "" + user?.data?.accessToken
-                                     , "" + intent.getStringExtra("type_loc_player"),
-                                     "low_price", lang
-                                 )*/
-
                             }
                             getString(R.string.price_is_from_top_to_bottom) -> {
-
                                 viewModel.orderPlay = "heigh_price"
-
                                 viewModel.getPlayers(
-                                    "" + intent.getStringExtra("type_loc_player"),
+                                    "" + intent.getStringExtra(TYPELOCPLAYER),
                                     "" + viewModel.orderPlay,
                                     "" + viewModel.selectedTeamLink,
                                     "",
@@ -196,13 +185,10 @@ class AddPlayerActivity : BaseActivity() {
                                 )
                             }
                             getString(R.string.price_from_to) -> {
-
                                 showEnterRangeDialog { dialog, priceFrom, priceTo ->
                                     dialog?.dismiss()
-
                                     viewModel.getPlayers(
-
-                                        "" + intent.getStringExtra("type_loc_player"),
+                                        "" + intent.getStringExtra(TYPELOCPLAYER),
                                         "",
                                         "" + viewModel.selectedTeamLink,
                                         "" + priceFrom,
@@ -211,24 +197,14 @@ class AddPlayerActivity : BaseActivity() {
                                 }
                             }
                         }
-                    } else {
-                        //  viewModel.orderPlay = ""
-
-                        /*     viewModel.getPlayers(
-                                 "" + user?.data?.accessToken
-                                 , "" + intent.getStringExtra("type_loc_player"),
-                                 "", lang
-                             )*/
                     }
                 }
             }
-
         binding.sortByTv.setOnClickListener {
             viewModel.recreated = false
             binding.optionsSpinner.setSelection(adapter.count)
             binding.optionsSpinner.performClick()
         }
-
     }
 
     private fun initTeamsSpinner(playerByTypeResponse: PlayerByTypeResponse) {
@@ -251,37 +227,24 @@ class AddPlayerActivity : BaseActivity() {
                     if (viewModel.recreatedTeam) {
                         return
                     }
-                    toast("team pos " + position)
-
                     if (position != (teams.size - 1)) {
                         binding.allTeamsTv.text = teams[position]?.team
                         viewModel.selectedTeamLink = teams[position]?.link
-
                         viewModel.getPlayers(
-                            "" + intent.getStringExtra("type_loc_player"),
+                            "" + intent.getStringExtra(TYPELOCPLAYER),
                             "" + viewModel.orderPlay,
                             "" + viewModel.selectedTeamLink,
                             "",
                             ""
                         )
 
-                    } else {
-                        //   viewModel.selectedTeamLink = ""
-                        /*   viewModel.getPlayers(""+user?.data?.accessToken
-                               ,""+intent.getStringExtra("type_loc_player"),
-                               "",lang)*/
                     }
-                    //  binding?.CityTv?.tag = listOfKeys!![position]
                 }
-
             }
 
         binding.allTeamsTv.setOnClickListener {
             viewModel.recreatedTeam = false
             binding.teamsSpinner.setSelection(adapter.count)
-            //  if (binding?.teamsSpinner?.selectedItemPosition == adapter.count)
-            //    binding?.teamsSpinner?.setSelection(-1)
-
             binding.teamsSpinner.performClick()
         }
 
@@ -292,6 +255,8 @@ class AddPlayerActivity : BaseActivity() {
         const val DELETEDPLAYER = "deleted_player"
         const val ACTIONTYPE = "actiontype"
         const val REPLACE = "replace"
+        const val REPLACE_WITHOUT_CHANGE = "replace_without_change"
+        const val TYPELOCPLAYER= "type_loc_player"
     }
 
 

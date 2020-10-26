@@ -11,7 +11,7 @@ import androidx.core.os.bundleOf
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
-import androidx.recyclerview.widget.MergeAdapter
+import androidx.recyclerview.widget.ConcatAdapter
 import com.sakb.spl.R
 import com.sakb.spl.base.BaseFragment
 import com.sakb.spl.data.model.DataItemSub
@@ -71,7 +71,7 @@ class MatchesFragment : BaseFragment() {
     }
 
     private fun initRecyclerView() {
-        val mergeAdapter = MergeAdapter(matchesAdapter)
+        val mergeAdapter = ConcatAdapter(matchesAdapter)
         binding.matchesRecycler.itemAnimator = null
         binding.matchesRecycler.adapter = mergeAdapter
     }

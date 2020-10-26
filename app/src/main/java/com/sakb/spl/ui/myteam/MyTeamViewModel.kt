@@ -1,10 +1,7 @@
 package com.sakb.spl.ui.myteam
 
 import com.sakb.spl.base.BaseViewModel
-import com.sakb.spl.data.model.AddCaptainOrVise
-import com.sakb.spl.data.model.AddDirectInsideChange
-import com.sakb.spl.data.model.CardStatusResponse
-import com.sakb.spl.data.model.MyteamPlayersResponse
+import com.sakb.spl.data.model.*
 import com.sakb.spl.data.repository.SplRepository
 import com.sakb.spl.utils.SingleLiveEvent
 import io.reactivex.schedulers.Schedulers
@@ -799,6 +796,52 @@ class MyTeamViewModel(
             .subscribe(
                 { data ->
                     cardStatusResponse.value = data
+                },
+                { throwable ->
+                    handleApiException(throwable)
+                }
+            ).addToDisposableBag()
+    }
+
+    var activeTripleCardStatus = SingleLiveEvent<BaseResponse>()
+    var activeBenchCardStatus = SingleLiveEvent<BaseResponse>()
+    var cancelCardStatus = SingleLiveEvent<BaseResponse>()
+
+    fun loadActiveTripleCard() {
+        repository.activeTripleCard()
+            .subscribeOn(Schedulers.io())
+            .applyLoadingState()
+            .subscribe(
+                { data ->
+                    activeTripleCardStatus.value = data
+                },
+                { throwable ->
+                    handleApiException(throwable)
+                }
+            ).addToDisposableBag()
+    }
+
+    fun loadActiveBenchCard() {
+        repository.activeBenchCard()
+            .subscribeOn(Schedulers.io())
+            .applyLoadingState()
+            .subscribe(
+                { data ->
+                    activeBenchCardStatus.value = data
+                },
+                { throwable ->
+                    handleApiException(throwable)
+                }
+            ).addToDisposableBag()
+    }
+
+    fun loadCancelCard(type_key: String) {
+        repository.cancelCards(type_key)
+            .subscribeOn(Schedulers.io())
+            .applyLoadingState()
+            .subscribe(
+                { data ->
+                    cancelCardStatus.value = data
                 },
                 { throwable ->
                     handleApiException(throwable)
