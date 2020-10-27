@@ -297,11 +297,28 @@ class SplRepository constructor(
         return remote.activeTripleCardsStatus()
     }
 
-    fun activeBenchCard():Single<BaseResponse>{
+    fun activeBenchCard(): Single<BaseResponse> {
         return remote.activeBenchCardsStatus()
     }
 
-    fun cancelCards(type_key: String):Single<BaseResponse>{
+    fun cancelCards(type_key: String): Single<BaseResponse> {
         return remote.cancelCardsStatus(type_key)
     }
+
+    fun cardStatusTransfer(type: String): Single<CardStatusTransferResponse> {
+        return remote.getStatusCardInside(type)
+    }
+
+    fun createGroupEldawery(link_subeldawey: String, name: String): Single<CreateLeagueResponse> {
+        return remote.createGroupEldawery(link_subeldawey, name)
+    }
+
+    fun joinGroupEldawery(val_code: String): Single<JoinLeagueResponse> {
+        return remote.joinGroupEldawery(val_code)
+    }
+
+    fun getAllDawery(): Single<GetAllLeaguesResponse> {
+        return remote.getAllDawery()
+    }
+
 }

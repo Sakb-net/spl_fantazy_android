@@ -1,7 +1,6 @@
 package com.sakb.spl.ui.transfers
 
 import androidx.lifecycle.MutableLiveData
-import com.google.android.youtube.player.internal.t
 import com.sakb.spl.base.BaseViewModel
 import com.sakb.spl.data.model.*
 import com.sakb.spl.data.repository.SplRepository
@@ -189,6 +188,25 @@ class TransfersViewModel(private val repository: SplRepository) : BaseViewModel(
             .subscribe(
                 { data ->
                     changePlayerResultLiveData.value = data
+
+                },
+                { throwable ->
+                    handleApiException(throwable)
+                }
+            ).addToDisposableBag()
+    }
+
+    var cardStatus = SingleLiveEvent<CardStatusTransferResponse?>()
+
+    fun getCardStatus(
+        type: String
+    ) {
+        repository.cardStatusTransfer(type)
+            .subscribeOn(Schedulers.io())
+            .applyLoadingState()
+            .subscribe(
+                { data ->
+                    cardStatus.value = data
 
                 },
                 { throwable ->

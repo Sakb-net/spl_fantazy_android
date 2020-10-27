@@ -245,14 +245,33 @@ interface SplApiEndpoints {
     fun checkCardsStatus():Single<CardStatusResponse>
 
     @GET("/api/v1/triple_captain_card")
-    fun activeTripleCardsStatus():Single<BaseResponse>
+    fun activeTripleCardsStatus(): Single<BaseResponse>
 
     @GET("/api/v1/bench_players_card")
-    fun activeBenchCardsStatus():Single<BaseResponse>
+    fun activeBenchCardsStatus(): Single<BaseResponse>
 
     @FormUrlEncoded
     @POST("api/v1/cancel_players_card")
     fun cancelCardsStatus(
-        @Field("type") type:String
-    ):Single<BaseResponse>
+        @Field("type") type: String
+    ): Single<BaseResponse>
+
+    @GET("/api/v1/status_card/{type}")
+    fun getStatusCardInside(@Path("type") type: String): Single<CardStatusTransferResponse>
+
+    @FormUrlEncoded
+    @POST("/api/v1/group_eldwry/create")
+    fun createGroupEldawery(
+        @Field("link_subeldwry ") link_subeldawry: String,
+        @Field("name") name: String
+    ): Single<CreateLeagueResponse>
+
+    @FormUrlEncoded
+    @POST("/api/v1/group_eldwry/join")
+    fun joinGroupEldawery(
+        @Field("val_code") val_code: String
+    ): Single<JoinLeagueResponse>
+
+    @GET("/api/v1/group_eldwry")
+    fun getAllDawery(): Single<GetAllLeaguesResponse>
 }

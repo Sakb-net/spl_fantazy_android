@@ -10,7 +10,7 @@
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/child_textView"
-        android:layout_width="@dimen/_45sdp"
+        android:layout_width="@dimen/_50sdp"
         android:layout_height="wrap_content"
         android:background="@color/colorGrayDark68"
         android:maxLines="1"
@@ -24,7 +24,7 @@
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/child_cost_textView"
-        android:layout_width="@dimen/_45sdp"
+        android:layout_width="@dimen/_50sdp"
         android:layout_height="wrap_content"
         android:background="@color/colorBlack68"
         android:ellipsize="end"
@@ -37,29 +37,6 @@
         app:layout_constraintStart_toStartOf="@id/child_textView"
         app:layout_constraintTop_toBottomOf="@+id/child_textView"
         tools:text="medo0000" />
-
-    <androidx.appcompat.widget.AppCompatImageView
-        android:id="@+id/captainIv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/_4sdp"
-        android:layout_marginBottom="@dimen/_2sdp"
-        android:src="@drawable/c_icon"
-        android:visibility="gone"
-        app:layout_constraintBottom_toTopOf="@id/child_textView"
-        app:layout_constraintLeft_toLeftOf="parent" />
-
-    <androidx.appcompat.widget.AppCompatImageView
-        android:id="@+id/viceIv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/_4sdp"
-        android:layout_marginBottom="@dimen/_2sdp"
-        android:src="@drawable/v_icon"
-        android:visibility="gone"
-        app:layout_constraintBottom_toTopOf="@id/child_textView"
-        app:layout_constraintLeft_toLeftOf="parent" />
-
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/type"
@@ -85,4 +62,25 @@
         app:layout_constraintTop_toBottomOf="@id/type"
         app:srcCompat="@drawable/add_player" />
 
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/captainIv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_4sdp"
+        android:layout_marginBottom="@dimen/_2sdp"
+        android:src="@drawable/c_icon"
+        android:visibility="gone"
+        app:layout_constraintBottom_toTopOf="@id/child_textView"
+        app:layout_constraintLeft_toLeftOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/viceIv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_4sdp"
+        android:layout_marginBottom="@dimen/_2sdp"
+        android:src="@drawable/v_icon"
+        android:visibility="gone"
+        app:layout_constraintBottom_toTopOf="@id/child_textView"
+        app:layout_constraintLeft_toLeftOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

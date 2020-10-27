@@ -12,6 +12,7 @@ data class PlayerMasterResponse(
     var total_team_play: Int? = 0
 ) {
     data class Data(
+        var player_id: Int? = 0,
         var cost_player: Double? = 0.0,
         var created_at: String? = "",
         var currency: String? = "",

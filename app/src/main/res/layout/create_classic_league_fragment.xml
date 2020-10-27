@@ -136,6 +136,7 @@
                                 android:drawableEnd="@drawable/ic_expand_more_primary_24dp"
                                 android:enabled="false"
                                 android:maxLines="1"
+                                android:textColor="@color/colorPrimary"
                                 android:padding="8dp" />
                         </FrameLayout>
 

@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import com.sakb.spl.R
 
 import com.sakb.spl.base.BaseFragment
@@ -28,16 +29,41 @@ class SpecialLeagueFragment : BaseFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.buttonSend.setOnClickListener {
-            openConfirmationDialog()
+            if (binding.codeEt.text?.toString()?.trim().isNullOrBlank()) {
+                return@setOnClickListener
+            } else {
+                binding.codeEt.text?.toString()?.trim()
+                    ?.let { code -> viewModel.loadJoinLeague(valCode = code) }
+            }
         }
+
+        viewModel.joinLeagueResponse.observe(viewLifecycleOwner, {
+            it.data?.let { data ->
+                //status 1 Join
+                //status 2 Join before
+                //status -1 your league
+                //status 0 this league not found
+                if (data.status == 1) {
+                    openConfirmationDialog(getString(R.string.classic_league_dialoug))
+                } else {
+                    Toast.makeText(
+                        requireContext(),
+                        getString(R.string.you_are_join_before),
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
+            }
+
+        })
     }
 
-    private fun openConfirmationDialog() {
+    private fun openConfirmationDialog(string: String) {
         context?.showConfirmationDialog(
             R.drawable.ic_done,
-            "تم الانضمام بنجاح لدوري \" المحترفين\""
+            string
         ) { dialog ->
             dialog?.dismiss()
         }
     }
+
 }

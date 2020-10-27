@@ -145,13 +145,13 @@ val viewModelModule = module {
         LeagueViewModel()
     }
     viewModel {
-        SpecialLeagueViewModel()
+        SpecialLeagueViewModel(get())
     }
     viewModel {
-        CreateClassicLeagueViewModel()
+        CreateClassicLeagueViewModel(get())
     }
     viewModel {
-        JoinToPowerfulLeagueViewModel()
+        JoinToPowerfulLeagueViewModel(get())
     }
     viewModel {
         CreateHeadToHeadLeagueViewModel()

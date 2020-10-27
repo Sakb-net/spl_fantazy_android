@@ -92,21 +92,15 @@ class MatchesFragment : BaseFragment() {
         builder?.setTitle(getString(R.string.select_round))
         builder?.setSingleChoiceItems(
             adapter, -1
-        ) { _: DialogInterface, item: Int ->
+        ) { dialogInterface: DialogInterface, item: Int ->
             selectedItem = item
+            binding.roundTitleTv.text = options[selectedItem]
+            option[selectedItem].link?.let { link -> callFixturesBySubeldawry(link) }
+            dialogInterface.dismiss()
         }
 
         binding.roundTitleTv.text = options[options.size - 1]
-        option[options.size - 1].link?.let { link-> callFixturesBySubeldawry(link) }
-
-        builder?.setPositiveButton(R.string.okkk) { dialogInterface: DialogInterface, _: Int ->
-            binding.roundTitleTv.text = options[selectedItem]
-            option[selectedItem].link?.let { link-> callFixturesBySubeldawry(link) }
-            dialogInterface.dismiss()
-        }
-        builder?.setNegativeButton(R.string.cancell) { dialogInterface: DialogInterface, _: Int ->
-            dialogInterface.dismiss()
-        }
+        option[options.size - 1].link?.let { link -> callFixturesBySubeldawry(link) }
         builder?.create()
     }
 
