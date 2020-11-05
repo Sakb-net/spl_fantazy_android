@@ -1,5 +1,6 @@
 package com.sakb.spl.di
 
+import android.util.Log
 import com.sakb.spl.constants.Constants
 import com.sakb.spl.data.local.PrefManager
 import com.sakb.spl.data.remote.SplApiEndpoints
@@ -37,9 +38,9 @@ fun provideRetrofit(okHttpClient: OkHttpClient): Retrofit {
 
 fun provideOkHttpClient(interceptor: Interceptor): OkHttpClient {
     return OkHttpClient.Builder()
-        .connectTimeout(60, TimeUnit.SECONDS)
-        .readTimeout(60, TimeUnit.SECONDS)
-        .writeTimeout(60, TimeUnit.SECONDS)
+        .connectTimeout(300, TimeUnit.SECONDS)
+        .readTimeout(300, TimeUnit.SECONDS)
+        .writeTimeout(300, TimeUnit.SECONDS)
         .addInterceptor(interceptor)
         .addInterceptor { chain ->
             val requestBuilder = chain.request().newBuilder()
@@ -48,7 +49,7 @@ fun provideOkHttpClient(interceptor: Interceptor): OkHttpClient {
             requestBuilder.header("lang", LanguageUtil.getLanguage())
             requestBuilder.header("access-token", PrefManager.getUser()?.data?.accessToken ?: "")
 
-
+            Log.d("request builder", PrefManager.getUser()?.data?.accessToken ?: "")
             val response = chain.proceed(requestBuilder.build())
             response
         }

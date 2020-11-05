@@ -115,15 +115,15 @@ class TransfersActionsFragment : BaseFragment() {
 
                 paymentBrands.add("VISA")
                 paymentBrands.add("MASTER")
-
+                CHECKOUT_ID = cardInfo.checkoutId ?: ""
                 val checkoutSettings =
                     CheckoutSettings(
-                        cardInfo.checkoutId ?: "",
+                        CHECKOUT_ID,
                         paymentBrands,
                         Connect.ProviderMode.TEST
                     )
                 // Set shopper result URL
-                checkoutSettings.checkoutId = cardInfo.checkoutId ?: ""
+                checkoutSettings.checkoutId = CHECKOUT_ID
                 checkoutSettings.shopperResultUrl = cardInfo.shopperResultUrl ?: ""
                 val intent =
                     checkoutSettings.createCheckoutActivityIntent(this@TransfersActionsFragment.requireContext())
@@ -208,5 +208,6 @@ class TransfersActionsFragment : BaseFragment() {
 
     companion object {
         const val GRAY = "gray"
+        var CHECKOUT_ID = ""
     }
 }

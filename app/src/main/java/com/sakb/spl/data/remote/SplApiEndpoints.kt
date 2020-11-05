@@ -275,8 +275,8 @@ interface SplApiEndpoints {
     @FormUrlEncoded
     @POST("/api/v1/confirmPayment/card")
     fun confirmGoldInfo(
-        @Field("resourcePath ") resourcePath: String,
-        @Field("checkout_id ") checkout_id: String,
+        @Field("resourcePath") resourcePath: String,
+        @Field("checkout_id") checkout_id: String,
     ): Single<CardGoldResultResponse>
 
     @FormUrlEncoded

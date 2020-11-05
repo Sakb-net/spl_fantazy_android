@@ -25,6 +25,7 @@ import com.sakb.spl.R
 import com.sakb.spl.base.BaseActivity
 import com.sakb.spl.constants.Constants
 import com.sakb.spl.data.local.PrefManager
+import com.sakb.spl.ui.transfers.TransfersActionsFragment.Companion.CHECKOUT_ID
 import com.sakb.spl.utils.toast
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -119,8 +120,7 @@ class MainActivity : BaseActivity() {
                 /* resource path if needed */
                 val resourcePath =
                     data?.getStringExtra(CheckoutActivity.CHECKOUT_RESULT_RESOURCE_PATH)
-                val checkoutId =
-                    data?.getStringExtra(CheckoutActivity.EXTRA_CHECKOUT_ID)
+                val checkoutId = CHECKOUT_ID
                 if (transaction?.transactionType === TransactionType.SYNC) {
                     /* check the result of synchronous transaction */
                     viewModel.confirmGoldInfo(resourcePath ?: "", checkoutId ?: "")
@@ -130,15 +130,15 @@ class MainActivity : BaseActivity() {
 
                     paymentBrands.add("VISA")
                     paymentBrands.add("MASTER")
-
+                    CHECKOUT_ID = checkoutId
                     val checkoutSettings =
                         CheckoutSettings(
-                            checkoutId ?: "",
+                            CHECKOUT_ID,
                             paymentBrands,
                             Connect.ProviderMode.TEST
                         )
                     // Set shopper result URL
-                    checkoutSettings.checkoutId = checkoutId ?: ""
+                    checkoutSettings.checkoutId = CHECKOUT_ID
                     checkoutSettings.shopperResultUrl = resourcePath ?: ""
                     val intent =
                         checkoutSettings.createCheckoutActivityIntent(this)
