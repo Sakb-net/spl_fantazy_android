@@ -30,3 +30,10 @@ allprojects {
 task clean(type: Delete) {
     delete rootProject.buildDir
 }
+ext {
+    socialMediaSignUpLibraries = [
+            facebookVersion  : '4.30.0',
+            googlePlusVersion: '11.8.0',
+            twitterVersion   : '3.2.0'
+    ]
+}
