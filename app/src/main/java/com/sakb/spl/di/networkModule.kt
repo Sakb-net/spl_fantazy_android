@@ -3,6 +3,7 @@ package com.sakb.spl.di
 import com.sakb.spl.constants.Constants
 import com.sakb.spl.data.local.PrefManager
 import com.sakb.spl.data.remote.SplApiEndpoints
+import com.sakb.spl.utils.LanguageUtil
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -44,7 +45,7 @@ fun provideOkHttpClient(interceptor: Interceptor): OkHttpClient {
             val requestBuilder = chain.request().newBuilder()
             requestBuilder.header("type-dev", Constants.type_dev)
             requestBuilder.header("val-dev", Constants.val_dev)
-            requestBuilder.header("lang", PrefManager.getLanguage())
+            requestBuilder.header("lang", LanguageUtil.getLanguage())
             requestBuilder.header("access-token", PrefManager.getUser()?.data?.accessToken ?: "")
 
 

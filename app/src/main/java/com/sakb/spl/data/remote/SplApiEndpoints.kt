@@ -253,25 +253,59 @@ interface SplApiEndpoints {
     @FormUrlEncoded
     @POST("api/v1/cancel_players_card")
     fun cancelCardsStatus(
-        @Field("type") type: String
+        @Field("type") type: String,
     ): Single<BaseResponse>
 
     @GET("/api/v1/status_card/{type}")
     fun getStatusCardInside(@Path("type") type: String): Single<CardStatusTransferResponse>
 
     @FormUrlEncoded
+    @POST("/api/v1/confirm_substitutePlayer")
+    fun getSubDefault(
+        @Field("array_players") arrayPlayer: String,
+        @Field("active_cardgray") activeCardGray: String,
+    ): Single<GetSubDefaultResponse>
+
+    @FormUrlEncoded
+    @POST("/api/v1/payment/card")
+    fun getGoldInfo(
+        @Field("array_players") arrayPlayer: String,
+    ): Single<CardGoldInfoResponse>
+
+    @FormUrlEncoded
+    @POST("/api/v1/confirmPayment/card")
+    fun confirmGoldInfo(
+        @Field("resourcePath ") resourcePath: String,
+        @Field("checkout_id ") checkout_id: String,
+    ): Single<CardGoldResultResponse>
+
+    @FormUrlEncoded
     @POST("/api/v1/group_eldwry/create")
     fun createGroupEldawery(
         @Field("link_subeldwry ") link_subeldawry: String,
-        @Field("name") name: String
+        @Field("name") name: String,
     ): Single<CreateLeagueResponse>
 
     @FormUrlEncoded
     @POST("/api/v1/group_eldwry/join")
     fun joinGroupEldawery(
-        @Field("val_code") val_code: String
+        @Field("val_code") val_code: String,
     ): Single<JoinLeagueResponse>
 
     @GET("/api/v1/group_eldwry")
     fun getAllDawery(): Single<GetAllLeaguesResponse>
+
+//    @PUT("/api/v1/group_eldwry/leave/{link_group}")
+//    fun leaveLeague(
+//        @Path("link_group") link: String
+//    ):Single<>
+
+    @FormUrlEncoded
+    @POST("/api/v1/group_eldwry/standings/{link_group}")
+    fun getStandingList(
+        @Path("link_group") link: String,
+        @Field("link_subeldwry") link_sub: String,
+    ): Single<StandingResponse>
+
+
 }

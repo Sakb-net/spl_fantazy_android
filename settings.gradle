@@ -1,2 +1,2 @@
 rootProject.name='SPL'
-include ':app'
+include ':app',':oppwa.mobile-2.38.0'

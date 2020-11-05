@@ -19,6 +19,8 @@ class MyTeamPlayersMasterAdapter(
     var onRestorePlayerClicked: ((pos: Int, parentPosition: Int, PlayerMasterResponse.Data) -> Unit)? =
         null
 
+    var onReplaceClicked: ((pos: Int, parentPosition: Int, PlayerMasterResponse.Data) -> Unit)? =
+        null
 
     private val viewPool = RecyclerView.RecycledViewPool()
 
@@ -43,7 +45,8 @@ class MyTeamPlayersMasterAdapter(
                     position,
                     onItemDeleteClick,
                     onOpenProfileClicked,
-                    onRestorePlayerClicked
+                    onRestorePlayerClicked,
+                    onReplaceClicked
                 )
             }
             setRecycledViewPool(viewPool)

@@ -321,4 +321,19 @@ class SplRepository constructor(
         return remote.getAllDawery()
     }
 
+    fun getStandingDawery(link_league: String, link_subeldawey: String): Single<StandingResponse> {
+        return remote.getStandingList(link_league, link_subeldawey)
+    }
+
+    fun getSubDefault(arrayPlayer: String, activeCardGray: String): Single<GetSubDefaultResponse> {
+        return remote.getSubDefault(arrayPlayer, activeCardGray)
+    }
+
+    fun getGoldInfo(arrayPlayer: String): Single<CardGoldInfoResponse> {
+        return remote.getGoldInfo(arrayPlayer)
+    }
+
+    fun confirmGoldInfo(resourcePath: String, checkout_id: String): Single<CardGoldResultResponse> {
+        return remote.confirmGoldInfo(resourcePath, checkout_id)
+    }
 }

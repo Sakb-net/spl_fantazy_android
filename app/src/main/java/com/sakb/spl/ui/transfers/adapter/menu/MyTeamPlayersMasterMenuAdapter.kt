@@ -24,7 +24,8 @@ class MyTeamPlayersMasterMenuAdapter(
     var onRestorePlayerClicked: ((pos: Int, parentPosition: Int, PlayerMasterResponse.Data) -> Unit)? =
         null
 
-
+    var onReplaceClicked: ((pos: Int, parentPosition: Int, PlayerMasterResponse.Data) -> Unit)? =
+        null
     private val viewPool = RecyclerView.RecycledViewPool()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -81,7 +82,8 @@ class MyTeamPlayersMasterMenuAdapter(
                         position,
                         onItemDeleteClick,
                         onOpenProfileClicked,
-                        onRestorePlayerClicked
+                        onRestorePlayerClicked,
+                        onReplaceClicked
                     )
                 } else {
                     holder.header.visibility = View.GONE

@@ -5,8 +5,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import com.google.gson.Gson
+import com.oppwa.mobile.connect.checkout.dialog.CheckoutActivity
+import com.oppwa.mobile.connect.checkout.meta.CheckoutSettings
+import com.oppwa.mobile.connect.provider.Connect
 import com.sakb.spl.R
 import com.sakb.spl.base.BaseFragment
+import com.sakb.spl.data.model.ArrayPlayerRequest
 import com.sakb.spl.data.model.PlayerResponse
 import com.sakb.spl.data.model.PlayersSubtitle
 import com.sakb.spl.ui.home.HomeFragment
@@ -19,24 +24,27 @@ import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 
 class TransfersActionsFragment : BaseFragment() {
     override val viewModel by sharedViewModel<TransfersViewModel>()
-    var playerInList:ArrayList<String> = ArrayList()
-    var playerOutList:ArrayList<String> = ArrayList()
-    var playerInDataList:ArrayList<PlayerResponse> = ArrayList()
+    var playerInList: ArrayList<String> = ArrayList()
+    var playerOutList: ArrayList<String> = ArrayList()
+    var playerInDataList: ArrayList<PlayerResponse> = ArrayList()
     var playerOuDatatList: ArrayList<PlayerResponse> = ArrayList()
-    var grayCardStatus = 0
+    var grayCardStatus = ""
 
     val players by lazy {
         arguments?.getParcelableArrayList<PlayersSubtitle>(PLAYER_SUB)
     }
 
     lateinit var playerInOutAdapter: PlayerInOutAdapter
+
+    var arrayPlayer = ArrayList<ArrayPlayerRequest>()
+    var arrayPlayerString: String = ""
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
     }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
+        savedInstanceState: Bundle?,
     ): View? {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_transfers_actions, container, false)
@@ -46,7 +54,11 @@ class TransfersActionsFragment : BaseFragment() {
         super.onViewCreated(view, savedInstanceState)
 
         viewModel.getCardStatus(GRAY)
-        playerInOutAdapter = PlayerInOutAdapter(this@TransfersActionsFragment.requireContext(),playerInDataList,playerOuDatatList)
+        playerInOutAdapter = PlayerInOutAdapter(
+            this@TransfersActionsFragment.requireContext(),
+            playerInDataList,
+            playerOuDatatList
+        )
         rvPlayer.adapter = playerInOutAdapter
 
         players?.let { list ->
@@ -73,7 +85,9 @@ class TransfersActionsFragment : BaseFragment() {
 
         tv_info.text =
             "${getString(R.string.you_are_used)} ${HomeFragment.transfersData.transferFree} ${
-                getString(R.string.free_trans)
+                getString(
+                    R.string.free_trans
+                )
             } \n" +
                     "${getString(R.string.get_extra_transfers_point)} ( ${
                         HomeFragment.transfersData.changePoint?.times(
@@ -84,20 +98,46 @@ class TransfersActionsFragment : BaseFragment() {
 
         viewModel.cardStatus.observe(viewLifecycleOwner, {
             it?.data?.let { dataCard ->
-                if (dataCard.activeCard == 1) {
-                    grayCardStatus = 1
+                grayCardStatus = if (dataCard.activeCard == 1) {
+                    "1"
                 } else {
-                    grayCardStatus = 0
+                    "0"
                 }
             }
+        })
+
+        viewModel.getGoldInfoResponse.observe(viewLifecycleOwner, {
+            it?.data?.let { cardInfo ->
+
+                val paymentBrands: MutableSet<String> = LinkedHashSet()
+
+                paymentBrands.add("VISA")
+                paymentBrands.add("MASTER")
+
+                val checkoutSettings =
+                    CheckoutSettings(
+                        cardInfo.checkoutId ?: "",
+                        paymentBrands,
+                        Connect.ProviderMode.TEST
+                    )
+                // Set shopper result URL
+                checkoutSettings.checkoutId = cardInfo.checkoutId ?: ""
+                checkoutSettings.shopperResultUrl = cardInfo.shopperResultUrl ?: ""
+                val intent =
+                    checkoutSettings.createCheckoutActivityIntent(this@TransfersActionsFragment.requireContext())
+                startActivityForResult(intent, CheckoutActivity.REQUEST_CODE_CHECKOUT)
+            }
+        })
+        viewModel.getSubDefaultResponse.observe(viewLifecycleOwner, {
+            activity?.supportFragmentManager?.popBackStack()
         })
         buttonGoldCard.setOnClickListener {
             openGoldCardDialog()
         }
         buttonSilverCard.setOnClickListener {
-            if (grayCardStatus == 0) {
+            if (grayCardStatus == "0") {
                 openSilverCardDialog()
-            } else if (grayCardStatus == 1) {
+            } else if (grayCardStatus == "1") {
                 Toast.makeText(
                     requireContext(),
                     getString(R.string.you_cant_use_it_again),
@@ -110,21 +150,25 @@ class TransfersActionsFragment : BaseFragment() {
             activity?.supportFragmentManager?.popBackStack()
         }
         confirm_button.setOnClickListener {
-            callList(players)
+            arrayPlayerString = callList(players)
+            if (grayCardStatus == "0")
+                viewModel.getSubDefault(arrayPlayer = arrayPlayerString, activeCardGray = "")
+            else
+                viewModel.getSubDefault(arrayPlayer = arrayPlayerString,
+                    activeCardGray = grayCardStatus)
         }
+
     }
 
-    private fun callList(players: ArrayList<PlayersSubtitle>?) {
-        players?.let {list->
+    private fun callList(players: ArrayList<PlayersSubtitle>?): String {
+        players?.let { list ->
             list.forEach {
-                viewModel.changePlayer(
-                    "" + HomeFragment.transfersData.daweryLink,
-                    "" + it.oldPlayerLink,
-                    "" + it.newPlayerLink
-                )
+                arrayPlayer.add(ArrayPlayerRequest(newplayerId = it.newPlayerId,
+                    substituteplayerId = it.oldPlayerId,
+                    substituteplayerCost = it.oldPlayerCost))
             }
-            activity?.supportFragmentManager?.popBackStack()
         }
+        return "${Gson().toJson(arrayPlayer)}"
     }
 
     private fun openSilverCardDialog() {
@@ -133,9 +177,11 @@ class TransfersActionsFragment : BaseFragment() {
             R.string.silver_card,
             R.string.silver_card_content,
             { dialog ->
+                grayCardStatus = "1"
                 dialog?.dismiss()
             },
             { dialog ->
+                grayCardStatus = "0"
                 dialog?.dismiss()
             })
     }
@@ -147,6 +193,8 @@ class TransfersActionsFragment : BaseFragment() {
             R.string.gold_card,
             R.string.gold_card_content,
             { dialog ->
+                arrayPlayerString = callList(players)
+                viewModel.getGoldInfo(arrayPlayerString)
                 dialog?.dismiss()
             },
             { dialog ->

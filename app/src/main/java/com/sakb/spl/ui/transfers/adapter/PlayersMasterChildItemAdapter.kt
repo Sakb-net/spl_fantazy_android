@@ -15,7 +15,6 @@ import com.sakb.spl.ui.addplayer.AddPlayerActivity
 import com.sakb.spl.ui.addplayer.AddPlayerActivity.Companion.ACTIONTYPE
 import com.sakb.spl.ui.addplayer.AddPlayerActivity.Companion.DELETEDPLAYER
 import com.sakb.spl.ui.addplayer.AddPlayerActivity.Companion.ELDAWRYlINK
-import com.sakb.spl.ui.addplayer.AddPlayerActivity.Companion.REPLACE
 import com.sakb.spl.ui.addplayer.AddPlayerActivity.Companion.REPLACE_WITHOUT_CHANGE
 import com.sakb.spl.ui.addplayer.AddPlayerActivity.Companion.TYPELOCPLAYER
 import com.sakb.spl.utils.showSplDeleteDialog
@@ -28,9 +27,8 @@ class PlayersMasterChildItemAdapter(
     val parentPositions: Int = -1,
     var onItemDeleteClick: ((pos: Int, parentPosition: Int, PlayerMasterResponse.Data) -> Unit)? = null,
     var onOpenProfileClicked: ((pos: Int, PlayerMasterResponse.Data) -> Unit)? = null,
-    var onRestorePlayerClicked: ((pos: Int, parentPosition: Int, PlayerMasterResponse.Data) -> Unit)? = null
-
-
+    var onRestorePlayerClicked: ((pos: Int, parentPosition: Int, PlayerMasterResponse.Data) -> Unit)? = null,
+    var onReplaceClicked: ((pos: Int, parentPosition: Int, PlayerMasterResponse.Data) -> Unit)? = null,
 ) : RecyclerView.Adapter<PlayersMasterChildItemAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -91,6 +89,11 @@ class PlayersMasterChildItemAdapter(
                             },
                                 {
                                     it?.dismiss()
+                                    onReplaceClicked?.invoke(
+                                        adapterPosition,
+                                        parentPositions,
+                                        children[adapterPosition]
+                                    )
                                     itemView.context.startActivity(
                                         Intent(itemView.context, AddPlayerActivity::class.java)
                                             .putExtra(ACTIONTYPE, REPLACE_WITHOUT_CHANGE)
@@ -130,7 +133,7 @@ class PlayersMasterChildItemAdapter(
                         itemView.context.startActivity(
                             Intent(itemView.context, AddPlayerActivity::class.java)
                                 .putExtra(
-                                    "type_loc_player",
+                                    TYPELOCPLAYER,
                                     children[adapterPosition].type_loc_player
                                 )
                         )

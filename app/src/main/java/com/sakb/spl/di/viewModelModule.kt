@@ -20,6 +20,7 @@ import com.sakb.spl.ui.login.LoginViewModel
 import com.sakb.spl.ui.logout.LogOutViewModel
 import com.sakb.spl.ui.main.MainViewModel
 import com.sakb.spl.ui.matches.MatchesViewModel
+import com.sakb.spl.ui.myleague.MyLeagueViewModel
 import com.sakb.spl.ui.mypoints.MyPointsViewModel
 import com.sakb.spl.ui.myprofile.MyProfileViewModel
 import com.sakb.spl.ui.myteam.MyTeamViewModel
@@ -31,6 +32,7 @@ import com.sakb.spl.ui.powerfulleague.JoinToPowerfulLeagueViewModel
 import com.sakb.spl.ui.register.RegisterViewModel
 import com.sakb.spl.ui.specialleague.SpecialLeagueViewModel
 import com.sakb.spl.ui.splash.SplashViewModel
+import com.sakb.spl.ui.standing.StandingViewModel
 import com.sakb.spl.ui.statistics.StatisticsViewModel
 import com.sakb.spl.ui.terms.TermsViewModel
 import com.sakb.spl.ui.transfers.TransfersViewModel
@@ -44,7 +46,7 @@ val viewModelModule = module {
     }
 
     viewModel {
-        MainViewModel()
+        MainViewModel(get())
     }
 
     viewModel {
@@ -107,6 +109,7 @@ val viewModelModule = module {
     viewModel {
         MyPointsViewModel(get())
     }
+
     viewModel {
         NewPassViewModel()
     }
@@ -161,6 +164,13 @@ val viewModelModule = module {
     }
     viewModel {
         LanguageViewModel()
+    }
+
+    viewModel {
+        MyLeagueViewModel(get())
+    }
+    viewModel {
+        StandingViewModel(get())
     }
 
 }

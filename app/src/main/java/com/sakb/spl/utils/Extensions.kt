@@ -11,6 +11,7 @@ import com.sakb.spl.R
 import kotlinx.android.synthetic.main.dialog_enter_name.view.*
 import kotlinx.android.synthetic.main.dialog_enter_range_price.view.*
 import kotlinx.android.synthetic.main.dialog_spl_delete_view.view.*
+import kotlinx.android.synthetic.main.dialog_spl_league_view.view.*
 import kotlinx.android.synthetic.main.dialog_spl_view.view.*
 import kotlinx.android.synthetic.main.dialog_view_log_out.view.*
 import java.io.ByteArrayOutputStream
@@ -33,10 +34,7 @@ fun Context.showSplDialog(
     val alertDialog = AlertDialog.Builder(this).setView(view).setCancelable(true)
     val dialog = alertDialog.create()
     dialog.window?.setBackgroundDrawableResource(android.R.color.transparent)
-    // view.dialogIcon.setImageResource(drawableRes)
-    //  view.dialogText.text = resID
     view.playerDetailsBtn.setOnClickListener { positive(dialog) }
-    //if (drawableRes == R.drawable.dialog_check) view.negativeButton.visibility =View.GONE
     view.deletePlayerBtn.setOnClickListener { negative(dialog) }
     dialog.show()
 }
@@ -57,6 +55,21 @@ fun Context.showSplDeleteDialog(
     dialog.show()
 }
 
+fun Context.showLeaguesSettingsDialog(
+    link: String,
+    standingBtn: (dialog: AlertDialog?, link: String) -> Unit,
+    managementBtn: (dialog: AlertDialog?, link: String) -> Unit,
+    leaveBtn: (dialog: AlertDialog?, link: String) -> Unit,
+) {
+    val view = LayoutInflater.from(this).inflate(R.layout.dialog_spl_league_view, null)
+    val alertDialog = AlertDialog.Builder(this).setView(view).setCancelable(true)
+    val dialog = alertDialog.create()
+    dialog.window?.setBackgroundDrawableResource(android.R.color.transparent)
+    view.standingBtn.setOnClickListener { standingBtn(dialog, link) }
+    view.managementBtn.setOnClickListener { managementBtn(dialog, link) }
+    view.leaveBtn.setOnClickListener { leaveBtn(dialog, link) }
+    dialog.show()
+}
 
 fun Context.showEnterRangeDialog(positive: (dialog: AlertDialog?, priceFrom: String, priceTo: String) -> Unit) {
     val view = LayoutInflater.from(this).inflate(R.layout.dialog_enter_range_price, null)

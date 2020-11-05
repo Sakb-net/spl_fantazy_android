@@ -129,7 +129,6 @@ class TransfersViewModel(private val repository: SplRepository) : BaseViewModel(
             .subscribe(
                 { data ->
                     playerResponse.value = data
-
                 },
                 { throwable ->
                     handleApiException(throwable)
@@ -208,6 +207,42 @@ class TransfersViewModel(private val repository: SplRepository) : BaseViewModel(
                 { data ->
                     cardStatus.value = data
 
+                },
+                { throwable ->
+                    handleApiException(throwable)
+                }
+            ).addToDisposableBag()
+    }
+
+    var getSubDefaultResponse = SingleLiveEvent<GetSubDefaultResponse>()
+
+    fun getSubDefault(
+        arrayPlayer: String,
+        activeCardGray: String = "",
+    ) {
+        repository.getSubDefault(arrayPlayer, activeCardGray)
+            .subscribeOn(Schedulers.io())
+            .applyLoadingState()
+            .subscribe(
+                { data ->
+                    getSubDefaultResponse.value = data
+                },
+                { throwable ->
+                    handleApiException(throwable)
+                }
+            ).addToDisposableBag()
+    }
+
+    var getGoldInfoResponse = SingleLiveEvent<CardGoldInfoResponse>()
+    fun getGoldInfo(
+        arrayPlayer: String,
+    ) {
+        repository.getGoldInfo(arrayPlayer)
+            .subscribeOn(Schedulers.io())
+            .applyLoadingState()
+            .subscribe(
+                { data ->
+                    getGoldInfoResponse.value = data
                 },
                 { throwable ->
                     handleApiException(throwable)

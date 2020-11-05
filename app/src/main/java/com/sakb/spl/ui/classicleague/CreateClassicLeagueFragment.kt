@@ -1,7 +1,12 @@
 package com.sakb.spl.ui.classicleague
 
+import android.content.ClipData
+import android.content.Context
 import android.content.DialogInterface
+import android.content.Intent
+import android.os.Build
 import android.os.Bundle
+import android.text.ClipboardManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,13 +15,14 @@ import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
-
 import com.sakb.spl.R
 import com.sakb.spl.base.BaseFragment
+import com.sakb.spl.data.model.DataCreateLeague
 import com.sakb.spl.data.model.DataItemSub
 import com.sakb.spl.databinding.CreateClassicLeagueFragmentBinding
-import com.sakb.spl.utils.showConfirmationDialog
+import com.sakb.spl.utils.showSuccessDialog
 import org.koin.androidx.viewmodel.ext.android.viewModel
+
 
 class CreateClassicLeagueFragment : BaseFragment() {
 
@@ -65,8 +71,8 @@ class CreateClassicLeagueFragment : BaseFragment() {
         }
 
         viewModel.createLeagueResponse.observe(viewLifecycleOwner, {
-            it.data?.let {
-                openConfirmationDialog()
+            it.data?.let { data ->
+                openConfirmationDialog(data)
             }
         })
     }
@@ -83,13 +89,40 @@ class CreateClassicLeagueFragment : BaseFragment() {
         })
     }
 
-    private fun openConfirmationDialog() {
-        context?.showConfirmationDialog(
-            R.drawable.ic_done,
-            getString(R.string.classic_league_dialoug)
-        ) { dialog ->
-            dialog?.dismiss()
-        }
+    private fun openConfirmationDialog(data: DataCreateLeague) {
+        context?.showSuccessDialog(
+            data,
+            copy = { dialog, code ->
+                val sdk = Build.VERSION.SDK_INT
+                if (sdk < Build.VERSION_CODES.HONEYCOMB) {
+                    val clipboard =
+                        requireContext().getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager?
+                    clipboard?.text = code
+                } else {
+                    val clipboard =
+                        requireContext().getSystemService(Context.CLIPBOARD_SERVICE) as android.content.ClipboardManager?
+                    val clip = ClipData.newPlainText(getString(R.string.code_league), code)
+                    clipboard?.setPrimaryClip(clip)
+                }
+                dialog?.dismiss()
+            },
+            share = { dialog, url ->
+                val sendIntent: Intent = Intent().apply {
+                    action = Intent.ACTION_SEND
+                    putExtra(Intent.EXTRA_TEXT, url)
+                    type = "text/plain"
+                }
+                val shareIntent = Intent.createChooser(sendIntent, null)
+                requireContext().startActivity(shareIntent)
+                dialog?.dismiss()
+            },
+            manage = { dialog ->
+                dialog?.dismiss()
+            },
+            myLeague = { dialog ->
+                dialog?.dismiss()
+            }
+        )
     }
 
     private fun initDialogRounds() {

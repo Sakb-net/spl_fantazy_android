@@ -6,13 +6,12 @@ import com.sakb.spl.data.model.PlayerByTypeResponse
 
 class TeamSpinnerAdapter(
     theContext: Context,
-    val objects: MutableList<PlayerByTypeResponse.Team?>,
-    theLayoutResId: Int
-) :
-    ArrayAdapter<Any>(theContext, theLayoutResId, objects as List<PlayerByTypeResponse.Team?>) {
+    private val objects: MutableList<PlayerByTypeResponse.Team?>?,
+    theLayoutResId: Int,
+) : ArrayAdapter<Any>(theContext, theLayoutResId, objects as List<PlayerByTypeResponse.Team?>) {
 
     override fun getItem(position: Int): String {
-        return objects.get(position)?.team!!
+        return objects?.get(position)?.team ?: ""
     }
 
     override fun getCount(): Int {

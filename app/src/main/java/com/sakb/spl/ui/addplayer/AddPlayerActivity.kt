@@ -87,7 +87,7 @@ class AddPlayerActivity : BaseActivity() {
                                 listData.addAll(it.get(i)?.players_group!!)
                     }
 
-                    playersByTypeAdapter = PlayersByTypeAdapter(listData,this@AddPlayerActivity)
+                    playersByTypeAdapter = PlayersByTypeAdapter(listData, this@AddPlayerActivity)
                     playersByTypeAdapter?.onItemClick = { _, data ->
                         when {
                             intent.getStringExtra(ACTIONTYPE) == REPLACE -> {
@@ -98,7 +98,10 @@ class AddPlayerActivity : BaseActivity() {
                                 )
                             }
                             intent.getStringExtra(ACTIONTYPE) == REPLACE_WITHOUT_CHANGE -> {
-                                val playersSubtitle = PlayersSubtitle(intent.getStringExtra(DELETEDPLAYER)?:"",data?.link?:"")
+                                val playersSubtitle = PlayersSubtitle()
+                                playersSubtitle.oldPlayerLink =
+                                    intent.getStringExtra(DELETEDPLAYER) ?: ""
+                                playersSubtitle.newPlayerLink = data?.link ?: ""
                                 EventBus.getDefault().post(playersSubtitle)
                                 onBackPressed()
                             }
@@ -209,7 +212,8 @@ class AddPlayerActivity : BaseActivity() {
 
     private fun initTeamsSpinner(playerByTypeResponse: PlayerByTypeResponse) {
         val teams = playerByTypeResponse.data?.get(0)?.teams
-        teams?.add(PlayerByTypeResponse.Team("", "___end__"))
+        teams?.add(PlayerByTypeResponse.Team(" ", getString(R.string.all_teams)))
+        teams?.add(PlayerByTypeResponse.Team(" ", "___end___"))
         val adapter =
             TeamSpinnerAdapter(this, teams!!, android.R.layout.simple_spinner_dropdown_item)
         adapter.setDropDownViewResource(R.layout.item_edited)
@@ -222,7 +226,7 @@ class AddPlayerActivity : BaseActivity() {
                     parent: AdapterView<*>?,
                     view: View?,
                     position: Int,
-                    id: Long
+                    id: Long,
                 ) {
                     if (viewModel.recreatedTeam) {
                         return

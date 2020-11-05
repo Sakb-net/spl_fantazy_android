@@ -153,6 +153,7 @@
         -->
         <item name="colorControlNormal">@color/white</item>
     </style>
+
     <style name="MaterialThemeDialog" parent="Theme.MaterialComponents.Light.Dialog.Alert">
         <item name="colorControlNormal">@color/colorAccent</item>
         <item name="colorControlActivated">@color/colorAccent</item>
@@ -163,5 +164,16 @@
         <item name="title">@string/choose_team</item>
     </style>
 
+    <!-- Custom checkout theme -->
+    <style name="CustomCheckoutTheme" parent="Theme.Checkout.Light">
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="headerBackground">@color/colorAccent</item>
+        <item name="cameraTintColor">@color/colorAccent</item>
+        <item name="checkboxButtonTintColor">@color/colorAccent</item>
+        <item name="checkoutButtonStyle">@style/NewCheckoutTheme.Button</item>
+    </style>
 
+    <style name="NewCheckoutTheme.Button" parent="Checkout.Button.Light">
+        <item name="android:background">@color/colorAccent</item>
+    </style>
 </resources>

@@ -170,6 +170,9 @@
         <action
             android:id="@+id/action_leagueFragment_to_createHeadToHeadLeagueFragment"
             app:destination="@id/createHeadToHeadLeagueFragment" />
+        <action
+            android:id="@+id/action_leagueFragment_to_MyLeagueFragment"
+            app:destination="@id/myLeaguesFragment" />
     </fragment>
     <fragment
         android:id="@+id/specialLeagueFragment"
@@ -180,7 +183,11 @@
         android:id="@+id/createClassicLeagueFragment"
         android:name="com.sakb.spl.ui.classicleague.CreateClassicLeagueFragment"
         android:label="@string/create_classic_league"
-        tools:layout="@layout/create_classic_league_fragment" />
+        tools:layout="@layout/create_classic_league_fragment">
+        <action
+            android:id="@+id/action_createClassicLeagueFragment_to_MyLeagueFragment"
+            app:destination="@id/myLeaguesFragment" />
+    </fragment>
     <fragment
         android:id="@+id/joinToPowerfulLeagueFragment"
         android:name="com.sakb.spl.ui.powerfulleague.JoinToPowerfulLeagueFragment"
@@ -203,7 +210,28 @@
         android:name="com.sakb.spl.ui.transfers.TransfersActionsFragment"
         android:label="@string/transfers"
         tools:layout="@layout/fragment_transfers_actions">
-        <argument android:name="playersSubtitle"
+        <argument
+            android:name="playersSubtitle"
             app:argType="com.sakb.spl.data.model.PlayersSubtitle" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/myLeaguesFragment"
+        android:name="com.sakb.spl.ui.myleague.MyLeagueFragment"
+        android:label="@string/my_leagues"
+        tools:layout="@layout/fragment_my_league">
+        <action
+            android:id="@+id/action_MyLeagueFragment_to_StandingFragment"
+            app:destination="@id/standingFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/standingFragment"
+        android:name="com.sakb.spl.ui.standing.StandingFragment"
+        android:label="@string/standing"
+        tools:layout="@layout/standing_fragment">
+        <argument
+            android:name="link"
+            app:argType="string" />
     </fragment>
 </navigation>

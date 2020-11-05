@@ -19,9 +19,8 @@ class PlayersMasterChildItemMenuAdapter(
     val parentPositions: Int = -1,
     var onItemDeleteClick: ((pos: Int, parentPosition: Int, PlayerMasterResponse.Data) -> Unit)? = null,
     var onOpenProfileClicked: ((pos: Int, PlayerMasterResponse.Data) -> Unit)? = null,
-    var onRestorePlayerClicked: ((pos: Int, parentPosition: Int, PlayerMasterResponse.Data) -> Unit)? = null
-
-
+    var onRestorePlayerClicked: ((pos: Int, parentPosition: Int, PlayerMasterResponse.Data) -> Unit)? = null,
+    var onReplaceClicked: ((pos: Int, parentPosition: Int, PlayerMasterResponse.Data) -> Unit)? = null,
 ) : RecyclerView.Adapter<PlayersMasterChildItemMenuAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -96,18 +95,11 @@ class PlayersMasterChildItemMenuAdapter(
                             },
                                 {
                                     it?.dismiss()
-//                                    itemView.context.startActivity(
-//                                        Intent(itemView.context, AddPlayerActivity::class.java)
-//                                            .putExtra("replace", true)
-//                                            .putExtra(
-//                                                "old_link",
-//                                                children[adapterPosition].link_player
-//                                            )
-//                                            .putExtra(
-//                                                "type_loc_player",
-//                                                children[adapterPosition].type_loc_player
-//                                            )
-//                                    )
+                                    onReplaceClicked?.invoke(
+                                        adapterPosition,
+                                        parentPositions,
+                                        children[adapterPosition]
+                                    )
                                     itemView.context.startActivity(
                                         Intent(itemView.context, AddPlayerActivity::class.java)
                                             .putExtra(
