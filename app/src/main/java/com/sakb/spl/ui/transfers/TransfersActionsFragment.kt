@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.navigation.fragment.findNavController
 import com.google.gson.Gson
 import com.oppwa.mobile.connect.checkout.dialog.CheckoutActivity
 import com.oppwa.mobile.connect.checkout.meta.CheckoutSettings
@@ -38,6 +39,7 @@ class TransfersActionsFragment : BaseFragment() {
 
     var arrayPlayer = ArrayList<ArrayPlayerRequest>()
     var arrayPlayerString: String = ""
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
     }
@@ -129,7 +131,8 @@ class TransfersActionsFragment : BaseFragment() {
             }
         })
         viewModel.getSubDefaultResponse.observe(viewLifecycleOwner, {
-            activity?.supportFragmentManager?.popBackStack()
+            findNavController().popBackStack(R.id.transfersActionFragment, true)
+            //activity?.supportFragmentManager?.popBackStack()
         })
         buttonGoldCard.setOnClickListener {
             openGoldCardDialog()
@@ -147,7 +150,8 @@ class TransfersActionsFragment : BaseFragment() {
 
         }
         cancel_button.setOnClickListener {
-            activity?.supportFragmentManager?.popBackStack()
+            findNavController().popBackStack(R.id.transfersActionFragment, true)
+            //activity?.supportFragmentManager?.popBackStack()
         }
         confirm_button.setOnClickListener {
             arrayPlayerString = callList(players)

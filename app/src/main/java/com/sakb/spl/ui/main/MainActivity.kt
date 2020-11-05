@@ -90,7 +90,9 @@ class MainActivity : BaseActivity() {
 //        navView.setNavigationItemSelectedListener(this)
         viewModel.getCardGoldResultResponse.observe(this, {
             toast(it.data?.mesagePay ?: "")
-            supportFragmentManager.popBackStack()
+            findNavController(R.id.nav_host_fragment).popBackStack(R.id.transfersActionFragment,
+                true)
+            //supportFragmentManager.popBackStack()
         })
     }
 
