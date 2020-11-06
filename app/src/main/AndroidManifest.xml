@@ -3,10 +3,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.sakb.spl">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <application
         android:name=".app.SplApplication"
@@ -15,8 +15,8 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:usesCleartextTraffic="true"
-        android:theme="@style/AppThemeNormal">
+        android:theme="@style/AppThemeNormal"
+        android:usesCleartextTraffic="true">
 
         <activity
             android:name=".ui.splash.SplashActivity"
@@ -24,10 +24,10 @@
             android:theme="@style/SplashTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".ui.main.MainActivity"
             android:label="@string/app_name"
@@ -36,13 +36,13 @@
             android:windowSoftInputMode="adjustResize">
             <intent-filter>
                 <data android:scheme="@string/checkout_ui_callback_scheme" />
+
                 <action android:name="android.intent.action.VIEW" />
 
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".ui.playerprofile.PlayerProfileActivity"
             android:screenOrientation="portrait"
@@ -53,17 +53,16 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".ui.addplayer.AddPlayerActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustResize">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
+
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".ui.detailsvideo.DetailsVideoActivity"
             android:screenOrientation="portrait"
@@ -75,7 +74,6 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".ui.newdetails.NewsDetailsActivity"
             android:screenOrientation="portrait"
@@ -87,8 +85,6 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-
-
         <activity
             android:name=".ui.terms.TermsActivity"
             android:screenOrientation="portrait"
@@ -100,7 +96,6 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".ui.chooseteam.ChooseFavTeamActivity"
             android:screenOrientation="portrait"
@@ -111,7 +106,6 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".ui.newpass.CreatePassActivity"
             android:screenOrientation="portrait"
@@ -123,7 +117,6 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".ui.forgotpassword.ForgotPassActivity"
             android:screenOrientation="portrait"
@@ -135,7 +128,6 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".ui.register.RegisterActivity"
             android:screenOrientation="portrait"
@@ -147,9 +139,19 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".ui.login.LoginActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/FormsTheme"
+            android:windowSoftInputMode="stateHidden|adjustResize">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".ui.forgetpasswordwebview.ForgetPasswordWebViewActivity"
             android:screenOrientation="portrait"
             android:theme="@style/FormsTheme"
             android:windowSoftInputMode="stateHidden|adjustResize">
@@ -176,4 +178,5 @@
             android:name=".ui.hyperpay.demo.receiver.CheckoutBroadcastReceiver"
             android:exported="false" />
     </application>
+
 </manifest>

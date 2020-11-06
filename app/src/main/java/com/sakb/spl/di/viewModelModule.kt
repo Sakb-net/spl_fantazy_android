@@ -92,7 +92,7 @@ val viewModelModule = module {
     }
 
     viewModel {
-        ForgotPassViewModel()
+        ForgotPassViewModel(get())
     }
 
     viewModel {
