@@ -1,50 +1,41 @@
 package com.sakb.spl.ui.terms
 
-import android.app.Dialog
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import com.sakb.spl.R
 import com.sakb.spl.base.BaseActivity
-import com.sakb.spl.databinding.ActivityTermsBinding
 import com.sakb.spl.ui.main.MainActivity
 import com.sakb.spl.utils.toast
+import kotlinx.android.synthetic.main.activity_terms.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class TermsActivity : BaseActivity() {
-
-
-    private lateinit var binding: ActivityTermsBinding
     private lateinit var context: Context
-    private lateinit var dialog: Dialog
     override val viewModel by viewModel<TermsViewModel>()
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = DataBindingUtil.setContentView(this, R.layout.activity_terms)
-        binding.toolbarTitle.text = getString(R.string.terms)
+        setContentView(R.layout.activity_terms)
+        toolbarTitle.text = getString(R.string.terms)
         context = this
         viewModel.terms()
 
         viewModel.termsResultLiveData.observe(this, Observer { data ->
 
-            binding.terms.text = data.data?.content?.trim()
+            terms.text = data.data?.content?.trim()
 
-            binding.buttonStart.setOnClickListener {
-                if (binding.checkbox.isChecked)
+            buttonStart.setOnClickListener {
+                if (checkbox.isChecked)
                     startActivity(
                         Intent(this@TermsActivity, MainActivity::class.java)
                             .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)
                     )
                 else
                     toast(getString(R.string.you_must_accept_terms_conditions))
-
             }
-
-
         })
     }
 

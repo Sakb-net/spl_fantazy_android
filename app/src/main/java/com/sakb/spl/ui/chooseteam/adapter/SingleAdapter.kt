@@ -21,14 +21,8 @@ class SingleAdapter(private var employees: MutableList<GetTeamResponse.Data?>?) 
 
     val selected: GetTeamResponse.Data?
         get() = if (checkedPosition != -1) {
-            employees!!.get(checkedPosition)
+            employees?.get(checkedPosition)
         } else null
-
-/* fun setEmployees(employees:MutableList<teams>) {
-this.employees = ArrayList()
-this.employees = employees
-notifyDataSetChanged()
-}*/
 
     @NonNull
     override fun onCreateViewHolder(@NonNull viewGroup: ViewGroup, i: Int): SingleViewHolder {
@@ -38,22 +32,17 @@ notifyDataSetChanged()
     }
 
     override fun onBindViewHolder(@NonNull singleViewHolder: SingleViewHolder, position: Int) {
-        singleViewHolder.bind(employees!![position]!!)
+        employees?.get(position)?.let { singleViewHolder.bind(it) }
     }
 
     override fun getItemCount(): Int {
-        return employees!!.size
+        return employees?.size ?: 0
     }
 
     inner class SingleViewHolder(@NonNull itemView: View) : RecyclerView.ViewHolder(itemView) {
 
-        private val textView: TextView
-        private val imageView: ImageView
-
-        init {
-            textView = itemView.findViewById(R.id.textView)
-            imageView = itemView.findViewById(R.id.imageView)
-        }
+        private val textView: TextView = itemView.findViewById(R.id.textView)
+        private val imageView: ImageView = itemView.findViewById(R.id.imageView)
 
         fun bind(employee: GetTeamResponse.Data) {
             if (checkedPosition == -1) {

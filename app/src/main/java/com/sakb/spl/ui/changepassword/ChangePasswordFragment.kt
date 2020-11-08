@@ -4,35 +4,29 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.databinding.DataBindingUtil
 import com.sakb.spl.R
 import com.sakb.spl.base.BaseFragment
-import com.sakb.spl.databinding.FragmentChangePasswordBinding
+import kotlinx.android.synthetic.main.fragment_change_password.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class ChangePasswordFragment : BaseFragment() {
 
-    private lateinit var binding: FragmentChangePasswordBinding
     override val viewModel by viewModel<ChangePasswordViewModel>()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding =
-            DataBindingUtil.inflate(inflater, R.layout.fragment_change_password, container, false)
-        return binding.root
+        return inflater.inflate(R.layout.fragment_change_password, container, false)
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        binding.buttonSend.setOnClickListener {
+        buttonSend.setOnClickListener {
             viewModel.changePassword(
-                old_password = binding.PasswordEtt.text.toString(),
-                new_password = binding.NewPasswordEtt.text.toString()
+                old_password = PasswordEtt.text.toString(),
+                new_password = NewPasswordEtt.text.toString()
             )
         }
-
     }
-
 }
