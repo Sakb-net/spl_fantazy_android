@@ -1,6 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">SPL</string>
-
     <string name="app_logo">app logo</string>
     <string name="login">Login</string>
     <string name="login_title">Login</string>
@@ -397,4 +397,6 @@
     <string name="title_follow_news">قم بتحديد اي الفرق التي تريد منا ارسال اخبارها لك</string>
     <string name="emails">Emails</string>
     <string name="notification">Notifications</string>
+    <string name="join_head_to_head">Join\nHead to Head</string>
+    <string name="join_classic">Join\nClassic</string>
 </resources>

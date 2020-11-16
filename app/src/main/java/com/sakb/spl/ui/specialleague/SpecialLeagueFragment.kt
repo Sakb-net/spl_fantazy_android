@@ -8,6 +8,8 @@ import android.widget.Toast
 import com.sakb.spl.R
 import com.sakb.spl.base.BaseFragment
 import com.sakb.spl.databinding.SpecialLeagueFragmentBinding
+import com.sakb.spl.ui.league.LeagueFragment.Companion.CLASSIC
+import com.sakb.spl.ui.league.LeagueFragment.Companion.HEAD_TO_HEAD
 import com.sakb.spl.ui.myleague.MyLeagueFragment.Companion.LINK_TYPE
 import com.sakb.spl.utils.showConfirmationDialog
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -32,6 +34,11 @@ class SpecialLeagueFragment : BaseFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        if (type == CLASSIC) {
+            binding.tvTiteleContactus.text = getString(R.string.classic_league)
+        } else if (type == HEAD_TO_HEAD) {
+            binding.tvTiteleContactus.text = getString(R.string.head_to_head_league)
+        }
         binding.buttonSend.setOnClickListener {
             if (binding.codeEt.text?.toString()?.trim().isNullOrBlank()) {
                 return@setOnClickListener
