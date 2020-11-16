@@ -4,12 +4,13 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.os.bundleOf
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.fragment.findNavController
-
 import com.sakb.spl.R
 import com.sakb.spl.base.BaseFragment
 import com.sakb.spl.databinding.LeagueFragmentBinding
+import com.sakb.spl.ui.myleague.MyLeagueFragment.Companion.LINK_TYPE
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class LeagueFragment : BaseFragment() {
@@ -35,11 +36,16 @@ class LeagueFragment : BaseFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.specialLeagueButton.setOnClickListener {
-            findNavController().navigate(R.id.action_leagueFragment_to_specialLeagueFragment)
+            val bundle = bundleOf(LINK_TYPE to CLASSIC)
+            findNavController().navigate(R.id.action_leagueFragment_to_specialLeagueFragment,
+                bundle)
         }
 
         binding.powerfulLeague.setOnClickListener {
-            findNavController().navigate(R.id.action_leagueFragment_to_joinToPowerfulLeagueFragment)
+            val bundle = bundleOf(LINK_TYPE to HEAD_TO_HEAD)
+            findNavController().navigate(R.id.action_leagueFragment_to_specialLeagueFragment,
+                bundle)
+            //findNavController().navigate(R.id.action_leagueFragment_to_joinToPowerfulLeagueFragment)
         }
 
         binding.classicButton.setOnClickListener {

@@ -6,9 +6,9 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import com.sakb.spl.R
-
 import com.sakb.spl.base.BaseFragment
 import com.sakb.spl.databinding.SpecialLeagueFragmentBinding
+import com.sakb.spl.ui.myleague.MyLeagueFragment.Companion.LINK_TYPE
 import com.sakb.spl.utils.showConfirmationDialog
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -17,9 +17,13 @@ class SpecialLeagueFragment : BaseFragment() {
     override val viewModel by viewModel<SpecialLeagueViewModel>()
     private lateinit var binding: SpecialLeagueFragmentBinding
 
+    val type: String? by lazy {
+        arguments?.getString(LINK_TYPE)
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
+        savedInstanceState: Bundle?,
     ): View? {
         binding = SpecialLeagueFragmentBinding.inflate(inflater, container, false)
         return binding.root
@@ -33,7 +37,10 @@ class SpecialLeagueFragment : BaseFragment() {
                 return@setOnClickListener
             } else {
                 binding.codeEt.text?.toString()?.trim()
-                    ?.let { code -> viewModel.loadJoinLeague(valCode = code) }
+                    ?.let { code ->
+                        viewModel.loadJoinLeague(valCode = code,
+                            type_league = type ?: "")
+                    }
             }
         }
 

@@ -9,8 +9,8 @@ import io.reactivex.schedulers.Schedulers
 
 class SpecialLeagueViewModel(private val repository: SplRepository) : BaseViewModel() {
     val joinLeagueResponse = SingleLiveEvent<JoinLeagueResponse>()
-    fun loadJoinLeague(valCode: String = "") {
-        repository.joinGroupEldawery(valCode)
+    fun loadJoinLeague(valCode: String = "", type_league: String) {
+        repository.joinGroupEldawery(valCode, type_league)
             .subscribeOn(Schedulers.io())
             .applyLoadingState()
             .subscribe(

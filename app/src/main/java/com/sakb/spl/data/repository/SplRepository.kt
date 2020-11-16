@@ -317,8 +317,8 @@ class SplRepository constructor(
         return remote.createGroupEldawery(link_subeldawey, name, type_league)
     }
 
-    fun joinGroupEldawery(val_code: String): Single<JoinLeagueResponse> {
-        return remote.joinGroupEldawery(val_code)
+    fun joinGroupEldawery(val_code: String, type_league: String): Single<JoinLeagueResponse> {
+        return remote.joinGroupEldawery(val_code, type_league)
     }
 
     fun getAllDawery(type_league: String): Single<GetAllLeaguesResponse> {
@@ -396,6 +396,6 @@ class SplRepository constructor(
     }
 
     fun followTeams(followTeams: String): Single<BaseResponse> {
-        return remote.followTeams("[$followTeams]")
+        return remote.followTeams(followTeams)
     }
 }

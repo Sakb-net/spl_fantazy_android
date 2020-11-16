@@ -281,8 +281,9 @@ interface SplApiEndpoints {
     ): Single<CreateLeagueResponse>
 
     @FormUrlEncoded
-    @POST("/api/v1/group_eldwry/join")
+    @POST("/api/v1/group_eldwry/join/{type_group}")
     fun joinGroupEldawery(
+        @Path("type_group") type_league: String,
         @Field("val_code") val_code: String,
     ): Single<JoinLeagueResponse>
 
@@ -351,6 +352,6 @@ interface SplApiEndpoints {
     @FormUrlEncoded
     @POST("/api/v1/addFollowingTeam")
     fun followTeams(
-        @Field("teamFollow ") teamFollow: String,
+        @Field("teamFollow") teamFollow: String,
     ): Single<BaseResponse>
 }
