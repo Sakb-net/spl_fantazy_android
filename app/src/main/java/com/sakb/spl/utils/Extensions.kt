@@ -6,6 +6,7 @@ import android.graphics.Bitmap
 import android.util.Base64
 import android.view.Gravity
 import android.view.LayoutInflater
+import android.view.View
 import android.widget.Toast
 import com.sakb.spl.R
 import kotlinx.android.synthetic.main.dialog_enter_name.view.*
@@ -57,6 +58,7 @@ fun Context.showSplDeleteDialog(
 
 fun Context.showLeaguesSettingsDialog(
     link: String,
+    admin: Boolean,
     standingBtn: (dialog: AlertDialog?, link: String) -> Unit,
     managementBtn: (dialog: AlertDialog?, link: String) -> Unit,
     leaveBtn: (dialog: AlertDialog?, link: String) -> Unit,
@@ -68,6 +70,13 @@ fun Context.showLeaguesSettingsDialog(
     view.standingBtn.setOnClickListener { standingBtn(dialog, link) }
     view.managementBtn.setOnClickListener { managementBtn(dialog, link) }
     view.leaveBtn.setOnClickListener { leaveBtn(dialog, link) }
+    if (admin) {
+        view.managementBtn.visibility = View.VISIBLE
+        view.leaveBtn.visibility = View.GONE
+    } else {
+        view.managementBtn.visibility = View.GONE
+        view.leaveBtn.visibility = View.VISIBLE
+    }
     dialog.show()
 }
 

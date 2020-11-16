@@ -309,20 +309,78 @@ class SplRepository constructor(
         return remote.getStatusCardInside(type)
     }
 
-    fun createGroupEldawery(link_subeldawey: String, name: String): Single<CreateLeagueResponse> {
-        return remote.createGroupEldawery(link_subeldawey, name)
+    fun createGroupEldawery(
+        link_subeldawey: String,
+        name: String,
+        type_league: String,
+    ): Single<CreateLeagueResponse> {
+        return remote.createGroupEldawery(link_subeldawey, name, type_league)
     }
 
     fun joinGroupEldawery(val_code: String): Single<JoinLeagueResponse> {
         return remote.joinGroupEldawery(val_code)
     }
 
-    fun getAllDawery(): Single<GetAllLeaguesResponse> {
-        return remote.getAllDawery()
+    fun getAllDawery(type_league: String): Single<GetAllLeaguesResponse> {
+        return remote.getAllDawery(type_league)
     }
 
-    fun getStandingDawery(link_league: String, link_subeldawey: String): Single<StandingResponse> {
-        return remote.getStandingList(link_league, link_subeldawey)
+    fun getStandingDawery(
+        type_league: String,
+        link_league: String,
+        link_subeldawey: String,
+    ): Single<StandingResponse> {
+        return remote.getStandingList(type_league, link_league, link_subeldawey)
+    }
+
+    fun getGroupSubEldawry(
+        type_league: String,
+        link_league: String,
+    ): Single<GroupSubEldawryResponse> {
+        return remote.getGroupSubEldawry(type_league, link_league)
+    }
+
+    fun getSettingsGroupsEldawry(
+        type_league: String,
+        link_league: String,
+    ): Single<SettingGroupsResponse> {
+        return remote.getSettingsGroupsEldawry(type_league, link_league)
+    }
+
+    fun putUpdateGroupEldawry(
+        type_league: String, link_league: String, link_sub: String, name: String,
+    ): Single<UpdateGroupResponse> {
+        return remote.updateGroup(type_league, link_league, link_sub, name)
+    }
+
+    fun deleteGroupEldawry(
+        type_league: String,
+        link_league: String,
+    ): Single<BaseResponse> {
+        return remote.deleteGroup(type_league, link_league)
+    }
+
+    fun leaveGroup(
+        type_league: String,
+        link_league: String,
+    ): Single<BaseResponse> {
+        return remote.leaveGroup(type_league, link_league)
+    }
+
+    fun switchAdminGroup(
+        type_league: String,
+        link_league: String,
+        user_name: String,
+    ): Single<BaseResponse> {
+        return remote.switchAdmin(type_league, link_league, user_name)
+    }
+
+    fun deletePlayer(
+        type_league: String,
+        link_league: String,
+        user_name: String,
+    ): Single<DeletePlayerResponse> {
+        return remote.deletePlayer(type_league, link_league, user_name)
     }
 
     fun getSubDefault(arrayPlayer: String, activeCardGray: String): Single<GetSubDefaultResponse> {
@@ -335,5 +393,9 @@ class SplRepository constructor(
 
     fun confirmGoldInfo(resourcePath: String, checkout_id: String): Single<CardGoldResultResponse> {
         return remote.confirmGoldInfo(resourcePath, checkout_id)
+    }
+
+    fun followTeams(followTeams: String): Single<BaseResponse> {
+        return remote.followTeams("[$followTeams]")
     }
 }

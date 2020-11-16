@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.sakb.spl.R
 import com.sakb.spl.base.BaseActivity
 import com.sakb.spl.ui.chooseteam.adapter.SingleAdapter
-import com.sakb.spl.ui.terms.TermsActivity
+import com.sakb.spl.ui.followteams.FollowTeamsActivity
 import kotlinx.android.synthetic.main.activity_choose_fav_team.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import timber.log.Timber
@@ -47,10 +47,20 @@ class ChooseFavTeamActivity : BaseActivity() {
         })
 
         viewModel.updateProfileResultLiveData.observe(this, Observer { data ->
-            startActivity(
-                Intent(this@ChooseFavTeamActivity, TermsActivity::class.java)
-                    .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)
-            )
+            val intent = Intent(this@ChooseFavTeamActivity, FollowTeamsActivity::class.java)
+                .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)
+            intent.putExtra(TEAM_LINK, data.data?.team_link)
+            intent.putExtra(TEAM_NAME, data.data?.team_name)
+            startActivity(intent)
+//            startActivity(
+//                Intent(this@ChooseFavTeamActivity, TermsActivity::class.java)
+//                    .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)
+//            )
         })
+    }
+
+    companion object {
+        const val TEAM_LINK = "team_link"
+        const val TEAM_NAME = "team_name"
     }
 }

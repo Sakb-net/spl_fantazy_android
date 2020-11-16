@@ -11,9 +11,16 @@ data class UpdateProfileResponse(
         var city: String? = "",
         var display_name: String? = "",
         var email: String? = "",
-        var gender: Any? = Any(),
+        var gender: String? = "",
         var image: String? = "",
+        var new_fcm_token: String? = "",
+        var old_fcm_token: String? = "",
         var phone: String? = "",
-        var state: String? = ""
+        var state: String? = "",
+        var id: Int? = 0,
+        var choose_team: Int? = 0,
+        var image_best_team: String? = "",
+        var team_name: String? = "",
+        var team_link: String? = "",
     )
 }

@@ -110,6 +110,7 @@
                 android:layout_marginBottom="@dimen/_16sdp"
                 android:background="@drawable/rec_green_color_dialog"
                 android:padding="@dimen/_6sdp"
+                android:visibility="gone"
                 app:layout_constraintBottom_toTopOf="@id/mange_dawery"
                 app:layout_constraintEnd_toStartOf="@id/copy_btn"
                 app:layout_constraintHorizontal_bias="0.5"

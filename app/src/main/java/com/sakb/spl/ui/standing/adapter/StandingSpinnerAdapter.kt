@@ -1,18 +1,18 @@
 package com.sakb.spl.ui.standing.adapter
 
 import android.widget.ArrayAdapter
-import com.sakb.spl.data.model.SubeldwrysItem
+import com.sakb.spl.data.model.DataItemSubGroup
 import com.sakb.spl.ui.standing.StandingFragment
 
 class StandingSpinnerAdapter(
     theContext: StandingFragment,
-    val objects: MutableList<SubeldwrysItem?>,
+    val objects: MutableList<DataItemSubGroup?>,
     theLayoutResId: Int,
 ) :
     ArrayAdapter<Any>(
         theContext.requireContext(),
         theLayoutResId,
-        (objects as List<SubeldwrysItem>?)!!
+        (objects as List<DataItemSubGroup>?)!!
     ) {
 
     override fun getItem(position: Int): String {

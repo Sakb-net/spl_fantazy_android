@@ -2,17 +2,26 @@ package com.sakb.spl.ui.headtoheadleague
 
 import android.app.AlertDialog
 import android.content.*
+import android.os.Build
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ArrayAdapter
+import android.widget.Toast
 import androidx.annotation.DrawableRes
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.Observer
+import androidx.navigation.fragment.findNavController
 import com.sakb.spl.R
 import com.sakb.spl.base.BaseFragment
+import com.sakb.spl.data.model.DataCreateLeague
+import com.sakb.spl.data.model.DataItemSub
 import com.sakb.spl.databinding.CreateHeadToHeadLeagueFragmentBinding
 import com.sakb.spl.databinding.NewLeagueCreatedDialogBinding
+import com.sakb.spl.ui.league.LeagueFragment.Companion.HEAD_TO_HEAD
 import com.sakb.spl.utils.showConfirmationDialog
+import com.sakb.spl.utils.showSuccessDialog
 import com.sakb.spl.utils.toast
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -21,10 +30,14 @@ class CreateHeadToHeadLeagueFragment : BaseFragment() {
     override val viewModel by viewModel<CreateHeadToHeadLeagueViewModel>()
     private lateinit var binding: CreateHeadToHeadLeagueFragmentBinding
 
+    var option = mutableListOf<DataItemSub>()
+    var builder: androidx.appcompat.app.AlertDialog.Builder? = null
+
+    var linkSub: String = ""
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
+        savedInstanceState: Bundle?,
     ): View? {
         binding = DataBindingUtil.inflate(
             inflater,
@@ -39,7 +52,7 @@ class CreateHeadToHeadLeagueFragment : BaseFragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.roundLayout.setOnClickListener {
-            dialogRounds()
+            builder?.show()
         }
 
         binding.maxTeamsLayout.setOnClickListener {
@@ -47,15 +60,67 @@ class CreateHeadToHeadLeagueFragment : BaseFragment() {
         }
 
         binding.buttonSend.setOnClickListener {
-            //openConfirmationDialog()
-            context?.joinNowDialog(R.drawable.ic_league_cup,
-                title = getString(R.string.league_created_title),
-                contentResID = R.string.content_join_desc,
-                price = getString(R.string.code_league),
-                code = "7gkipd",
-                positive = { dialog -> dialog?.dismiss() },
-                negative = { dialog -> dialog?.dismiss() })
+            if (binding.nameEt.text?.toString()?.trim().isNullOrBlank()) {
+                Toast.makeText(
+                    requireContext(),
+                    getString(R.string.all_fileds_must_filled),
+                    Toast.LENGTH_SHORT
+                ).show()
+                return@setOnClickListener
+            } else {
+                binding.nameEt.text?.toString()?.trim()?.let { name ->
+                    viewModel.loadCreateLeague(
+                        linkSub,
+                        name,
+                        HEAD_TO_HEAD
+                    )
+                }
+            }
         }
+        viewModel.createLeagueResponse.observe(viewLifecycleOwner, {
+            it.data?.let { data ->
+                openConfirmationDialog(data)
+            }
+        })
+    }
+
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
+        viewModel.loadAllSubeldawry()
+        viewModel.allSubeldawry.observe(viewLifecycleOwner, Observer {
+            it?.data?.let { list ->
+                option = list.filterNotNull() as MutableList<DataItemSub>
+            }
+            builder = androidx.appcompat.app.AlertDialog.Builder(requireContext(),
+                R.style.MaterialThemeDialog)
+            initDialogRounds()
+        })
+    }
+
+    private fun initDialogRounds() {
+        val options = option.map {
+            it.let {
+                it.langNumWeek?.trim()
+            }
+        }.toTypedArray()
+
+        val adapter: ArrayAdapter<CharSequence> = ArrayAdapter<CharSequence>(
+            requireContext(), R.layout.item_check_list, options
+        )
+
+        var selectedItem = -1
+        builder?.setTitle(getString(R.string.select_round))
+        builder?.setSingleChoiceItems(
+            adapter, -1
+        ) { dialogInterface: DialogInterface, item: Int ->
+            selectedItem = item
+            binding.roundEt.text = options[selectedItem]
+            option[selectedItem].link?.let { link -> linkSub = link }
+            dialogInterface.dismiss()
+        }
+        binding.roundEt.text = options[options.size - 1]
+        option[options.size - 1].link?.let { link -> linkSub = link }
+        builder?.create()
     }
 
     private fun openConfirmationDialog() {
@@ -167,4 +232,39 @@ class CreateHeadToHeadLeagueFragment : BaseFragment() {
     }
 
 
+    private fun openConfirmationDialog(data: DataCreateLeague) {
+        context?.showSuccessDialog(
+            data,
+            copy = { dialog, code ->
+                val sdk = Build.VERSION.SDK_INT
+                if (sdk < Build.VERSION_CODES.HONEYCOMB) {
+                    val clipboard =
+                        requireContext().getSystemService(Context.CLIPBOARD_SERVICE) as android.text.ClipboardManager?
+                    clipboard?.text = code
+                } else {
+                    val clipboard =
+                        requireContext().getSystemService(Context.CLIPBOARD_SERVICE) as android.content.ClipboardManager?
+                    val clip = ClipData.newPlainText(getString(R.string.code_league), code)
+                    clipboard?.setPrimaryClip(clip)
+                }
+            },
+            share = { dialog, url ->
+//                val sendIntent: Intent = Intent().apply {
+//                    action = Intent.ACTION_SEND
+//                    putExtra(Intent.EXTRA_TEXT, url)
+//                    type = "text/plain"
+//                }
+//                val shareIntent = Intent.createChooser(sendIntent, null)
+//                requireContext().startActivity(shareIntent)
+            },
+            manage = { dialog ->
+                findNavController().navigate(R.id.action_createHeadToHeadLeagueFragment_to_ManagementLeagueFragment)
+                dialog?.dismiss()
+            },
+            myLeague = { dialog ->
+                findNavController().navigate(R.id.action_createHeadToHeadLeagueFragment_to_MyLeagueFragment)
+                dialog?.dismiss()
+            }
+        )
+    }
 }

@@ -328,4 +328,21 @@
     <string name="defender_trans">مدافع</string>
     <string name="mid_trans">خط الوسط</string>
     <string name="attacker_trans">مهاجم</string>
+    <string name="league_details">تفاصيل الدوري:</string>
+    <string name="league_delete_player">حذف لاعب من الدوري:</string>
+    <string name="league_change_manager">تغيير مدير الدوري:</string>
+    <string name="league_delete">حذف الدوري:</string>
+    <string name="league_code_new">كود الدوري:</string>
+    <string name="save_changes_new">حفظ التغييرات</string>
+    <string name="info_delete_player">اختر اللاعب الذي ترغب في حذفه من قائمة اللاعبين التالية بمجرد حذفه لن يتمكن من الانضمام إلى الدوري مرة أخرى.</string>
+    <string name="player_list">قائمة اللاعبين</string>
+    <string name="info_change_manager">قم باختيار اللاعب الذي تريد ان يكون مدير للدوري بدلا منك من قائمة اللاعبين التالية</string>
+    <string name="change_manager">تغير المدير</string>
+    <string name="info_delete_league">لحذف الدوري ، انقر على الزر أدناه. اللاعبون الذين دخلوا في الدوري سيظلون موجودين في الموقع ويمكنهم دخول الدوريات الأخرى متي أرادوا بذلك</string>
+    <string name="select_follow_team">إختر الأندية التي تريد متابعتها</string>
+    <string name="choose">اختار</string>
+    <string name="follow_news">متابعة الأخبار</string>
+    <string name="title_follow_news">قم بتحديد اي الفرق التي تريد منا ارسال اخبارها لك</string>
+    <string name="emails">Emails</string>
+    <string name="notification">Notifications</string>
 </resources>

@@ -7,9 +7,6 @@ import kotlinx.android.parcel.Parcelize
 @Parcelize
 data class StandingResponse(
 
-    @field:SerializedName("subeldwrys")
-    val subeldwrys: List<SubeldwrysItem?>? = null,
-
     @field:SerializedName("Message")
     val message: String? = null,
 

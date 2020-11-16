@@ -30,14 +30,22 @@ data class LoginResponse(
         @SerializedName("image")
         val image: String? = null,
         @SerializedName("new_fcm_token")
-        val newFcmToken: Any? = null,
+        val newFcmToken: String? = null,
         @SerializedName("old_fcm_token")
-        val oldFcmToken: Any? = null,
+        val oldFcmToken: String? = null,
         @SerializedName("phone")
         val phone: String? = null,
         @SerializedName("state")
         val state: String? = null,
         @SerializedName("choose_team")
-        var chooseTeam: Int? = null
+        var chooseTeam: Int? = null,
+        @SerializedName("id")
+        val id: Int? = null,
+        @SerializedName("image_best_team")
+        val imageBestTeam: String? = null,
+        @SerializedName("team_name")
+        val teamName: String? = null,
+        @SerializedName("team_link")
+        val teamLink: String? = null,
     )
 }

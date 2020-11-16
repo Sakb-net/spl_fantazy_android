@@ -9,6 +9,7 @@ import com.sakb.spl.ui.classicleague.CreateClassicLeagueViewModel
 import com.sakb.spl.ui.contactus.ContactUsViewModel
 import com.sakb.spl.ui.detailsvideo.DetailsVideosViewModel
 import com.sakb.spl.ui.editprofile.EditProfileViewModel
+import com.sakb.spl.ui.followteams.FollowTeamViewModel
 import com.sakb.spl.ui.forgotpassword.ForgotPassViewModel
 import com.sakb.spl.ui.headtoheadleague.CreateHeadToHeadLeagueViewModel
 import com.sakb.spl.ui.help.HelpViewModel
@@ -19,6 +20,7 @@ import com.sakb.spl.ui.league.LeagueViewModel
 import com.sakb.spl.ui.login.LoginViewModel
 import com.sakb.spl.ui.logout.LogOutViewModel
 import com.sakb.spl.ui.main.MainViewModel
+import com.sakb.spl.ui.manageleague.ManageLeagueViewModel
 import com.sakb.spl.ui.matches.MatchesViewModel
 import com.sakb.spl.ui.myleague.MyLeagueViewModel
 import com.sakb.spl.ui.mypoints.MyPointsViewModel
@@ -33,6 +35,7 @@ import com.sakb.spl.ui.register.RegisterViewModel
 import com.sakb.spl.ui.specialleague.SpecialLeagueViewModel
 import com.sakb.spl.ui.splash.SplashViewModel
 import com.sakb.spl.ui.standing.StandingViewModel
+import com.sakb.spl.ui.standingheadtohead.StandingHeadToHeadViewModel
 import com.sakb.spl.ui.statistics.StatisticsViewModel
 import com.sakb.spl.ui.terms.TermsViewModel
 import com.sakb.spl.ui.transfers.TransfersViewModel
@@ -86,6 +89,9 @@ val viewModelModule = module {
         ChooseTeamViewModel(get())
     }
 
+    viewModel {
+        FollowTeamViewModel(get())
+    }
 
     viewModel {
         TermsViewModel(get())
@@ -157,7 +163,7 @@ val viewModelModule = module {
         JoinToPowerfulLeagueViewModel(get())
     }
     viewModel {
-        CreateHeadToHeadLeagueViewModel()
+        CreateHeadToHeadLeagueViewModel(get())
     }
     viewModel {
         AwardViewModel(get())
@@ -171,6 +177,12 @@ val viewModelModule = module {
     }
     viewModel {
         StandingViewModel(get())
+    }
+    viewModel {
+        StandingHeadToHeadViewModel(get())
+    }
+    viewModel {
+        ManageLeagueViewModel(get())
     }
 
 }

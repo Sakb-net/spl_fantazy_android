@@ -77,8 +77,6 @@ dependencies {
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     implementation 'com.google.android.material:material:1.2.1'
     implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
-    implementation 'androidx.navigation:navigation-fragment:2.3.1'
-    implementation 'androidx.navigation:navigation-ui:2.3.1'
     implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0'
     implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.2.0'
     implementation 'androidx.navigation:navigation-fragment-ktx:2.3.1'
@@ -88,14 +86,14 @@ dependencies {
     // alert
     implementation 'com.github.Shashank02051997:FancyAlertDialog-Android:0.1'
     //Retrofit2
-    implementation 'com.squareup.okhttp3:okhttp:4.8.1'
-    implementation 'com.squareup.okhttp3:logging-interceptor:4.8.1'
+    implementation 'com.squareup.okhttp3:okhttp:4.9.0'
+    implementation 'com.squareup.okhttp3:logging-interceptor:4.9.0'
     implementation 'com.squareup.retrofit2:retrofit:2.9.0'
     implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
-    implementation 'com.squareup.retrofit2:adapter-rxjava2:2.6.1'
+    implementation 'com.squareup.retrofit2:adapter-rxjava2:2.9.0'
     implementation 'androidx.recyclerview:recyclerview:1.2.0-alpha06'
     //Lottie
-    implementation 'com.airbnb.android:lottie:3.4.0'
+    implementation 'com.airbnb.android:lottie:3.5.0'
     //Glide
     implementation 'com.github.bumptech.glide:glide:4.11.0'
     implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.2.0'
@@ -116,28 +114,28 @@ dependencies {
     implementation 'com.intuit.sdp:sdp-android:1.0.6'
     implementation 'com.intuit.ssp:ssp-android:1.0.6'
     // widgets
-    implementation 'de.hdodenhof:circleimageview:3.0.1'
-    implementation 'cn.jzvd:jiaozivideoplayer:7.3.0'
+    implementation 'de.hdodenhof:circleimageview:3.1.0'
+    implementation 'cn.jzvd:jiaozivideoplayer:7.5.0'
     implementation 'com.github.matecode:Snacky:1.1.5'
     //youtube
     implementation files('libs/YouTubeAndroidPlayerApi.jar')
     //event bus
     implementation 'org.greenrobot:eventbus:3.1.1'
-    kapt 'org.greenrobot:eventbus-annotation-processor:3.1.1'
+    kapt 'org.greenrobot:eventbus-annotation-processor:3.2.0'
 
     //hyper
     implementation project(':oppwa.mobile-2.38.0')
-    implementation 'com.google.android.gms:play-services-wallet:16.0.1'
+    implementation 'com.google.android.gms:play-services-wallet:18.1.2'
 
-    implementation 'com.google.android.gms:play-services-gcm:15.0.1'
-    implementation 'com.google.android.gms:play-services-auth:16.0.0'
-    implementation 'com.google.android.gms:play-services-location:15.0.1'
+    implementation 'com.google.android.gms:play-services-gcm:17.0.0'
+    implementation 'com.google.android.gms:play-services-auth:19.0.0'
+    implementation 'com.google.android.gms:play-services-location:17.1.0'
 
     // Language Support
     implementation 'com.zeugmasolutions.localehelper:locale-helper-android:1.0.4'
 
     // test
-    testImplementation 'junit:junit:4.13'
+    testImplementation 'junit:junit:4.13.1'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
 }

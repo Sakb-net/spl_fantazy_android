@@ -11,7 +11,8 @@ import com.sakb.spl.data.model.GroupEldwryItem
 
 class MyLeaguesAdapter(
     private var parents: List<GroupEldwryItem?>?,
-    val settingClick: (link: String) -> Unit,
+    private var user_id: Int?,
+    val settingClick: (link: String, admin: Boolean) -> Unit,
 ) : RecyclerView.Adapter<MyLeaguesAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -28,7 +29,10 @@ class MyLeaguesAdapter(
         val parent = parents?.get(position)
         holder.bind(parent)
         holder.leagueSettings.setOnClickListener {
-            settingClick(parent?.link ?: "")
+            if (user_id == parent?.userId)
+                settingClick(parent?.link ?: "", true)
+            else
+                settingClick(parent?.link ?: "", false)
         }
     }
 

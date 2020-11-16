@@ -26,9 +26,27 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/sortBy_Tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginStart="@dimen/_8sdp"
+            android:layout_marginEnd="@dimen/_8sdp"
+            android:layout_weight="0.5"
+            android:background="@color/white"
+            android:drawablePadding="12dp"
+            android:gravity="center_vertical"
+            android:padding="8dp"
+            android:text="@string/sortby"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="@id/filterLL"
+            app:layout_constraintEnd_toStartOf="@id/filterLL"
+            app:layout_constraintTop_toTopOf="@id/filterLL" />
+
         <androidx.appcompat.widget.LinearLayoutCompat
             android:id="@+id/filterLL"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/_16sdp"
             android:layout_marginTop="@dimen/_11sdp"
@@ -45,7 +63,8 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
-                android:layout_marginStart="8dp"
+                android:layout_marginStart="@dimen/_8sdp"
+                android:layout_marginEnd="@dimen/_8sdp"
                 android:layout_weight="0.5"
                 android:background="@color/white"
                 android:drawableEnd="@drawable/ic_expand_more_black_24dp"
@@ -71,7 +90,7 @@
             android:textAlignment="center"
             android:visibility="invisible"
             app:layout_constraintBottom_toBottomOf="@id/filterLL"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintEnd_toEndOf="@id/filterLL"
             app:layout_constraintStart_toStartOf="@id/filterLL"
             app:layout_constraintTop_toTopOf="@id/filterLL" />
 

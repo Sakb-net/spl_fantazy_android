@@ -187,17 +187,27 @@
         <action
             android:id="@+id/action_createClassicLeagueFragment_to_MyLeagueFragment"
             app:destination="@id/myLeaguesFragment" />
+        <action
+            android:id="@+id/action_createClassicLeagueFragment_to_ManagementLeagueFragment"
+            app:destination="@id/manageLeagueFragment" />
     </fragment>
     <fragment
         android:id="@+id/joinToPowerfulLeagueFragment"
         android:name="com.sakb.spl.ui.powerfulleague.JoinToPowerfulLeagueFragment"
         android:label="@string/Join_the_strongest_leagues"
-        tools:layout="@layout/join_to_powerful_league_fragment"/>
+        tools:layout="@layout/join_to_powerful_league_fragment"></fragment>
     <fragment
         android:id="@+id/createHeadToHeadLeagueFragment"
         android:name="com.sakb.spl.ui.headtoheadleague.CreateHeadToHeadLeagueFragment"
         android:label="@string/create_head_to_head_label"
-        tools:layout="@layout/create_head_to_head_league_fragment" />
+        tools:layout="@layout/create_head_to_head_league_fragment">
+        <action
+            android:id="@+id/action_createHeadToHeadLeagueFragment_to_MyLeagueFragment"
+            app:destination="@id/myLeaguesFragment" />
+        <action
+            android:id="@+id/action_createHeadToHeadLeagueFragment_to_ManagementLeagueFragment"
+            app:destination="@id/manageLeagueFragment" />
+    </fragment>
 
     <fragment
         android:id="@+id/languageFragment"
@@ -223,6 +233,12 @@
         <action
             android:id="@+id/action_MyLeagueFragment_to_StandingFragment"
             app:destination="@id/standingFragment" />
+        <action
+            android:id="@+id/action_MyLeagueFragment_to_ManageLeagueFragment"
+            app:destination="@id/manageLeagueFragment" />
+        <action
+            android:id="@+id/action_MyLeagueFragment_to_StandingHeadToHeadFragment"
+            app:destination="@id/standingHeadToHeadFragment" />
     </fragment>
 
     <fragment
@@ -234,4 +250,27 @@
             android:name="link"
             app:argType="string" />
     </fragment>
+
+    <fragment
+        android:id="@+id/manageLeagueFragment"
+        android:name="com.sakb.spl.ui.manageleague.ManageLeagueFragment"
+        android:label="@string/league_management"
+        tools:layout="@layout/manage_league_fragment">
+        <argument
+            android:name="link"
+            app:argType="string" />
+        <argument
+            android:name="type"
+            app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/standingHeadToHeadFragment"
+        android:name="com.sakb.spl.ui.standingheadtohead.StandingHeadToHeadFragment"
+        android:label="@string/standing"
+        tools:layout="@layout/standing_head_to_head_fragment">
+        <argument
+            android:name="link"
+            app:argType="string" />
+    </fragment>
+    a
 </navigation>

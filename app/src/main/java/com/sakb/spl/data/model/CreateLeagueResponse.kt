@@ -18,7 +18,7 @@ data class CreateLeagueResponse(
 ) : Parcelable
 
 @Parcelize
-data class GroupEldwry(
+data class GroupEldwryCreate(
 
     @field:SerializedName("code")
     val code: String? = null,
@@ -63,7 +63,7 @@ data class GroupEldwry(
     val updateBy: Int? = null,
 
     @field:SerializedName("game_id")
-    val gameId: Int? = null
+    val gameId: Int? = null,
 ) : Parcelable
 
 @Parcelize
@@ -79,5 +79,9 @@ data class DataCreateLeague(
     val status: Int? = null,
 
     @field:SerializedName("group_eldwry")
-    val groupEldwry: GroupEldwry? = null
-) : Parcelable
+    val groupEldwry: GroupEldwryCreate? = null,
+
+    @field:SerializedName("type_group")
+    val type_group: String? = null,
+
+    ) : Parcelable

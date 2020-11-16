@@ -302,7 +302,7 @@
     <string name="head_to_head_desc">Each team plays a match against Head to head in the league, another team in the league in each round. The outcome of the match depends on the result of the round for each team minus any transfer points. It was spent to prepare for the round \n The confrontation schedule is created at the beginning of the first round of the league. Once the schedule is created, the league is locked and teams will not be able to join or leave.</string>
     <string name="create">Create</string>
     <string name="max_team_num">The maximum number of teams</string>
-    <string name="league_management">League management</string>
+    <string name="league_management">League Management</string>
     <string name="my_leagues">My Leagues</string>
     <string name="league_created_title">The league was created successfully</string>
     <string name="content_join_desc">Send the league code to your friends so they can join</string>
@@ -380,4 +380,21 @@
     <string name="defender_trans">Defender</string>
     <string name="mid_trans">Center line</string>
     <string name="attacker_trans">Attacker</string>
+    <string name="league_details">League Details:</string>
+    <string name="league_delete_player">Delete Player From League:</string>
+    <string name="league_change_manager">Change League Manager:</string>
+    <string name="league_delete">Delete League:</string>
+    <string name="league_code_new">League Code:</string>
+    <string name="save_changes_new">Save Changes</string>
+    <string name="info_delete_player">اختر اللاعب الذي ترغب في حذفه من قائمة اللاعبين التالية بمجرد حذفه لن يتمكن من الانضمام إلى الدوري مرة أخرى.</string>
+    <string name="player_list">Player List</string>
+    <string name="info_change_manager">قم باختيار اللاعب الذي تريد ان يكون مدير للدوري بدلا منك من قائمة اللاعبين التالية</string>
+    <string name="change_manager">Change Manager</string>
+    <string name="info_delete_league">لحذف الدوري ، انقر على الزر أدناه. اللاعبون الذين دخلوا في الدوري سيظلون موجودين في الموقع ويمكنهم دخول الدوريات الأخرى متي أرادوا بذلك</string>
+    <string name="select_follow_team">Select Follow Teams</string>
+    <string name="choose">Choose</string>
+    <string name="follow_news">Follow News</string>
+    <string name="title_follow_news">قم بتحديد اي الفرق التي تريد منا ارسال اخبارها لك</string>
+    <string name="emails">Emails</string>
+    <string name="notification">Notifications</string>
 </resources>

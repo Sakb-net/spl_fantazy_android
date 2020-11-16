@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:background="@color/colorGrayLight"
     android:layout_height="wrap_content">
 
     <androidx.appcompat.widget.AppCompatTextView
@@ -12,6 +13,8 @@
         android:layout_marginStart="@dimen/_18sdp"
         android:textColor="@color/colorPrimary"
         android:textSize="@dimen/_14ssp"
+        android:maxLines="1"
+        android:singleLine="true"
         app:layout_constraintBottom_toBottomOf="@id/league_setting"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@id/league_setting"
@@ -21,22 +24,30 @@
         android:id="@+id/league_value"
         android:layout_width="0dp"
         android:layout_height="match_parent"
-        android:layout_marginStart="@dimen/_40sdp"
+        android:layout_marginStart="@dimen/_20sdp"
         android:textColor="@color/colorPrimary"
         android:textSize="@dimen/_14ssp"
+        android:layout_marginEnd="@dimen/_10sdp"
+        android:maxLines="1"
         app:layout_constraintBottom_toBottomOf="@id/league_setting"
         app:layout_constraintStart_toEndOf="@id/league_name"
+        android:singleLine="true"
+        app:layout_constraintEnd_toStartOf="@id/league_setting"
         app:layout_constraintTop_toTopOf="@id/league_setting"
-        tools:text="1" />
+        tools:text="1434343434" />
 
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/league_setting"
-        android:layout_width="0dp"
-        android:layout_height="match_parent"
+        android:layout_width="@dimen/_34sdp"
+        android:layout_height="@dimen/_34sdp"
         android:layout_marginTop="@dimen/_4sdp"
+        android:layout_marginBottom="@dimen/_4sdp"
         android:layout_marginEnd="@dimen/_10sdp"
         android:background="@drawable/rec_green_color_dialog"
-        android:padding="@dimen/_8sdp"
+        android:paddingStart="@dimen/_7sdp"
+        android:paddingTop="@dimen/_4sdp"
+        android:paddingEnd="@dimen/_7sdp"
+        android:paddingBottom="@dimen/_4sdp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"

@@ -104,7 +104,9 @@ class LoginActivity : BaseActivity(), SocialMediaSignUpCallback {
                         image = data.data?.image,
                         newFcmToken = data.data?.new_fcm_token,
                         phone = data.data?.phone,
-                        state = data.data?.state
+                        state = data.data?.state,
+                        id = data.data?.id,
+                        chooseTeam = data.data?.choose_team
                     )
                 )
             )

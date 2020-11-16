@@ -101,7 +101,6 @@ interface SplApiEndpoints {
     @POST("/api/v1/reset_all_player")
     fun deleteAllTeamPlayers(): Single<PlayerMasterResponse>
 
-
     @FormUrlEncoded
     @POST("/api/v1/add_myteam")
     fun saveTeam(
@@ -123,15 +122,12 @@ interface SplApiEndpoints {
         @Field("player_link_two") player_link_two: String
     ): Single<AddDirectInsideChange>
 
-
     // get all players in my team
     @POST("/api/v1/player_master")
     fun chooseMyTeamPlayer(): Single<PlayerMasterResponse>
 
-
     @POST("/api/v1/terms")
     fun terms(): Single<TermsResponse>
-
 
     @GET("/api/v1/get_teams")
     fun getTeams(): Single<GetTeamResponse>
@@ -151,7 +147,6 @@ interface SplApiEndpoints {
         @Field("best_team") best_team: String
     ): Single<UpdateProfileResponse>
 
-
     @FormUrlEncoded
     @POST("/api/v1/videos")
     fun videos(
@@ -159,14 +154,12 @@ interface SplApiEndpoints {
         @Field("limit") limit: String
     ): Single<VideosResponse>
 
-
     @FormUrlEncoded
     @POST("/api/v1/news")
     fun news(
         @Field("num_page") num_page: String,
         @Field("limit") limit: String
     ): Single<NewsResponse>
-
 
     @FormUrlEncoded
     @POST("/api/v1/home")
@@ -280,10 +273,11 @@ interface SplApiEndpoints {
     ): Single<CardGoldResultResponse>
 
     @FormUrlEncoded
-    @POST("/api/v1/group_eldwry/create")
+    @POST("/api/v1/group_eldwry/create/{type_group}")
     fun createGroupEldawery(
-        @Field("link_subeldwry ") link_subeldawry: String,
+        @Field("link_subeldwry") link_subeldawry: String,
         @Field("name") name: String,
+        @Path("type_group") type_league: String,
     ): Single<CreateLeagueResponse>
 
     @FormUrlEncoded
@@ -292,20 +286,71 @@ interface SplApiEndpoints {
         @Field("val_code") val_code: String,
     ): Single<JoinLeagueResponse>
 
-    @GET("/api/v1/group_eldwry")
-    fun getAllDawery(): Single<GetAllLeaguesResponse>
-
-//    @PUT("/api/v1/group_eldwry/leave/{link_group}")
-//    fun leaveLeague(
-//        @Path("link_group") link: String
-//    ):Single<>
+    @GET("/api/v1/group_eldwry/{type_group}")
+    fun getAllDawery(
+        @Path("type_group") type_league: String,
+    ): Single<GetAllLeaguesResponse>
 
     @FormUrlEncoded
-    @POST("/api/v1/group_eldwry/standings/{link_group}")
+    @POST("/api/v1/group_eldwry/standings/{type_group}/{link_group}")
     fun getStandingList(
+        @Path("type_group") type_league: String,
         @Path("link_group") link: String,
         @Field("link_subeldwry") link_sub: String,
     ): Single<StandingResponse>
 
+    @GET("/api/v1/group_eldwry/subeldwrys/{type_group}/{link_group}")
+    fun getGroupSubEldawry(
+        @Path("type_group") type_league: String,
+        @Path("link_group") link: String,
+    ): Single<GroupSubEldawryResponse>
 
+    @GET("/api/v1/group_eldwry/setting_admin/{type_group}/{link_group}")
+    fun getSettingsGroupsEldawry(
+        @Path("type_group") type_league: String,
+        @Path("link_group") link: String,
+    ): Single<SettingGroupsResponse>
+
+    @FormUrlEncoded
+    @PUT("/api/v1/group_eldwry/update/{type_group}/{link_group}")
+    fun updateGroup(
+        @Path("type_group") type_league: String,
+        @Path("link_group") link: String,
+        @Field("link_subeldwry") link_sub: String,
+        @Field("name") name: String,
+    ): Single<UpdateGroupResponse>
+
+    @PUT("/api/v1/group_eldwry/stop/{type_group}/{link_group}")
+    fun deleteGroup(
+        @Path("type_group") type_league: String,
+        @Path("link_group") link: String,
+    ): Single<BaseResponse>
+
+    @PUT("/api/v1/group_eldwry/leave/{type_group}/{link_group}")
+    fun leaveGroup(
+        @Path("type_group") type_league: String,
+        @Path("link_group") link: String,
+    ): Single<BaseResponse>
+
+    @FormUrlEncoded
+    @POST("/api/v1/group_eldwry/add_admin/{type_group}/{link_group}")
+    fun switchAdmin(
+        @Path("type_group") type_league: String,
+        @Path("link_group") link: String,
+        @Field("user_name") user_name: String,
+    ): Single<BaseResponse>
+
+    @FormUrlEncoded
+    @DELETE("/api/v1/group_eldwry/delete_player/{type_group}/{link_group}")
+    fun deletePlayer(
+        @Path("type_group") type_league: String,
+        @Path("link_group") link: String,
+        @Field("user_name") user_name: String,
+    ): Single<DeletePlayerResponse>
+
+    @FormUrlEncoded
+    @POST("/api/v1/addFollowingTeam")
+    fun followTeams(
+        @Field("teamFollow ") teamFollow: String,
+    ): Single<BaseResponse>
 }

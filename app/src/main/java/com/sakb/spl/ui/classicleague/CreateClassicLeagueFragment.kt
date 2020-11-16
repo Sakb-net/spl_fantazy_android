@@ -3,7 +3,6 @@ package com.sakb.spl.ui.classicleague
 import android.content.ClipData
 import android.content.Context
 import android.content.DialogInterface
-import android.content.Intent
 import android.os.Build
 import android.os.Bundle
 import android.text.ClipboardManager
@@ -15,11 +14,13 @@ import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
+import androidx.navigation.fragment.findNavController
 import com.sakb.spl.R
 import com.sakb.spl.base.BaseFragment
 import com.sakb.spl.data.model.DataCreateLeague
 import com.sakb.spl.data.model.DataItemSub
 import com.sakb.spl.databinding.CreateClassicLeagueFragmentBinding
+import com.sakb.spl.ui.league.LeagueFragment.Companion.CLASSIC
 import com.sakb.spl.utils.showSuccessDialog
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -64,7 +65,8 @@ class CreateClassicLeagueFragment : BaseFragment() {
                 binding.nameEt.text?.toString()?.trim()?.let { name ->
                     viewModel.loadCreateLeague(
                         linkSub,
-                        name
+                        name,
+                        CLASSIC
                     )
                 }
             }
@@ -104,22 +106,22 @@ class CreateClassicLeagueFragment : BaseFragment() {
                     val clip = ClipData.newPlainText(getString(R.string.code_league), code)
                     clipboard?.setPrimaryClip(clip)
                 }
-                dialog?.dismiss()
             },
             share = { dialog, url ->
-                val sendIntent: Intent = Intent().apply {
-                    action = Intent.ACTION_SEND
-                    putExtra(Intent.EXTRA_TEXT, url)
-                    type = "text/plain"
-                }
-                val shareIntent = Intent.createChooser(sendIntent, null)
-                requireContext().startActivity(shareIntent)
-                dialog?.dismiss()
+//                val sendIntent: Intent = Intent().apply {
+//                    action = Intent.ACTION_SEND
+//                    putExtra(Intent.EXTRA_TEXT, url)
+//                    type = "text/plain"
+//                }
+//                val shareIntent = Intent.createChooser(sendIntent, null)
+//                requireContext().startActivity(shareIntent)
             },
             manage = { dialog ->
+                findNavController().navigate(R.id.action_createClassicLeagueFragment_to_ManagementLeagueFragment)
                 dialog?.dismiss()
             },
             myLeague = { dialog ->
+                findNavController().navigate(R.id.action_createClassicLeagueFragment_to_MyLeagueFragment)
                 dialog?.dismiss()
             }
         )

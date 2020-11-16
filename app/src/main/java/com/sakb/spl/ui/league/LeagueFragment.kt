@@ -56,4 +56,8 @@ class LeagueFragment : BaseFragment() {
 
     }
 
+    companion object {
+        const val CLASSIC = "classic"
+        const val HEAD_TO_HEAD = "head"
+    }
 }

@@ -78,23 +78,18 @@ class RegisterActivity : BaseActivity(), SocialMediaSignUpCallback {
 
                 LoginResponse(
                     data = LoginResponse.Data(
-
                         accessToken = data.data?.access_token,
                         address = data.data?.address,
                         city = data.data?.city,
-
                         displayName = data.data?.display_name,
                         email = data.data?.email,
                         gender = data.data?.gender,
-
                         image = data.data?.image,
-
                         newFcmToken = data.data?.new_fcm_token,
-
-
                         phone = data.data?.phone,
-
-                        state = data.data?.state
+                        state = data.data?.state,
+                        id = data.data?.id,
+                        chooseTeam = data.data?.choose_team
                     ),
                     message = data.Message, statusCode = data.StatusCode
                 )

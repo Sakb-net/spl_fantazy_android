@@ -24,8 +24,8 @@ class CreateClassicLeagueViewModel(private val repository: SplRepository) : Base
     }
 
     val createLeagueResponse = SingleLiveEvent<CreateLeagueResponse>()
-    fun loadCreateLeague(link_subeldawey: String, name: String) {
-        repository.createGroupEldawery(link_subeldawey, name)
+    fun loadCreateLeague(link_subeldawey: String, name: String, type_league: String) {
+        repository.createGroupEldawery(link_subeldawey, name, type_league)
             .subscribeOn(Schedulers.io())
             .applyLoadingState()
             .subscribe(

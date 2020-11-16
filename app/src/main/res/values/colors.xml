@@ -60,4 +60,10 @@
     <color name="colorGreenDark68">#02522A</color>
     <color name="colorGrayDark68">#333333</color>
     <color name="colorWhite50">#80FFFFFF</color>
+
+    <color name="colorGrayLight">#F7F7F7</color>
+
+    <color name="colorBlueContent">#003365</color>
+
+    <color name="colorContentDark">#222222</color>
 </resources>
