@@ -318,7 +318,7 @@ class SplRepository constructor(
     }
 
     fun joinGroupEldawery(val_code: String, type_league: String): Single<JoinLeagueResponse> {
-        return remote.joinGroupEldawery(val_code, type_league)
+        return remote.joinGroupEldawery(type_league, val_code)
     }
 
     fun getAllDawery(type_league: String): Single<GetAllLeaguesResponse> {

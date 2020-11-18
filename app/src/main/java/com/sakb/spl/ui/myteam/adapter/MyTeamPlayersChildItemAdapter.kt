@@ -71,7 +71,6 @@ class MyTeamPlayersChildItemAdapter(
 
                 Glide.with(holder.imageView.context)
                     .load(Constants.baseUrl + children[position].image_player)
-                    .override(39)
                     .into(holder.imageView)
 
                 holder.textView.text = children[position].name_player

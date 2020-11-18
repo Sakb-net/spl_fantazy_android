@@ -28,6 +28,7 @@
             android:background="@color/red"
             android:padding="@dimen/_8sdp"
             android:text="الموعد النهائي لانتهاء الجولة 5: الجمعة 23 أغسطس - 22:00"
+            android:visibility="gone"
             android:textColor="@color/white"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

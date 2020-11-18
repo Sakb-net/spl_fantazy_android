@@ -101,7 +101,7 @@ fun Context.showSuccessDialog(
     data: DataCreateLeague,
     copy: (dialog: AlertDialog?, code: String?) -> Unit,
     share: (dialog: AlertDialog?, url: String?) -> Unit,
-    manage: (dialog: AlertDialog?) -> Unit,
+    manage: (dialog: AlertDialog?, url: String?) -> Unit,
     myLeague: (dialog: AlertDialog?) -> Unit,
 ) {
     val binding = DialogViewSuccCreateLeagueBinding.inflate(LayoutInflater.from(this), null, false)
@@ -114,7 +114,7 @@ fun Context.showSuccessDialog(
     binding.codeText.text = code
     binding.copyBtn.setOnClickListener { copy(dialog, code) }
     binding.shareBtn.setOnClickListener { share(dialog, url) }
-    binding.mangeDawery.setOnClickListener { manage(dialog) }
+    binding.mangeDawery.setOnClickListener { manage(dialog, url) }
     binding.dawryaty.setOnClickListener { myLeague(dialog) }
     dialog.show()
 }

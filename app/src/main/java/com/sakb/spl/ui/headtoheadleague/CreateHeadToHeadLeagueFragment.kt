@@ -10,6 +10,7 @@ import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.annotation.DrawableRes
+import androidx.core.os.bundleOf
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
@@ -20,6 +21,7 @@ import com.sakb.spl.data.model.DataItemSub
 import com.sakb.spl.databinding.CreateHeadToHeadLeagueFragmentBinding
 import com.sakb.spl.databinding.NewLeagueCreatedDialogBinding
 import com.sakb.spl.ui.league.LeagueFragment.Companion.HEAD_TO_HEAD
+import com.sakb.spl.ui.myleague.MyLeagueFragment
 import com.sakb.spl.utils.showConfirmationDialog
 import com.sakb.spl.utils.showSuccessDialog
 import com.sakb.spl.utils.toast
@@ -257,8 +259,11 @@ class CreateHeadToHeadLeagueFragment : BaseFragment() {
 //                val shareIntent = Intent.createChooser(sendIntent, null)
 //                requireContext().startActivity(shareIntent)
             },
-            manage = { dialog ->
-                findNavController().navigate(R.id.action_createHeadToHeadLeagueFragment_to_ManagementLeagueFragment)
+            manage = { dialog, url ->
+                val bundle = bundleOf(MyLeagueFragment.LINK_LEAGUE to url,
+                    MyLeagueFragment.LINK_TYPE to HEAD_TO_HEAD)
+                findNavController().navigate(R.id.action_createHeadToHeadLeagueFragment_to_ManagementLeagueFragment,
+                    bundle)
                 dialog?.dismiss()
             },
             myLeague = { dialog ->

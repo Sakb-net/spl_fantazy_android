@@ -12,6 +12,7 @@ import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
+import androidx.core.os.bundleOf
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
@@ -21,6 +22,7 @@ import com.sakb.spl.data.model.DataCreateLeague
 import com.sakb.spl.data.model.DataItemSub
 import com.sakb.spl.databinding.CreateClassicLeagueFragmentBinding
 import com.sakb.spl.ui.league.LeagueFragment.Companion.CLASSIC
+import com.sakb.spl.ui.myleague.MyLeagueFragment
 import com.sakb.spl.utils.showSuccessDialog
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -116,8 +118,11 @@ class CreateClassicLeagueFragment : BaseFragment() {
 //                val shareIntent = Intent.createChooser(sendIntent, null)
 //                requireContext().startActivity(shareIntent)
             },
-            manage = { dialog ->
-                findNavController().navigate(R.id.action_createClassicLeagueFragment_to_ManagementLeagueFragment)
+            manage = { dialog, url ->
+                val bundle = bundleOf(MyLeagueFragment.LINK_LEAGUE to url,
+                    MyLeagueFragment.LINK_TYPE to CLASSIC)
+                findNavController().navigate(R.id.action_createClassicLeagueFragment_to_ManagementLeagueFragment,
+                    bundle)
                 dialog?.dismiss()
             },
             myLeague = { dialog ->

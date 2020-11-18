@@ -1,5 +1,6 @@
 package com.sakb.spl.data.remote
 
+import com.sakb.spl.constants.Constants.baseUrl
 import com.sakb.spl.data.model.*
 import io.reactivex.Single
 import retrofit2.http.*
@@ -342,7 +343,9 @@ interface SplApiEndpoints {
     ): Single<BaseResponse>
 
     @FormUrlEncoded
-    @DELETE("/api/v1/group_eldwry/delete_player/{type_group}/{link_group}")
+    @HTTP(method = "DELETE",
+        path = "$baseUrl/api/v1/group_eldwry/delete_player/{type_group}/{link_group}",
+        hasBody = true)
     fun deletePlayer(
         @Path("type_group") type_league: String,
         @Path("link_group") link: String,
