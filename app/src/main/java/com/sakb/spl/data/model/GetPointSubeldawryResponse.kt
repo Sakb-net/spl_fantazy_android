@@ -149,7 +149,22 @@ data class DataWeek(
 	val createdAt: String? = null,
 
 	@field:SerializedName("start_date")
-	val startDate: String? = null
+	val startDate: String? = null,
+
+	@field:SerializedName("transfer_points")
+	val transferPoints: Int? = null,
+
+	@field:SerializedName("bench_card")
+	val benchCard: Int? = null,
+
+	@field:SerializedName("triple_card")
+	val tripleCard: Int? = null,
+
+	@field:SerializedName("gold_card")
+	val goldCard: Int? = null,
+
+	@field:SerializedName("gray_card")
+	val grayCard: Int? = null,
 )
 
 data class LineupItem(

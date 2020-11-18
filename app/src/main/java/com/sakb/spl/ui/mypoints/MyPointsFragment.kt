@@ -8,7 +8,6 @@ import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import androidx.appcompat.app.AlertDialog
 import androidx.core.content.ContextCompat
-import androidx.lifecycle.Observer
 import com.sakb.spl.R
 import com.sakb.spl.base.BaseFragment
 import com.sakb.spl.data.model.DataItemPoints
@@ -42,20 +41,19 @@ class MyPointsFragment : BaseFragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         viewModel.loadPointsEldwry()
-        viewModel.pointsEldwry.observe(viewLifecycleOwner, Observer {
+        viewModel.pointsEldwry.observe(viewLifecycleOwner, {
             it?.data?.let { list ->
                 option = list.filterNotNull() as MutableList<DataItemPoints>
             }
             builder = AlertDialog.Builder(requireContext(), R.style.MaterialThemeDialog)
             initDialogRounds()
-
-
         })
+
         binding.bannerTextView.setOnClickListener {
             builder?.show()
         }
 
-        viewModel.pointsSubeldwry.observe(viewLifecycleOwner, Observer {
+        viewModel.pointsSubeldwry.observe(viewLifecycleOwner, {
             initListeners(it)
             updateUi(it)
         })
@@ -145,9 +143,23 @@ class MyPointsFragment : BaseFragment() {
         if(getPointSubeldawryResponse.playerMaster?.isNullOrEmpty()==true){
             buttons_linear_layout.visibility = View.GONE
             nested_container.visibility = View.GONE
-        }else{
+        }else {
             buttons_linear_layout.visibility = View.VISIBLE
             nested_container.visibility = View.VISIBLE
+            getPointSubeldawryResponse.data?.let {
+                if (it.benchCard == 0) {
+                    binding.cardTv.visibility = View.GONE
+                } else {
+                    binding.cardTv.visibility = View.VISIBLE
+                    binding.cardTv.text = getString(R.string.benchboost_text_view)
+                }
+                if (it.tripleCard == 0) {
+                    binding.cardTv.visibility = View.GONE
+                } else {
+                    binding.cardTv.visibility = View.VISIBLE
+                    binding.cardTv.text = getString(R.string.tripple_captain_card)
+                }
+            }
             getPointSubeldawryResponse.playerMaster.let {
                 if (viewModel.isMenuPreviewEnabled) {
                     binding.menuBtn.backgroundTintList = ContextCompat.getColorStateList(
@@ -184,7 +196,7 @@ class MyPointsFragment : BaseFragment() {
                     binding.swapBg.visibility = View.GONE
                     binding.rvSwapList.adapter = null
                     //binding.stadIv.visibility = View.INVISIBLE
-                    it?.let {
+                    it.let {
                         val _adapter = MyPointPlayersMenuAdapter(it)
                         binding.rvParent.adapter = _adapter
                     }
