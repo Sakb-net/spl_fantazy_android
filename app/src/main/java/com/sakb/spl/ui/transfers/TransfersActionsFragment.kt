@@ -18,6 +18,7 @@ import com.sakb.spl.data.model.PlayersSubtitle
 import com.sakb.spl.ui.home.HomeFragment
 import com.sakb.spl.ui.transfers.TransfersFragment.Companion.PLAYER_SUB
 import com.sakb.spl.ui.transfers.adapter.PlayerInOutAdapter
+import com.sakb.spl.utils.LanguageUtil
 import com.sakb.spl.utils.showWarningDialog
 import kotlinx.android.synthetic.main.fragment_transfers_actions.*
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
@@ -115,6 +116,7 @@ class TransfersActionsFragment : BaseFragment() {
 
                 paymentBrands.add("VISA")
                 paymentBrands.add("MASTER")
+
                 CHECKOUT_ID = cardInfo.checkoutId ?: ""
                 val checkoutSettings =
                     CheckoutSettings(
@@ -123,6 +125,11 @@ class TransfersActionsFragment : BaseFragment() {
                         Connect.ProviderMode.TEST
                     )
                 // Set shopper result URL
+                if (LanguageUtil.isArabic()) {
+                    checkoutSettings.locale = "ar"
+                } else {
+                    checkoutSettings.locale = "en"
+                }
                 checkoutSettings.checkoutId = CHECKOUT_ID
                 checkoutSettings.shopperResultUrl = cardInfo.shopperResultUrl ?: ""
                 val intent =

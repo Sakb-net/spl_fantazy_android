@@ -267,8 +267,8 @@
     <string name="triple_content">Your captain points are tripled instead of doubled in the next gameweek</string>
     <string name="silver_card">Silver Card</string>
     <string name="gold_card">Golden Card</string>
-    <string name="gold_card_content">This card allows you to make unlimited free transfers, one time in the season.</string>
-    <string name="silver_card_content">This card allows you to make unlimited free transfers you can buy it more than once in the season </string>
+    <string name="gold_card_content">This card allows you to make unlimited free transfers you can buy it more than once in the season </string>
+    <string name="silver_card_content">This card allows you to make unlimited free transfers, one time in the season.</string>
     <string name="choose_team_first">Choose team first!</string>
     <string name="create_or_join_league">My League</string>
     <string name="join_league">Join league</string>
