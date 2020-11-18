@@ -107,7 +107,7 @@
                     android:padding="@dimen/_5sdp"
                     android:text="@string/tripple_captain_card"
                     android:textSize="@dimen/_10ssp"
-                    android:visibility="visible"
+                    android:visibility="gone"
                     android:textColor="@color/colorGreenDark" />
             </androidx.appcompat.widget.LinearLayoutCompat>
 
