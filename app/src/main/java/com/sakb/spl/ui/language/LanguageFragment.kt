@@ -8,7 +8,6 @@ import androidx.navigation.fragment.findNavController
 import com.sakb.spl.R
 import com.sakb.spl.base.BaseActivity
 import com.sakb.spl.base.BaseFragment
-import com.sakb.spl.data.local.PrefManager
 import com.sakb.spl.utils.LanguageUtil
 import com.sakb.spl.utils.showDialogLogOut
 import com.zeugmasolutions.localehelper.LocaleHelper
@@ -43,11 +42,11 @@ class LanguageFragment : BaseFragment() {
     private fun performChangeLanguage() {
         if (LanguageUtil.isArabic()) {
             LocaleHelper.setLocale(this@LanguageFragment.requireContext(), Locale("en"))
-            PrefManager.saveLanguage("en")
+            //PrefManager.saveLanguage("en")
             (activity as BaseActivity).restartActivity()
         } else {
             LocaleHelper.setLocale(this@LanguageFragment.requireContext(), Locale("ar"))
-            PrefManager.saveLanguage("ar")
+            //PrefManager.saveLanguage("ar")
             (activity as BaseActivity).restartActivity()
         }
     }

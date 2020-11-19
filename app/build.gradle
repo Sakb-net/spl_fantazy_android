@@ -13,7 +13,6 @@ android {
         targetSdkVersion 29
         versionCode 1
         versionName "1.0"
-
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables.useSupportLibrary = true
     }
@@ -120,7 +119,7 @@ dependencies {
     //youtube
     implementation files('libs/YouTubeAndroidPlayerApi.jar')
     //event bus
-    implementation 'org.greenrobot:eventbus:3.1.1'
+    implementation 'org.greenrobot:eventbus:3.2.0'
     kapt 'org.greenrobot:eventbus-annotation-processor:3.2.0'
 
     //hyper
@@ -132,7 +131,7 @@ dependencies {
     implementation 'com.google.android.gms:play-services-location:17.1.0'
 
     // Language Support
-    implementation 'com.zeugmasolutions.localehelper:locale-helper-android:1.0.4'
+    implementation 'com.zeugmasolutions.localehelper:locale-helper-android:1.1.2'
 
     // test
     testImplementation 'junit:junit:4.13.1'
