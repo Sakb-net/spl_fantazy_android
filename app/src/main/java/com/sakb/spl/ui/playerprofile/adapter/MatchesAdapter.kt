@@ -71,7 +71,7 @@ class MatchesAdapter(var context: Context) :
                     } else {
                         binding.btnViewMatch.visibility = View.VISIBLE
                         binding.pointll.visibility = View.VISIBLE
-                        binding.playerGwLl.visibility = View.VISIBLE
+                        binding.playerGwLl.visibility = View.GONE
                     }
                 }
 
@@ -82,18 +82,22 @@ class MatchesAdapter(var context: Context) :
                 }
 
                 data.statistic?.let { list ->
-                    list.forEach {
-                        val vi =
-                            context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
-                        val v: View = vi.inflate(R.layout.item_statistics_details, null)
+                    if (list.isNullOrEmpty()) {
+                        binding.pointll.visibility = View.GONE
+                    } else {
+                        list.forEach {
+                            val vi =
+                                context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
+                            val v: View = vi.inflate(R.layout.item_statistics_details, null)
 
-                        val pointBody: AppCompatTextView = v.findViewById(R.id.pointBody)
-                        val valueBody: AppCompatTextView = v.findViewById(R.id.valueBody)
-                        val ptsBody: AppCompatTextView = v.findViewById(R.id.ptsBody)
-                        pointBody.text = it?.langPoint
-                        valueBody.text = it?.number.toString()
-                        ptsBody.text = it?.points.toString()
-                        binding.pointll.addView(v)
+                            val pointBody: AppCompatTextView = v.findViewById(R.id.pointBody)
+                            val valueBody: AppCompatTextView = v.findViewById(R.id.valueBody)
+                            val ptsBody: AppCompatTextView = v.findViewById(R.id.ptsBody)
+                            pointBody.text = it?.langPoint
+                            valueBody.text = it?.number.toString()
+                            ptsBody.text = it?.points.toString()
+                            binding.pointll.addView(v)
+                        }
                     }
                 }
 

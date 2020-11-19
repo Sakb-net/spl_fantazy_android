@@ -34,7 +34,7 @@ class PlayersByTypeAdapter(
     }
 
     override fun onBindViewHolder(@NonNull playersViewHolder: PlayersViewHolder, position: Int) {
-        players!![position]?.let {
+        players?.get(position)?.let {
             playersViewHolder.bind(it)
         }
     }

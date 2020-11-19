@@ -47,7 +47,6 @@ class MainActivity : BaseActivity() {
         val toolbar: Toolbar = findViewById(R.id.toolbar)
         setSupportActionBar(toolbar)
 
-
         drawerLayout = findViewById(R.id.drawer_layout)
         val navView: NavigationView = findViewById(R.id.nav_view)
         val navController = findNavController(R.id.nav_host_fragment)
@@ -88,12 +87,10 @@ class MainActivity : BaseActivity() {
             .circleCrop()
             .into(profileImage)
 
-//        navView.setNavigationItemSelectedListener(this)
         viewModel.getCardGoldResultResponse.observe(this, {
             toast(it.data?.mesagePay ?: "")
             findNavController(R.id.nav_host_fragment).popBackStack(R.id.transfersActionFragment,
                 true)
-            //supportFragmentManager.popBackStack()
         })
     }
 

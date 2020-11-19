@@ -52,10 +52,6 @@ class ChooseFavTeamActivity : BaseActivity() {
             intent.putExtra(TEAM_LINK, data.data?.team_link)
             intent.putExtra(TEAM_NAME, data.data?.team_name)
             startActivity(intent)
-//            startActivity(
-//                Intent(this@ChooseFavTeamActivity, TermsActivity::class.java)
-//                    .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)
-//            )
         })
     }
 

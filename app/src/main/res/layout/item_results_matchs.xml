@@ -47,8 +47,8 @@
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_gravity="center"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginEnd="8dp"
+                    android:layout_marginStart="@dimen/_8sdp"
+                    android:layout_marginEnd="@dimen/_8sdp"
                     android:layout_weight="1"
                     android:gravity="center"
                     android:textColor="@color/colorGrey"
@@ -58,8 +58,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginEnd="8dp"
+                    android:layout_marginStart="@dimen/_8sdp"
+                    android:layout_marginEnd="@dimen/_8sdp"
                     android:layout_weight="0"
                     android:gravity="center"
                     android:orientation="horizontal">
@@ -70,21 +70,21 @@
                         android:layout_height="wrap_content"
                         android:background="@color/colorPrimary"
                         android:gravity="center"
-                        android:padding="8dp"
+                        android:padding="@dimen/_8sdp"
                         android:textColor="@color/white"
-                        android:textSize="16sp"
+                        android:textSize="@dimen/_16ssp"
                         tools:text="1" />
 
                     <androidx.appcompat.widget.AppCompatTextView
                         android:id="@+id/date_result_team_two"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="4dp"
+                        android:layout_marginStart="@dimen/_4sdp"
                         android:background="@color/colorPrimary"
                         android:gravity="center"
-                        android:padding="8dp"
+                        android:padding="@dimen/_8sdp"
                         android:textColor="@color/white"
-                        android:textSize="16sp"
+                        android:textSize="@dimen/_16ssp"
                         tools:text="2" />
                 </androidx.appcompat.widget.LinearLayoutCompat>
 
@@ -93,12 +93,12 @@
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_gravity="center"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginEnd="8dp"
+                    android:layout_marginStart="@dimen/_8sdp"
+                    android:layout_marginEnd="@dimen/_8sdp"
                     android:layout_weight="1"
                     android:gravity="center"
                     android:textColor="@color/colorGrey"
-                    tools:text="االهلال " />
+                    tools:text="االهلال" />
 
             </androidx.appcompat.widget.LinearLayoutCompat>
 
@@ -119,46 +119,52 @@
             android:id="@+id/pointll"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/_16sdp"
-            android:layout_marginTop="@dimen/_16sdp"
-            android:layout_marginEnd="@dimen/_16sdp"
-            android:layout_marginBottom="@dimen/_16sdp"
+            android:layout_marginStart="@dimen/_38sdp"
+            android:layout_marginTop="@dimen/_8sdp"
+            android:layout_marginEnd="@dimen/_38sdp"
             android:orientation="vertical"
+            android:background="@color/colorGrayBack"
             android:visibility="gone">
 
             <androidx.appcompat.widget.LinearLayoutCompat
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
+                android:gravity="center"
                 android:weightSum="2">
 
                 <androidx.appcompat.widget.AppCompatTextView
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:gravity="center|start"
-                    android:text="@string/point_breakdown"
-                    android:textColor="@color/colorPrimary"
-                    android:textSize="@dimen/_15ssp"
-                    android:textStyle="bold" />
+                    android:gravity="center"
+                    android:paddingTop="@dimen/_4sdp"
+                    android:paddingBottom="@dimen/_4sdp"
+                    android:text="@string/statistics"
+                    android:textColor="@color/text_color"
+                    android:textSize="@dimen/_11ssp" />
 
                 <androidx.appcompat.widget.AppCompatTextView
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="0.5"
-                    android:gravity="center|start"
+                    android:gravity="center"
                     android:text="@string/value"
-                    android:textColor="@color/colorPrimary"
-                    android:textSize="@dimen/_15ssp" />
+                    android:paddingTop="@dimen/_4sdp"
+                    android:paddingBottom="@dimen/_4sdp"
+                    android:textColor="@color/text_color"
+                    android:textSize="@dimen/_11ssp" />
 
                 <androidx.appcompat.widget.AppCompatTextView
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="0.5"
-                    android:gravity="center|start"
+                    android:gravity="center"
                     android:text="@string/pts"
-                    android:textColor="@color/colorPrimary"
-                    android:textSize="@dimen/_15ssp" />
+                    android:paddingTop="@dimen/_4sdp"
+                    android:paddingBottom="@dimen/_4sdp"
+                    android:textColor="@color/text_color"
+                    android:textSize="@dimen/_11ssp" />
             </androidx.appcompat.widget.LinearLayoutCompat>
 
         </androidx.appcompat.widget.LinearLayoutCompat>
@@ -167,20 +173,17 @@
             android:id="@+id/player_gw_ll"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/_16sdp"
-            android:layout_marginTop="@dimen/_16sdp"
-            android:layout_marginEnd="@dimen/_16sdp"
-            android:layout_marginBottom="@dimen/_16sdp"
+            android:layout_margin="@dimen/_8sdp"
             android:orientation="vertical"
             android:visibility="gone">
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:gravity="center|start"
+                android:gravity="center_vertical|start"
                 android:text="@string/player_gameweek_states"
                 android:textColor="@color/colorPrimary"
-                android:textSize="@dimen/_15ssp"
+                android:textSize="@dimen/_12ssp"
                 android:textStyle="bold" />
 
             <androidx.appcompat.widget.LinearLayoutCompat
@@ -198,7 +201,7 @@
                     android:gravity="center"
                     android:text="@string/value"
                     android:textColor="@color/colorPrimary"
-                    android:textSize="@dimen/_15ssp" />
+                    android:textSize="@dimen/_12ssp" />
 
                 <androidx.appcompat.widget.AppCompatTextView
                     android:layout_width="0dp"
@@ -207,7 +210,7 @@
                     android:gravity="center"
                     android:text="@string/ict"
                     android:textColor="@color/colorPrimary"
-                    android:textSize="@dimen/_15ssp" />
+                    android:textSize="@dimen/_12ssp" />
 
                 <androidx.appcompat.widget.AppCompatTextView
                     android:layout_width="0dp"
@@ -216,7 +219,7 @@
                     android:gravity="center"
                     android:text="@string/form"
                     android:textColor="@color/colorPrimary"
-                    android:textSize="@dimen/_15ssp" />
+                    android:textSize="@dimen/_12ssp" />
             </androidx.appcompat.widget.LinearLayoutCompat>
             <androidx.appcompat.widget.LinearLayoutCompat
                 android:layout_width="match_parent"
@@ -234,7 +237,7 @@
                     android:gravity="center"
                     android:text="0"
                     android:textColor="@color/colorPrimary"
-                    android:textSize="@dimen/_15ssp" />
+                    android:textSize="@dimen/_12ssp" />
 
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/ictBodyInside"
@@ -244,7 +247,7 @@
                     android:gravity="center"
                     android:text="0"
                     android:textColor="@color/colorPrimary"
-                    android:textSize="@dimen/_15ssp" />
+                    android:textSize="@dimen/_12ssp" />
 
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/formBodyInside"
@@ -254,19 +257,23 @@
                     android:gravity="center"
                     android:text="0"
                     android:textColor="@color/colorPrimary"
-                    android:textSize="@dimen/_15ssp" />
+                    android:textSize="@dimen/_12ssp" />
             </androidx.appcompat.widget.LinearLayoutCompat>
         </androidx.appcompat.widget.LinearLayoutCompat>
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btnViewMatch"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@color/colorPrimary"
-            android:text="@string/view_match"
+            android:layout_marginTop="@dimen/_13sdp"
+            android:layout_marginBottom="@dimen/_18sdp"
+            android:background="@drawable/rec_green_color_dialog"
+            android:paddingHorizontal="@dimen/_17sdp"
+            android:paddingVertical="@dimen/_9sdp"
+            android:text="@string/match_details"
             android:textAllCaps="false"
             android:textColor="@color/white"
-            android:textSize="@dimen/_15ssp"
+            android:textSize="@dimen/_16ssp"
             android:visibility="gone" />
     </androidx.appcompat.widget.LinearLayoutCompat>
 </layout>

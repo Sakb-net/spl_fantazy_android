@@ -28,13 +28,11 @@ import com.sakb.spl.utils.ImageCompressionListener
 import com.sakb.spl.utils.toStringBase
 import com.sakb.spl.utils.toast
 import org.koin.androidx.viewmodel.ext.android.viewModel
-import timber.log.Timber
 
 const val STORAGE_REQUEST_CODE = 15
 const val GALLERY_REQUEST_CODE = 12
 
 class EditProfileFragment : BaseFragment() {
-
 
     private lateinit var binding: FragmentEditProfileBinding
     override val viewModel by viewModel<EditProfileViewModel>()
@@ -78,9 +76,7 @@ class EditProfileFragment : BaseFragment() {
                 val best_team_link = viewModel.selectedTeamPosition?.let {
                     viewModel.teams?.get(it)?.link
                 }
-
                 viewModel.updateProfile(
-
                     best_team_link ?: "",
                     "" + binding.userNameVal.text,
                     "" + binding.emailVal.text,
@@ -88,45 +84,20 @@ class EditProfileFragment : BaseFragment() {
                 )
             }
             if (data.data?.image?.contains("http") == true) {
-                Timber.e("yesssss=======http")
                 Glide.with(this).load(data.data.image).circleCrop()
                     .into(binding.profileImage)
             } else
                 Glide.with(this).load(Constants.baseUrl + data.data?.image).circleCrop()
                     .into(binding.profileImage)
-
-
         })
-
-
         viewModel.teamsResultLiveData.observe(this,
-            Observer { data ->
-
-                //toast(""+data.Message)
-                // Timber.e(""+data?.data?.size)
-                // adapter = SingleAdapter( data?.data)
-                // binding.recyclerView.adapter = adapter
-                /*  adapter?.onItemClick = {pos, data->
-                      val user = PrefManager.getUser()
-                      viewModel.updateProfile(""+user?.data?.accessToken,""+data?.link)
-                  }*/
-
+            { data ->
                 viewModel.updateTeamsList(data.data)
-                //createList()
-
-
             })
-
-
-
-
         viewModel.uploadingImage.observe(this,
-            Observer { data ->
+            { data ->
                 viewModel.newImageUrl = data.data
-                // context?.toast(""+data.Message)
             })
-
-
     }
 
 
@@ -143,8 +114,6 @@ class EditProfileFragment : BaseFragment() {
         builder.setPositiveButton(R.string.okkk) { dialogInterface: DialogInterface, _: Int ->
             binding.addressVal.text = options[selectedItem]
             viewModel.selectedTeamPosition = selectedItem
-//           Toast.makeText(requireContext().getApplicationContext(),
-//               "selected item = " + options[selectedItem], Toast.LENGTH_SHORT).show();
             dialogInterface.dismiss()
         }
         builder.setNegativeButton(R.string.cancell) { dialogInterface: DialogInterface, _: Int ->
@@ -156,19 +125,10 @@ class EditProfileFragment : BaseFragment() {
 
 
     private fun isPermissionGranted(): Boolean {
-        return (ActivityCompat.checkSelfPermission(
-            requireContext(),
-            Manifest.permission.WRITE_EXTERNAL_STORAGE
-        ) == PackageManager.PERMISSION_GRANTED &&
-
-                ActivityCompat.checkSelfPermission(
-                    requireContext(),
-                    Manifest.permission.READ_EXTERNAL_STORAGE
-                ) == PackageManager.PERMISSION_GRANTED
-
-                )
-
-
+        return (ActivityCompat.checkSelfPermission(requireContext(),
+            Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED
+                && ActivityCompat.checkSelfPermission(requireContext(),
+            Manifest.permission.READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED)
     }
 
     private fun requestPermeation() = requestPermissions(
@@ -188,12 +148,9 @@ class EditProfileFragment : BaseFragment() {
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, intent: Intent?) {
-
         try {
             super.onActivityResult(requestCode, resultCode, intent)
-
             if (requestCode == GALLERY_REQUEST_CODE && resultCode == Activity.RESULT_OK && intent != null) {
-
                 val realPath: String = getRealPathFromURI(intent.data!!)
                 ImageCompression(requireContext(), realPath, object : ImageCompressionListener {
                     override fun onStart() {
@@ -201,45 +158,24 @@ class EditProfileFragment : BaseFragment() {
                     }
 
                     override fun onCompressed(filePath: String) {
-
                         val bitmap: Bitmap = BitmapFactory.decodeFile(filePath)
-
-
                         Glide.with(binding.profileImage)
                             .load(bitmap)
-                            // .placeholder(R.drawable.profile_ic)
-                            //.error(R.drawable.profile_ic)
                             .circleCrop()
                             .into(binding.profileImage)
 
-
-                        //  binding.personPhoto.loadCircleImage(bitmap)
                         val baseImageString = bitmap.toStringBase()
-
-                        // Todo done here
-                        //val prefs = PrefManager
-                        //   val user = prefs.getUser()
-                        // val lang =prefs.getLanguage()
-                        //  imageString = baseImageString
                         viewModel.ChangeImage(baseImageString)
-                        //    performUploadImage(userInfo?.accessToken,baseImageString,bitmap )
-
                     }
-
                 }).execute()
-
-
             }
         } catch (e: Exception) {
-
         }
     }
 
-    fun getRealPathFromURI(contentUri: Uri): String {
+    private fun getRealPathFromURI(contentUri: Uri): String {
         val proj: Array<String> = Array(1) { MediaStore.Audio.Media.DATA }
         val cursor: Cursor? = context?.contentResolver?.query(contentUri, proj, null, null, null)
-
-
         val columnIndex = cursor?.getColumnIndexOrThrow(MediaStore.Audio.Media.DATA)
         cursor?.moveToFirst()
         return cursor?.getString(columnIndex!!)!!

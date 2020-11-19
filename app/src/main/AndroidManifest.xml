@@ -16,12 +16,24 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppThemeNormal"
-        android:usesCleartextTraffic="true">
-        <activity android:name=".ui.followteams.FollowTeamsActivity"></activity>
+        android:fullBackupContent="@xml/backup_descriptor"
+        android:usesCleartextTraffic="true"
+        tools:targetApi="m">
+        <activity
+            android:name=".ui.followteams.FollowTeamsActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize|stateHidden">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
         <activity
             android:name=".ui.splash.SplashActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/SplashTheme">
+            android:theme="@style/SplashTheme"
+            android:windowSoftInputMode="adjustResize|stateHidden">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -33,7 +45,7 @@
             android:label="@string/app_name"
             android:screenOrientation="portrait"
             android:theme="@style/AppThemeNormal"
-            android:windowSoftInputMode="adjustResize">
+            android:windowSoftInputMode="adjustResize|stateHidden">
             <intent-filter>
                 <data android:scheme="@string/checkout_ui_callback_scheme" />
 
@@ -46,7 +58,7 @@
         <activity
             android:name=".ui.playerprofile.PlayerProfileActivity"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustResize">
+            android:windowSoftInputMode="adjustResize|stateHidden">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
 
@@ -56,7 +68,7 @@
         <activity
             android:name=".ui.addplayer.AddPlayerActivity"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustResize">
+            android:windowSoftInputMode="adjustResize|stateHidden">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
 
@@ -67,7 +79,7 @@
             android:name=".ui.detailsvideo.DetailsVideoActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppThemeNormal"
-            android:windowSoftInputMode="adjustResize">
+            android:windowSoftInputMode="adjustResize|stateHidden">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
 
@@ -78,7 +90,7 @@
             android:name=".ui.newdetails.NewsDetailsActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppThemeNormal"
-            android:windowSoftInputMode="adjustResize">
+            android:windowSoftInputMode="adjustResize|stateHidden">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
 
@@ -89,7 +101,7 @@
             android:name=".ui.terms.TermsActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppThemeNormal"
-            android:windowSoftInputMode="adjustResize">
+            android:windowSoftInputMode="adjustResize|stateHidden">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
 
@@ -99,7 +111,7 @@
         <activity
             android:name=".ui.chooseteam.ChooseFavTeamActivity"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustResize">
+            android:windowSoftInputMode="adjustResize|stateHidden">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
 

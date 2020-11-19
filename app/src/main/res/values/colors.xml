@@ -66,4 +66,8 @@
     <color name="colorBlueContent">#003365</color>
 
     <color name="colorContentDark">#222222</color>
+
+    <color name="colorBlueBackground">#004666</color>
+    <color name="colorGrayBack">#E9E9E9</color>
+    <color name="colorBlackLight">#0A0A0A</color>
 </resources>

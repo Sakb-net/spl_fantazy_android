@@ -14,9 +14,6 @@ import io.reactivex.schedulers.Schedulers
 
 class AddPlayerViewModel(
     private val repository: SplRepository
-    /*  private val useCase: playersByTypeUseCase,
-      private val addPlayerUseCase: AddPlayerUseCase,
-      private val changePlayerUseCase: ChangePlayerUseCase*/
 ) : BaseViewModel() {
 
     var initSpinnerBefore: Boolean = false
@@ -25,9 +22,7 @@ class AddPlayerViewModel(
     var orderPlay: String = ""
     var selectedTeamLink: String? = ""
 
-
     val ResultLiveData = SingleLiveEvent<PlayerByTypeResponse?>()
-
 
     fun getPlayers(
         type_key: String,
@@ -55,15 +50,8 @@ class AddPlayerViewModel(
             ).addToDisposableBag()
     }
 
-
     // Add Player
     var AddPlayerResultLiveData = SingleLiveEvent<AddPlayerResponse?>()
-
-    /** fun addPlayerX(
-    access_token: String,
-    player_link: String,
-    lang: String
-    ) = addPlayerUseCase.addPlayer(access_token, player_link, lang)*/
 
     fun addPlayer(player_link: String) {
 
@@ -82,7 +70,6 @@ class AddPlayerViewModel(
                 }
             ).addToDisposableBag()
     }
-
 
     // change player
     var changePlayerResultLiveData = SingleLiveEvent<ChangePlayerResponse?>()
@@ -109,6 +96,5 @@ class AddPlayerViewModel(
                 }
             ).addToDisposableBag()
     }
-
 
 }

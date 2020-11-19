@@ -37,9 +37,6 @@ class PlayerProfileActivity : BaseActivity() {
         window.decorView.systemUiVisibility =
             View.SYSTEM_UI_FLAG_LAYOUT_STABLE or View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
 
-
-        ///  binding.recyclerView.layoutManager = LinearLayoutManager(this)
-
         binding.menu.setOnClickListener {
             if (supportFragmentManager.backStackEntryCount > 0) {
                 supportFragmentManager.popBackStack()
@@ -50,14 +47,9 @@ class PlayerProfileActivity : BaseActivity() {
         viewModel.playerInfoResultLiveData.observe(this, Observer { data ->
             updateUI(data)
         })
-
-        //  val user = PrefManager.getUser()
-        // val lang = PrefManager.getLanguage()
         viewModel.playerInfo(
             "" + intent.getStringExtra("link")
         )
-
-
     }
 
     private fun updateUI(data: PlayerResponse?) {
@@ -106,6 +98,5 @@ class PlayerProfileActivity : BaseActivity() {
 
     companion object {
         const val KEY_PLAYER_INFO = "key_player_info"
-
     }
 }

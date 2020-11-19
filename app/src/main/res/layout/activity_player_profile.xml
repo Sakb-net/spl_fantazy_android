@@ -2,9 +2,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
-<data>
-
-</data>
+<data></data>
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -19,7 +17,6 @@
                 android:scaleType="centerCrop" />
         </FrameLayout>
 
-
         <androidx.appcompat.widget.LinearLayoutCompat
             android:id="@+id/fragment_container_view_tag"
             android:layout_width="match_parent"
@@ -30,8 +27,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="start|center"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="40dp"
+                android:layout_marginStart="@dimen/_16sdp"
+                android:layout_marginTop="@dimen/_40sdp"
                 android:gravity="start|center"
                 android:orientation="horizontal">
 
@@ -50,7 +47,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:layout_marginStart="10dp"
+                    android:layout_marginStart="@dimen/_10sdp"
                     android:fontFamily="@font/helvetica_reg"
                     android:gravity="center_vertical"
                     android:includeFontPadding="false"
@@ -65,7 +62,7 @@
             <androidx.appcompat.widget.LinearLayoutCompat
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginTop="16dp"
+                android:layout_marginTop="@dimen/_16sdp"
                 android:background="@color/white"
                 android:orientation="vertical">
 
@@ -79,8 +76,8 @@
                         android:id="@+id/player_iv"
                         android:layout_width="@dimen/_80sdp"
                         android:layout_height="@dimen/_80sdp"
-                        android:layout_marginStart="30dp"
-                        android:layout_marginTop="19dp"
+                        android:layout_marginStart="@dimen/_30sdp"
+                        android:layout_marginTop="@dimen/_19sdp"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
                         tools:src="@drawable/ic_profile" />
@@ -89,10 +86,10 @@
                         android:id="@+id/name_tv"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="30dp"
-                        android:layout_marginTop="19dp"
+                        android:layout_marginStart="@dimen/_30sdp"
+                        android:layout_marginTop="@dimen/_19sdp"
                         android:textColor="@color/colorPrimaryDark"
-                        android:textSize="18sp"
+                        android:textSize="@dimen/_18ssp"
                         android:textStyle="bold"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintHorizontal_bias="0"
@@ -104,10 +101,10 @@
                         android:id="@+id/team_tv"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="30dp"
-                        android:layout_marginTop="12dp"
+                        android:layout_marginStart="@dimen/_30sdp"
+                        android:layout_marginTop="@dimen/_12sdp"
                         android:textColor="#003365"
-                        android:textSize="16sp"
+                        android:textSize="@dimen/_16ssp"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintHorizontal_bias="0"
                         app:layout_constraintStart_toEndOf="@+id/player_iv"
@@ -118,12 +115,12 @@
                         android:id="@+id/location_tv"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="30dp"
-                        android:layout_marginTop="12dp"
+                        android:layout_marginStart="@dimen/_30sdp"
+                        android:layout_marginTop="@dimen/_12sdp"
                         android:background="#FFF950"
-                        android:padding="4dp"
+                        android:padding="@dimen/_4sdp"
                         android:textColor="#003365"
-                        android:textSize="16sp"
+                        android:textSize="@dimen/_16ssp"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintHorizontal_bias="0"
                         app:layout_constraintStart_toEndOf="@+id/player_iv"
@@ -136,13 +133,13 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/_19sdp"
                         android:background="#51FFAD"
-                        android:minHeight="@dimen/_50sdp"
+                        android:gravity="center"
                         android:orientation="horizontal"
+                        android:minHeight="@dimen/_60sdp"
                         android:weightSum="5"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@id/player_iv">
-
 
                         <androidx.appcompat.widget.LinearLayoutCompat
                             android:layout_width="0dp"
@@ -159,20 +156,21 @@
                                 android:gravity="center"
                                 android:layout_weight="0.5"
                                 android:text="@string/form"
+                                android:layout_gravity="center"
                                 android:textColor="@color/black"
-                                android:textSize="@dimen/_12ssp" />
+                                android:textSize="@dimen/_10ssp" />
 
                             <androidx.appcompat.widget.AppCompatTextView
                                 android:id="@+id/fromTv"
                                 android:layout_width="match_parent"
                                 android:layout_height="0dp"
-                                android:layout_marginTop="4dp"
+                                android:layout_gravity="center"
                                 android:gravity="center"
+                                android:layout_marginTop="@dimen/_4sdp"
                                 android:layout_weight="0.5"
                                 android:text="0"
                                 android:textColor="@color/black"
-                                android:textSize="@dimen/_8ssp"
-                                android:textStyle="bold" />
+                                android:textSize="@dimen/_8ssp" />
                         </androidx.appcompat.widget.LinearLayoutCompat>
 
                         <androidx.appcompat.widget.LinearLayoutCompat
@@ -191,7 +189,7 @@
                                 android:gravity="center"
                                 android:text="@string/week"
                                 android:textColor="@color/black"
-                                android:textSize="@dimen/_12ssp" />
+                                android:textSize="@dimen/_10ssp" />
 
                             <androidx.appcompat.widget.AppCompatTextView
                                 android:id="@+id/weekTv"
@@ -202,8 +200,7 @@
                                 android:layout_weight="0.5"
                                 android:text="0"
                                 android:textColor="@color/black"
-                                android:textSize="@dimen/_8ssp"
-                                android:textStyle="bold" />
+                                android:textSize="@dimen/_8ssp" />
                         </androidx.appcompat.widget.LinearLayoutCompat>
 
                         <androidx.appcompat.widget.LinearLayoutCompat
@@ -222,7 +219,7 @@
                                 android:layout_weight="0.5"
                                 android:text="@string/total"
                                 android:textColor="@color/black"
-                                android:textSize="@dimen/_12ssp" />
+                                android:textSize="@dimen/_10ssp" />
 
                             <androidx.appcompat.widget.AppCompatTextView
                                 android:id="@+id/totalTV"
@@ -233,8 +230,7 @@
                                 android:layout_weight="0.5"
                                 android:text="0"
                                 android:textColor="@color/black"
-                                android:textSize="@dimen/_8ssp"
-                                android:textStyle="bold" />
+                                android:textSize="@dimen/_8ssp" />
                         </androidx.appcompat.widget.LinearLayoutCompat>
 
                         <androidx.appcompat.widget.LinearLayoutCompat
@@ -250,22 +246,23 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="0dp"
                                 android:gravity="center"
+                                android:layout_gravity="center"
                                 android:layout_weight="0.5"
                                 android:text="@string/price"
                                 android:textColor="@color/black"
-                                android:textSize="@dimen/_12ssp" />
+                                android:textSize="@dimen/_10ssp" />
 
                             <androidx.appcompat.widget.AppCompatTextView
                                 android:id="@+id/priceTv"
                                 android:layout_width="match_parent"
                                 android:layout_height="0dp"
                                 android:layout_weight="0.5"
-                                android:layout_marginTop="4dp"
+                                android:layout_gravity="center"
                                 android:gravity="center"
+                                android:layout_marginTop="@dimen/_4sdp"
                                 android:text="0"
                                 android:textColor="@color/black"
-                                android:textSize="@dimen/_8ssp"
-                                android:textStyle="bold" />
+                                android:textSize="@dimen/_8ssp" />
                         </androidx.appcompat.widget.LinearLayoutCompat>
 
                         <androidx.appcompat.widget.LinearLayoutCompat
@@ -283,25 +280,24 @@
                                 android:layout_height="0dp"
                                 android:layout_weight="0.5"
                                 android:gravity="center"
+                                android:layout_gravity="center"
                                 android:text="@string/selection_percentage"
                                 android:textColor="@color/black"
-                                android:textSize="@dimen/_12ssp" />
+                                android:textSize="@dimen/_10ssp" />
 
                             <androidx.appcompat.widget.AppCompatTextView
                                 android:id="@+id/selectionPercentageTv"
                                 android:layout_width="match_parent"
                                 android:layout_height="0dp"
                                 android:layout_weight="0.5"
-                                android:layout_marginTop="4dp"
+                                android:layout_gravity="center"
                                 android:gravity="center"
+                                android:layout_marginTop="@dimen/_4sdp"
                                 android:text="0"
                                 android:textColor="@color/black"
-                                android:textSize="@dimen/_8ssp"
-                                android:textStyle="bold" />
+                                android:textSize="@dimen/_8ssp" />
                         </androidx.appcompat.widget.LinearLayoutCompat>
-
                     </androidx.appcompat.widget.LinearLayoutCompat>
-
 
                     <androidx.appcompat.widget.LinearLayoutCompat
                         android:id="@+id/headerll_second"
@@ -313,7 +309,6 @@
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@id/headerll">
-
 
                         <androidx.appcompat.widget.LinearLayoutCompat
                             android:layout_width="0dp"
@@ -338,12 +333,11 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="0dp"
                                 android:layout_weight="0.5"
-                                android:layout_marginTop="4dp"
+                                android:layout_marginTop="@dimen/_4sdp"
                                 android:gravity="center"
                                 android:text="0"
                                 android:textColor="@color/black"
-                                android:textSize="@dimen/_8ssp"
-                                android:textStyle="bold" />
+                                android:textSize="@dimen/_8ssp" />
                         </androidx.appcompat.widget.LinearLayoutCompat>
 
                         <androidx.appcompat.widget.LinearLayoutCompat
@@ -369,12 +363,11 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="0dp"
                                 android:layout_weight="0.5"
-                                android:layout_marginTop="4dp"
+                                android:layout_marginTop="@dimen/_4sdp"
                                 android:gravity="center"
                                 android:text="0"
                                 android:textColor="@color/black"
-                                android:textSize="@dimen/_8ssp"
-                                android:textStyle="bold" />
+                                android:textSize="@dimen/_8ssp" />
                         </androidx.appcompat.widget.LinearLayoutCompat>
 
                         <androidx.appcompat.widget.LinearLayoutCompat
@@ -392,6 +385,7 @@
                                 android:layout_weight="0.5"
                                 android:gravity="center"
                                 android:text="@string/threats"
+                                android:layout_gravity="center"
                                 android:textColor="@color/black"
                                 android:textSize="@dimen/_12ssp" />
 
@@ -400,12 +394,12 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="0dp"
                                 android:layout_weight="0.5"
-                                android:layout_marginTop="4dp"
+                                android:layout_gravity="center"
                                 android:gravity="center"
                                 android:text="0"
+                                android:layout_marginTop="@dimen/_4sdp"
                                 android:textColor="@color/black"
-                                android:textSize="@dimen/_8ssp"
-                                android:textStyle="bold" />
+                                android:textSize="@dimen/_8ssp" />
                         </androidx.appcompat.widget.LinearLayoutCompat>
 
                         <androidx.appcompat.widget.LinearLayoutCompat
@@ -424,6 +418,7 @@
                                 android:layout_weight="0.5"
                                 android:gravity="center"
                                 android:text="@string/ict_index"
+                                android:layout_gravity="center"
                                 android:textColor="@color/black"
                                 android:textSize="@dimen/_12ssp" />
 
@@ -434,10 +429,10 @@
                                 android:layout_weight="0.5"
                                 android:layout_marginTop="4dp"
                                 android:gravity="center"
+                                android:layout_gravity="center"
                                 android:text="0"
                                 android:textColor="@color/black"
-                                android:textSize="@dimen/_8ssp"
-                                android:textStyle="bold" />
+                                android:textSize="@dimen/_8ssp" />
                         </androidx.appcompat.widget.LinearLayoutCompat>
 
                     </androidx.appcompat.widget.LinearLayoutCompat>
@@ -519,12 +514,8 @@
                     </androidx.appcompat.widget.LinearLayoutCompat>
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
-
             </androidx.appcompat.widget.LinearLayoutCompat>
             </FrameLayout>
-
         </androidx.appcompat.widget.LinearLayoutCompat>
-
-
     </FrameLayout>
 </layout>
