@@ -66,7 +66,7 @@ class MyLeagueFragment : BaseFragment() {
                 MyLeaguesAdapter(it.data?.groupEldwry, user?.data?.id) { link, admin ->
                     context?.showLeaguesSettingsDialog(link, admin, standingBtn = { dialog, link ->
                         val bundle = bundleOf(LINK_LEAGUE to link, LINK_TYPE to HEAD_TO_HEAD)
-                        findNavController().navigate(R.id.action_MyLeagueFragment_to_StandingFragment,
+                        findNavController().navigate(R.id.action_MyLeagueFragment_to_StandingHeadToHeadFragment,
                             bundle)
                         dialog?.dismiss()
                     }, managementBtn = { dialog, link ->
