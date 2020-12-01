@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
+import androidx.core.content.ContextCompat
 import com.sakb.spl.R
 import com.sakb.spl.base.BaseFragment
 import com.sakb.spl.data.model.DataItemSubGroup
@@ -13,6 +14,7 @@ import com.sakb.spl.ui.myleague.MyLeagueFragment.Companion.LINK_LEAGUE
 import com.sakb.spl.ui.myleague.MyLeagueFragment.Companion.LINK_TYPE
 import com.sakb.spl.ui.standingheadtohead.adapter.StandingHeadToHeadAdapter
 import com.sakb.spl.ui.standingheadtohead.adapter.StandingHeadToHeadSpinnerAdapter
+import com.sakb.spl.ui.standingheadtohead.adapter.StandingMatchesHeadToHeadAdapter
 import kotlinx.android.synthetic.main.standing_head_to_head_fragment.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -27,11 +29,49 @@ class StandingHeadToHeadFragment : BaseFragment() {
         arguments?.getString(LINK_TYPE, HEAD_TO_HEAD)
     }
     lateinit var standingHeadToHeadAdapter: StandingHeadToHeadAdapter
+    lateinit var standingMatchesHeadToHeadAdapter: StandingMatchesHeadToHeadAdapter
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?,
     ): View? {
         return inflater.inflate(R.layout.standing_head_to_head_fragment, container, false)
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        initView(STANDING)
+
+        buttonLeague.setOnClickListener {
+            initView(STANDING)
+        }
+        buttonMatch.setOnClickListener {
+            initView(MATCHES)
+        }
+    }
+
+    private fun initView(status: String) {
+        when(status){
+            STANDING->{
+                buttonLeague.setTextColor(resources.getColor(R.color.white))
+                buttonMatch.setTextColor(resources.getColor(R.color.colorBlueContent))
+                buttonLeague.background = ContextCompat.getDrawable(requireContext(),R.drawable.bg_rec_green)
+                buttonMatch.background = ContextCompat.getDrawable(requireContext(),R.drawable.bg_rec_gray)
+                league_head_title.visibility = View.VISIBLE
+                match_head_title.visibility = View.INVISIBLE
+                rv_parent.visibility = View.VISIBLE
+                rv_matches.visibility = View.INVISIBLE
+            }
+            MATCHES->{
+                buttonLeague.setTextColor(resources.getColor(R.color.colorBlueContent))
+                buttonMatch.setTextColor(resources.getColor(R.color.white))
+                buttonLeague.background = ContextCompat.getDrawable(requireContext(),R.drawable.bg_rec_gray)
+                buttonMatch.background = ContextCompat.getDrawable(requireContext(),R.drawable.bg_rec_green)
+                league_head_title.visibility = View.INVISIBLE
+                match_head_title.visibility = View.VISIBLE
+                rv_parent.visibility = View.INVISIBLE
+                rv_matches.visibility = View.VISIBLE
+            }
+        }
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
@@ -47,8 +87,14 @@ class StandingHeadToHeadFragment : BaseFragment() {
                         StandingHeadToHeadAdapter(dataStanding.usersGroup)
                     rv_parent.adapter = standingHeadToHeadAdapter
                 }
-            }
 
+                dataStanding.matchGroupList?.let {list->
+                    NumWeek.text = list[0]?.langNumWeek
+                    standingMatchesHeadToHeadAdapter =
+                        StandingMatchesHeadToHeadAdapter(dataStanding.matchGroupList)
+                    rv_matches.adapter = standingMatchesHeadToHeadAdapter
+                }
+            }
         })
 
         viewModel.groupSubEldawryResponse.observe(viewLifecycleOwner, {
@@ -120,5 +166,10 @@ class StandingHeadToHeadFragment : BaseFragment() {
             league_spinner.performClick()
         }
 
+    }
+
+    companion object{
+        const val STANDING = "standing"
+        const val MATCHES = "matches"
     }
 }

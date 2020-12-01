@@ -68,6 +68,9 @@ data class DataStanding(
 
     @field:SerializedName("group_eldwry")
     val groupEldwry: GroupEldwryStanding? = null,
+
+    @field:SerializedName("matches_group")
+    val matchGroupList: List<MatchGroupGroupItem?>? = null,
 ) : Parcelable
 
 @Parcelize
@@ -139,4 +142,49 @@ data class UsersGroupItem(
 
     @field:SerializedName("link_group")
     val linkGroup: String? = null,
+) : Parcelable
+
+@Parcelize
+data class MatchGroupGroupItem(
+    @field:SerializedName("first_team_name")
+    val firstTeamName: String? = null,
+
+    @field:SerializedName("first_user_name")
+    val firstUserName:String? = null,
+
+    @field:SerializedName("first_team_points")
+    val firstTeamPoints:String? = null,
+
+    @field:SerializedName("first_team_bouns")
+    val firstTeamBouns:String? = null,
+
+    @field:SerializedName("second_team_name")
+    val secondTeamName:String? = null,
+
+    @field:SerializedName("second_user_name")
+    val secondUserName:String? = null,
+
+    @field:SerializedName("second_team_points")
+    val secondTeamPoints:String? = null,
+
+    @field:SerializedName("second_team_bouns")
+    val secondTeamBouns:String? = null,
+
+    @field:SerializedName("sort")
+    val sort: String? = null,
+
+    @field:SerializedName("name_group")
+    val nameGroup: String? = null,
+
+    @field:SerializedName("link_group")
+    val linkGroup: String? = null,
+
+    @field:SerializedName("num_week")
+    val numWeek: String? = null,
+
+    @field:SerializedName("lang_num_week")
+    val langNumWeek: String? = null,
+
+    @field:SerializedName("subeldwry_link")
+    val subeldwryLink: String? = null
 ) : Parcelable

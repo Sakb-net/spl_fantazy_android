@@ -6,11 +6,6 @@
     android:layout_height="match_parent"
     android:background="@color/colorPrimary"
     tools:context=".ui.standingheadtohead.StandingHeadToHeadFragment">
-<androidx.core.widget.NestedScrollView
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:scrollbars="vertical">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/buttonCL"
@@ -144,7 +139,27 @@
             app:layout_constraintEnd_toEndOf="@id/filterLL"
             app:layout_constraintStart_toStartOf="@id/filterLL"
             app:layout_constraintTop_toTopOf="@id/filterLL" />
-
+<androidx.appcompat.widget.LinearLayoutCompat
+    android:id="@+id/match_head_title"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="@dimen/_2sdp"
+    android:layout_marginTop="@dimen/_18sdp"
+    android:layout_marginEnd="@dimen/_2sdp"
+    android:background="@color/colorPrimary"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@id/filterLL">
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/NumWeek"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:paddingTop="@dimen/_8sdp"
+        android:paddingBottom="@dimen/_8sdp"
+        android:textColor="@color/white"
+        android:textSize="@dimen/_10ssp" />
+</androidx.appcompat.widget.LinearLayoutCompat>
         <androidx.appcompat.widget.LinearLayoutCompat
             android:id="@+id/league_head_title"
             android:layout_width="match_parent"
@@ -170,10 +185,7 @@
                 android:paddingBottom="@dimen/_8sdp"
                 android:text="@string/name"
                 android:textColor="@color/white"
-                android:textSize="@dimen/_10ssp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                android:textSize="@dimen/_10ssp" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/league_order"
@@ -186,10 +198,7 @@
                 android:paddingBottom="@dimen/_8sdp"
                 android:text="@string/league_order"
                 android:textColor="@color/white"
-                android:textSize="@dimen/_10ssp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toEndOf="@id/name"
-                app:layout_constraintTop_toTopOf="parent" />
+                android:textSize="@dimen/_10ssp" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/league_point"
@@ -202,10 +211,7 @@
                 android:paddingBottom="@dimen/_8sdp"
                 android:text="@string/point"
                 android:textColor="@color/white"
-                android:textSize="@dimen/_10ssp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toEndOf="@id/league_order"
-                app:layout_constraintTop_toTopOf="parent" />
+                android:textSize="@dimen/_10ssp" />
 
         </androidx.appcompat.widget.LinearLayoutCompat>
 
@@ -222,6 +228,18 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/league_head_title"
             tools:listitem="@layout/item_standing" />
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_matches"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginStart="@dimen/_2sdp"
+            android:layout_marginEnd="@dimen/_2sdp"
+            android:layout_marginBottom="@dimen/_10sdp"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/match_head_title"
+            tools:listitem="@layout/item_standing" />
     </androidx.constraintlayout.widget.ConstraintLayout>
-</androidx.core.widget.NestedScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>
