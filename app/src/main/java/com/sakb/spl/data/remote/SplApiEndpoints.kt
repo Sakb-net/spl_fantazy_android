@@ -47,7 +47,7 @@ interface SplApiEndpoints {
     ): Single<ChangePasswordResponse>
 
     @FormUrlEncoded
-    @POST("/api/v1/login/social")
+    @POST("/api/v1/social/login")
     fun registerLoginSocial(
         @Field("provider") provider: String,
         @Field("provider_id") provider_id: String,

@@ -24,9 +24,7 @@ import timber.log.Timber
 
 class RegisterActivity : BaseActivity(), SocialMediaSignUpCallback {
 
-
     override val viewModel by viewModel<RegisterViewModel>()
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -46,8 +44,6 @@ class RegisterActivity : BaseActivity(), SocialMediaSignUpCallback {
             onBackPressed()
         }
 
-
-
         buttonRegister.setOnClickListener {
             val email = EmailEtt.text.toString()
             val name = UserNameEtt.text.toString()
@@ -64,18 +60,12 @@ class RegisterActivity : BaseActivity(), SocialMediaSignUpCallback {
                 toast(getString(R.string.pass_not_match))
                 return@setOnClickListener
             }
-
             viewModel.register(name, email, phone, pass)
         }
 
         viewModel.registerResultLiveData.observe(this, Observer { data ->
-            // toast(""+it.status)
-
-
             toast("" + data.Message)
-
             PrefManager.saveUser(
-
                 LoginResponse(
                     data = LoginResponse.Data(
                         accessToken = data.data?.access_token,
@@ -100,56 +90,41 @@ class RegisterActivity : BaseActivity(), SocialMediaSignUpCallback {
                        .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)
                )*/
             startActivity(Intent(this@RegisterActivity, ChooseFavTeamActivity::class.java))
-
-
         })
 
         fb_login.setOnClickListener {
             Timber.e("login with facebook!")
             viewModel.provider = "facebook"
             SocialMediaSignUp.getInstance().connectTo(SocialMediaType.FACEBOOK, null, this)
-
         }
 
         twitter_login.setOnClickListener {
             Timber.e("login with twitter!")
             viewModel.provider = "twitter"
             SocialMediaSignUp.getInstance().connectTo(SocialMediaType.TWITTER, null, this)
-
         }
 
         google_login.setOnClickListener {
             Timber.e("login with google!")
             viewModel.provider = "google"
             SocialMediaSignUp.getInstance().connectTo(SocialMediaType.GOOGLE_PLUS, null, this)
-
         }
 
         viewModel.loginSocialResultLiveData.observe(this,
             Observer { data ->
-
-
                 toast("" + data.Message)
-
                 PrefManager.saveUser(
                     LoginResponse(
                         data = LoginResponse.Data(
-
                             accessToken = data.data?.access_token,
                             address = data.data?.address,
                             city = data.data?.city,
-
                             displayName = data.data?.display_name,
                             email = data.data?.email,
                             gender = data.data?.gender,
-
                             image = data.data?.image,
-
                             newFcmToken = data.data?.new_fcm_token,
-
-
                             phone = data.data?.phone,
-
                             state = data.data?.state
                         )
                     )
@@ -158,8 +133,6 @@ class RegisterActivity : BaseActivity(), SocialMediaSignUpCallback {
                     Intent(this@RegisterActivity, MainActivity::class.java)
                         .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)
                 )
-
-
             })
     }
 
@@ -190,8 +163,5 @@ class RegisterActivity : BaseActivity(), SocialMediaSignUpCallback {
     override fun onError(p0: Throwable?) {
         p0?.printStackTrace()
         toast(getString(R.string.something_wrong))
-
     }
-
-
 }

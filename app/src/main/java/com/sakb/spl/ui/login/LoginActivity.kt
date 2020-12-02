@@ -62,7 +62,6 @@ class LoginActivity : BaseActivity(), SocialMediaSignUpCallback {
             viewModel.provider = "facebook"
             SocialMediaSignUp.getInstance()
                 .connectTo(SocialMediaSignUp.SocialMediaType.FACEBOOK, null, this)
-
         }
 
         twitter_login.setOnClickListener {
@@ -70,7 +69,6 @@ class LoginActivity : BaseActivity(), SocialMediaSignUpCallback {
             viewModel.provider = "twitter"
             SocialMediaSignUp.getInstance()
                 .connectTo(SocialMediaSignUp.SocialMediaType.TWITTER, null, this)
-
         }
 
         google_login.setOnClickListener {
@@ -78,7 +76,6 @@ class LoginActivity : BaseActivity(), SocialMediaSignUpCallback {
             viewModel.provider = "google"
             SocialMediaSignUp.getInstance()
                 .connectTo(SocialMediaSignUp.SocialMediaType.GOOGLE_PLUS, null, this)
-
         }
 
         viewModel.loginResultLiveData.observe(this, androidx.lifecycle.Observer { data ->
@@ -119,17 +116,17 @@ class LoginActivity : BaseActivity(), SocialMediaSignUpCallback {
 
     override fun onSuccess(
         p0: SocialMediaSignUp.SocialMediaType?,
-        socialMediaUser: SocialMediaUser?
+        socialMediaUser: SocialMediaUser?,
     ) {
         setSocialMediaContent(socialMediaUser)
     }
 
     private fun setSocialMediaContent(socialMediaUser: SocialMediaUser?) {
         Timber.e("success === " +
-                    "User Id : " + socialMediaUser?.userId +
-                    "\n" + "Access Token :" + socialMediaUser?.accessToken + "\n" +
-                    "Full Name : " + socialMediaUser?.fullName + "\n" +
-                    "Profile Picture Link :" + socialMediaUser?.profilePictureUrl
+                "User Id : " + socialMediaUser?.userId +
+                "\n" + "Access Token :" + socialMediaUser?.accessToken + "\n" +
+                "Full Name : " + socialMediaUser?.fullName + "\n" +
+                "Profile Picture Link :" + socialMediaUser?.profilePictureUrl
         )
 
         viewModel.loginSocial(
