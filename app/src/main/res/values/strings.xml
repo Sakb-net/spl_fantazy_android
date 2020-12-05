@@ -399,4 +399,5 @@
     <string name="notification">Notifications</string>
     <string name="join_head_to_head">Join\nHead to Head</string>
     <string name="join_classic">Join\nClassic</string>
+    <string name="soon">Soon</string>
 </resources>
