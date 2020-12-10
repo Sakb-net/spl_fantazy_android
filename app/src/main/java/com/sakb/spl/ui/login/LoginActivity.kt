@@ -58,14 +58,13 @@ class LoginActivity : BaseActivity(), SocialMediaSignUpCallback {
         }
 
         fb_login.setOnClickListener {
-            toast(getString(R.string.soon))
-            return@setOnClickListener
-            /*
+            //toast(getString(R.string.soon))
+            //return@setOnClickListener
             Timber.e("login with facebook!")
             viewModel.provider = "facebook"
             SocialMediaSignUp.getInstance()
                 .connectTo(SocialMediaSignUp.SocialMediaType.FACEBOOK, null, this)
-             */
+
         }
 
         twitter_login.setOnClickListener {
@@ -80,14 +79,14 @@ class LoginActivity : BaseActivity(), SocialMediaSignUpCallback {
         }
 
         google_login.setOnClickListener {
-            toast(getString(R.string.soon))
-            return@setOnClickListener
-            /*
+            //toast(getString(R.string.soon))
+            //return@setOnClickListener
+
             Timber.e("login with google!")
             viewModel.provider = "google"
             SocialMediaSignUp.getInstance()
                 .connectTo(SocialMediaSignUp.SocialMediaType.GOOGLE_PLUS, null, this)
-             */
+
         }
 
         viewModel.loginResultLiveData.observe(this, androidx.lifecycle.Observer { data ->

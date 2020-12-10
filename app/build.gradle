@@ -52,10 +52,10 @@ android.defaultConfig.manifestPlaceholders = [
         //31967b29-5800-4d12-8151-4fb2d7ceff87
 
         // spl fb
-        facebookAppId        : "2585402265062933",
+        facebookAppId        : "1308494836189612",
 
         // google
-        googleWebClientId    : "761096508244-05jr804n10okk00rhaaik18qmjo7itm3.apps.googleusercontent.com",
+        googleWebClientId    : "737315402864-9m3qtm57ttdpnukrb97allr8k2ghat0e.apps.googleusercontent.com ",
 
         // spl
         twitterConsumerKey   : "v9pR8cUBn9B2yJv8PnEtafth8",
