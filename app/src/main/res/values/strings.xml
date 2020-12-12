@@ -400,4 +400,8 @@
     <string name="join_head_to_head">Join\nHead to Head</string>
     <string name="join_classic">Join\nClassic</string>
     <string name="soon">Soon</string>
+
+    <!--KEYS-->
+    <string name="facebook_app_id" translatable="false">1308494836189612</string>
+    <string name="fb_login_protocol_scheme" translatable="false">fb1308494836189612</string>
 </resources>
