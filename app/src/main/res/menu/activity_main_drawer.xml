@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
-      xmlns:tools="http://schemas.android.com/tools"
-      tools:showIn="navigation_view">
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
 
     <group android:checkableBehavior="single">
         <item
@@ -10,39 +10,39 @@
 
         <item
             android:id="@+id/myTeamFragment"
-            android:title="@string/my_team"/>
+            android:title="@string/my_team" />
 
         <item
             android:id="@+id/myPointsFragment"
-            android:title="@string/my_points"/>
+            android:title="@string/my_points" />
 
         <item
             android:id="@+id/transfersFragment"
-            android:title="@string/transfers"/>
+            android:title="@string/transfers" />
 
         <item
             android:id="@+id/leagueFragment"
-            android:title="@string/create_or_join_league"/>
+            android:title="@string/create_or_join_league" />
 
         <item
             android:id="@+id/howToPlayFragment"
-            android:title="@string/how_to_play"/>
+            android:title="@string/how_to_play" />
 
         <item
             android:id="@+id/helpFragment"
-            android:title="@string/help"/>
+            android:title="@string/help" />
 
         <item
             android:id="@+id/awardFragment"
-            android:title="@string/award"/>
+            android:title="@string/award" />
 
         <item
             android:id="@+id/newsFragment"
-            android:title="@string/news"/>
+            android:title="@string/news" />
 
         <item
             android:id="@+id/videosFragment"
-            android:title="@string/videos"/>
+            android:title="@string/videos" />
 
         <item
             android:id="@+id/statisticsFragment"
@@ -61,6 +61,10 @@
         <item
             android:id="@+id/logoutFragment"
             android:title="@string/logout" />
+        <item
+            android:id="@+id/loginFragment"
+            android:title="@string/login_title"
+            android:visible="false" />
     </group>
 
 </menu>

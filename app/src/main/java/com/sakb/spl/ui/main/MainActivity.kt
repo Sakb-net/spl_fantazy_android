@@ -26,6 +26,7 @@ import com.sakb.spl.R
 import com.sakb.spl.base.BaseActivity
 import com.sakb.spl.constants.Constants
 import com.sakb.spl.data.local.PrefManager
+import com.sakb.spl.ui.login.LoginActivity
 import com.sakb.spl.ui.transfers.TransfersActionsFragment.Companion.CHECKOUT_ID
 import com.sakb.spl.utils.toast
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -57,10 +58,23 @@ class MainActivity : BaseActivity() {
             menu.findItem(R.id.myTeamFragment).isVisible = false
             menu.findItem(R.id.myPointsFragment).isVisible = false
             menu.findItem(R.id.transfersFragment).isVisible = false
-        }else{
+            menu.findItem(R.id.logoutFragment).isVisible = false
+            menu.findItem(R.id.loginFragment).isVisible = true
+        } else {
             menu.findItem(R.id.myTeamFragment).isVisible = true
             menu.findItem(R.id.myPointsFragment).isVisible = true
-            menu.findItem(R.id.transfersFragment).isVisible = true
+            menu.findItem(R.id.transfersFragment).isVisible =
+                PrefManager.getUser()?.data?.chooseTeam == 1
+            menu.findItem(R.id.logoutFragment).isVisible = true
+            menu.findItem(R.id.loginFragment).isVisible = false
+        }
+        val login = menu.findItem(R.id.loginFragment)
+        login.setOnMenuItemClickListener {
+            val intent = Intent(this@MainActivity, LoginActivity::class.java)
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)
+            startActivity(intent)
+            overridePendingTransition(0, 0)
+            true
         }
         val navController = findNavController(R.id.nav_host_fragment)
         // Passing each menu ID as a set of Ids because each

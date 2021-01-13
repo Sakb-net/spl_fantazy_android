@@ -24,6 +24,7 @@
                 android:focusable="true"
                 android:padding="16dp"
                 android:src="@drawable/back"
+                android:visibility="invisible"
                 app:layout_constraintBottom_toTopOf="@+id/textView2"
                 app:layout_constraintStart_toStartOf="parent" />
 
