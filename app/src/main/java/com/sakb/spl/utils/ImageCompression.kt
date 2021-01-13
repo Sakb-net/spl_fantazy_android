@@ -67,17 +67,21 @@ class ImageCompression(
         val maxRatio = maxWidth / maxHeight
 
         if (actualHeight > maxHeight || actualWidth > maxWidth) {
-            if (imgRatio < maxRatio) {
-                imgRatio = maxHeight / actualHeight
-                actualWidth = (imgRatio * actualWidth).toInt()
-                actualHeight = maxHeight.toInt()
-            } else if (imgRatio > maxRatio) {
-                imgRatio = maxWidth / actualWidth
-                actualHeight = (imgRatio * actualHeight).toInt()
-                actualWidth = maxWidth.toInt()
-            } else {
-                actualHeight = maxHeight.toInt()
-                actualWidth = maxWidth.toInt()
+            when {
+                imgRatio < maxRatio -> {
+                    imgRatio = maxHeight / actualHeight
+                    actualWidth = (imgRatio * actualWidth).toInt()
+                    actualHeight = maxHeight.toInt()
+                }
+                imgRatio > maxRatio -> {
+                    imgRatio = maxWidth / actualWidth
+                    actualHeight = (imgRatio * actualHeight).toInt()
+                    actualWidth = maxWidth.toInt()
+                }
+                else -> {
+                    actualHeight = maxHeight.toInt()
+                    actualWidth = maxWidth.toInt()
+                }
             }
         }
 

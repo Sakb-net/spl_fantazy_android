@@ -88,7 +88,7 @@ class MatchesFragment : BaseFragment() {
             requireContext(), R.layout.item_check_list, options
         )
 
-        var selectedItem = -1
+        var selectedItem: Int
         builder?.setTitle(getString(R.string.select_round))
         builder?.setSingleChoiceItems(
             adapter, -1

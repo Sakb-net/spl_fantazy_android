@@ -1,526 +1,529 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".ui.manageleague.ManageLeagueFragment">
+<layout>
 
-    <FrameLayout
-        android:id="@+id/custom_ttolbar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <androidx.appcompat.widget.AppCompatImageView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/header_bg"
-            android:scaleType="centerCrop" />
-    </FrameLayout>
-
-    <androidx.core.widget.NestedScrollView
+    <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_margin="@dimen/_16sdp"
-        android:fillViewport="true">
+        tools:context=".ui.manageleague.ManageLeagueFragment">
 
-        <androidx.appcompat.widget.LinearLayoutCompat
+        <FrameLayout
+            android:id="@+id/custom_ttolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/header_bg"
+                android:scaleType="centerCrop" />
+        </FrameLayout>
+
+        <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@drawable/bg_rec_white"
-            android:orientation="vertical">
+            android:layout_margin="@dimen/_16sdp"
+            android:fillViewport="true">
 
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/league_code"
+            <androidx.appcompat.widget.LinearLayoutCompat
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
-                android:background="?selectableItemBackground"
-                android:clickable="true"
-                android:focusable="true"
-                app:layout_constraintTop_toTopOf="parent">
+                android:layout_height="match_parent"
+                android:background="@drawable/bg_rec_white"
+                android:orientation="vertical">
 
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/title_league_code"
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/league_code"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/instruction_gradient_title"
-                    android:paddingStart="@dimen/_19sdp"
-                    android:paddingTop="@dimen/_10sdp"
-                    android:paddingBottom="@dimen/_4sdp"
-                    android:text="@string/league_code_new"
-                    android:textAlignment="viewStart"
-                    android:textColor="@color/white"
-                    android:textSize="@dimen/_16ssp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <androidx.appcompat.widget.AppCompatImageView
-                    android:id="@+id/img_league_code"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="@dimen/_8sdp"
-                    app:layout_constraintBottom_toBottomOf="@id/title_league_code"
-                    app:layout_constraintEnd_toEndOf="@id/title_league_code"
-                    app:layout_constraintTop_toTopOf="@id/title_league_code"
-                    app:srcCompat="@drawable/ic_navigate_next_black_24dp" />
-
-                <androidx.appcompat.widget.LinearLayoutCompat
-                    android:id="@+id/ll_league_code"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:visibility="gone"
-                    app:layout_constraintTop_toBottomOf="@id/title_league_code">
+                    android:layout_marginBottom="8dp"
+                    android:background="?selectableItemBackground"
+                    android:clickable="true"
+                    android:focusable="true"
+                    app:layout_constraintTop_toTopOf="parent">
 
                     <androidx.appcompat.widget.AppCompatTextView
-                        android:id="@+id/body_league_code"
+                        android:id="@+id/title_league_code"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/_21sdp"
-                        android:gravity="center"
+                        android:background="@drawable/instruction_gradient_title"
+                        android:paddingStart="@dimen/_19sdp"
+                        android:paddingTop="@dimen/_10sdp"
+                        android:paddingBottom="@dimen/_4sdp"
                         android:text="@string/league_code_new"
-                        android:textColor="@color/colorBlueContent"
-                        android:textSize="@dimen/_16ssp" />
+                        android:textAlignment="viewStart"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/_16ssp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/img_league_code"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="@dimen/_8sdp"
+                        app:layout_constraintBottom_toBottomOf="@id/title_league_code"
+                        app:layout_constraintEnd_toEndOf="@id/title_league_code"
+                        app:layout_constraintTop_toTopOf="@id/title_league_code"
+                        app:srcCompat="@drawable/ic_navigate_next_black_24dp" />
 
                     <androidx.appcompat.widget.LinearLayoutCompat
-                        android:id="@+id/ll_body_league_code"
+                        android:id="@+id/ll_league_code"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/_16sdp"
-                        android:layout_marginBottom="@dimen/_20sdp"
-                        android:gravity="center"
-                        android:orientation="horizontal">
+                        android:orientation="vertical"
+                        android:visibility="gone"
+                        app:layout_constraintTop_toBottomOf="@id/title_league_code">
 
                         <androidx.appcompat.widget.AppCompatTextView
-                            android:id="@+id/code_league_code"
-                            android:layout_width="wrap_content"
-                            android:layout_height="@dimen/_40sdp"
-                            android:background="@drawable/bg_info_cell"
+                            android:id="@+id/body_league_code"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/_21sdp"
                             android:gravity="center"
-                            android:paddingHorizontal="@dimen/_20sdp"
-                            android:paddingVertical="@dimen/_7sdp"
+                            android:text="@string/league_code_new"
                             android:textColor="@color/colorBlueContent"
-                            android:textSize="@dimen/_22ssp"
-                            tools:text="5545554" />
+                            android:textSize="@dimen/_16ssp" />
 
-                        <androidx.appcompat.widget.AppCompatImageView
-                            android:id="@+id/copy_btn_league_code"
-                            android:layout_width="wrap_content"
-                            android:layout_height="@dimen/_40sdp"
-                            android:layout_marginStart="@dimen/_11sdp"
-                            android:background="@drawable/rec_green_color_dialog"
-                            android:padding="@dimen/_6sdp"
-                            app:srcCompat="@drawable/ic_signs" />
+                        <androidx.appcompat.widget.LinearLayoutCompat
+                            android:id="@+id/ll_body_league_code"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/_16sdp"
+                            android:layout_marginBottom="@dimen/_20sdp"
+                            android:gravity="center"
+                            android:orientation="horizontal">
 
+                            <androidx.appcompat.widget.AppCompatTextView
+                                android:id="@+id/code_league_code"
+                                android:layout_width="wrap_content"
+                                android:layout_height="@dimen/_40sdp"
+                                android:background="@drawable/bg_info_cell"
+                                android:gravity="center"
+                                android:paddingHorizontal="@dimen/_20sdp"
+                                android:paddingVertical="@dimen/_7sdp"
+                                android:textColor="@color/colorBlueContent"
+                                android:textSize="@dimen/_22ssp"
+                                tools:text="5545554" />
+
+                            <androidx.appcompat.widget.AppCompatImageView
+                                android:id="@+id/copy_btn_league_code"
+                                android:layout_width="wrap_content"
+                                android:layout_height="@dimen/_40sdp"
+                                android:layout_marginStart="@dimen/_11sdp"
+                                android:background="@drawable/rec_green_color_dialog"
+                                android:padding="@dimen/_6sdp"
+                                app:srcCompat="@drawable/ic_signs" />
+
+                        </androidx.appcompat.widget.LinearLayoutCompat>
                     </androidx.appcompat.widget.LinearLayoutCompat>
-                </androidx.appcompat.widget.LinearLayoutCompat>
 
-            </androidx.constraintlayout.widget.ConstraintLayout>
+                </androidx.constraintlayout.widget.ConstraintLayout>
 
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/league_details"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
-                android:background="?selectableItemBackground"
-                android:clickable="true"
-                android:focusable="true"
-                app:layout_constraintTop_toTopOf="parent">
-
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/title_league_details"
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/league_details"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/instruction_gradient_title"
-                    android:paddingStart="@dimen/_19sdp"
-                    android:paddingTop="@dimen/_10sdp"
-                    android:paddingBottom="@dimen/_4sdp"
-                    android:text="@string/league_details"
-                    android:textAlignment="viewStart"
-                    android:textColor="@color/white"
-                    android:textSize="@dimen/_16ssp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <androidx.appcompat.widget.AppCompatImageView
-                    android:id="@+id/img_league_details"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="@dimen/_8sdp"
-                    app:layout_constraintBottom_toBottomOf="@id/title_league_details"
-                    app:layout_constraintEnd_toEndOf="@id/title_league_details"
-                    app:layout_constraintTop_toTopOf="@id/title_league_details"
-                    app:srcCompat="@drawable/ic_navigate_next_black_24dp" />
-
-                <androidx.appcompat.widget.LinearLayoutCompat
-                    android:id="@+id/ll_league_details"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:paddingStart="@dimen/_30sdp"
-                    android:paddingTop="@dimen/_23sdp"
-                    android:paddingEnd="@dimen/_30sdp"
-                    android:visibility="gone"
-                    app:layout_constraintTop_toBottomOf="@id/title_league_details">
+                    android:layout_marginBottom="8dp"
+                    android:background="?selectableItemBackground"
+                    android:clickable="true"
+                    android:focusable="true"
+                    app:layout_constraintTop_toTopOf="parent">
 
                     <androidx.appcompat.widget.AppCompatTextView
-                        android:id="@+id/tv_code"
+                        android:id="@+id/title_league_details"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="8dp"
-                        android:layout_marginTop="8dp"
-                        android:layout_marginEnd="8dp"
-                        android:text="@string/league_name"
+                        android:background="@drawable/instruction_gradient_title"
+                        android:paddingStart="@dimen/_19sdp"
+                        android:paddingTop="@dimen/_10sdp"
+                        android:paddingBottom="@dimen/_4sdp"
+                        android:text="@string/league_details"
                         android:textAlignment="viewStart"
-                        android:textColor="@color/colorPrimary"
-                        android:textSize="16sp" />
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/_16ssp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
 
-                    <androidx.appcompat.widget.AppCompatEditText
-                        android:id="@+id/nameEt"
-                        style="@style/contactus_form"
-                        android:layout_marginTop="8dp"
-                        android:background="@null"
-                        android:hint="@string/enter_the_league_name_here"
-                        android:inputType="text"
-                        android:maxLines="1"
-                        android:padding="8dp" />
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/img_league_details"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="@dimen/_8sdp"
+                        app:layout_constraintBottom_toBottomOf="@id/title_league_details"
+                        app:layout_constraintEnd_toEndOf="@id/title_league_details"
+                        app:layout_constraintTop_toTopOf="@id/title_league_details"
+                        app:srcCompat="@drawable/ic_navigate_next_black_24dp" />
 
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="1dp"
-                        android:layout_marginStart="13dp"
-                        android:layout_marginEnd="13dp"
-                        android:background="@color/form_ed" />
-
-                    <androidx.appcompat.widget.AppCompatTextView
-                        android:id="@+id/tv_calc_points"
+                    <androidx.appcompat.widget.LinearLayoutCompat
+                        android:id="@+id/ll_league_details"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="8dp"
-                        android:layout_marginTop="16dp"
-                        android:layout_marginEnd="8dp"
-                        android:text="@string/beginning_of_calculating_points"
-                        android:textAlignment="viewStart"
-                        android:textColor="@color/colorPrimary"
-                        android:textSize="16sp" />
-
-                    <FrameLayout
-                        android:id="@+id/round_layout"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:background="?selectableItemBackground"
-                        android:clickable="true"
-                        android:focusable="true">
+                        android:orientation="vertical"
+                        android:paddingStart="@dimen/_30sdp"
+                        android:paddingTop="@dimen/_23sdp"
+                        android:paddingEnd="@dimen/_30sdp"
+                        android:visibility="gone"
+                        app:layout_constraintTop_toBottomOf="@id/title_league_details">
 
                         <androidx.appcompat.widget.AppCompatTextView
-                            android:id="@+id/roundEt"
+                            android:id="@+id/tv_code"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="8dp"
+                            android:layout_marginTop="8dp"
+                            android:layout_marginEnd="8dp"
+                            android:text="@string/league_name"
+                            android:textAlignment="viewStart"
+                            android:textColor="@color/colorPrimary"
+                            android:textSize="16sp" />
+
+                        <androidx.appcompat.widget.AppCompatEditText
+                            android:id="@+id/nameEt"
                             style="@style/contactus_form"
                             android:layout_marginTop="8dp"
                             android:background="@null"
-                            android:drawableEnd="@drawable/ic_expand_more_primary_24dp"
-                            android:enabled="false"
+                            android:hint="@string/enter_the_league_name_here"
+                            android:inputType="text"
                             android:maxLines="1"
-                            android:padding="8dp"
-                            android:textColor="@color/colorPrimary" />
-                    </FrameLayout>
+                            android:padding="8dp" />
 
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="1dp"
-                        android:layout_marginStart="13dp"
-                        android:layout_marginEnd="13dp"
-                        android:background="@color/form_ed" />
-
-                    <androidx.appcompat.widget.AppCompatButton
-                        android:id="@+id/buttonSend"
-                        style="@style/green_button_style"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_marginTop="24dp"
-                        android:layout_marginBottom="24dp"
-                        android:text="@string/save_changes_new" />
-                </androidx.appcompat.widget.LinearLayoutCompat>
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
-
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/league_delete_player"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
-                android:background="?selectableItemBackground"
-                android:clickable="true"
-                android:focusable="true"
-                app:layout_constraintTop_toTopOf="parent">
-
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/title_league_delete_player"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/instruction_gradient_title"
-                    android:paddingStart="@dimen/_19sdp"
-                    android:paddingTop="@dimen/_10sdp"
-                    android:paddingBottom="@dimen/_4sdp"
-                    android:text="@string/league_delete_player"
-                    android:textAlignment="viewStart"
-                    android:textColor="@color/white"
-                    android:textSize="@dimen/_16ssp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <androidx.appcompat.widget.AppCompatImageView
-                    android:id="@+id/img_league_delete_player"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="@dimen/_8sdp"
-                    app:layout_constraintBottom_toBottomOf="@id/title_league_delete_player"
-                    app:layout_constraintEnd_toEndOf="@id/title_league_delete_player"
-                    app:layout_constraintTop_toTopOf="@id/title_league_delete_player"
-                    app:srcCompat="@drawable/ic_navigate_next_black_24dp" />
-
-                <androidx.appcompat.widget.LinearLayoutCompat
-                    android:id="@+id/ll_league_delete_player"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/_16sdp"
-                    android:layout_marginTop="@dimen/_16sdp"
-                    android:layout_marginEnd="@dimen/_16sdp"
-                    android:orientation="vertical"
-                    android:visibility="gone"
-                    app:layout_constraintTop_toBottomOf="@id/title_league_delete_player">
-
-                    <androidx.appcompat.widget.AppCompatTextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:paddingBottom="@dimen/_20sdp"
-                        android:text="@string/info_delete_player" />
-
-                    <androidx.appcompat.widget.AppCompatTextView
-                        android:id="@+id/tv_player_list_delete"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="8dp"
-                        android:layout_marginTop="16dp"
-                        android:layout_marginEnd="8dp"
-                        android:text="@string/player_list"
-                        android:textAlignment="viewStart"
-                        android:textColor="@color/colorPrimary"
-                        android:textSize="16sp" />
-
-                    <FrameLayout
-                        android:id="@+id/round_layout_delete_player"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:background="?selectableItemBackground"
-                        android:clickable="true"
-                        android:focusable="true">
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:layout_marginStart="13dp"
+                            android:layout_marginEnd="13dp"
+                            android:background="@color/form_ed" />
 
                         <androidx.appcompat.widget.AppCompatTextView
-                            android:id="@+id/roundEtDeletePlayer"
-                            style="@style/contactus_form"
-                            android:layout_marginTop="8dp"
-                            android:background="@null"
-                            android:drawableEnd="@drawable/ic_expand_more_primary_24dp"
-                            android:enabled="false"
-                            android:maxLines="1"
-                            android:padding="8dp"
-                            android:textColor="@color/colorPrimary" />
-                    </FrameLayout>
+                            android:id="@+id/tv_calc_points"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="8dp"
+                            android:layout_marginTop="16dp"
+                            android:layout_marginEnd="8dp"
+                            android:text="@string/beginning_of_calculating_points"
+                            android:textAlignment="viewStart"
+                            android:textColor="@color/colorPrimary"
+                            android:textSize="16sp" />
 
-                    <View
+                        <FrameLayout
+                            android:id="@+id/round_layout"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="?selectableItemBackground"
+                            android:clickable="true"
+                            android:focusable="true">
+
+                            <androidx.appcompat.widget.AppCompatTextView
+                                android:id="@+id/roundEt"
+                                style="@style/contactus_form"
+                                android:layout_marginTop="8dp"
+                                android:background="@null"
+                                android:drawableEnd="@drawable/ic_expand_more_primary_24dp"
+                                android:enabled="false"
+                                android:maxLines="1"
+                                android:padding="8dp"
+                                android:textColor="@color/colorPrimary" />
+                        </FrameLayout>
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:layout_marginStart="13dp"
+                            android:layout_marginEnd="13dp"
+                            android:background="@color/form_ed" />
+
+                        <androidx.appcompat.widget.AppCompatButton
+                            android:id="@+id/buttonSend"
+                            style="@style/green_button_style"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginTop="24dp"
+                            android:layout_marginBottom="24dp"
+                            android:text="@string/save_changes_new" />
+                    </androidx.appcompat.widget.LinearLayoutCompat>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/league_delete_player"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:background="?selectableItemBackground"
+                    android:clickable="true"
+                    android:focusable="true"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/title_league_delete_player"
                         android:layout_width="match_parent"
-                        android:layout_height="1dp"
-                        android:layout_marginStart="13dp"
-                        android:layout_marginEnd="13dp"
-                        android:background="@color/form_ed" />
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/instruction_gradient_title"
+                        android:paddingStart="@dimen/_19sdp"
+                        android:paddingTop="@dimen/_10sdp"
+                        android:paddingBottom="@dimen/_4sdp"
+                        android:text="@string/league_delete_player"
+                        android:textAlignment="viewStart"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/_16ssp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
 
-                    <androidx.appcompat.widget.AppCompatButton
-                        android:id="@+id/buttonDeletePlayer"
-                        style="@style/green_button_style"
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/img_league_delete_player"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_marginTop="24dp"
-                        android:layout_marginBottom="24dp"
-                        android:text="@string/delete_player" />
-                </androidx.appcompat.widget.LinearLayoutCompat>
-            </androidx.constraintlayout.widget.ConstraintLayout>
+                        android:layout_marginEnd="@dimen/_8sdp"
+                        app:layout_constraintBottom_toBottomOf="@id/title_league_delete_player"
+                        app:layout_constraintEnd_toEndOf="@id/title_league_delete_player"
+                        app:layout_constraintTop_toTopOf="@id/title_league_delete_player"
+                        app:srcCompat="@drawable/ic_navigate_next_black_24dp" />
 
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/league_change_manager"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
-                android:background="?selectableItemBackground"
-                android:clickable="true"
-                android:focusable="true"
-                app:layout_constraintTop_toTopOf="parent">
-
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/title_league_change_manager"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/instruction_gradient_title"
-                    android:paddingStart="@dimen/_19sdp"
-                    android:paddingTop="@dimen/_10sdp"
-                    android:paddingBottom="@dimen/_4sdp"
-                    android:text="@string/league_change_manager"
-                    android:textAlignment="viewStart"
-                    android:textColor="@color/white"
-                    android:textSize="@dimen/_16ssp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <androidx.appcompat.widget.AppCompatImageView
-                    android:id="@+id/img_league_change_manager"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="@dimen/_8sdp"
-                    app:layout_constraintBottom_toBottomOf="@id/title_league_change_manager"
-                    app:layout_constraintEnd_toEndOf="@id/title_league_change_manager"
-                    app:layout_constraintTop_toTopOf="@id/title_league_change_manager"
-                    app:srcCompat="@drawable/ic_navigate_next_black_24dp" />
-
-                <androidx.appcompat.widget.LinearLayoutCompat
-                    android:id="@+id/ll_league_change_manager"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/_16sdp"
-                    android:layout_marginTop="@dimen/_16sdp"
-                    android:layout_marginEnd="@dimen/_16sdp"
-                    android:orientation="vertical"
-                    android:visibility="gone"
-                    app:layout_constraintTop_toBottomOf="@id/title_league_change_manager">
-
-                    <androidx.appcompat.widget.AppCompatTextView
+                    <androidx.appcompat.widget.LinearLayoutCompat
+                        android:id="@+id/ll_league_delete_player"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:paddingBottom="@dimen/_20sdp"
-                        android:text="@string/info_change_manager" />
-
-                    <androidx.appcompat.widget.AppCompatTextView
-                        android:id="@+id/tv_player_list_manager"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="8dp"
-                        android:layout_marginTop="16dp"
-                        android:layout_marginEnd="8dp"
-                        android:text="@string/player_list"
-                        android:textAlignment="viewStart"
-                        android:textColor="@color/colorPrimary"
-                        android:textSize="16sp" />
-
-                    <FrameLayout
-                        android:id="@+id/round_layout_change_manager"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:background="?selectableItemBackground"
-                        android:clickable="true"
-                        android:focusable="true">
+                        android:layout_marginStart="@dimen/_16sdp"
+                        android:layout_marginTop="@dimen/_16sdp"
+                        android:layout_marginEnd="@dimen/_16sdp"
+                        android:orientation="vertical"
+                        android:visibility="gone"
+                        app:layout_constraintTop_toBottomOf="@id/title_league_delete_player">
 
                         <androidx.appcompat.widget.AppCompatTextView
-                            android:id="@+id/roundEtChangeManager"
-                            style="@style/contactus_form"
-                            android:layout_marginTop="8dp"
-                            android:background="@null"
-                            android:drawableEnd="@drawable/ic_expand_more_primary_24dp"
-                            android:enabled="false"
-                            android:maxLines="1"
-                            android:padding="8dp"
-                            android:textColor="@color/colorPrimary" />
-                    </FrameLayout>
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:paddingBottom="@dimen/_20sdp"
+                            android:text="@string/info_delete_player" />
 
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="1dp"
-                        android:layout_marginStart="13dp"
-                        android:layout_marginEnd="13dp"
-                        android:background="@color/form_ed" />
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/tv_player_list_delete"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="8dp"
+                            android:layout_marginTop="16dp"
+                            android:layout_marginEnd="8dp"
+                            android:text="@string/player_list"
+                            android:textAlignment="viewStart"
+                            android:textColor="@color/colorPrimary"
+                            android:textSize="16sp" />
 
-                    <androidx.appcompat.widget.AppCompatButton
-                        android:id="@+id/buttonChangeManager"
-                        style="@style/green_button_style"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_marginTop="24dp"
-                        android:layout_marginBottom="24dp"
-                        android:text="@string/change_manager" />
-                </androidx.appcompat.widget.LinearLayoutCompat>
+                        <FrameLayout
+                            android:id="@+id/round_layout_delete_player"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="?selectableItemBackground"
+                            android:clickable="true"
+                            android:focusable="true">
 
-            </androidx.constraintlayout.widget.ConstraintLayout>
+                            <androidx.appcompat.widget.AppCompatTextView
+                                android:id="@+id/roundEtDeletePlayer"
+                                style="@style/contactus_form"
+                                android:layout_marginTop="8dp"
+                                android:background="@null"
+                                android:drawableEnd="@drawable/ic_expand_more_primary_24dp"
+                                android:enabled="false"
+                                android:maxLines="1"
+                                android:padding="8dp"
+                                android:textColor="@color/colorPrimary" />
+                        </FrameLayout>
 
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/league_delete"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
-                android:background="?selectableItemBackground"
-                android:clickable="true"
-                android:focusable="true"
-                app:layout_constraintTop_toTopOf="parent">
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:layout_marginStart="13dp"
+                            android:layout_marginEnd="13dp"
+                            android:background="@color/form_ed" />
 
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/title_league_delete"
+                        <androidx.appcompat.widget.AppCompatButton
+                            android:id="@+id/buttonDeletePlayer"
+                            style="@style/green_button_style"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginTop="24dp"
+                            android:layout_marginBottom="24dp"
+                            android:text="@string/delete_player" />
+                    </androidx.appcompat.widget.LinearLayoutCompat>
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/league_change_manager"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/instruction_gradient_title"
-                    android:paddingStart="@dimen/_19sdp"
-                    android:paddingTop="@dimen/_10sdp"
-                    android:paddingBottom="@dimen/_4sdp"
-                    android:text="@string/league_delete"
-                    android:textAlignment="viewStart"
-                    android:textColor="@color/white"
-                    android:textSize="@dimen/_16ssp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <androidx.appcompat.widget.AppCompatImageView
-                    android:id="@+id/img_league_delete"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="@dimen/_8sdp"
-                    app:layout_constraintBottom_toBottomOf="@id/title_league_delete"
-                    app:layout_constraintEnd_toEndOf="@id/title_league_delete"
-                    app:layout_constraintTop_toTopOf="@id/title_league_delete"
-                    app:srcCompat="@drawable/ic_navigate_next_black_24dp" />
-
-                <androidx.appcompat.widget.LinearLayoutCompat
-                    android:id="@+id/ll_league_delete"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/_16sdp"
-                    android:layout_marginTop="@dimen/_16sdp"
-                    android:layout_marginEnd="@dimen/_16sdp"
-                    android:orientation="vertical"
-                    android:visibility="gone"
-                    app:layout_constraintTop_toBottomOf="@id/title_league_delete">
+                    android:layout_marginBottom="8dp"
+                    android:background="?selectableItemBackground"
+                    android:clickable="true"
+                    android:focusable="true"
+                    app:layout_constraintTop_toTopOf="parent">
 
                     <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/title_league_change_manager"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:paddingBottom="@dimen/_20sdp"
-                        android:text="@string/info_delete_league" />
+                        android:background="@drawable/instruction_gradient_title"
+                        android:paddingStart="@dimen/_19sdp"
+                        android:paddingTop="@dimen/_10sdp"
+                        android:paddingBottom="@dimen/_4sdp"
+                        android:text="@string/league_change_manager"
+                        android:textAlignment="viewStart"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/_16ssp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
 
-                    <androidx.appcompat.widget.AppCompatButton
-                        android:id="@+id/buttonDeleteLeague"
-                        style="@style/green_button_style"
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/img_league_change_manager"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_marginTop="24dp"
-                        android:layout_marginBottom="24dp"
-                        android:text="@string/league_delete" />
-                </androidx.appcompat.widget.LinearLayoutCompat>
+                        android:layout_marginEnd="@dimen/_8sdp"
+                        app:layout_constraintBottom_toBottomOf="@id/title_league_change_manager"
+                        app:layout_constraintEnd_toEndOf="@id/title_league_change_manager"
+                        app:layout_constraintTop_toTopOf="@id/title_league_change_manager"
+                        app:srcCompat="@drawable/ic_navigate_next_black_24dp" />
 
-            </androidx.constraintlayout.widget.ConstraintLayout>
-        </androidx.appcompat.widget.LinearLayoutCompat>
-    </androidx.core.widget.NestedScrollView>
-</FrameLayout>
+                    <androidx.appcompat.widget.LinearLayoutCompat
+                        android:id="@+id/ll_league_change_manager"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_16sdp"
+                        android:layout_marginTop="@dimen/_16sdp"
+                        android:layout_marginEnd="@dimen/_16sdp"
+                        android:orientation="vertical"
+                        android:visibility="gone"
+                        app:layout_constraintTop_toBottomOf="@id/title_league_change_manager">
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:paddingBottom="@dimen/_20sdp"
+                            android:text="@string/info_change_manager" />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/tv_player_list_manager"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="8dp"
+                            android:layout_marginTop="16dp"
+                            android:layout_marginEnd="8dp"
+                            android:text="@string/player_list"
+                            android:textAlignment="viewStart"
+                            android:textColor="@color/colorPrimary"
+                            android:textSize="16sp" />
+
+                        <FrameLayout
+                            android:id="@+id/round_layout_change_manager"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="?selectableItemBackground"
+                            android:clickable="true"
+                            android:focusable="true">
+
+                            <androidx.appcompat.widget.AppCompatTextView
+                                android:id="@+id/roundEtChangeManager"
+                                style="@style/contactus_form"
+                                android:layout_marginTop="8dp"
+                                android:background="@null"
+                                android:drawableEnd="@drawable/ic_expand_more_primary_24dp"
+                                android:enabled="false"
+                                android:maxLines="1"
+                                android:padding="8dp"
+                                android:textColor="@color/colorPrimary" />
+                        </FrameLayout>
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:layout_marginStart="13dp"
+                            android:layout_marginEnd="13dp"
+                            android:background="@color/form_ed" />
+
+                        <androidx.appcompat.widget.AppCompatButton
+                            android:id="@+id/buttonChangeManager"
+                            style="@style/green_button_style"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginTop="24dp"
+                            android:layout_marginBottom="24dp"
+                            android:text="@string/change_manager" />
+                    </androidx.appcompat.widget.LinearLayoutCompat>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/league_delete"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:background="?selectableItemBackground"
+                    android:clickable="true"
+                    android:focusable="true"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/title_league_delete"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/instruction_gradient_title"
+                        android:paddingStart="@dimen/_19sdp"
+                        android:paddingTop="@dimen/_10sdp"
+                        android:paddingBottom="@dimen/_4sdp"
+                        android:text="@string/league_delete"
+                        android:textAlignment="viewStart"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/_16ssp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/img_league_delete"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="@dimen/_8sdp"
+                        app:layout_constraintBottom_toBottomOf="@id/title_league_delete"
+                        app:layout_constraintEnd_toEndOf="@id/title_league_delete"
+                        app:layout_constraintTop_toTopOf="@id/title_league_delete"
+                        app:srcCompat="@drawable/ic_navigate_next_black_24dp" />
+
+                    <androidx.appcompat.widget.LinearLayoutCompat
+                        android:id="@+id/ll_league_delete"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_16sdp"
+                        android:layout_marginTop="@dimen/_16sdp"
+                        android:layout_marginEnd="@dimen/_16sdp"
+                        android:orientation="vertical"
+                        android:visibility="gone"
+                        app:layout_constraintTop_toBottomOf="@id/title_league_delete">
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:paddingBottom="@dimen/_20sdp"
+                            android:text="@string/info_delete_league" />
+
+                        <androidx.appcompat.widget.AppCompatButton
+                            android:id="@+id/buttonDeleteLeague"
+                            style="@style/green_button_style"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginTop="24dp"
+                            android:layout_marginBottom="24dp"
+                            android:text="@string/league_delete" />
+                    </androidx.appcompat.widget.LinearLayoutCompat>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.appcompat.widget.LinearLayoutCompat>
+        </androidx.core.widget.NestedScrollView>
+    </FrameLayout>
+</layout>

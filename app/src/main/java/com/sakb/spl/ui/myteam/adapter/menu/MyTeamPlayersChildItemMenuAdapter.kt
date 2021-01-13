@@ -8,7 +8,6 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.sakb.spl.R
 import com.sakb.spl.data.model.MyteamPlayersResponse
-import kotlinx.android.synthetic.main.child_item_myteamplayers_recycler_menu.view.*
 
 class MyTeamPlayersChildItemMenuAdapter(
     // list of lineUp [1 - 4 - 4 - 2 - 4]
@@ -18,7 +17,7 @@ class MyTeamPlayersChildItemMenuAdapter(
     var onChangeClick: ((pos: Int, parentPosition: Int, MyteamPlayersResponse.Player) -> Unit)? = null,
     var onOpenProfileClicked: ((pos: Int, MyteamPlayersResponse.Player) -> Unit)? = null,
     var onResetClicked: ((pos: Int, parentPosition: Int, MyteamPlayersResponse.Player) -> Unit)?,
-    var onRestorePlayerClicked: ((pos: Int, parentPosition: Int, MyteamPlayersResponse.Player) -> Unit)? = null
+    var onRestorePlayerClicked: ((pos: Int, parentPosition: Int, MyteamPlayersResponse.Player) -> Unit)? = null,
 ) : RecyclerView.Adapter<MyTeamPlayersChildItemMenuAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -82,12 +81,12 @@ class MyTeamPlayersChildItemMenuAdapter(
 
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val textView: TextView = itemView.nameTv
-        val textViewCost: TextView = itemView.priceTv
-        val textViewPoints: TextView = itemView.pointTv
-        val textViewClub: TextView = itemView.clubTv
-        val imageViewCaptain: ImageView = itemView.captainIv
-        val imageViewViceCaptain: ImageView = itemView.viceIv
+        val textView: TextView = itemView.findViewById(R.id.nameTv)
+        val textViewCost: TextView = itemView.findViewById(R.id.priceTv)
+        val textViewPoints: TextView = itemView.findViewById(R.id.pointTv)
+        val textViewClub: TextView = itemView.findViewById(R.id.clubTv)
+        val imageViewCaptain: ImageView = itemView.findViewById(R.id.captainIv)
+        val imageViewViceCaptain: ImageView = itemView.findViewById(R.id.viceIv)
         //  val imageView: ImageView = itemView.ima
 
 

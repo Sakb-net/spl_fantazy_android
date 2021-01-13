@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.core.widget.NestedScrollView android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:fillViewport="true"
-    tools:context=".ui.login.LoginActivity"
-    xmlns:android="http://schemas.android.com/apk/res/android">
+<layout>
+
+    <androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        tools:context=".ui.login.LoginActivity">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -69,10 +71,10 @@
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/UserNameEt"
+                style="@style/TextLabel"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/_50sdp"
-                style="@style/TextLabel"
                 android:hint="@string/email_or_phone"
                 app:layout_constraintEnd_toStartOf="@+id/guideline10"
                 app:layout_constraintStart_toStartOf="@+id/guideline9"
@@ -82,20 +84,21 @@
                     android:id="@+id/UserNameEtt"
                     style="@style/formEditText"
                     android:fontFamily="@font/helvetica_reg"
-                    android:inputType="textPersonName" >
-                    <requestFocus/>
+                    android:inputType="textPersonName">
+
+                    <requestFocus />
                 </com.google.android.material.textfield.TextInputEditText>
 
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/PasswordEt"
+                style="@style/TextLabel"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/_18sdp"
-                android:imeOptions="actionDone"
-                style="@style/TextLabel"
                 android:hint="@string/password"
+                android:imeOptions="actionDone"
                 app:layout_constraintEnd_toStartOf="@+id/guideline10"
                 app:layout_constraintStart_toStartOf="@+id/guideline9"
                 app:layout_constraintTop_toBottomOf="@+id/UserNameEt"
@@ -248,3 +251,4 @@
             </androidx.appcompat.widget.LinearLayoutCompat>
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.core.widget.NestedScrollView>
+</layout>

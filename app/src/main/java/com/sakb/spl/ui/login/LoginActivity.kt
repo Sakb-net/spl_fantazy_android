@@ -12,13 +12,13 @@ import com.sakb.spl.R
 import com.sakb.spl.base.BaseActivity
 import com.sakb.spl.data.local.PrefManager
 import com.sakb.spl.data.model.LoginResponse
+import com.sakb.spl.databinding.ActivityLoginBinding
 import com.sakb.spl.ui.forgetpasswordwebview.ForgetPasswordWebViewActivity
 import com.sakb.spl.ui.main.MainActivity
 import com.sakb.spl.ui.register.RegisterActivity
 import com.sakb.spl.utils.ImageUtils
 import com.sakb.spl.utils.LanguageUtil
 import com.sakb.spl.utils.toast
-import kotlinx.android.synthetic.main.activity_login.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import timber.log.Timber
 
@@ -27,12 +27,14 @@ class LoginActivity : BaseActivity(), SocialMediaSignUpCallback {
     private lateinit var context: Context
 
     override val viewModel by viewModel<LoginViewModel>()
-
+    var _binding: ActivityLoginBinding? = null
+    private val binding get() = _binding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_login)
+        _binding = ActivityLoginBinding.inflate(layoutInflater)
+        setContentView(binding?.root)
         context = this
-        sign_up.setOnClickListener {
+        binding?.signUp?.setOnClickListener {
             startActivity(Intent(this, RegisterActivity::class.java))
         }
 
@@ -42,22 +44,22 @@ class LoginActivity : BaseActivity(), SocialMediaSignUpCallback {
         } else {
             ImageUtils.rotateImage(backIcon, 180f)
         }
-        back.setImageBitmap(backIcon)
-        back.setOnClickListener {
+        binding?.back?.setImageBitmap(backIcon)
+        binding?.back?.setOnClickListener {
             onBackPressed()
         }
-        tv_forgotPass.setOnClickListener {
+        binding?.tvForgotPass?.setOnClickListener {
             startActivity(Intent(this, ForgetPasswordWebViewActivity::class.java))
         }
 
-        buttonLogin.setOnClickListener {
-            val email = UserNameEtt.text.toString()
-            val pass = PasswordEtt.text.toString()
+        binding?.buttonLogin?.setOnClickListener {
+            val email = binding?.UserNameEtt?.text.toString()
+            val pass = binding?.PasswordEtt?.text.toString()
             viewModel.login(email, pass)
             // startActivity(Intent(this , MainActivity::class.java))
         }
 
-        fb_login.setOnClickListener {
+        binding?.fbLogin?.setOnClickListener {
             //toast(getString(R.string.soon))
             //return@setOnClickListener
             Timber.e("login with facebook!")
@@ -67,7 +69,7 @@ class LoginActivity : BaseActivity(), SocialMediaSignUpCallback {
 
         }
 
-        twitter_login.setOnClickListener {
+        binding?.twitterLogin?.setOnClickListener {
             toast(getString(R.string.soon))
             return@setOnClickListener
             /*
@@ -78,7 +80,7 @@ class LoginActivity : BaseActivity(), SocialMediaSignUpCallback {
             */
         }
 
-        google_login.setOnClickListener {
+        binding?.googleLogin?.setOnClickListener {
             //toast(getString(R.string.soon))
             //return@setOnClickListener
 

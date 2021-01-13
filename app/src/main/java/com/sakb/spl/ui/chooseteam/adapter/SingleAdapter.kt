@@ -32,7 +32,7 @@ class SingleAdapter(private var employees: MutableList<GetTeamResponse.Data?>?) 
     }
 
     override fun onBindViewHolder(@NonNull singleViewHolder: SingleViewHolder, position: Int) {
-        employees?.get(position)?.let { singleViewHolder.bind(it) }
+        employees?.get(position)?.let { singleViewHolder.bind(it, position) }
     }
 
     override fun getItemCount(): Int {
@@ -44,11 +44,11 @@ class SingleAdapter(private var employees: MutableList<GetTeamResponse.Data?>?) 
         private val textView: TextView = itemView.findViewById(R.id.textView)
         private val imageView: ImageView = itemView.findViewById(R.id.imageView)
 
-        fun bind(employee: GetTeamResponse.Data) {
+        fun bind(employee: GetTeamResponse.Data, position: Int) {
             if (checkedPosition == -1) {
                 imageView.setBackgroundResource(R.drawable.circle)
             } else {
-                if (checkedPosition == adapterPosition) {
+                if (checkedPosition == position) {
                     imageView.setBackgroundResource(R.drawable.circle_point)
                 } else {
                     imageView.setBackgroundResource(R.drawable.circle)
@@ -59,9 +59,9 @@ class SingleAdapter(private var employees: MutableList<GetTeamResponse.Data?>?) 
 
             itemView.setOnClickListener {
                 imageView.setBackgroundResource(R.drawable.circle_point)
-                if (checkedPosition != adapterPosition) {
+                if (checkedPosition != position) {
                     notifyItemChanged(checkedPosition)
-                    checkedPosition = adapterPosition
+                    checkedPosition = position
                     onItemClick?.invoke(adapterPosition, employee)
                 }
             }

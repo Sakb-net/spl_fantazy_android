@@ -75,8 +75,8 @@ object ConvertDateTimeUtils {
         return System.currentTimeMillis()
     }
 
-    fun getTimeAsDate(time: String?, oldFormat: String?, newFormat: String?): String? {
-        var time = time
+    fun getTimeAsDate(timeBefore: String?, oldFormat: String?, newFormat: String?): String? {
+        var time = timeBefore
         if (time == null || time.isEmpty()) return null
         val date: Date
         try {
@@ -90,8 +90,8 @@ object ConvertDateTimeUtils {
         return time
     }
 
-    fun getTimeAsDateEnglish(time: String?, oldFormat: String?, newFormat: String?): String? {
-        var time = time
+    fun getTimeAsDateEnglish(timeBefore: String?, oldFormat: String?, newFormat: String?): String? {
+        var time = timeBefore
         if (time == null || time.isEmpty()) return null
         val date: Date
         try {
@@ -112,11 +112,11 @@ object ConvertDateTimeUtils {
     }
 
     fun changeFormat(
-        time: String?,
+        timeBefore: String?,
         oldFormat: String?,
-        newFormat: String?
+        newFormat: String?,
     ): String? {
-        var time = time
+        var time = timeBefore
         if (time == null || time.isEmpty()) return null
         val date: Date
         try {

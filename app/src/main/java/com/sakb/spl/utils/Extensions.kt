@@ -8,13 +8,7 @@ import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.Toast
-import com.sakb.spl.R
-import kotlinx.android.synthetic.main.dialog_enter_name.view.*
-import kotlinx.android.synthetic.main.dialog_enter_range_price.view.*
-import kotlinx.android.synthetic.main.dialog_spl_delete_view.view.*
-import kotlinx.android.synthetic.main.dialog_spl_league_view.view.*
-import kotlinx.android.synthetic.main.dialog_spl_view.view.*
-import kotlinx.android.synthetic.main.dialog_view_log_out.view.*
+import com.sakb.spl.databinding.*
 import java.io.ByteArrayOutputStream
 
 fun Context.toast(text: String) {
@@ -29,30 +23,30 @@ fun Context.centerToast(text: String) {
 
 fun Context.showSplDialog(
     positive: (dialog: AlertDialog?) -> Unit,
-    negative: (dialog: AlertDialog?) -> Unit
+    negative: (dialog: AlertDialog?) -> Unit,
 ) {
-    val view = LayoutInflater.from(this).inflate(R.layout.dialog_spl_view, null)
-    val alertDialog = AlertDialog.Builder(this).setView(view).setCancelable(true)
+    val binding = DialogSplViewBinding.inflate(LayoutInflater.from(this), null, false)
+    val alertDialog = AlertDialog.Builder(this).setView(binding.root).setCancelable(true)
     val dialog = alertDialog.create()
     dialog.window?.setBackgroundDrawableResource(android.R.color.transparent)
-    view.playerDetailsBtn.setOnClickListener { positive(dialog) }
-    view.deletePlayerBtn.setOnClickListener { negative(dialog) }
+    binding.playerDetailsBtn.setOnClickListener { positive(dialog) }
+    binding.deletePlayerBtn.setOnClickListener { negative(dialog) }
     dialog.show()
 }
 
 fun Context.showSplDeleteDialog(
     playerProfileBtn: (dialog: AlertDialog?) -> Unit,
     restoreBtn: (dialog: AlertDialog?) -> Unit,
-    replaceBtn: (dialog: AlertDialog?) -> Unit
+    replaceBtn: (dialog: AlertDialog?) -> Unit,
 
-) {
-    val view = LayoutInflater.from(this).inflate(R.layout.dialog_spl_delete_view, null)
-    val alertDialog = AlertDialog.Builder(this).setView(view).setCancelable(true)
+    ) {
+    val binding = DialogSplDeleteViewBinding.inflate(LayoutInflater.from(this), null, false)
+    val alertDialog = AlertDialog.Builder(this).setView(binding.root).setCancelable(true)
     val dialog = alertDialog.create()
     dialog.window?.setBackgroundDrawableResource(android.R.color.transparent)
-    view.playerProfieBtn.setOnClickListener { playerProfileBtn(dialog) }
-    view.restorePlayerBtn.setOnClickListener { restoreBtn(dialog) }
-    view.replacePlayerBtn.setOnClickListener { replaceBtn(dialog) }
+    binding.playerProfieBtn.setOnClickListener { playerProfileBtn(dialog) }
+    binding.restorePlayerBtn.setOnClickListener { restoreBtn(dialog) }
+    binding.replacePlayerBtn.setOnClickListener { replaceBtn(dialog) }
     dialog.show()
 }
 
@@ -63,34 +57,34 @@ fun Context.showLeaguesSettingsDialog(
     managementBtn: (dialog: AlertDialog?, link: String) -> Unit,
     leaveBtn: (dialog: AlertDialog?, link: String) -> Unit,
 ) {
-    val view = LayoutInflater.from(this).inflate(R.layout.dialog_spl_league_view, null)
-    val alertDialog = AlertDialog.Builder(this).setView(view).setCancelable(true)
+    val binding = DialogSplLeagueViewBinding.inflate(LayoutInflater.from(this), null, false)
+    val alertDialog = AlertDialog.Builder(this).setView(binding.root).setCancelable(true)
     val dialog = alertDialog.create()
     dialog.window?.setBackgroundDrawableResource(android.R.color.transparent)
-    view.standingBtn.setOnClickListener { standingBtn(dialog, link) }
-    view.managementBtn.setOnClickListener { managementBtn(dialog, link) }
-    view.leaveBtn.setOnClickListener { leaveBtn(dialog, link) }
+    binding.standingBtn.setOnClickListener { standingBtn(dialog, link) }
+    binding.managementBtn.setOnClickListener { managementBtn(dialog, link) }
+    binding.leaveBtn.setOnClickListener { leaveBtn(dialog, link) }
     if (admin) {
-        view.managementBtn.visibility = View.VISIBLE
-        view.leaveBtn.visibility = View.GONE
+        binding.managementBtn.visibility = View.VISIBLE
+        binding.leaveBtn.visibility = View.GONE
     } else {
-        view.managementBtn.visibility = View.GONE
-        view.leaveBtn.visibility = View.VISIBLE
+        binding.managementBtn.visibility = View.GONE
+        binding.leaveBtn.visibility = View.VISIBLE
     }
     dialog.show()
 }
 
 fun Context.showEnterRangeDialog(positive: (dialog: AlertDialog?, priceFrom: String, priceTo: String) -> Unit) {
-    val view = LayoutInflater.from(this).inflate(R.layout.dialog_enter_range_price, null)
-    val alertDialog = AlertDialog.Builder(this).setView(view)
+    val binding = DialogEnterRangePriceBinding.inflate(LayoutInflater.from(this), null, false)
+    val alertDialog = AlertDialog.Builder(this).setView(binding.root)
         .setCancelable(true)
     val dialog = alertDialog.create()
     dialog.setCanceledOnTouchOutside(true)
     dialog.window?.setBackgroundDrawableResource(android.R.color.transparent)
-    view.positiveEnterRangeBtn.setOnClickListener {
+    binding.positiveEnterRangeBtn.setOnClickListener {
         positive(
-            dialog, view.enter_price_from.text.toString(),
-            view.enter_price_to.text.toString()
+            dialog, binding.enterPriceFrom.text.toString(),
+            binding.enterPriceTo.text.toString()
 
         )
     }
@@ -100,26 +94,29 @@ fun Context.showEnterRangeDialog(positive: (dialog: AlertDialog?, priceFrom: Str
 fun Context.showDialogLogOut(
     resID: String,
     positive: (dialog: AlertDialog?) -> Unit,
-    negative: (dialog: AlertDialog?) -> Unit
+    negative: (dialog: AlertDialog?) -> Unit,
 ) {
-    val view = LayoutInflater.from(this).inflate(R.layout.dialog_view_log_out, null)
-    val alertDialog = AlertDialog.Builder(this).setView(view).setCancelable(false)
+    val binding = DialogViewLogOutBinding.inflate(LayoutInflater.from(this), null, false)
+    val alertDialog = AlertDialog.Builder(this).setView(binding.root).setCancelable(false)
     val dialog = alertDialog.create()
     dialog.window?.setBackgroundDrawableResource(android.R.color.transparent)
-    view.dialogTextTitle.text = resID
-    view.positiveLogoutBtn.setOnClickListener { positive(dialog) }
-    view.negativeButton.setOnClickListener { negative(dialog) }
+    binding.dialogTextTitle.text = resID
+    binding.positiveLogoutBtn.setOnClickListener { positive(dialog) }
+    binding.negativeButton.setOnClickListener { negative(dialog) }
     dialog.show()
 }
 
 fun Context.showEnterTeamNameDialog(positive: (dialog: AlertDialog?, name: String) -> Unit) {
-    val view = LayoutInflater.from(this).inflate(R.layout.dialog_enter_name, null)
-    val alertDialog = AlertDialog.Builder(this).setView(view)
+    val binding = DialogEnterNameBinding.inflate(LayoutInflater.from(this), null, false)
+    val alertDialog = AlertDialog.Builder(this).setView(binding.root)
         .setCancelable(true)
     val dialog = alertDialog.create()
     dialog.setCanceledOnTouchOutside(true)
     dialog.window?.setBackgroundDrawableResource(android.R.color.transparent)
-    view.positiveEnterBtn.setOnClickListener { positive(dialog, view.enter_et.text.toString()) }
+    binding.positiveEnterBtn.setOnClickListener {
+        positive(dialog,
+            binding.enterEt.text.toString())
+    }
     dialog.show()
 }
 

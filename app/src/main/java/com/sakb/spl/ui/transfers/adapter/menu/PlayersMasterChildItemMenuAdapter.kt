@@ -11,7 +11,6 @@ import com.sakb.spl.data.model.PlayerMasterResponse
 import com.sakb.spl.ui.addplayer.AddPlayerActivity
 import com.sakb.spl.utils.showSplDeleteDialog
 import com.sakb.spl.utils.showSplDialog
-import kotlinx.android.synthetic.main.transfers_child_item_team_master_recycler_menu.view.*
 
 class PlayersMasterChildItemMenuAdapter(
     // list of lineUp [1 - 4 - 4 - 2 - 4]
@@ -66,10 +65,10 @@ class PlayersMasterChildItemMenuAdapter(
 
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val textView: TextView = itemView.nameTv
-        val textViewCost: TextView = itemView.priceTv
-        val textViewPoints: TextView = itemView.pointTv
-        val textViewClub: TextView = itemView.clubTv
+        val textView: TextView = itemView.findViewById(R.id.nameTv)
+        val textViewCost: TextView = itemView.findViewById(R.id.priceTv)
+        val textViewPoints: TextView = itemView.findViewById(R.id.pointTv)
+        val textViewClub: TextView = itemView.findViewById(R.id.clubTv)
         //  val imageView: ImageView = itemView.ima
 
 

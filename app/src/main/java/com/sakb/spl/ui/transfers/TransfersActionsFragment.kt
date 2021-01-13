@@ -15,12 +15,12 @@ import com.sakb.spl.base.BaseFragment
 import com.sakb.spl.data.model.ArrayPlayerRequest
 import com.sakb.spl.data.model.PlayerResponse
 import com.sakb.spl.data.model.PlayersSubtitle
+import com.sakb.spl.databinding.FragmentTransfersActionsBinding
 import com.sakb.spl.ui.home.HomeFragment
 import com.sakb.spl.ui.transfers.TransfersFragment.Companion.PLAYER_SUB
 import com.sakb.spl.ui.transfers.adapter.PlayerInOutAdapter
 import com.sakb.spl.utils.LanguageUtil
 import com.sakb.spl.utils.showWarningDialog
-import kotlinx.android.synthetic.main.fragment_transfers_actions.*
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 
 
@@ -40,7 +40,8 @@ class TransfersActionsFragment : BaseFragment() {
 
     var arrayPlayer = ArrayList<ArrayPlayerRequest>()
     var arrayPlayerString: String = ""
-
+    private var _binding: FragmentTransfersActionsBinding? = null
+    private val binding get() = _binding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
     }
@@ -50,7 +51,8 @@ class TransfersActionsFragment : BaseFragment() {
         savedInstanceState: Bundle?,
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_transfers_actions, container, false)
+        _binding = FragmentTransfersActionsBinding.inflate(inflater, container, false)
+        return binding?.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -62,7 +64,7 @@ class TransfersActionsFragment : BaseFragment() {
             playerInDataList,
             playerOuDatatList
         )
-        rvPlayer.adapter = playerInOutAdapter
+        binding?.rvPlayer?.adapter = playerInOutAdapter
 
         players?.let { list ->
             list.forEach { player ->
@@ -86,7 +88,7 @@ class TransfersActionsFragment : BaseFragment() {
             playerInOutAdapter.updateOut(it)
         })
 
-        tv_info.text =
+        binding?.tvInfo?.text =
             "${getString(R.string.you_are_used)} ${HomeFragment.transfersData.transferFree} ${
                 getString(
                     R.string.free_trans
@@ -141,10 +143,10 @@ class TransfersActionsFragment : BaseFragment() {
             findNavController().popBackStack(R.id.transfersActionFragment, true)
             //activity?.supportFragmentManager?.popBackStack()
         })
-        buttonGoldCard.setOnClickListener {
+        binding?.buttonGoldCard?.setOnClickListener {
             openGoldCardDialog()
         }
-        buttonSilverCard.setOnClickListener {
+        binding?.buttonSilverCard?.setOnClickListener {
             if (grayCardStatus == "0") {
                 openSilverCardDialog()
             } else if (grayCardStatus == "1") {
@@ -156,11 +158,11 @@ class TransfersActionsFragment : BaseFragment() {
             }
 
         }
-        cancel_button.setOnClickListener {
+        binding?.cancelButton?.setOnClickListener {
             findNavController().popBackStack(R.id.transfersActionFragment, true)
             //activity?.supportFragmentManager?.popBackStack()
         }
-        confirm_button.setOnClickListener {
+        binding?.confirmButton?.setOnClickListener {
             arrayPlayerString = callList(players)
             if (grayCardStatus == "0")
                 viewModel.getSubDefault(arrayPlayer = arrayPlayerString, activeCardGray = "")

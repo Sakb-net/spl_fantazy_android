@@ -11,11 +11,10 @@ import androidx.recyclerview.widget.RecyclerView
 import com.sakb.spl.R
 import com.sakb.spl.data.model.PlayerMasterResponse
 import com.sakb.spl.utils.DividerItemDecorationNoLast
-import kotlinx.android.synthetic.main.parent_item_team_master_recycler_menu.view.*
 
 
 class MyTeamPlayersMasterMenuAdapter(
-    private var parents: List<List<PlayerMasterResponse.Data>?>
+    private var parents: List<List<PlayerMasterResponse.Data>?>,
 ) : RecyclerView.Adapter<MyTeamPlayersMasterMenuAdapter.ViewHolder>() {
 
     var onItemDeleteClick: ((pos: Int, parentPosition: Int, PlayerMasterResponse.Data) -> Unit)? =
@@ -39,12 +38,11 @@ class MyTeamPlayersMasterMenuAdapter(
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val parent = parents[position]
-
         holder.recyclerView.apply {
             // layoutManager = LinearLayoutManager(holder.recyclerView
             // .context, LinearLayout.HORIZONTAL, false)
-            parents[position]?.let {
-                if (it.size > 0) {
+            parent?.let {
+                if (it.isNotEmpty()) {
                     when (position) {
                         0 -> holder.header.setBackgroundColor(
                             ContextCompat.getColor(
@@ -98,9 +96,9 @@ class MyTeamPlayersMasterMenuAdapter(
 
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val recyclerView: RecyclerView = itemView.rv_child
-        val type: TextView = itemView.nameTv
-        val header: LinearLayoutCompat = itemView.header
+        val recyclerView: RecyclerView = itemView.findViewById(R.id.rv_child)
+        val type: TextView = itemView.findViewById(R.id.nameTv)
+        val header: LinearLayoutCompat = itemView.findViewById(R.id.header)
 
         init {
             recyclerView.addItemDecoration(

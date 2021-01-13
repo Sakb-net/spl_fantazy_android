@@ -1,18 +1,12 @@
 package com.sakb.spl.base
 
-import android.content.Context
 import android.content.Intent
-import android.content.res.Configuration
 import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import com.sakb.spl.R
 import com.sakb.spl.utils.Dialogs
-import com.sakb.spl.utils.LocaleManager
 import com.sakb.spl.utils.Snacky
 import com.zeugmasolutions.localehelper.LocaleAwareCompatActivity
-import com.zeugmasolutions.localehelper.LocaleHelperActivityDelegateImpl
-import java.util.*
 
 
 abstract class BaseActivity : LocaleAwareCompatActivity() {

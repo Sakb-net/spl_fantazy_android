@@ -110,7 +110,7 @@ class CreateHeadToHeadLeagueFragment : BaseFragment() {
             requireContext(), R.layout.item_check_list, options
         )
 
-        var selectedItem = -1
+        var selectedItem: Int
         builder?.setTitle(getString(R.string.select_round))
         builder?.setSingleChoiceItems(
             adapter, -1
@@ -235,9 +235,9 @@ class CreateHeadToHeadLeagueFragment : BaseFragment() {
 
 
     private fun openConfirmationDialog(data: DataCreateLeague) {
-        context?.showSuccessDialog(
+        val showSuccessDialog = context?.showSuccessDialog(
             data,
-            copy = { dialog, code ->
+            copy = { _, code ->
                 val sdk = Build.VERSION.SDK_INT
                 if (sdk < Build.VERSION_CODES.HONEYCOMB) {
                     val clipboard =
@@ -250,7 +250,7 @@ class CreateHeadToHeadLeagueFragment : BaseFragment() {
                     clipboard?.setPrimaryClip(clip)
                 }
             },
-            share = { dialog, url ->
+            share = { _, _ ->
 //                val sendIntent: Intent = Intent().apply {
 //                    action = Intent.ACTION_SEND
 //                    putExtra(Intent.EXTRA_TEXT, url)

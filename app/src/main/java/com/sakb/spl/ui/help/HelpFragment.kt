@@ -50,8 +50,8 @@ class HelpFragment : BaseFragment() {
         binding.recyclerView.itemAnimator = null
         binding.recyclerView.layoutManager =
             LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
-        adapter.onClickListener = { position, contentRole ->
-            Timber.e("pos is======== " + position)
+        adapter.onClickListener = { position, _ ->
+            Timber.e("pos is======== %s", position)
             viewModel.updateColapseState(position)
         }
         loadInstructionsStatuesObserver()

@@ -16,12 +16,11 @@ import com.sakb.spl.databinding.FragmentMyPointsBinding
 import com.sakb.spl.ui.mypoints.adapters.MyPointSwapPlayersItemAdapter
 import com.sakb.spl.ui.mypoints.adapters.MyPointsPlayersAdapter
 import com.sakb.spl.ui.mypoints.menu.MyPointPlayersMenuAdapter
-import kotlinx.android.synthetic.main.fragment_my_points.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
 class MyPointsFragment : BaseFragment() {
-    private lateinit var binding :FragmentMyPointsBinding
+    private lateinit var binding: FragmentMyPointsBinding
     override val viewModel by viewModel<MyPointsViewModel>()
 
     private lateinit var adapter: MyPointsPlayersAdapter
@@ -31,7 +30,7 @@ class MyPointsFragment : BaseFragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
+        savedInstanceState: Bundle?,
     ): View? {
         // Inflate the layout for this fragment
         binding = FragmentMyPointsBinding.inflate(inflater, container, false)
@@ -60,7 +59,7 @@ class MyPointsFragment : BaseFragment() {
     }
 
     private fun initListeners(getPointSubeldawryResponse: GetPointSubeldawryResponse?) {
-        binding.menuBtn.setOnClickListener{
+        binding.menuBtn.setOnClickListener {
             binding.menuBtn.backgroundTintList = ContextCompat.getColorStateList(
                 requireContext(),
                 R.color.colorGreenDark
@@ -131,21 +130,22 @@ class MyPointsFragment : BaseFragment() {
             binding.rvParent.adapter = adapter
 
             binding.swapBg.visibility = View.VISIBLE
-            binding.rvSwapList.adapter = getPointSubeldawryResponse?.playerMaster?.get(4)?.let { listInside ->
-                MyPointSwapPlayersItemAdapter(
-                    listInside,
-                    4)
-            }
+            binding.rvSwapList.adapter =
+                getPointSubeldawryResponse?.playerMaster?.get(4)?.let { listInside ->
+                    MyPointSwapPlayersItemAdapter(
+                        listInside,
+                        4)
+                }
         }
     }
 
     private fun updateUi(getPointSubeldawryResponse: GetPointSubeldawryResponse) {
-        if(getPointSubeldawryResponse.playerMaster?.isNullOrEmpty()==true){
-            buttons_linear_layout.visibility = View.GONE
-            nested_container.visibility = View.GONE
-        }else {
-            buttons_linear_layout.visibility = View.VISIBLE
-            nested_container.visibility = View.VISIBLE
+        if (getPointSubeldawryResponse.playerMaster?.isNullOrEmpty() == true) {
+            binding.buttonsLinearLayout.visibility = View.GONE
+            binding.nestedContainer.visibility = View.GONE
+        } else {
+            binding.buttonsLinearLayout.visibility = View.VISIBLE
+            binding.nestedContainer.visibility = View.VISIBLE
             getPointSubeldawryResponse.data?.let {
                 if (it.benchCard == 0) {
                     binding.cardTv.visibility = View.GONE
@@ -200,7 +200,7 @@ class MyPointsFragment : BaseFragment() {
                         val _adapter = MyPointPlayersMenuAdapter(it)
                         binding.rvParent.adapter = _adapter
                     }
-                } else{
+                } else {
                     binding.stadIv.setImageResource(R.drawable.pitch)
 
                     it.let {
@@ -218,11 +218,11 @@ class MyPointsFragment : BaseFragment() {
     }
 
     private fun updateUIPoints(item: DataItemPoints) {
-            binding.totalPointsText.text = item.finalPoint.toString()
-            binding.avargeTv.text = item.avgPoint.toString()
-            binding.heighestTv.text = item.heighPoint.toString()
-            binding.rankTv.text = item.sortGwla.toString()
-            binding.transferTv.text = item.transfer.toString()
+        binding.totalPointsText.text = item.finalPoint.toString()
+        binding.avargeTv.text = item.avgPoint.toString()
+        binding.heighestTv.text = item.heighPoint.toString()
+        binding.rankTv.text = item.sortGwla.toString()
+        binding.transferTv.text = item.transfer.toString()
     }
 
     private fun initDialogRounds() {
@@ -237,7 +237,7 @@ class MyPointsFragment : BaseFragment() {
             requireContext(), R.layout.item_check_list, options
         )
 
-        var selectedItem = -1
+        var selectedItem: Int
         builder?.setTitle(getString(R.string.select_round))
         builder?.setSingleChoiceItems(
             adapter, -1
@@ -245,7 +245,7 @@ class MyPointsFragment : BaseFragment() {
             selectedItem = item
             binding.bannerTextView.text = options[selectedItem]
             updateUIPoints(option[selectedItem])
-            option[selectedItem].link?.let { link->
+            option[selectedItem].link?.let { link ->
                 callPlayerSubeldawry(link)
             }
             dialogInterface.dismiss()
@@ -253,13 +253,13 @@ class MyPointsFragment : BaseFragment() {
 
         binding.bannerTextView.text = options[0]
         updateUIPoints(option[0])
-        option[0].link?.let { link->
+        option[0].link?.let { link ->
             callPlayerSubeldawry(link)
         }
         builder?.create()
     }
 
-    fun  callPlayerSubeldawry(link:String){
+    fun callPlayerSubeldawry(link: String) {
         viewModel.loadPointsSubeldwry(link)
     }
 }

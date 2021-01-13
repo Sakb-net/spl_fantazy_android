@@ -80,7 +80,7 @@ class MatchDetailsFragment : BaseFragment() {
                     binding.goalsTv.visibility = View.VISIBLE
                     binding.llGoals.visibility = View.VISIBLE
                 }
-                goals.firstTeam?.let { firstTeam ->
+                goals.firstTeam.let { firstTeam ->
                     var txt = ""
                     firstTeam.forEach { goal ->
                         txt = txt + goal?.playerName?.plus(" (").plus(goal?.value)
@@ -106,7 +106,7 @@ class MatchDetailsFragment : BaseFragment() {
                     binding.assistTv.visibility = View.VISIBLE
                     binding.llAssist.visibility = View.VISIBLE
                 }
-                assist.firstTeam?.let { firstTeam ->
+                assist.firstTeam.let { firstTeam ->
                     var txt = ""
                     firstTeam.forEach { goal ->
                         txt = txt + goal?.playerName?.plus(" (").plus(goal?.value)
@@ -131,7 +131,7 @@ class MatchDetailsFragment : BaseFragment() {
                     binding.concededTv.visibility = View.VISIBLE
                     binding.llConceded.visibility = View.VISIBLE
                 }
-                conceded.firstTeam?.let { firstTeam ->
+                conceded.firstTeam.let { firstTeam ->
                     var txt = ""
                     firstTeam.forEach { goal ->
                         txt = txt + goal?.playerName?.plus(" (").plus(goal?.value)

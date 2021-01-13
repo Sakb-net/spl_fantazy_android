@@ -2,25 +2,28 @@ package com.sakb.spl.utils
 
 import android.content.Context
 import android.os.Bundle
+import android.view.LayoutInflater
 import android.view.View
 import androidx.appcompat.app.AlertDialog
-import com.sakb.spl.R
-import kotlinx.android.synthetic.main.dialog_no_internet_connection.*
+import com.sakb.spl.databinding.DialogNoInternetConnectionBinding
 
 class NoInternetConnectionDialog(
     context: Context,
-    private val callback: NoInternetDialogCallback?
+    private val callback: NoInternetDialogCallback?,
 ) : AlertDialog(context) {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.dialog_no_internet_connection)
-        btnRetry.setOnClickListener {
+        val binding =
+            DialogNoInternetConnectionBinding.inflate(LayoutInflater.from(context), null, false)
+
+        setContentView(binding.root)
+        binding.btnRetry.setOnClickListener {
             callback?.retry()
             dismiss()
         }
-        if (callback == null) btnRetry.visibility = View.INVISIBLE
-        else btnRetry.visibility = View.VISIBLE
+        if (callback == null) binding.btnRetry.visibility = View.INVISIBLE
+        else binding.btnRetry.visibility = View.VISIBLE
     }
 
     interface NoInternetDialogCallback {

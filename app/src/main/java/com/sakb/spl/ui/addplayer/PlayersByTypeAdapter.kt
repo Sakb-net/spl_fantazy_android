@@ -7,7 +7,9 @@ import android.view.ViewGroup
 import androidx.annotation.NonNull
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.sakb.spl.R
+import com.sakb.spl.constants.Constants
 import com.sakb.spl.data.model.PlayerByTypeResponse
 import com.sakb.spl.databinding.ListItemPlayerByTypeBinding
 import com.sakb.spl.ui.playerprofile.PlayerProfileActivity
@@ -48,7 +50,7 @@ class PlayersByTypeAdapter(
 
         init {
             binding.addPlayerBtn.setOnClickListener {
-                Timber.e("clicked!!=========" + adapterPosition)
+                Timber.e("clicked!!=========%s", adapterPosition)
                 onItemClick?.invoke(adapterPosition, players!![adapterPosition])
             }
         }
@@ -56,6 +58,10 @@ class PlayersByTypeAdapter(
         fun bind(player: PlayerByTypeResponse.PlayersGroup) {
             binding.nameTv.text = player.name
             binding.clubTv.text = player.team?.plus(" - ")?.plus(player.type_player)
+            Glide.with(context)
+                .load(Constants.baseUrl + player.image)
+                .override(39)
+                .into(binding.playerIv)
             binding.priceTv.text = player.cost.toString()
             binding.pointTv.text = player.point.toString()
             itemView.setOnClickListener {

@@ -12,7 +12,7 @@ class StandingHeadToHeadSpinnerAdapter(
     ArrayAdapter<Any>(
         theContext.requireContext(),
         theLayoutResId,
-        (objects as List<DataItemSubGroup>?)!!
+        (objects as List<DataItemSubGroup?>)
     ) {
 
     override fun getItem(position: Int): String {

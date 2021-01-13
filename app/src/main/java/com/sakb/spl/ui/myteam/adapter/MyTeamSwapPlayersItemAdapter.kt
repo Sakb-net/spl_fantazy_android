@@ -12,16 +12,15 @@ import com.bumptech.glide.Glide
 import com.sakb.spl.R
 import com.sakb.spl.constants.Constants
 import com.sakb.spl.data.model.MyteamPlayersResponse
-import kotlinx.android.synthetic.main.child_item_myteam_recycler.view.*
 import timber.log.Timber
 
 class MyTeamSwapPlayersItemAdapter(
     // list of lineUp [1 - 4 - 4 - 2 - 4]
     private val children: List<MyteamPlayersResponse.Player>,
     val parentPositions: Int = -1,
-    var onItemClicked: ((pos: Int, parentPosition: Int, MyteamPlayersResponse.Player) -> Unit)? = null
+    var onItemClicked: ((pos: Int, parentPosition: Int, MyteamPlayersResponse.Player) -> Unit)? = null,
 
-) : RecyclerView.Adapter<MyTeamSwapPlayersItemAdapter.ViewHolder>() {
+    ) : RecyclerView.Adapter<MyTeamSwapPlayersItemAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val v = LayoutInflater.from(parent.context)
@@ -87,11 +86,11 @@ class MyTeamSwapPlayersItemAdapter(
 
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val container: ConstraintLayout = itemView.container
-        val textView: TextView = itemView.child_textView
-        val textViewCost: TextView = itemView.child_cost_textView
-        val imageView: ImageView = itemView.child_imageView
-        val textViewType: TextView = itemView.type
+        val container: ConstraintLayout = itemView.findViewById(R.id.container)
+        val textView: TextView = itemView.findViewById(R.id.child_textView)
+        val textViewCost: TextView = itemView.findViewById(R.id.child_cost_textView)
+        val imageView: ImageView = itemView.findViewById(R.id.child_imageView)
+        val textViewType: TextView = itemView.findViewById(R.id.type)
 
         init {
             itemView.setOnClickListener {

@@ -5,7 +5,6 @@ import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.widget.RelativeLayout
 import com.sakb.spl.R
-import kotlinx.android.synthetic.main.view_empty.view.*
 
 /**
  * Widget used to display an empty state to the user
@@ -29,7 +28,7 @@ class EmptyView : RelativeLayout {
 
     private fun init() {
         LayoutInflater.from(context).inflate(R.layout.view_empty, this)
-        button_check_again.setOnClickListener { emptyListener?.onCheckAgainClicked() }
+        //button_check_again.setOnClickListener { emptyListener?.onCheckAgainClicked() }
     }
 
 }

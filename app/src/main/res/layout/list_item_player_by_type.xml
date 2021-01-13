@@ -15,6 +15,7 @@
         android:paddingBottom="12dp">
 
         <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/player_status"
             android:layout_width="20dp"
             android:layout_height="20dp"
             android:layout_gravity="center"
@@ -22,6 +23,13 @@
             android:layout_marginEnd="8dp"
             app:srcCompat="@drawable/ic_info" />
 
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/player_iv"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_gravity="center"
+            android:layout_marginEnd="8dp"
+            app:srcCompat="@drawable/ic_info" />
         <androidx.appcompat.widget.LinearLayoutCompat
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

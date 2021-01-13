@@ -20,7 +20,6 @@ import com.sakb.spl.ui.chooseteamplayers.adapter.menu.MyTeamPlayersMasterMenuAda
 import com.sakb.spl.ui.playerprofile.PlayerProfileActivity
 import com.sakb.spl.utils.showEnterTeamNameDialog
 import com.sakb.spl.utils.toast
-import kotlinx.android.synthetic.main.choose_team_players_fragment.*
 import org.greenrobot.eventbus.EventBus
 import org.greenrobot.eventbus.Subscribe
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -93,14 +92,6 @@ class ChooseTeamPlayersFragment : BaseFragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-//        binding.menu.setOnClickListener {
-//            (activity as MainActivity).binding.drawerLayout.openDrawer(GravityCompat.START)
-//        }
-//        viewModel = ViewModelProviders.of(this, viewModelFactory)
-//            .get(ChooseTeamPlayersViewModel::class.java)
-
-        //val user = PrefManager.getUser()
-        //val lang = PrefManager.getLanguage()
 
         viewModel.loadMyTeamPlayers()
 
@@ -184,7 +175,7 @@ class ChooseTeamPlayersFragment : BaseFragment() {
 
 
                     }
-                    rv_parent.adapter = _adapter
+                    binding.rvParent.adapter = _adapter
                 }
             }
 
@@ -240,7 +231,7 @@ class ChooseTeamPlayersFragment : BaseFragment() {
 
                     }
 
-                    rv_parent.adapter = adapter
+                    binding.rvParent.adapter = adapter
                 }
             }
 
@@ -284,7 +275,7 @@ class ChooseTeamPlayersFragment : BaseFragment() {
 
 
                     }
-                    rv_parent.adapter = _adapter
+                    binding.rvParent.adapter = _adapter
                 }
             } else {
                 binding.stadIv.setImageResource(R.drawable.pitch)
@@ -311,7 +302,7 @@ class ChooseTeamPlayersFragment : BaseFragment() {
                         }
 
                     }
-                    rv_parent.adapter = adapter
+                    binding.rvParent.adapter = adapter
                 }
             }
 

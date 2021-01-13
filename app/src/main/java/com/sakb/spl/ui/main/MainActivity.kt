@@ -120,7 +120,7 @@ class MainActivity : BaseActivity() {
                 val checkoutId = CHECKOUT_ID
                 if (transaction?.transactionType === TransactionType.SYNC) {
                     /* check the result of synchronous transaction */
-                    viewModel.confirmGoldInfo(resourcePath ?: "", checkoutId ?: "")
+                    viewModel.confirmGoldInfo(resourcePath ?: "", checkoutId)
                 } else {
                     /* wait for the asynchronous transaction callback in the onNewIntent() */
                     val paymentBrands: MutableSet<String> = LinkedHashSet()
@@ -147,10 +147,12 @@ class MainActivity : BaseActivity() {
             }
             CheckoutActivity.RESULT_ERROR -> {
                 /* error occurred */
-                var error: PaymentError? =
+                val error: PaymentError? =
                     data?.getParcelableExtra(CheckoutActivity.CHECKOUT_RESULT_ERROR)
                 Log.d("TAG",
-                    "Msg: ${error?.errorMessage.toString()} \n Code: ${error?.errorCode.toString()} \n Info: ${error?.errorInfo.toString()}")
+                    "Msg: ${error?.errorMessage.toString()} \n" +
+                            " Code: ${error?.errorCode.toString()} \n " +
+                            "Info: ${error?.errorInfo.toString()}")
             }
         }
     }

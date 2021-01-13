@@ -27,7 +27,7 @@ class JoinToPowerfulLeagueFragment : BaseFragment() {
 
     private val adapter by lazy {
         PowerfulLeagueAdapter().apply {
-            onClickListener = { position, powerfulLeagueUIModel ->
+            onClickListener = { _, powerfulLeagueUIModel ->
                 context?.joinNowDialog(R.drawable.ic_league_cup,
                     title = powerfulLeagueUIModel.name ?: "",
                     contentResID = R.string.content_join,

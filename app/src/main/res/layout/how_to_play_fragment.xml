@@ -1,24 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<layout>
 
-    <FrameLayout
-        android:id="@+id/custom_ttolbar"
+    <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent">
 
-        <androidx.appcompat.widget.AppCompatImageView
+        <FrameLayout
+            android:id="@+id/custom_ttolbar"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/header_bg"
-            android:scaleType="centerCrop" />
+            android:layout_height="wrap_content">
 
-    </FrameLayout>
+            <androidx.appcompat.widget.AppCompatImageView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/header_bg"
+                android:scaleType="centerCrop" />
 
-    <androidx.appcompat.widget.LinearLayoutCompat
+        </FrameLayout>
+
+        <androidx.appcompat.widget.LinearLayoutCompat
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
@@ -52,3 +54,4 @@
         </androidx.appcompat.widget.LinearLayoutCompat>
 
     </FrameLayout>
+</layout>

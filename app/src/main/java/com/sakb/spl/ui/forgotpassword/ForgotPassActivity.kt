@@ -4,10 +4,9 @@ import android.app.Dialog
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import com.sakb.spl.R
 import com.sakb.spl.base.BaseActivity
+import com.sakb.spl.databinding.ActivityForgotPassBinding
 import com.sakb.spl.ui.newpass.CreatePassActivity
-import kotlinx.android.synthetic.main.activity_forgot_pass.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
@@ -16,16 +15,18 @@ class ForgotPassActivity : BaseActivity() {
     private lateinit var context: Context
     private lateinit var dialog: Dialog
     override val viewModel by viewModel<ForgotPassViewModel>()
-
+    var _binding: ActivityForgotPassBinding? = null
+    private val binding get() = _binding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_forgot_pass)
+        _binding = ActivityForgotPassBinding.inflate(layoutInflater)
+        setContentView(binding?.root)
         context = this
 
-        back.setOnClickListener {
+        binding?.back?.setOnClickListener {
             onBackPressed()
         }
-        buttonSend.setOnClickListener {
+        binding?.buttonSend?.setOnClickListener {
             startActivity(Intent(this, CreatePassActivity::class.java))
         }
     }

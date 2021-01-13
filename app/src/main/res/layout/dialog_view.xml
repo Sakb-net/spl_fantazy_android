@@ -1,86 +1,89 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+<layout>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="300dp"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
-        android:maxWidth="300dp"
-        android:orientation="vertical"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
-        <View
-            android:id="@+id/divider11"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_marginTop="32dp"
-            android:background="@drawable/dialog_background"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.2"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/dialogText"
-            android:layout_width="0dp"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="300dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="16dp"
-            android:layout_marginBottom="16dp"
-            android:gravity="center"
-            android:textColor="@color/black"
-            android:textSize="14sp"
-            app:layout_constraintBottom_toTopOf="@+id/positiveBtn"
-            app:layout_constraintEnd_toEndOf="@+id/divider11"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="@+id/divider11"
-            app:layout_constraintTop_toBottomOf="@+id/dialogIcon"
-            app:layout_constraintVertical_chainStyle="packed"
-            tools:text="hello man how are you you can test this hello man how are you you can test this" />
-
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/positiveBtn"
-            android:layout_width="wrap_content"
-            android:layout_height="35dp"
+            android:layout_gravity="center_horizontal"
             android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
             android:layout_marginBottom="8dp"
-            android:background="@drawable/rectangle_accent_dialog"
-            android:gravity="center"
-            android:paddingStart="24dp"
-            android:paddingEnd="24dp"
-            android:text="@string/ok"
-            android:textColor="@color/white"
+            android:maxWidth="300dp"
+            android:orientation="vertical"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/dialogText" />
+            app:layout_constraintTop_toTopOf="parent">
 
-        <androidx.appcompat.widget.AppCompatImageView
-            android:id="@+id/dialogIcon"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:elevation="7dp"
-            app:layout_constraintBottom_toTopOf="@+id/divider11"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/divider11"
-            app:layout_constraintVertical_bias="0.277"
-            app:srcCompat="@drawable/dialog_info" />
+            <View
+                android:id="@+id/divider11"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginTop="32dp"
+                android:background="@drawable/dialog_background"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.2"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/dialogText"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginBottom="16dp"
+                android:gravity="center"
+                android:textColor="@color/black"
+                android:textSize="14sp"
+                app:layout_constraintBottom_toTopOf="@+id/positiveBtn"
+                app:layout_constraintEnd_toEndOf="@+id/divider11"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/divider11"
+                app:layout_constraintTop_toBottomOf="@+id/dialogIcon"
+                app:layout_constraintVertical_chainStyle="packed"
+                tools:text="hello man how are you you can test this hello man how are you you can test this" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/positiveBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="35dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginBottom="8dp"
+                android:background="@drawable/rectangle_accent_dialog"
+                android:gravity="center"
+                android:paddingStart="24dp"
+                android:paddingEnd="24dp"
+                android:text="@string/ok"
+                android:textColor="@color/white"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/dialogText" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/dialogIcon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:elevation="7dp"
+                app:layout_constraintBottom_toTopOf="@+id/divider11"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/divider11"
+                app:layout_constraintVertical_bias="0.277"
+                app:srcCompat="@drawable/dialog_info" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
-</androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

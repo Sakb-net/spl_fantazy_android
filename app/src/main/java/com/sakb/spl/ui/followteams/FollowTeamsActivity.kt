@@ -9,11 +9,11 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.sakb.spl.R
 import com.sakb.spl.base.BaseActivity
 import com.sakb.spl.data.model.GetTeamResponse
+import com.sakb.spl.databinding.ActivityFollowTeamsBinding
 import com.sakb.spl.ui.chooseteam.ChooseFavTeamActivity.Companion.TEAM_LINK
 import com.sakb.spl.ui.chooseteam.ChooseFavTeamActivity.Companion.TEAM_NAME
 import com.sakb.spl.ui.followteams.FollowTeamFragment.Companion.TEAMS
 import com.sakb.spl.ui.followteams.adapter.MultiAdapter
-import kotlinx.android.synthetic.main.activity_follow_teams.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import timber.log.Timber
 
@@ -30,10 +30,12 @@ class FollowTeamsActivity : BaseActivity() {
     }
 
     var teams: ArrayList<GetTeamResponse.Data?>? = ArrayList()
-
+    private var _binding: ActivityFollowTeamsBinding? = null
+    private val binding get() = _binding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_follow_teams)
+        _binding = ActivityFollowTeamsBinding.inflate(layoutInflater)
+        setContentView(binding?.root)
 
         val window = window
         val winParams = window.attributes
@@ -44,7 +46,7 @@ class FollowTeamsActivity : BaseActivity() {
             View.SYSTEM_UI_FLAG_LAYOUT_STABLE or View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
 
 
-        recyclerView.layoutManager = LinearLayoutManager(this)
+        binding?.recyclerView?.layoutManager = LinearLayoutManager(this)
 
         viewModel.getTeams()
 
@@ -53,11 +55,11 @@ class FollowTeamsActivity : BaseActivity() {
             adapter = MultiAdapter(data?.data, onCLick = {
                 teams = it as ArrayList<GetTeamResponse.Data?>?
             })
-            recyclerView.adapter = adapter
+            binding?.recyclerView?.adapter = adapter
 
         })
 
-        buttonStart.setOnClickListener {
+        binding?.buttonStart?.setOnClickListener {
             val teamResponse = GetTeamResponse.Data(team_fav_link, team_fav_name, true)
             if (teams.isNullOrEmpty()) {
                 teams?.add(teamResponse)

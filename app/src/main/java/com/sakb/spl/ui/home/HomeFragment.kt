@@ -1,5 +1,6 @@
 package com.sakb.spl.ui.home
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -14,7 +15,7 @@ import com.sakb.spl.data.local.PrefManager
 import com.sakb.spl.data.model.*
 import com.sakb.spl.databinding.HomeFragmentBinding
 import com.sakb.spl.ui.home.adapters.*
-import com.sakb.spl.ui.transfers.TransfersFragment
+import com.sakb.spl.ui.login.LoginActivity
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class HomeFragment : BaseFragment() {
@@ -37,16 +38,23 @@ class HomeFragment : BaseFragment() {
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
+        savedInstanceState: Bundle?,
+    ): View {
         _binding = HomeFragmentBinding.inflate(inflater, container, false)
         return binding.root
     }
 
     private fun createHeaderAdapter() = headerAdapter.apply {
         onChooseTeamClickListener = {
-            // todo
-            findNavController().navigate(R.id.action_homeFragment_to_chooseTeamPlayersFragment)
+            if (PrefManager.getUser() == null) {
+                val intent = Intent(activity, LoginActivity::class.java)
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)
+                activity?.startActivity(intent)
+                activity?.overridePendingTransition(0, 0)
+            } else {
+                findNavController().navigate(R.id.action_homeFragment_to_chooseTeamPlayersFragment)
+            }
+
         }
         onPointClickListener = {
             findNavController().navigate(R.id.action_homeFragment_to_myPoints)
@@ -56,7 +64,7 @@ class HomeFragment : BaseFragment() {
         }
         onTransClickListener = {
             val bundle = bundleOf(TRANSFERS_DATA to transfersData)
-            findNavController().navigate(R.id.action_homeFragment_to_trans,bundle)
+            findNavController().navigate(R.id.action_homeFragment_to_trans, bundle)
         }
     }
 
@@ -68,7 +76,7 @@ class HomeFragment : BaseFragment() {
 
     private fun createFooterFixturesAdapter() = footerFixturesAdapter.apply {
         onClickListener = {
-               findNavController().navigate(R.id.action_homeFragment_to_moreMatches)
+            findNavController().navigate(R.id.action_homeFragment_to_moreMatches)
         }
     }
 
@@ -238,8 +246,8 @@ class HomeFragment : BaseFragment() {
         _binding = null
     }
 
-    companion object{
+    companion object {
         const val TRANSFERS_DATA = "transfers_data"
-        var transfersData :TransfersData = TransfersData()
+        var transfersData: TransfersData = TransfersData()
     }
 }

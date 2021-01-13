@@ -16,7 +16,6 @@ import com.sakb.spl.databinding.FragmentStatisitcsBinding
 import com.sakb.spl.utils.DividerItemDecoration
 import com.sakb.spl.utils.FixedGridLayoutManager
 import com.sakb.spl.utils.SpinnerHelperAdapter
-import kotlinx.android.synthetic.main.fragment_statisitcs.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import timber.log.Timber
 
@@ -35,7 +34,7 @@ class StatisticsFragment : BaseFragment() {
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
-        savedInstanceState: Bundle?
+        savedInstanceState: Bundle?,
     ): View? {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_statisitcs, container, false)
         return binding.root
@@ -71,9 +70,9 @@ class StatisticsFragment : BaseFragment() {
 
         val manager = FixedGridLayoutManager()
         manager.setTotalColumnCount(1)
-        rvClub.layoutManager = manager
-        rvClub.adapter = clubAdapter
-        rvClub.addItemDecoration(
+        binding.rvClub.layoutManager = manager
+        binding.rvClub.adapter = clubAdapter
+        binding.rvClub.addItemDecoration(
             DividerItemDecoration(
                 context,
                 DividerItemDecoration.VERTICAL
@@ -104,7 +103,7 @@ class StatisticsFragment : BaseFragment() {
                     parent: AdapterView<*>?,
                     view: View?,
                     position: Int,
-                    id: Long
+                    id: Long,
                 ) {
 
                     if (viewModel.recreatedTeam) {
@@ -170,7 +169,7 @@ class StatisticsFragment : BaseFragment() {
                     parent: AdapterView<*>?,
                     view: View?,
                     position: Int,
-                    id: Long
+                    id: Long,
                 ) {
                     Timber.e("xddddd pos " + position)
                     if (viewModel.recreatedOrder) {
@@ -259,7 +258,7 @@ class StatisticsFragment : BaseFragment() {
                     parent: AdapterView<*>?,
                     view: View?,
                     position: Int,
-                    id: Long
+                    id: Long,
                 ) {
                     Timber.e("xddddd pos " + position)
                     if (viewModel.recreatedLocation) {

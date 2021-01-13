@@ -12,12 +12,11 @@ import com.bumptech.glide.Glide
 import com.sakb.spl.R
 import com.sakb.spl.constants.Constants
 import com.sakb.spl.data.model.PlayerMasterItemItem
-import kotlinx.android.synthetic.main.child_item_myteam_recycler.view.*
 
 class MyPointPlayersChildItemAdapter(
     // list of lineUp [1 - 4 - 4 - 2 - 4]
     private val children: List<PlayerMasterItemItem>,
-    val parentPositions: Int = -1
+    val parentPositions: Int = -1,
 ) : RecyclerView.Adapter<MyPointPlayersChildItemAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -66,12 +65,12 @@ class MyPointPlayersChildItemAdapter(
 
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val container: ConstraintLayout = itemView.container
-        val textView: TextView = itemView.child_textView
-        val textViewCost: TextView = itemView.child_cost_textView
-        val imageView: ImageView = itemView.child_imageView
-        val imageViewCaptain: ImageView = itemView.captainIv
-        val imageViewViceCaptain: ImageView = itemView.viceIv
+        val container: ConstraintLayout = itemView.findViewById(R.id.container)
+        val textView: TextView = itemView.findViewById(R.id.child_textView)
+        val textViewCost: TextView = itemView.findViewById(R.id.child_cost_textView)
+        val imageView: ImageView = itemView.findViewById(R.id.child_imageView)
+        val imageViewCaptain: ImageView = itemView.findViewById(R.id.captainIv)
+        val imageViewViceCaptain: ImageView = itemView.findViewById(R.id.viceIv)
 
 
         init {

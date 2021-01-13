@@ -9,17 +9,18 @@ import androidx.core.content.ContextCompat
 import com.sakb.spl.R
 import com.sakb.spl.base.BaseFragment
 import com.sakb.spl.data.model.DataItemSubGroup
+import com.sakb.spl.databinding.StandingHeadToHeadFragmentBinding
 import com.sakb.spl.ui.league.LeagueFragment.Companion.HEAD_TO_HEAD
 import com.sakb.spl.ui.myleague.MyLeagueFragment.Companion.LINK_LEAGUE
 import com.sakb.spl.ui.myleague.MyLeagueFragment.Companion.LINK_TYPE
 import com.sakb.spl.ui.standingheadtohead.adapter.StandingHeadToHeadAdapter
 import com.sakb.spl.ui.standingheadtohead.adapter.StandingHeadToHeadSpinnerAdapter
 import com.sakb.spl.ui.standingheadtohead.adapter.StandingMatchesHeadToHeadAdapter
-import kotlinx.android.synthetic.main.standing_head_to_head_fragment.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class StandingHeadToHeadFragment : BaseFragment() {
     override val viewModel by viewModel<StandingHeadToHeadViewModel>()
+    private lateinit var binding: StandingHeadToHeadFragmentBinding
 
     val link: String? by lazy {
         arguments?.getString(LINK_LEAGUE, "")
@@ -34,42 +35,47 @@ class StandingHeadToHeadFragment : BaseFragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?,
     ): View? {
-        return inflater.inflate(R.layout.standing_head_to_head_fragment, container, false)
+        binding = StandingHeadToHeadFragmentBinding.inflate(inflater, container, false)
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initView(STANDING)
 
-        buttonLeague.setOnClickListener {
+        binding.buttonLeague.setOnClickListener {
             initView(STANDING)
         }
-        buttonMatch.setOnClickListener {
+        binding.buttonMatch.setOnClickListener {
             initView(MATCHES)
         }
     }
 
     private fun initView(status: String) {
-        when(status){
-            STANDING->{
-                buttonLeague.setTextColor(resources.getColor(R.color.white))
-                buttonMatch.setTextColor(resources.getColor(R.color.colorBlueContent))
-                buttonLeague.background = ContextCompat.getDrawable(requireContext(),R.drawable.bg_rec_green)
-                buttonMatch.background = ContextCompat.getDrawable(requireContext(),R.drawable.bg_rec_gray)
-                league_head_title.visibility = View.VISIBLE
-                match_head_title.visibility = View.INVISIBLE
-                rv_parent.visibility = View.VISIBLE
-                rv_matches.visibility = View.INVISIBLE
+        when (status) {
+            STANDING -> {
+                binding.buttonLeague.setTextColor(resources.getColor(R.color.white))
+                binding.buttonMatch.setTextColor(resources.getColor(R.color.colorBlueContent))
+                binding.buttonLeague.background =
+                    ContextCompat.getDrawable(requireContext(), R.drawable.bg_rec_green)
+                binding.buttonMatch.background =
+                    ContextCompat.getDrawable(requireContext(), R.drawable.bg_rec_gray)
+                binding.leagueHeadTitle.visibility = View.VISIBLE
+                binding.matchHeadTitle.visibility = View.INVISIBLE
+                binding.rvParent.visibility = View.VISIBLE
+                binding.rvMatches.visibility = View.INVISIBLE
             }
-            MATCHES->{
-                buttonLeague.setTextColor(resources.getColor(R.color.colorBlueContent))
-                buttonMatch.setTextColor(resources.getColor(R.color.white))
-                buttonLeague.background = ContextCompat.getDrawable(requireContext(),R.drawable.bg_rec_gray)
-                buttonMatch.background = ContextCompat.getDrawable(requireContext(),R.drawable.bg_rec_green)
-                league_head_title.visibility = View.INVISIBLE
-                match_head_title.visibility = View.VISIBLE
-                rv_parent.visibility = View.INVISIBLE
-                rv_matches.visibility = View.VISIBLE
+            MATCHES -> {
+                binding.buttonLeague.setTextColor(resources.getColor(R.color.colorBlueContent))
+                binding.buttonMatch.setTextColor(resources.getColor(R.color.white))
+                binding.buttonLeague.background =
+                    ContextCompat.getDrawable(requireContext(), R.drawable.bg_rec_gray)
+                binding.buttonMatch.background =
+                    ContextCompat.getDrawable(requireContext(), R.drawable.bg_rec_green)
+                binding.leagueHeadTitle.visibility = View.INVISIBLE
+                binding.matchHeadTitle.visibility = View.VISIBLE
+                binding.rvParent.visibility = View.INVISIBLE
+                binding.rvMatches.visibility = View.VISIBLE
             }
         }
     }
@@ -81,18 +87,18 @@ class StandingHeadToHeadFragment : BaseFragment() {
 
         viewModel.standingResponse.observe(viewLifecycleOwner, {
             it?.data?.let { dataStanding ->
-                league_header.text = dataStanding.groupEldwry?.name
+                binding.leagueHeader.text = dataStanding.groupEldwry?.name
                 dataStanding.usersGroup?.let {
                     standingHeadToHeadAdapter =
                         StandingHeadToHeadAdapter(dataStanding.usersGroup)
-                    rv_parent.adapter = standingHeadToHeadAdapter
+                    binding.rvParent.adapter = standingHeadToHeadAdapter
                 }
 
-                dataStanding.matchGroupList?.let {list->
-                    NumWeek.text = list[0]?.langNumWeek
+                dataStanding.matchGroupList?.let { list ->
+                    binding.NumWeek.text = list[0]?.langNumWeek
                     standingMatchesHeadToHeadAdapter =
                         StandingMatchesHeadToHeadAdapter(dataStanding.matchGroupList)
-                    rv_matches.adapter = standingMatchesHeadToHeadAdapter
+                    binding.rvMatches.adapter = standingMatchesHeadToHeadAdapter
                 }
             }
         })
@@ -130,9 +136,9 @@ class StandingHeadToHeadFragment : BaseFragment() {
             )
 
         adapter.setDropDownViewResource(R.layout.item_edited)
-        league_spinner.adapter = adapter
-        adapter.count.let { league_spinner.setSelection(it) }
-        league_spinner.onItemSelectedListener =
+        binding.leagueSpinner.adapter = adapter
+        adapter.count.let { binding.leagueSpinner.setSelection(it) }
+        binding.leagueSpinner.onItemSelectedListener =
             object : AdapterView.OnItemSelectedListener {
                 override fun onNothingSelected(parent: AdapterView<*>?) = Unit
                 override fun onItemSelected(
@@ -146,7 +152,7 @@ class StandingHeadToHeadFragment : BaseFragment() {
                         return
                     }
                     if (position != (leagues.size.minus(1))) {
-                        allLeagues_Tv.text = leagues[position]?.langNumWeek
+                        binding.allLeaguesTv.text = leagues[position]?.langNumWeek
                         viewModel.selectedLink = leagues[position]?.link
                         viewModel.loadStanding(
                             type ?: "",
@@ -160,15 +166,15 @@ class StandingHeadToHeadFragment : BaseFragment() {
 
             }
 
-        allLeagues_Tv.setOnClickListener {
+        binding.allLeaguesTv.setOnClickListener {
             viewModel.recreatedStanding = false
-            adapter.count.let { no -> league_spinner.setSelection(no) }
-            league_spinner.performClick()
+            adapter.count.let { no -> binding.leagueSpinner.setSelection(no) }
+            binding.leagueSpinner.performClick()
         }
 
     }
 
-    companion object{
+    companion object {
         const val STANDING = "standing"
         const val MATCHES = "matches"
     }

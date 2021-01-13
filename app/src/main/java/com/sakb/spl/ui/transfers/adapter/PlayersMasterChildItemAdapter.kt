@@ -19,7 +19,6 @@ import com.sakb.spl.ui.addplayer.AddPlayerActivity.Companion.REPLACE_WITHOUT_CHA
 import com.sakb.spl.ui.addplayer.AddPlayerActivity.Companion.TYPELOCPLAYER
 import com.sakb.spl.utils.showSplDeleteDialog
 import com.sakb.spl.utils.showSplDialog
-import kotlinx.android.synthetic.main.transfers_child_item_team_master_recycler.view.*
 
 class PlayersMasterChildItemAdapter(
     // list of lineUp [1 - 4 - 4 - 2 - 4]
@@ -64,9 +63,9 @@ class PlayersMasterChildItemAdapter(
 
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val textView: TextView = itemView.child_textView
-        val textViewCost: TextView = itemView.child_cost_textView
-        val imageView: ImageView = itemView.child_imageView
+        val textView: TextView = itemView.findViewById(R.id.child_textView)
+        val textViewCost: TextView = itemView.findViewById(R.id.child_cost_textView)
+        val imageView: ImageView = itemView.findViewById(R.id.child_imageView)
 
         init {
             itemView.setOnClickListener {

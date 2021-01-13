@@ -36,7 +36,7 @@ class MultiNotifEmailAdapter(
     }
 
     override fun getItemCount(): Int {
-        return teams.size ?: 0
+        return teams.size
     }
 
     inner class MultiViewHolder(@NonNull itemView: View) : RecyclerView.ViewHolder(itemView) {

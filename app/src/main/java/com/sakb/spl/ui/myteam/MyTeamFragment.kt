@@ -14,7 +14,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.sakb.spl.R
 import com.sakb.spl.base.BaseFragment
 import com.sakb.spl.data.model.MyteamPlayersResponse
-import com.sakb.spl.databinding.FragmentMyTeamBinding
+import com.sakb.spl.databinding.*
 import com.sakb.spl.ui.myteam.adapter.MyTeamPlayersAdapter
 import com.sakb.spl.ui.myteam.adapter.MyTeamSwapPlayersItemAdapter
 import com.sakb.spl.ui.myteam.adapter.dialog.MyTeamSubstitutesAdapter
@@ -23,10 +23,6 @@ import com.sakb.spl.ui.playerprofile.PlayerProfileActivity
 import com.sakb.spl.utils.DividerItemDecorationNoLast
 import com.sakb.spl.utils.showWarningDialog
 import com.sakb.spl.utils.toast
-import kotlinx.android.synthetic.main.dialog_spl_myteam_swap_view.view.*
-import kotlinx.android.synthetic.main.dialog_spl_myteam_view.view.*
-import kotlinx.android.synthetic.main.dialog_spl_substitutes_view.view.*
-import kotlinx.android.synthetic.main.dialog_view_common.view.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import timber.log.Timber
 
@@ -43,7 +39,7 @@ class MyTeamFragment : BaseFragment() {
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
-        savedInstanceState: Bundle?
+        savedInstanceState: Bundle?,
     ): View? {
         binding = FragmentMyTeamBinding.inflate(inflater, container, false)
         return binding.root
@@ -865,14 +861,15 @@ class MyTeamFragment : BaseFragment() {
     private fun Context.showSplSubstitutesDialog(
         data: List<MyteamPlayersResponse.Player>,
         dismissed: (dialog: AlertDialog?) -> Unit,
-        selectedPlayer: (dialog: AlertDialog?, pos: Int, player: MyteamPlayersResponse.Player) -> Unit
+        selectedPlayer: (dialog: AlertDialog?, pos: Int, player: MyteamPlayersResponse.Player) -> Unit,
 
-    ) {
-        val view = LayoutInflater.from(this).inflate(R.layout.dialog_spl_substitutes_view, null)
-        val alertDialog = AlertDialog.Builder(this).setView(view).setCancelable(true)
+        ) {
+        val binding =
+            DialogSplSubstitutesViewBinding.inflate(LayoutInflater.from(this), null, false)
+        val alertDialog = AlertDialog.Builder(this).setView(binding.root).setCancelable(true)
         val dialog = alertDialog.create()
         dialog.window?.setBackgroundDrawableResource(android.R.color.transparent)
-        view.substitutesRv.addItemDecoration(
+        binding.substitutesRv.addItemDecoration(
             DividerItemDecorationNoLast(
                 this,
                 LinearLayoutManager.VERTICAL
@@ -880,7 +877,7 @@ class MyTeamFragment : BaseFragment() {
         )
 
         var isHandled = false
-        view.substitutesRv.adapter =
+        binding.substitutesRv.adapter =
             MyTeamSubstitutesAdapter(data/*,-1parentPositions, onItemClicked, onChangeClick, onOpenProfileClicked, onResetClicked,onRestorePlayerClicked*/).apply {
 
                 onItemClicked = { pos, player ->
@@ -899,15 +896,15 @@ class MyTeamFragment : BaseFragment() {
     private fun Context.showDialog(
         resID: String,
         positive: (dialog: AlertDialog?) -> Unit,
-        negative: (dialog: AlertDialog?) -> Unit
+        negative: (dialog: AlertDialog?) -> Unit,
     ) {
-        val view = LayoutInflater.from(this).inflate(R.layout.dialog_view_common, null)
-        val alertDialog = AlertDialog.Builder(this).setView(view).setCancelable(false)
+        val binding = DialogViewCommonBinding.inflate(LayoutInflater.from(this), null, false)
+        val alertDialog = AlertDialog.Builder(this).setView(binding.root).setCancelable(false)
         val dialog = alertDialog.create()
         dialog.window?.setBackgroundDrawableResource(android.R.color.transparent)
-        view.dialogCText.text = resID
-        view.positiveCBtn.setOnClickListener { positive(dialog) }
-        view.negativeCButton.setOnClickListener { negative(dialog) }
+        binding.dialogCText.text = resID
+        binding.positiveCBtn.setOnClickListener { positive(dialog) }
+        binding.negativeCButton.setOnClickListener { negative(dialog) }
         dialog.show()
     }
 
@@ -916,32 +913,32 @@ class MyTeamFragment : BaseFragment() {
         changeBtn: (dialog: AlertDialog?) -> Unit,
         addCaptainBtn: (dialog: AlertDialog?) -> Unit,
         addSecondCaptainBtn: (dialog: AlertDialog?) -> Unit,
-        playerProfileBtn: (dialog: AlertDialog?) -> Unit
+        playerProfileBtn: (dialog: AlertDialog?) -> Unit,
 
-    ) {
-        val view = LayoutInflater.from(this).inflate(R.layout.dialog_spl_myteam_view, null)
-        val alertDialog = AlertDialog.Builder(this).setView(view).setCancelable(true)
+        ) {
+        val binding = DialogSplMyteamViewBinding.inflate(LayoutInflater.from(this), null, false)
+        val alertDialog = AlertDialog.Builder(this).setView(binding.root).setCancelable(true)
         val dialog = alertDialog.create()
         dialog.window?.setBackgroundDrawableResource(android.R.color.transparent)
-        view.changePlayerBtn.setOnClickListener { changeBtn(dialog) }
-        view.addCaptainBtn.setOnClickListener { addCaptainBtn(dialog) }
-        view.secondCaptainBtn.setOnClickListener { addSecondCaptainBtn(dialog) }
-        view.playerProfileBtn.setOnClickListener { playerProfileBtn(dialog) }
+        binding.changePlayerBtn.setOnClickListener { changeBtn(dialog) }
+        binding.addCaptainBtn.setOnClickListener { addCaptainBtn(dialog) }
+        binding.secondCaptainBtn.setOnClickListener { addSecondCaptainBtn(dialog) }
+        binding.playerProfileBtn.setOnClickListener { playerProfileBtn(dialog) }
         dialog.show()
     }
 
 
     private fun Context.showSplMyTeamSwapDialog(
         changeBtn: (dialog: AlertDialog?) -> Unit,
-        playerProfileBtn: (dialog: AlertDialog?) -> Unit
+        playerProfileBtn: (dialog: AlertDialog?) -> Unit,
 
-    ) {
-        val view = LayoutInflater.from(this).inflate(R.layout.dialog_spl_myteam_swap_view, null)
-        val alertDialog = AlertDialog.Builder(this).setView(view).setCancelable(true)
+        ) {
+        val binding = DialogSplMyteamSwapViewBinding.inflate(LayoutInflater.from(this), null, false)
+        val alertDialog = AlertDialog.Builder(this).setView(binding.root).setCancelable(true)
         val dialog = alertDialog.create()
         dialog.window?.setBackgroundDrawableResource(android.R.color.transparent)
-        view.changePlayerSwapBtn.setOnClickListener { changeBtn(dialog) }
-        view.playerProfileSwapBtn.setOnClickListener { playerProfileBtn(dialog) }
+        binding.changePlayerSwapBtn.setOnClickListener { changeBtn(dialog) }
+        binding.playerProfileSwapBtn.setOnClickListener { playerProfileBtn(dialog) }
         dialog.show()
     }
 

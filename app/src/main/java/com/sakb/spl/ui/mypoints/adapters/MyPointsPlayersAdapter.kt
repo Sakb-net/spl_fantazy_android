@@ -7,11 +7,10 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.sakb.spl.R
 import com.sakb.spl.data.model.PlayerMasterItemItem
-import kotlinx.android.synthetic.main.parent_item_myteam_recycler.view.*
 
 
 class MyPointsPlayersAdapter(
-    private var parents: List<List<PlayerMasterItemItem>>?
+    private var parents: List<List<PlayerMasterItemItem>>?,
 ) : RecyclerView.Adapter<MyPointsPlayersAdapter.ViewHolder>() {
 
     private val viewPool = RecyclerView.RecycledViewPool()
@@ -31,7 +30,7 @@ class MyPointsPlayersAdapter(
         holder.recyclerView.apply {
             // layoutManager = LinearLayoutManager(holder.recyclerView
             // .context, LinearLayout.HORIZONTAL, false)
-            parents?.get(position)?.let {
+            parent?.let {
                 adapter = MyPointPlayersChildItemAdapter(
                     it,
                     position
@@ -48,6 +47,6 @@ class MyPointsPlayersAdapter(
 
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val recyclerView: RecyclerView = itemView.rv_child
+        val recyclerView: RecyclerView = itemView.findViewById(R.id.rv_child)
     }
 }

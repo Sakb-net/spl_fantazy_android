@@ -7,11 +7,10 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.sakb.spl.R
 import com.sakb.spl.data.model.MyteamPlayersResponse
-import kotlinx.android.synthetic.main.parent_item_myteam_recycler.view.*
 
 
 class MyTeamPlayersAdapter(
-    private var parents: List<List<MyteamPlayersResponse.Player>?>
+    private var parents: List<List<MyteamPlayersResponse.Player>?>,
 ) : RecyclerView.Adapter<MyTeamPlayersAdapter.ViewHolder>() {
 
     var onItemClicked: ((pos: Int, parentPosition: Int, MyteamPlayersResponse.Player) -> Unit)? =
@@ -42,7 +41,7 @@ class MyTeamPlayersAdapter(
         holder.recyclerView.apply {
             // layoutManager = LinearLayoutManager(holder.recyclerView
             // .context, LinearLayout.HORIZONTAL, false)
-            parents[position]?.let {
+            parent?.let {
                 adapter = MyTeamPlayersChildItemAdapter(
                     it,
                     position,
@@ -64,6 +63,6 @@ class MyTeamPlayersAdapter(
 
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val recyclerView: RecyclerView = itemView.rv_child
+        val recyclerView: RecyclerView = itemView.findViewById(R.id.rv_child)
     }
 }

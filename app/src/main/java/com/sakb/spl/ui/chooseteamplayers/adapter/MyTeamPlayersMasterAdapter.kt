@@ -6,11 +6,10 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.sakb.spl.R
 import com.sakb.spl.data.model.PlayerMasterResponse
-import kotlinx.android.synthetic.main.parent_item_team_master_recycler.view.*
 
 
 class MyTeamPlayersMasterAdapter(
-    private var parents: List<List<PlayerMasterResponse.Data>?>
+    private var parents: List<List<PlayerMasterResponse.Data>?>,
 ) : RecyclerView.Adapter<MyTeamPlayersMasterAdapter.ViewHolder>() {
 
     var onItemDeleteClick: ((pos: Int, parentPosition: Int, PlayerMasterResponse.Data) -> Unit)? =
@@ -37,7 +36,7 @@ class MyTeamPlayersMasterAdapter(
         holder.recyclerView.apply {
             // layoutManager = LinearLayoutManager(holder.recyclerView
             // .context, LinearLayout.HORIZONTAL, false)
-            parents[position]?.let {
+            parent?.let {
                 adapter = PlayersMasterChildItemAdapter(
                     it,
                     position,
@@ -57,6 +56,6 @@ class MyTeamPlayersMasterAdapter(
 
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val recyclerView: RecyclerView = itemView.rv_child
+        val recyclerView: RecyclerView = itemView.findViewById(R.id.rv_child)
     }
 }

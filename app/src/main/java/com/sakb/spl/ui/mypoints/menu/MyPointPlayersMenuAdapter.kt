@@ -11,11 +11,10 @@ import androidx.recyclerview.widget.RecyclerView
 import com.sakb.spl.R
 import com.sakb.spl.data.model.PlayerMasterItemItem
 import com.sakb.spl.utils.DividerItemDecorationNoLast
-import kotlinx.android.synthetic.main.parent_item_myteamplayers_recycler_menu.view.*
 
 
 class MyPointPlayersMenuAdapter(
-    private var parents: List<List<PlayerMasterItemItem>?>
+    private var parents: List<List<PlayerMasterItemItem>?>,
 ) : RecyclerView.Adapter<MyPointPlayersMenuAdapter.ViewHolder>() {
 
     private val viewPool = RecyclerView.RecycledViewPool()
@@ -34,7 +33,7 @@ class MyPointPlayersMenuAdapter(
         val parent = parents[position]
 
         holder.recyclerView.apply {
-            parents[position]?.let {
+            parent?.let {
                 if (it.size > 0) {
                     holder.header.visibility = View.VISIBLE
                     holder.type.text = it[0].typeLocPlayer
@@ -105,9 +104,9 @@ class MyPointPlayersMenuAdapter(
 
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val recyclerView: RecyclerView = itemView.rv_child
-        val type: TextView = itemView.nameTv
-        val header: LinearLayoutCompat = itemView.header
+        val recyclerView: RecyclerView = itemView.findViewById(R.id.rv_child)
+        val type: TextView = itemView.findViewById(R.id.nameTv)
+        val header: LinearLayoutCompat = itemView.findViewById(R.id.header)
 
         init {
             recyclerView.addItemDecoration(

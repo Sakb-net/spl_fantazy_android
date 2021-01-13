@@ -19,8 +19,8 @@ import com.sakb.spl.R
 import com.sakb.spl.base.BaseFragment
 import com.sakb.spl.data.model.DataItemSubGroup
 import com.sakb.spl.data.model.UsersGroupItemSetting
+import com.sakb.spl.databinding.ManageLeagueFragmentBinding
 import com.sakb.spl.ui.myleague.MyLeagueFragment
-import kotlinx.android.synthetic.main.manage_league_fragment.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class ManageLeagueFragment : BaseFragment() {
@@ -44,12 +44,15 @@ class ManageLeagueFragment : BaseFragment() {
     val type: String? by lazy {
         arguments?.getString(MyLeagueFragment.LINK_TYPE, "")
     }
+    private var _binding: ManageLeagueFragmentBinding? = null
+    private val binding get() = _binding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?,
     ): View? {
-        return inflater.inflate(R.layout.manage_league_fragment, container, false)
+        _binding = ManageLeagueFragmentBinding.inflate(inflater, container, false)
+        return binding?.root
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
@@ -60,7 +63,7 @@ class ManageLeagueFragment : BaseFragment() {
         viewModel.allSubeldawry.observe(viewLifecycleOwner, Observer {
             it?.data?.let { list ->
                 if (list.isNullOrEmpty()) {
-                    league_details.visibility = View.GONE
+                    binding?.leagueDetails?.visibility = View.GONE
                 } else {
                     option = list.filterNotNull() as MutableList<DataItemSubGroup>
                     builder = AlertDialog.Builder(requireContext(), R.style.MaterialThemeDialog)
@@ -71,8 +74,8 @@ class ManageLeagueFragment : BaseFragment() {
 
         viewModel.settingGroupsResponse.observe(viewLifecycleOwner, {
             it.data?.let { dataSetting ->
-                code_league_code.text = dataSetting.groupEldwry?.code
-                copy_btn_league_code.setOnClickListener {
+                binding?.codeLeagueCode?.text = dataSetting.groupEldwry?.code
+                binding?.copyBtnLeagueCode?.setOnClickListener {
                     val sdk = Build.VERSION.SDK_INT
                     if (sdk < Build.VERSION_CODES.HONEYCOMB) {
                         val clipboard =
@@ -88,8 +91,8 @@ class ManageLeagueFragment : BaseFragment() {
                 }
                 dataSetting.usersGroup?.let { list ->
                     if (list.isNullOrEmpty()) {
-                        league_delete_player.visibility = View.GONE
-                        league_change_manager.visibility = View.GONE
+                        binding?.leagueDeletePlayer?.visibility = View.GONE
+                        binding?.leagueChangeManager?.visibility = View.GONE
                     } else {
                         optionPlayerManager =
                             list.filterNotNull() as MutableList<UsersGroupItemSetting>
@@ -132,8 +135,8 @@ class ManageLeagueFragment : BaseFragment() {
                 if (date.update == true) {
                     date.usersGroup?.let { list ->
                         if (list.isNullOrEmpty()) {
-                            league_delete_player.visibility = View.GONE
-                            league_change_manager.visibility = View.GONE
+                            binding?.leagueDeletePlayer?.visibility = View.GONE
+                            binding?.leagueChangeManager?.visibility = View.GONE
                         } else {
                             optionPlayerManager =
                                 list.filterNotNull() as MutableList<UsersGroupItemSetting>
@@ -158,25 +161,25 @@ class ManageLeagueFragment : BaseFragment() {
     }
 
     private fun initUI() {
-        league_code.setOnClickListener {
-            if (ll_league_code.isVisible) {
-                ll_league_code.visibility = View.GONE
+        binding?.leagueCode?.setOnClickListener {
+            if (binding?.llLeagueCode?.isVisible == true) {
+                binding?.llLeagueCode?.visibility = View.GONE
             } else {
-                ll_league_code.visibility = View.VISIBLE
+                binding?.llLeagueCode?.visibility = View.VISIBLE
             }
         }
-        league_details.setOnClickListener {
-            if (ll_league_details.isVisible) {
-                ll_league_details.visibility = View.GONE
+        binding?.leagueDetails?.setOnClickListener {
+            if (binding?.llLeagueDetails?.isVisible == true) {
+                binding?.llLeagueDetails?.visibility = View.GONE
             } else {
-                ll_league_details.visibility = View.VISIBLE
+                binding?.llLeagueDetails?.visibility = View.VISIBLE
             }
         }
-        round_layout.setOnClickListener {
+        binding?.roundLayout?.setOnClickListener {
             builder?.show()
         }
-        buttonSend.setOnClickListener {
-            if (nameEt.text?.toString()?.trim().isNullOrBlank()) {
+        binding?.buttonSend?.setOnClickListener {
+            if (binding?.nameEt?.text?.toString()?.trim().isNullOrBlank()) {
                 Toast.makeText(
                     requireContext(),
                     getString(R.string.all_fileds_must_filled),
@@ -184,47 +187,47 @@ class ManageLeagueFragment : BaseFragment() {
                 ).show()
                 return@setOnClickListener
             } else {
-                nameEt.text?.toString()?.trim()?.let { name ->
+                binding?.nameEt?.text?.toString()?.trim()?.let { name ->
                     viewModel.loadUpdateGroup(type ?: "", link ?: "", linkSub, name)
                 }
             }
         }
 
-        league_delete_player.setOnClickListener {
-            if (ll_league_delete_player.isVisible) {
-                ll_league_delete_player.visibility = View.GONE
+        binding?.leagueDeletePlayer?.setOnClickListener {
+            if (binding?.llLeagueDeletePlayer?.isVisible == true) {
+                binding?.llLeagueDeletePlayer?.visibility = View.GONE
             } else {
-                ll_league_delete_player.visibility = View.VISIBLE
+                binding?.llLeagueDeletePlayer?.visibility = View.VISIBLE
             }
         }
 
-        round_layout_delete_player.setOnClickListener {
+        binding?.roundLayoutDeletePlayer?.setOnClickListener {
             builderPlayerDelete?.show()
         }
-        buttonDeletePlayer.setOnClickListener {
+        binding?.buttonDeletePlayer?.setOnClickListener {
             viewModel.loadDeletePlayer(type ?: "", link ?: "", playerDelete)
         }
-        league_change_manager.setOnClickListener {
-            if (ll_league_change_manager.isVisible) {
-                ll_league_change_manager.visibility = View.GONE
+        binding?.leagueChangeManager?.setOnClickListener {
+            if (binding?.llLeagueChangeManager?.isVisible == true) {
+                binding?.llLeagueChangeManager?.visibility = View.GONE
             } else {
-                ll_league_change_manager.visibility = View.VISIBLE
+                binding?.llLeagueChangeManager?.visibility = View.VISIBLE
             }
         }
-        round_layout_change_manager.setOnClickListener {
+        binding?.roundLayoutChangeManager?.setOnClickListener {
             builderPlayerManager?.show()
         }
-        buttonChangeManager.setOnClickListener {
+        binding?.buttonChangeManager?.setOnClickListener {
             viewModel.loadSwitchAdmin(type ?: "", link ?: "", playerManager)
         }
-        league_delete.setOnClickListener {
-            if (ll_league_delete.isVisible) {
-                ll_league_delete.visibility = View.GONE
+        binding?.leagueDelete?.setOnClickListener {
+            if (binding?.llLeagueDelete?.isVisible == true) {
+                binding?.llLeagueDelete?.visibility = View.GONE
             } else {
-                ll_league_delete.visibility = View.VISIBLE
+                binding?.llLeagueDelete?.visibility = View.VISIBLE
             }
         }
-        buttonDeleteLeague.setOnClickListener {
+        binding?.buttonDeleteLeague?.setOnClickListener {
             viewModel.loadDeleteGroup(type ?: "", link ?: "")
         }
     }
@@ -240,17 +243,17 @@ class ManageLeagueFragment : BaseFragment() {
             requireContext(), R.layout.item_check_list, options
         )
 
-        var selectedItem = -1
+        var selectedItem: Int
         builder?.setTitle(getString(R.string.select_round))
         builder?.setSingleChoiceItems(
             adapter, -1
         ) { dialogInterface: DialogInterface, item: Int ->
             selectedItem = item
-            roundEt.text = options[selectedItem]
+            binding?.roundEt?.text = options[selectedItem]
             option[selectedItem].link?.let { link -> linkSub = link }
             dialogInterface.dismiss()
         }
-        roundEt.text = options[options.size - 1]
+        binding?.roundEt?.text = options[options.size - 1]
         option[options.size - 1].link?.let { link -> linkSub = link }
         builder?.create()
     }
@@ -266,19 +269,19 @@ class ManageLeagueFragment : BaseFragment() {
             requireContext(), R.layout.item_check_list, options
         )
 
-        var selectedItem = -1
+        var selectedItem: Int
         builderPlayerManager?.setTitle(getString(R.string.select_round))
         builderPlayerManager?.setSingleChoiceItems(
             adapter, -1
         ) { dialogInterface: DialogInterface, item: Int ->
             selectedItem = item
-            roundEtChangeManager.text = options[selectedItem]
+            binding?.roundEtChangeManager?.text = options[selectedItem]
             optionPlayerManager[selectedItem].userName?.let { userName ->
                 playerManager = userName
             }
             dialogInterface.dismiss()
         }
-        roundEtChangeManager.text = options[options.size - 1]
+        binding?.roundEtChangeManager?.text = options[options.size - 1]
         optionPlayerManager[options.size - 1].userName?.let { userName ->
             playerManager = userName.toString()
         }
@@ -296,19 +299,19 @@ class ManageLeagueFragment : BaseFragment() {
             requireContext(), R.layout.item_check_list, options
         )
 
-        var selectedItem = -1
+        var selectedItem: Int
         builderPlayerDelete?.setTitle(getString(R.string.select_round))
         builderPlayerDelete?.setSingleChoiceItems(
             adapter, -1
         ) { dialogInterface: DialogInterface, item: Int ->
             selectedItem = item
-            roundEtDeletePlayer.text = options[selectedItem]
+            binding?.roundEtDeletePlayer?.text = options[selectedItem]
             optionPlayerDelete[selectedItem].userName?.let { userName ->
                 playerDelete = userName
             }
             dialogInterface.dismiss()
         }
-        roundEtDeletePlayer.text = options[options.size - 1]
+        binding?.roundEtDeletePlayer?.text = options[options.size - 1]
         optionPlayerDelete[options.size - 1].userName?.let { userName ->
             playerDelete = userName
         }
