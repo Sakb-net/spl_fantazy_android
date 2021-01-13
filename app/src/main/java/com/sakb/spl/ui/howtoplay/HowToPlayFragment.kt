@@ -13,8 +13,6 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 import timber.log.Timber
 
 class HowToPlayFragment : BaseFragment() {
-
-
     override val viewModel by viewModel<HowToPlayViewModel>()
 
     private val adapter by lazy {
@@ -36,7 +34,6 @@ class HowToPlayFragment : BaseFragment() {
         super.onActivityCreated(savedInstanceState)
         binding?.recyclerView?.adapter = adapter
         binding?.recyclerView?.itemAnimator = null
-        //  viewModel = ViewModelProviders.of(this, viewModelFactory).get(HowToPlayViewModel::class.java)
         binding?.recyclerView?.layoutManager =
             LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
         adapter.onClickListener = { position, _ ->

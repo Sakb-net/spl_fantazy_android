@@ -3,6 +3,7 @@ package com.sakb.spl.ui.main
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.view.Menu
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.widget.Toolbar
@@ -49,6 +50,18 @@ class MainActivity : BaseActivity() {
 
         drawerLayout = findViewById(R.id.drawer_layout)
         val navView: NavigationView = findViewById(R.id.nav_view)
+        // get menu from navigationView
+        // get menu from navigationView
+        val menu: Menu = navView.menu
+        if (PrefManager.getUser() == null) {
+            menu.findItem(R.id.myTeamFragment).isVisible = false
+            menu.findItem(R.id.myPointsFragment).isVisible = false
+            menu.findItem(R.id.transfersFragment).isVisible = false
+        }else{
+            menu.findItem(R.id.myTeamFragment).isVisible = true
+            menu.findItem(R.id.myPointsFragment).isVisible = true
+            menu.findItem(R.id.transfersFragment).isVisible = true
+        }
         val navController = findNavController(R.id.nav_host_fragment)
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.

@@ -12,8 +12,7 @@ import timber.log.Timber
 
 class InstructionsAdapter :
     ListAdapter<HowToPlayResponse.ContentRole, InstructionsAdapter.InstructionsViewHolder>(
-        InstructionsDiffCallback()
-    ) {
+        InstructionsDiffCallback()) {
 
     var onClickListener: ((position: Int, HowToPlayResponse.ContentRole) -> Unit)? = null
 
@@ -29,15 +28,15 @@ class InstructionsAdapter :
 
     override fun onBindViewHolder(holder: InstructionsViewHolder, position: Int) {
         val news = getItem(position)
-        holder.bind(news)
+        holder.bind(news, position)
     }
 
     class InstructionsViewHolder(
         private val binding: InstructionsItemRecyclerBinding,
-        private val onClickListener: ((position: Int, HowToPlayResponse.ContentRole) -> Unit)?
+        private val onClickListener: ((position: Int, HowToPlayResponse.ContentRole) -> Unit)?,
     ) : RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(data: HowToPlayResponse.ContentRole) = data.run {
+        fun bind(data: HowToPlayResponse.ContentRole, position: Int) = data.run {
             binding.title.text = title
             binding.content.text = content
             if (isActivated == true) {
@@ -50,7 +49,7 @@ class InstructionsAdapter :
             binding.executePendingBindings()
             itemView.setOnClickListener {
                 Timber.e("role = clicked")
-                onClickListener?.invoke(adapterPosition, this)
+                onClickListener?.invoke(position, this)
             }
         }
     }
