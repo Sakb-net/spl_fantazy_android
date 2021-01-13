@@ -7,6 +7,7 @@
     </data>
 
     <androidx.cardview.widget.CardView
+        android:id="@+id/cardFooter"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
@@ -15,6 +16,7 @@
         android:elevation="8dp"
         android:focusable="true"
         android:foreground="?attr/selectableItemBackground"
+        android:visibility="gone"
         app:cardCornerRadius="0dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout

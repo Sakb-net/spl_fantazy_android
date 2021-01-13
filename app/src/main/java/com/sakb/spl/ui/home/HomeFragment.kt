@@ -200,6 +200,7 @@ class HomeFragment : BaseFragment() {
                     headerFixturesTitlesList.add(this)
                     headerFixturesAdapter.submitList(headerFixturesTitlesList)
                     fixturesAdapter.submitList(this.matchGroup)
+                    footerFixturesAdapter.hideFooter(data?.data)
                 }
             }
         }
