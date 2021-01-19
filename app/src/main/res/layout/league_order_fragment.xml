@@ -112,7 +112,6 @@
                             android:textSize="14sp" />
                     </androidx.appcompat.widget.LinearLayoutCompat>
 
-
                     <androidx.appcompat.widget.AppCompatSpinner
                         android:id="@+id/land_spinner"
                         android:layout_width="0dp"
