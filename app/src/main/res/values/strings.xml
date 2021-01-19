@@ -404,4 +404,14 @@
     <!--KEYS-->
     <string name="facebook_app_id" translatable="false">1308494836189612</string>
     <string name="fb_login_protocol_scheme" translatable="false">fb1308494836189612</string>
+    <string name="on_his_land_or_not">On his land or not</string>
+    <string name="win_or_lose">Win or lose</string>
+    <string name="view_by_tour">View by tour</string>
+    <string name="play">Play</string>
+    <string name="w">W</string>
+    <string name="d">D</string>
+    <string name="l">L</string>
+    <string name="rem">Rem</string>
+    <string name="result_last_5">Result(last 5)</string>
+    <string name="last_game">Last Game</string>
 </resources>

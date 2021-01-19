@@ -9,18 +9,17 @@ import io.reactivex.Single
  */
 
 class SplRepository constructor(
-    private val remote: SplApiEndpoints
+    private val remote: SplApiEndpoints,
 ) {
 
     fun uploadImage(
-        image: String
+        image: String,
     ): Single<UploadImgResponse> {
 
         return remote.uploadImage(
             image
         )
     }
-
 
     fun LoginUser(email: String, pass: String): Single<LoginResponse> {
         return remote.login(
@@ -35,7 +34,7 @@ class SplRepository constructor(
         order_play: String,
         link_team: String,
         from_price: String,
-        to_price: String
+        to_price: String,
     ): Single<PlayerByTypeResponse> {
         return remote.getPlayerByType(
             type_key,
@@ -52,16 +51,14 @@ class SplRepository constructor(
         )
     }
 
-
     fun saveTeam(
-        name_team: String
+        name_team: String,
     ): Single<AddTeamResponse> {
         return remote.saveTeam(name_team)
     }
 
-
     fun playerInfo(
-        player_link: String
+        player_link: String,
     ): Single<PlayerResponse> {
         return remote.playerInfo(
             player_link
@@ -70,21 +67,19 @@ class SplRepository constructor(
 
     fun addCaptainOrViceCaptain(
         player_link: String,
-        type: String
+        type: String,
     ): Single<AddCaptainOrVise> {
         return remote.addCaptainOrViseCaptain(
             player_link, type
         )
     }
 
-
     fun instruction(): Single<HowToPlayResponse> {
         return remote.instruction()
     }
 
-
     fun addPlayer(
-        player_link: String
+        player_link: String,
     ): Single<AddPlayerResponse> {
         return remote.addPlayer(player_link)
     }
@@ -92,7 +87,7 @@ class SplRepository constructor(
     fun changePlayer(
         eldwry_link: String,
         delet_player_link: String,
-        add_player_link: String
+        add_player_link: String,
     ): Single<ChangePlayerResponse> {
         return remote.changePlayer(
             eldwry_link,
@@ -108,7 +103,7 @@ class SplRepository constructor(
 
     fun addDirectInsideChange(
         player_link_one: String,
-        player_link_two: String
+        player_link_two: String,
     ): Single<AddDirectInsideChange> {
         return remote.addDirectInsideChange(
             player_link_one,
@@ -116,9 +111,8 @@ class SplRepository constructor(
         )
     }
 
-
     fun checkInsideChange(
-        player_link: String
+        player_link: String,
     ): Single<CheckInsideChangeResponse> {
         return remote.checkInsideChange(
             player_link = player_link,
@@ -147,7 +141,7 @@ class SplRepository constructor(
         name: String,
         email: String,
         phone: String,
-        pass: String
+        pass: String,
     ): Single<RegisterResponse> {
         return remote.register(
 
@@ -163,7 +157,7 @@ class SplRepository constructor(
     fun RegisterLoginSocial(
         provider: String,
         provider_id: String,
-        name: String
+        name: String,
     ): Single<SocialResponse> {
         return remote.registerLoginSocial(
             provider = provider,
@@ -178,7 +172,7 @@ class SplRepository constructor(
         best_team: String,
         display_name: String,
         email: String,
-        image: String
+        image: String,
     ): Single<UpdateProfileResponse> {
         return remote.updateProfile(
             best_team = best_team,
@@ -190,9 +184,9 @@ class SplRepository constructor(
     }
 
     fun UpdateProfileBestTeam(
-        best_team: String
+        best_team: String,
 
-    ): Single<UpdateProfileResponse> {
+        ): Single<UpdateProfileResponse> {
         return remote.updateProfileBestTeam(
 
             best_team = best_team
@@ -202,9 +196,9 @@ class SplRepository constructor(
 
     fun changePassword(
         old_password: String,
-        new_password: String
+        new_password: String,
 
-    ): Single<ChangePasswordResponse> {
+        ): Single<ChangePasswordResponse> {
         return remote.changePassword(
             old_password, new_password
 
@@ -238,10 +232,11 @@ class SplRepository constructor(
         return remote.home("", "")
     }
 
-    fun homePointEldwry():Single<HomePointEldawryResponse>{
+    fun homePointEldwry(): Single<HomePointEldawryResponse> {
         return remote.homePointEldwry()
     }
-    fun publicPointEldwry():Single<PublicPointEldaweryResponse>{
+
+    fun publicPointEldwry(): Single<PublicPointEldaweryResponse> {
         return remote.publicPointEldwry()
     }
 
@@ -253,7 +248,7 @@ class SplRepository constructor(
         return remote.addContactUsMessage(content)
     }
 
-    fun getFixtures():Single<GetLastFixturesResponse>{
+    fun getFixtures(): Single<GetLastFixturesResponse> {
         return remote.getFixtures()
     }
 
@@ -264,15 +259,15 @@ class SplRepository constructor(
     fun getAllFixturesBySubeldawry(link_subeldawey: String): Single<GetFixturesBySubeldawryResponse> {
         return remote.getAllFixturesBySubeldawry(link_subeldawey)
     }
+
     fun getFixturesBy(link_subeldawey: String): Single<GetFixtuersResponse> {
         return remote.getFixturesBy(link_subeldawey)
     }
 
-
     fun getStatistics(
         link_team: String = "",
         order_play: String = "",
-        loc_player: String = ""
+        loc_player: String = "",
     ): Single<StatisticsPlayerResponse> {
         return remote.getStatistics(link_team, order_play, loc_player)
     }
@@ -281,19 +276,19 @@ class SplRepository constructor(
         return remote.award()
     }
 
-    fun getPointsEldawry():Single<PointsEldwryResponse>{
+    fun getPointsEldawry(): Single<PointsEldwryResponse> {
         return remote.getPointsEldawry()
     }
 
-    fun getPointSubeldawry(link_team: String):Single<GetPointSubeldawryResponse>{
+    fun getPointSubeldawry(link_team: String): Single<GetPointSubeldawryResponse> {
         return remote.getPointsSubEldawry(link_team)
     }
 
-    fun checkCardStatus():Single<CardStatusResponse>{
+    fun checkCardStatus(): Single<CardStatusResponse> {
         return remote.checkCardsStatus()
     }
 
-    fun activeTripleCard():Single<BaseResponse>{
+    fun activeTripleCard(): Single<BaseResponse> {
         return remote.activeTripleCardsStatus()
     }
 

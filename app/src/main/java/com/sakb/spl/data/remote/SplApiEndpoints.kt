@@ -357,4 +357,14 @@ interface SplApiEndpoints {
     fun followTeams(
         @Field("teamFollow") teamFollow: String,
     ): Single<BaseResponse>
+
+    @FormUrlEncoded
+    @GET("/api/v1/ranking_eldwry")
+    fun getRankingEldawry(
+        @Field("subeldwry_link") subeldwry_link:String
+    ):Single<RankingEldawryResponse>
+
+
+    @GET("/api/v1/ranking_eldwry/subeldwry")
+    fun getSudEldawryForRankingEldawry():Single<GetAllSubeldawryResponse>
 }
