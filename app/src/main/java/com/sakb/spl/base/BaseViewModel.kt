@@ -77,12 +77,10 @@ open class BaseViewModel : ViewModel() {
         noConnectionErrorEvent.value = true
     }
 
-
     protected fun <T> Single<T>.applyLoadingState(): Single<T> =
         this.observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { showLoading() }
             .doAfterTerminate { hideLoading() }
-
 
     override fun onCleared() {
         compositeDisposable.dispose()
