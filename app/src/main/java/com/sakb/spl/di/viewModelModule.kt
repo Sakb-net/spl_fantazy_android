@@ -17,6 +17,7 @@ import com.sakb.spl.ui.home.HomeViewModel
 import com.sakb.spl.ui.howtoplay.HowToPlayViewModel
 import com.sakb.spl.ui.language.LanguageViewModel
 import com.sakb.spl.ui.league.LeagueViewModel
+import com.sakb.spl.ui.leagueorder.LeagueOrderViewModel
 import com.sakb.spl.ui.login.LoginViewModel
 import com.sakb.spl.ui.logout.LogOutViewModel
 import com.sakb.spl.ui.main.MainViewModel
@@ -117,7 +118,7 @@ val viewModelModule = module {
     }
 
     viewModel {
-        NewPassViewModel()
+        NewPassViewModel(get())
     }
     viewModel {
         LogOutViewModel()
@@ -183,6 +184,10 @@ val viewModelModule = module {
     }
     viewModel {
         ManageLeagueViewModel(get())
+    }
+
+    viewModel {
+        LeagueOrderViewModel(get())
     }
 
 }

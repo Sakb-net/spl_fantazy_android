@@ -29,16 +29,4 @@ class CreatePassActivity : BaseActivity() {
         }
 
     }
-
-    private fun changeViewsFonts() {
-//        Util.changeViewTypeFace(this@CreatePassActivity, Constants.FONT_REGULAR,
-//            binding.textView2,
-//            binding.PasswordEtt,
-//            binding.ConfirmPasswordEtt,
-//            binding.buttonSend
-//
-//
-//         )
-
-    }
 }

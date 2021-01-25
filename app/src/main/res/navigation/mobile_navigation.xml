@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
-            xmlns:app="http://schemas.android.com/apk/res-auto"
-            xmlns:tools="http://schemas.android.com/tools"
-            android:id="@+id/nav_graph"
-            app:startDestination="@id/homeFragment">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/homeFragment">
 
     <fragment
         android:id="@+id/homeFragment"
@@ -28,34 +28,36 @@
 
     </fragment>
 
-    <fragment android:id="@+id/videosFragment"
+    <fragment
+        android:id="@+id/videosFragment"
         android:name="com.sakb.spl.ui.videos.VideosFragment"
         android:label="@string/videos"
-        tools:layout="@layout/fragment_videos"/>
+        tools:layout="@layout/fragment_videos" />
 
     <fragment
         android:id="@+id/chooseTeamPlayersFragment"
         android:name="com.sakb.spl.ui.chooseteamplayers.ChooseTeamPlayersFragment"
         android:label="@string/choose_team"
-        tools:layout="@layout/choose_team_players_fragment"/>
+        tools:layout="@layout/choose_team_players_fragment" />
 
-    <fragment android:id="@+id/termsFragment"
+    <fragment
+        android:id="@+id/termsFragment"
         android:name="com.sakb.spl.ui.terms.TermsFragment"
         android:label="@string/terms"
-        tools:layout="@layout/fragment_terms"/>
+        tools:layout="@layout/fragment_terms" />
 
     <fragment
         android:id="@+id/newsFragment"
         android:name="com.sakb.spl.ui.news.NewsFragment"
         android:label="@string/news"
-        tools:layout="@layout/fragment_news"/>
+        tools:layout="@layout/fragment_news" />
 
 
     <fragment
         android:id="@+id/myPointsFragment"
         android:name="com.sakb.spl.ui.mypoints.MyPointsFragment"
         android:label="@string/my_points"
-        tools:layout="@layout/fragment_my_points"/>
+        tools:layout="@layout/fragment_my_points" />
 
     <fragment
         android:id="@+id/statisticsFragment"
@@ -79,13 +81,13 @@
         android:id="@+id/contactUsFragment"
         android:name="com.sakb.spl.ui.contactus.ContactUsFragment"
         android:label="@string/contactus_title"
-        tools:layout="@layout/fragment_contact_us"/>
+        tools:layout="@layout/fragment_contact_us" />
 
     <fragment
         android:id="@+id/helpFragment"
-        tools:layout="@layout/fragment_helps"
         android:name="com.sakb.spl.ui.help.HelpFragment"
-        android:label="@string/help" />
+        android:label="@string/help"
+        tools:layout="@layout/fragment_helps" />
 
     <fragment
         android:id="@+id/howToPlayFragment"
@@ -127,13 +129,13 @@
         android:id="@+id/editProfileFragment"
         android:name="com.sakb.spl.ui.editprofile.EditProfileFragment"
         android:label="@string/edit_profile"
-        tools:layout="@layout/fragment_edit_profile"/>
+        tools:layout="@layout/fragment_edit_profile" />
 
     <fragment
         android:id="@+id/changePasswordFragment"
         android:name="com.sakb.spl.ui.changepassword.ChangePasswordFragment"
         android:label="@string/change_pass"
-        tools:layout="@layout/fragment_change_password"/>
+        tools:layout="@layout/fragment_change_password" />
 
     <fragment
         android:id="@+id/matchesFragment"
@@ -150,8 +152,9 @@
         android:name="com.sakb.spl.ui.matches.MatchDetailsFragment"
         android:label="@string/match_details"
         tools:layout="@layout/fragment_match_details">
-        <argument android:name="matchDetails"
-            app:argType="com.sakb.spl.data.model.DataItemSubFix"/>
+        <argument
+            android:name="matchDetails"
+            app:argType="com.sakb.spl.data.model.DataItemSubFix" />
     </fragment>
     <fragment
         android:id="@+id/leagueFragment"
@@ -199,7 +202,7 @@
         android:id="@+id/joinToPowerfulLeagueFragment"
         android:name="com.sakb.spl.ui.powerfulleague.JoinToPowerfulLeagueFragment"
         android:label="@string/Join_the_strongest_leagues"
-        tools:layout="@layout/join_to_powerful_league_fragment"></fragment>
+        tools:layout="@layout/join_to_powerful_league_fragment" />
     <fragment
         android:id="@+id/createHeadToHeadLeagueFragment"
         android:name="com.sakb.spl.ui.headtoheadleague.CreateHeadToHeadLeagueFragment"
@@ -276,4 +279,10 @@
             android:name="link"
             app:argType="string" />
     </fragment>
+
+    <fragment
+        android:id="@+id/rankingMatches"
+        android:name="com.sakb.spl.ui.leagueorder.LeagueOrderFragment"
+        android:label="@string/rankingMatche"
+        tools:layout="@layout/league_order_fragment" />
 </navigation>

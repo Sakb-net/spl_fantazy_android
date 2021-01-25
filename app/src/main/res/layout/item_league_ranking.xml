@@ -1,536 +1,549 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+<layout>
 
-    <androidx.appcompat.widget.LinearLayoutCompat
-        android:id="@+id/item_list"
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
-        android:layout_height="?actionBarSize"
-        android:background="@color/white"
-        android:orientation="horizontal"
-        android:weightSum="6.5"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/tvRanking"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_marginStart="@dimen/margin"
-            android:layout_weight="0.25"
-            android:gravity="center"
-            android:textColor="@color/black"
-            android:textSize="@dimen/_10ssp"
-            android:textStyle="bold"
-            tools:text="1" />
-
-        <androidx.appcompat.widget.AppCompatImageView
-            android:id="@+id/ivName"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_marginStart="@dimen/margin"
-            android:layout_weight="0.75"
-            android:gravity="center"
-            android:textAllCaps="true"
-            android:textColor="@android:color/white"
-            android:textSize="@dimen/_8ssp"
-            android:textStyle="normal"
-            app:srcCompat="@drawable/team_example" />
-
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/tvNameTeam"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_marginStart="@dimen/margin"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:textColor="@color/black"
-            android:textSize="@dimen/_10ssp"
-            android:textStyle="bold"
-            tools:text="Zamalek" />
-
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/tvPlay"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_marginStart="@dimen/margin"
-            android:layout_weight="0.75"
-            android:gravity="center"
-            android:textAllCaps="true"
-            android:textColor="@android:color/black"
-            android:textSize="@dimen/_8ssp"
-            android:textStyle="normal"
-            tools:text="27" />
-
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/tvWin"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_marginStart="@dimen/margin"
-            android:layout_weight="0.5"
-            android:gravity="center"
-            android:textAllCaps="true"
-            android:textColor="@android:color/black"
-            android:textSize="@dimen/_8ssp"
-            android:textStyle="normal"
-            tools:text="10" />
-
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/tvBalance"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_marginStart="@dimen/margin"
-            android:layout_weight="0.5"
-            android:gravity="center"
-            android:textAllCaps="true"
-            android:textColor="@android:color/black"
-            android:textSize="@dimen/_8ssp"
-            android:textStyle="normal"
-            tools:text="6" />
-
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/tvLose"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_marginStart="@dimen/margin"
-            android:layout_weight="0.5"
-            android:gravity="center"
-            android:textAllCaps="true"
-            android:textColor="@android:color/black"
-            android:textSize="@dimen/_8ssp"
-            android:textStyle="normal"
-            tools:text="2" />
-
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/tvRem"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_marginStart="@dimen/margin"
-            android:layout_weight="0.75"
-            android:gravity="center"
-            android:textAllCaps="true"
-            android:textColor="@android:color/black"
-            android:textSize="@dimen/_8ssp"
-            android:textStyle="normal"
-            tools:text="+16" />
-
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/tvPoint"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_marginStart="@dimen/margin"
-            android:layout_weight="0.75"
-            android:gravity="center"
-            android:textAllCaps="true"
-            android:textColor="@android:color/black"
-            android:textSize="@dimen/_8ssp"
-            android:textStyle="bold"
-            tools:text="50" />
-
-        <androidx.appcompat.widget.AppCompatImageView
-            android:id="@+id/more"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_marginStart="@dimen/margin"
-            android:layout_marginEnd="@dimen/margin"
-            android:layout_weight="0.75"
-            android:gravity="center"
-            android:rotation="180"
-            app:srcCompat="@drawable/ic_expand_more_black_24dp" />
-    </androidx.appcompat.widget.LinearLayoutCompat>
-
-    <View
-        android:id="@+id/view_line"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/_1sdp"
-        android:background="@color/background_gray"
-        app:layout_constraintTop_toBottomOf="@id/item_list" />
-
-    <androidx.appcompat.widget.LinearLayoutCompat
-        android:id="@+id/info_game"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/colorGrayLight"
-        android:orientation="vertical"
-        app:layout_constraintTop_toBottomOf="@id/view_line">
+        android:layout_height="wrap_content">
 
         <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/item_list"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center_vertical"
-            android:orientation="horizontal">
+            android:layout_height="?actionBarSize"
+            android:background="@color/white"
+            android:orientation="horizontal"
+            android:weightSum="6.5"
+            app:layout_constraintTop_toTopOf="parent">
 
             <androidx.appcompat.widget.AppCompatTextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/_18sdp"
-                android:layout_marginTop="@dimen/_19sdp"
-                android:layout_marginBottom="@dimen/_24sdp"
-                android:text="@string/result_last_5"
-                android:textColor="@color/colorOfBlack"
+                android:id="@+id/tvRanking"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginStart="@dimen/margin"
+                android:layout_weight="0.25"
+                android:gravity="center"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_8ssp"
+                android:textStyle="bold"
+                tools:text="1" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/ivName"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginStart="@dimen/margin"
+                android:layout_weight="0.75"
+                android:gravity="center"
+                android:textAllCaps="true"
+                android:textColor="@android:color/white"
+                android:textSize="@dimen/_8ssp"
+                android:textStyle="normal"
+                app:srcCompat="@drawable/team_example" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvNameTeam"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginStart="@dimen/margin"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:textColor="@color/black"
                 android:textSize="@dimen/_10ssp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                tools:text="Zamalek" />
 
             <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/matchOne"
-                android:layout_width="@dimen/_32sdp"
-                android:layout_height="@dimen/_32sdp"
-                android:layout_marginStart="@dimen/_28sdp"
-                android:layout_marginTop="@dimen/_12sdp"
-                android:layout_marginBottom="@dimen/_16sdp"
-                android:background="@drawable/win"
+                android:id="@+id/tvPlay"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginStart="@dimen/margin"
+                android:layout_weight="0.75"
                 android:gravity="center"
-                android:padding="@dimen/_8sdp"
-                android:text="@string/w"
-                android:textColor="@color/white"
-                android:textSize="@dimen/_14ssp"
-                android:textStyle="bold" />
+                android:textAllCaps="true"
+                android:textColor="@android:color/black"
+                android:textSize="@dimen/_8ssp"
+                android:textStyle="normal"
+                tools:text="27" />
 
             <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/matchTwo"
-                android:layout_width="@dimen/_32sdp"
-                android:layout_height="@dimen/_32sdp"
-                android:layout_marginStart="@dimen/_9sdp"
-                android:layout_marginTop="@dimen/_12sdp"
-                android:layout_marginBottom="@dimen/_16sdp"
-                android:background="@drawable/win"
+                android:id="@+id/tvWin"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginStart="@dimen/margin"
+                android:layout_weight="0.5"
                 android:gravity="center"
-                android:padding="@dimen/_8sdp"
-                android:text="@string/w"
-                android:textColor="@color/white"
-                android:textSize="@dimen/_14ssp"
-                android:textStyle="bold" />
+                android:textAllCaps="true"
+                android:textColor="@android:color/black"
+                android:textSize="@dimen/_8ssp"
+                android:textStyle="normal"
+                tools:text="10" />
 
             <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/matchThree"
-                android:layout_width="@dimen/_32sdp"
-                android:layout_height="@dimen/_32sdp"
-                android:layout_marginStart="@dimen/_9sdp"
-                android:layout_marginTop="@dimen/_12sdp"
-                android:layout_marginBottom="@dimen/_16sdp"
-                android:background="@drawable/win"
+                android:id="@+id/tvBalance"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginStart="@dimen/margin"
+                android:layout_weight="0.5"
                 android:gravity="center"
-                android:padding="@dimen/_8sdp"
-                android:text="@string/w"
-                android:textColor="@color/white"
-                android:textSize="@dimen/_14ssp"
-                android:textStyle="bold" />
+                android:textAllCaps="true"
+                android:textColor="@android:color/black"
+                android:textSize="@dimen/_8ssp"
+                android:textStyle="normal"
+                tools:text="6" />
 
             <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/matchFour"
-                android:layout_width="@dimen/_32sdp"
-                android:layout_height="@dimen/_32sdp"
-                android:layout_marginStart="@dimen/_9sdp"
-                android:layout_marginTop="@dimen/_12sdp"
-                android:layout_marginBottom="@dimen/_16sdp"
-                android:background="@drawable/tie"
+                android:id="@+id/tvLose"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginStart="@dimen/margin"
+                android:layout_weight="0.5"
                 android:gravity="center"
-                android:padding="@dimen/_8sdp"
-                android:text="@string/d"
-                android:textColor="@color/white"
-                android:textSize="@dimen/_14ssp"
-                android:textStyle="bold" />
+                android:textAllCaps="true"
+                android:textColor="@android:color/black"
+                android:textSize="@dimen/_8ssp"
+                android:textStyle="normal"
+                tools:text="2" />
 
             <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/matchFive"
-                android:layout_width="@dimen/_32sdp"
-                android:layout_height="@dimen/_32sdp"
-                android:layout_marginStart="@dimen/_9sdp"
-                android:layout_marginTop="@dimen/_12sdp"
-                android:layout_marginBottom="@dimen/_16sdp"
-                android:background="@drawable/lose"
+                android:id="@+id/tvRem"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginStart="@dimen/margin"
+                android:layout_weight="0.75"
                 android:gravity="center"
-                android:padding="@dimen/_8sdp"
-                android:text="@string/l"
-                android:textColor="@color/white"
-                android:textSize="@dimen/_14ssp"
-                android:textStyle="bold" />
+                android:textAllCaps="true"
+                android:textColor="@android:color/black"
+                android:textSize="@dimen/_8ssp"
+                android:textStyle="normal"
+                tools:text="+16" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvPoint"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginStart="@dimen/margin"
+                android:layout_weight="0.75"
+                android:gravity="center"
+                android:textAllCaps="true"
+                android:textColor="@android:color/black"
+                android:textSize="@dimen/_8ssp"
+                android:textStyle="bold"
+                tools:text="50" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/more"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginStart="@dimen/margin"
+                android:layout_marginEnd="@dimen/margin"
+                android:layout_weight="0.75"
+                android:gravity="center"
+                android:rotation="0"
+                app:srcCompat="@drawable/ic_expand_more_black_24dp" />
         </androidx.appcompat.widget.LinearLayoutCompat>
 
         <View
+            android:id="@+id/view_line"
             android:layout_width="match_parent"
             android:layout_height="@dimen/_1sdp"
-            android:background="@color/colorGrayBack" />
+            android:background="@color/background_gray"
+            app:layout_constraintTop_toBottomOf="@id/item_list" />
 
         <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/info_game"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center_vertical"
-            android:orientation="vertical">
+            android:background="@color/colorGrayLight"
+            android:orientation="vertical"
+            android:visibility="gone"
+            app:layout_constraintTop_toBottomOf="@id/view_line">
 
-            <androidx.constraintlayout.widget.ConstraintLayout
+            <androidx.appcompat.widget.LinearLayoutCompat
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingStart="@dimen/_18sdp"
-                android:paddingTop="@dimen/_9sdp"
-                android:paddingEnd="@dimen/_19sdp">
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
 
                 <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/lastMatch"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/last_game"
+                    android:layout_marginStart="@dimen/_18sdp"
+                    android:layout_marginTop="@dimen/_19sdp"
+                    android:layout_marginBottom="@dimen/_24sdp"
+                    android:text="@string/result_last_5"
                     android:textColor="@color/colorOfBlack"
                     android:textSize="@dimen/_10ssp"
-                    android:textStyle="bold"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    android:textStyle="bold" />
 
                 <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/lastDate"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textColor="@color/colorOfBlack"
-                    android:textSize="@dimen/_10ssp"
+                    android:id="@+id/matchOne"
+                    android:layout_width="@dimen/_32sdp"
+                    android:layout_height="@dimen/_32sdp"
+                    android:layout_marginStart="@dimen/_28sdp"
+                    android:layout_marginTop="@dimen/_12sdp"
+                    android:layout_marginBottom="@dimen/_16sdp"
+                    android:background="@drawable/win"
+                    android:gravity="center"
+                    android:padding="@dimen/_8sdp"
+                    android:text="@string/w"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/_14ssp"
                     android:textStyle="bold"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    tools:text="Mon 12/02/2021" />
+                    android:visibility="invisible" />
 
-                <androidx.appcompat.widget.LinearLayoutCompat
-                    android:id="@+id/LastLinear"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="@dimen/_20sdp"
-                    android:layout_marginVertical="@dimen/_19sdp"
-                    android:baselineAligned="false"
-                    android:orientation="horizontal"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/lastMatch">
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/matchTwo"
+                    android:layout_width="@dimen/_32sdp"
+                    android:layout_height="@dimen/_32sdp"
+                    android:layout_marginStart="@dimen/_9sdp"
+                    android:layout_marginTop="@dimen/_12sdp"
+                    android:layout_marginBottom="@dimen/_16sdp"
+                    android:background="@drawable/win"
+                    android:gravity="center"
+                    android:padding="@dimen/_8sdp"
+                    android:text="@string/w"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/_14ssp"
+                    android:textStyle="bold"
+                    android:visibility="invisible" />
 
-                    <androidx.appcompat.widget.LinearLayoutCompat
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:gravity="center"
-                        android:orientation="horizontal">
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/matchThree"
+                    android:layout_width="@dimen/_32sdp"
+                    android:layout_height="@dimen/_32sdp"
+                    android:layout_marginStart="@dimen/_9sdp"
+                    android:layout_marginTop="@dimen/_12sdp"
+                    android:layout_marginBottom="@dimen/_16sdp"
+                    android:background="@drawable/win"
+                    android:gravity="center"
+                    android:padding="@dimen/_8sdp"
+                    android:text="@string/w"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/_14ssp"
+                    android:textStyle="bold"
+                    android:visibility="invisible" />
 
-                        <androidx.appcompat.widget.AppCompatTextView
-                            android:id="@+id/last_team1_tv"
-                            android:layout_width="0dp"
-                            android:layout_height="match_parent"
-                            android:layout_gravity="center"
-                            android:layout_marginStart="8dp"
-                            android:layout_marginEnd="8dp"
-                            android:layout_weight="0.75"
-                            android:gravity="center"
-                            android:textColor="@color/colorGrey"
-                            tools:text="النادي" />
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/matchFour"
+                    android:layout_width="@dimen/_32sdp"
+                    android:layout_height="@dimen/_32sdp"
+                    android:layout_marginStart="@dimen/_9sdp"
+                    android:layout_marginTop="@dimen/_12sdp"
+                    android:layout_marginBottom="@dimen/_16sdp"
+                    android:background="@drawable/tie"
+                    android:gravity="center"
+                    android:padding="@dimen/_8sdp"
+                    android:text="@string/d"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/_14ssp"
+                    android:textStyle="bold"
+                    android:visibility="invisible" />
 
-                        <androidx.appcompat.widget.AppCompatImageView
-                            android:id="@+id/last_team1_iv"
-                            android:layout_width="@dimen/_46sdp"
-                            android:layout_height="@dimen/_46sdp"
-                            android:layout_gravity="center"
-                            tools:src="@drawable/team_example" />
-                    </androidx.appcompat.widget.LinearLayoutCompat>
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/matchFive"
+                    android:layout_width="@dimen/_32sdp"
+                    android:layout_height="@dimen/_32sdp"
+                    android:layout_marginStart="@dimen/_9sdp"
+                    android:layout_marginTop="@dimen/_12sdp"
+                    android:layout_marginBottom="@dimen/_16sdp"
+                    android:background="@drawable/lose"
+                    android:gravity="center"
+                    android:padding="@dimen/_8sdp"
+                    android:text="@string/l"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/_14ssp"
+                    android:textStyle="bold"
+                    android:visibility="invisible" />
+            </androidx.appcompat.widget.LinearLayoutCompat>
 
-                    <androidx.appcompat.widget.LinearLayoutCompat
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_marginStart="8dp"
-                        android:layout_marginEnd="8dp"
-                        android:layout_weight="0"
-                        android:gravity="center"
-                        android:orientation="horizontal">
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_1sdp"
+                android:background="@color/colorGrayBack" />
 
-                        <androidx.appcompat.widget.AppCompatTextView
-                            android:id="@+id/last_date_result_team_one"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:background="@color/colorPrimary"
-                            android:gravity="center"
-                            android:padding="8dp"
-                            android:textColor="@color/white"
-                            android:textSize="16sp"
-                            tools:text="1" />
-
-                        <androidx.appcompat.widget.AppCompatTextView
-                            android:id="@+id/last_date_result_team_two"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="4dp"
-                            android:background="@color/colorPrimary"
-                            android:gravity="center"
-                            android:padding="8dp"
-                            android:textColor="@color/white"
-                            android:textSize="16sp"
-                            tools:text="2" />
-                    </androidx.appcompat.widget.LinearLayoutCompat>
-
-                    <androidx.appcompat.widget.LinearLayoutCompat
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:gravity="center"
-                        android:orientation="horizontal">
-
-                        <androidx.appcompat.widget.AppCompatImageView
-                            android:id="@+id/last_team2_iv"
-                            android:layout_width="@dimen/_46sdp"
-                            android:layout_height="@dimen/_46sdp"
-                            android:layout_gravity="center"
-                            tools:src="@drawable/team_example" />
-
-                        <androidx.appcompat.widget.AppCompatTextView
-                            android:id="@+id/last_team2_tv"
-                            android:layout_width="0dp"
-                            android:layout_height="match_parent"
-                            android:layout_gravity="center"
-                            android:layout_marginStart="8dp"
-                            android:layout_marginEnd="8dp"
-                            android:layout_weight="0.75"
-                            android:gravity="center"
-                            android:textColor="@color/colorGrey"
-                            tools:text="الهلال" />
-
-                    </androidx.appcompat.widget.LinearLayoutCompat>
-
-                </androidx.appcompat.widget.LinearLayoutCompat>
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
-        </androidx.appcompat.widget.LinearLayoutCompat>
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/_1sdp"
-            android:background="@color/colorGrayBack" />
-
-        <androidx.appcompat.widget.LinearLayoutCompat
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center_vertical"
-            android:orientation="vertical">
-
-            <androidx.constraintlayout.widget.ConstraintLayout
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:id="@+id/lastMatchLL"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingStart="@dimen/_18sdp"
-                android:paddingTop="@dimen/_9sdp"
-                android:paddingEnd="@dimen/_19sdp">
+                android:gravity="center_vertical"
+                android:orientation="vertical"
+                android:visibility="gone">
 
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/nextMatch"
-                    android:layout_width="wrap_content"
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/next_match_"
-                    android:textColor="@color/colorOfBlack"
-                    android:textSize="@dimen/_10ssp"
-                    android:textStyle="bold"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    android:paddingStart="@dimen/_18sdp"
+                    android:paddingTop="@dimen/_9sdp"
+                    android:paddingEnd="@dimen/_19sdp">
 
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/nextGame"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textColor="@color/colorOfBlack"
-                    android:textSize="@dimen/_10ssp"
-                    android:textStyle="bold"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    tools:text="Mon 12/02/2021" />
-
-                <androidx.appcompat.widget.LinearLayoutCompat
-                    android:id="@+id/NextLinear"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginVertical="@dimen/_19sdp"
-                    android:orientation="horizontal"
-                    android:layout_marginHorizontal="@dimen/_20sdp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/nextMatch">
-
-                    <androidx.appcompat.widget.LinearLayoutCompat
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:gravity="center"
-                        android:orientation="horizontal">
-
-                        <androidx.appcompat.widget.AppCompatTextView
-                            android:id="@+id/next_team1_tv"
-                            android:layout_width="0dp"
-                            android:layout_height="match_parent"
-                            android:layout_gravity="center"
-                            android:layout_marginStart="8dp"
-                            android:layout_marginEnd="8dp"
-                            android:layout_weight="0.75"
-                            android:gravity="center"
-                            android:textColor="@color/colorGrey"
-                            tools:text="النادي" />
-
-                        <androidx.appcompat.widget.AppCompatImageView
-                            android:id="@+id/next_team1_iv"
-                            android:layout_width="@dimen/_46sdp"
-                            android:layout_height="@dimen/_46sdp"
-                            android:layout_gravity="center"
-                            tools:src="@drawable/team_example" />
-                    </androidx.appcompat.widget.LinearLayoutCompat>
-
-                    <androidx.appcompat.widget.LinearLayoutCompat
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/lastMatch"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_marginStart="8dp"
-                        android:layout_marginEnd="8dp"
-                        android:layout_weight="0"
-                        android:gravity="center"
-                        android:orientation="vertical">
+                        android:text="@string/last_game"
+                        android:textColor="@color/colorOfBlack"
+                        android:textSize="@dimen/_10ssp"
+                        android:textStyle="bold"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
 
-                        <androidx.appcompat.widget.AppCompatTextView
-                            android:id="@+id/next_date_result"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:gravity="center"
-                            android:textColor="#303030"
-                            android:textSize="16sp"
-                            tools:text="122:112" />
-                    </androidx.appcompat.widget.LinearLayoutCompat>
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/lastDate"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/colorOfBlack"
+                        android:textSize="@dimen/_10ssp"
+                        android:textStyle="bold"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        tools:text="Mon 12/02/2021" />
 
                     <androidx.appcompat.widget.LinearLayoutCompat
+                        android:id="@+id/LastLinear"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:gravity="center"
-                        android:orientation="horizontal">
+                        android:layout_marginHorizontal="@dimen/_20sdp"
+                        android:layout_marginVertical="@dimen/_19sdp"
+                        android:baselineAligned="false"
+                        android:orientation="horizontal"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/lastMatch">
 
-                        <androidx.appcompat.widget.AppCompatImageView
-                            android:id="@+id/next_team2_iv"
-                            android:layout_width="@dimen/_46sdp"
-                            android:layout_height="@dimen/_46sdp"
-                            android:layout_gravity="center"
-                            tools:src="@drawable/team_example" />
-
-                        <androidx.appcompat.widget.AppCompatTextView
-                            android:id="@+id/next_team2_tv"
+                        <androidx.appcompat.widget.LinearLayoutCompat
                             android:layout_width="0dp"
-                            android:layout_height="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:orientation="horizontal">
+
+                            <androidx.appcompat.widget.AppCompatTextView
+                                android:id="@+id/last_team1_tv"
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_gravity="center"
+                                android:layout_marginStart="8dp"
+                                android:layout_marginEnd="8dp"
+                                android:layout_weight="0.75"
+                                android:gravity="center"
+                                android:textColor="@color/colorGrey"
+                                tools:text="النادي" />
+
+                            <androidx.appcompat.widget.AppCompatImageView
+                                android:id="@+id/last_team1_iv"
+                                android:layout_width="@dimen/_46sdp"
+                                android:layout_height="@dimen/_46sdp"
+                                android:layout_gravity="center"
+                                tools:src="@drawable/team_example" />
+                        </androidx.appcompat.widget.LinearLayoutCompat>
+
+                        <androidx.appcompat.widget.LinearLayoutCompat
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
                             android:layout_gravity="center"
                             android:layout_marginStart="8dp"
                             android:layout_marginEnd="8dp"
-                            android:layout_weight="0.75"
+                            android:layout_weight="0"
                             android:gravity="center"
-                            android:textColor="@color/colorGrey"
-                            tools:text="الهلال" />
+                            android:orientation="horizontal">
+
+                            <androidx.appcompat.widget.AppCompatTextView
+                                android:id="@+id/last_date_result_team_one"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:background="@color/colorPrimary"
+                                android:gravity="center"
+                                android:padding="8dp"
+                                android:textColor="@color/white"
+                                android:textSize="16sp"
+                                tools:text="1" />
+
+                            <androidx.appcompat.widget.AppCompatTextView
+                                android:id="@+id/last_date_result_team_two"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="4dp"
+                                android:background="@color/colorPrimary"
+                                android:gravity="center"
+                                android:padding="8dp"
+                                android:textColor="@color/white"
+                                android:textSize="16sp"
+                                tools:text="2" />
+                        </androidx.appcompat.widget.LinearLayoutCompat>
+
+                        <androidx.appcompat.widget.LinearLayoutCompat
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:orientation="horizontal">
+
+                            <androidx.appcompat.widget.AppCompatImageView
+                                android:id="@+id/last_team2_iv"
+                                android:layout_width="@dimen/_46sdp"
+                                android:layout_height="@dimen/_46sdp"
+                                android:layout_gravity="center"
+                                tools:src="@drawable/team_example" />
+
+                            <androidx.appcompat.widget.AppCompatTextView
+                                android:id="@+id/last_team2_tv"
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_gravity="center"
+                                android:layout_marginStart="8dp"
+                                android:layout_marginEnd="8dp"
+                                android:layout_weight="0.75"
+                                android:gravity="center"
+                                android:textColor="@color/colorGrey"
+                                tools:text="الهلال" />
+
+                        </androidx.appcompat.widget.LinearLayoutCompat>
+
                     </androidx.appcompat.widget.LinearLayoutCompat>
-                </androidx.appcompat.widget.LinearLayoutCompat>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_1sdp"
+                android:background="@color/colorGrayBack" />
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:id="@+id/nextMatchLL"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingStart="@dimen/_18sdp"
+                    android:paddingTop="@dimen/_9sdp"
+                    android:paddingEnd="@dimen/_19sdp">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/nextMatch"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/next_match_"
+                        android:textColor="@color/colorOfBlack"
+                        android:textSize="@dimen/_10ssp"
+                        android:textStyle="bold"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/nextGame"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/colorOfBlack"
+                        android:textSize="@dimen/_10ssp"
+                        android:textStyle="bold"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        tools:text="Mon 12/02/2021" />
+
+                    <androidx.appcompat.widget.LinearLayoutCompat
+                        android:id="@+id/NextLinear"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="@dimen/_20sdp"
+                        android:layout_marginVertical="@dimen/_19sdp"
+                        android:orientation="horizontal"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/nextMatch">
+
+                        <androidx.appcompat.widget.LinearLayoutCompat
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:orientation="horizontal">
+
+                            <androidx.appcompat.widget.AppCompatTextView
+                                android:id="@+id/next_team1_tv"
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_gravity="center"
+                                android:layout_marginStart="8dp"
+                                android:layout_marginEnd="8dp"
+                                android:layout_weight="0.75"
+                                android:gravity="center"
+                                android:textColor="@color/colorGrey"
+                                tools:text="النادي" />
+
+                            <androidx.appcompat.widget.AppCompatImageView
+                                android:id="@+id/next_team1_iv"
+                                android:layout_width="@dimen/_46sdp"
+                                android:layout_height="@dimen/_46sdp"
+                                android:layout_gravity="center"
+                                tools:src="@drawable/team_example" />
+                        </androidx.appcompat.widget.LinearLayoutCompat>
+
+                        <androidx.appcompat.widget.LinearLayoutCompat
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginStart="8dp"
+                            android:layout_marginEnd="8dp"
+                            android:layout_weight="0"
+                            android:gravity="center"
+                            android:orientation="vertical">
+
+                            <androidx.appcompat.widget.AppCompatTextView
+                                android:id="@+id/next_date_result"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:gravity="center"
+                                android:textColor="#303030"
+                                android:textSize="16sp"
+                                tools:text="122:112" />
+                        </androidx.appcompat.widget.LinearLayoutCompat>
+
+                        <androidx.appcompat.widget.LinearLayoutCompat
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:orientation="horizontal">
+
+                            <androidx.appcompat.widget.AppCompatImageView
+                                android:id="@+id/next_team2_iv"
+                                android:layout_width="@dimen/_46sdp"
+                                android:layout_height="@dimen/_46sdp"
+                                android:layout_gravity="center"
+                                tools:src="@drawable/team_example" />
+
+                            <androidx.appcompat.widget.AppCompatTextView
+                                android:id="@+id/next_team2_tv"
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_gravity="center"
+                                android:layout_marginStart="8dp"
+                                android:layout_marginEnd="8dp"
+                                android:layout_weight="0.75"
+                                android:gravity="center"
+                                android:textColor="@color/colorGrey"
+                                tools:text="الهلال" />
+                        </androidx.appcompat.widget.LinearLayoutCompat>
+                    </androidx.appcompat.widget.LinearLayoutCompat>
 
 
-            </androidx.constraintlayout.widget.ConstraintLayout>
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_1sdp"
+                android:background="@color/colorGrayBack" />
+
         </androidx.appcompat.widget.LinearLayoutCompat>
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/_1sdp"
-            android:background="@color/colorGrayBack" />
-
-    </androidx.appcompat.widget.LinearLayoutCompat>
-</androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

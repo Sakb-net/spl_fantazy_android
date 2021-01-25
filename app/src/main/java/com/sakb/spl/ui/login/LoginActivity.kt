@@ -13,7 +13,7 @@ import com.sakb.spl.base.BaseActivity
 import com.sakb.spl.data.local.PrefManager
 import com.sakb.spl.data.model.LoginResponse
 import com.sakb.spl.databinding.ActivityLoginBinding
-import com.sakb.spl.ui.forgetpasswordwebview.ForgetPasswordWebViewActivity
+import com.sakb.spl.ui.forgotpassword.ForgotPassActivity
 import com.sakb.spl.ui.main.MainActivity
 import com.sakb.spl.ui.register.RegisterActivity
 import com.sakb.spl.utils.ImageUtils
@@ -49,7 +49,7 @@ class LoginActivity : BaseActivity(), SocialMediaSignUpCallback {
             onBackPressed()
         }
         binding?.tvForgotPass?.setOnClickListener {
-            startActivity(Intent(this, ForgetPasswordWebViewActivity::class.java))
+            startActivity(Intent(this, ForgotPassActivity::class.java))
         }
 
         binding?.buttonLogin?.setOnClickListener {

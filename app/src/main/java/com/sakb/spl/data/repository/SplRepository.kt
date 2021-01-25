@@ -29,6 +29,20 @@ class SplRepository constructor(
         )
     }
 
+    fun forgetPassword(email: String): Single<ForgetPasswordResponse> {
+        return remote.getForgetPassword(
+            email
+        )
+    }
+
+    fun confirmForgetPassword(email: String, token: String): Single<ConfirmResetPasswordResponse> {
+        return remote.getConfirmPassword(email, token)
+    }
+
+    fun createNewPassword(email: String, newPassword: String): Single<CreateNewPasswordResponse> {
+        return remote.getCreateNewPassword(email, newPassword)
+    }
+
     fun getPlayerByType(
         type_key: String,
         order_play: String,
@@ -392,5 +406,16 @@ class SplRepository constructor(
 
     fun followTeams(followTeams: String): Single<BaseResponse> {
         return remote.followTeams(followTeams)
+    }
+
+    fun rankingTeams(): Single<RankingEldawryResponse> {
+        return remote.getRankingEldawry()
+    }
+    fun rankingTeams(subeldwryLink: String): Single<RankingEldawryResponse> {
+        return remote.getRankingEldawry(subeldwryLink)
+    }
+
+    fun subEldawryRankingTeams(): Single<GetAllSubeldawryResponse> {
+        return remote.getSudEldawryForRankingEldawry()
     }
 }

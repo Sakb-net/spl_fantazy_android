@@ -413,5 +413,11 @@
     <!--KEYS-->
     <string name="facebook_app_id" translatable="false">1308494836189612</string>
     <string name="fb_login_protocol_scheme" translatable="false">fb1308494836189612</string>
+    <string name="enter_your_email">Enter Your Email</string>
+    <string name="forgot_desc_token">Enter a token here, we will send you a new message to create new password</string>
+    <string name="token">Token</string>
+    <string name="enter_your_token">Enter Token send to your mail</string>
+    <string name="enter_right_token">Enter right token</string>
+    <string name="rankingMatche">Ranking Matches</string>
 
 </resources>

@@ -10,10 +10,10 @@ object Constants {
     const val FONT_REGULAR = "helvetica_reg.ttf"
 
     //Production
-    const val baseUrl = "http://sakbfantasy.sakb-co.com.sa/"
+    //const val baseUrl = "http://sakbfantasy.sakb-co.com.sa/"
 
     //Dev
-    //    const val baseUrl = "https://devfantasy.sakb-co.com.sa/"
+    const val baseUrl = "https://devfantasy.sakb-co.com.sa/"
     const val type_dev = "android"
     const val val_dev = "A\$&h6#565aN\$DrOiD#(*I\$&h6#aN\$&*rOiD#"
     // const val UNAUTHENTICATED = "unAuthenticated"

@@ -8,24 +8,25 @@ import android.os.Bundle
 import android.widget.Toast
 import com.sakb.spl.R
 import com.sakb.spl.base.BaseActivity
-import com.sakb.spl.databinding.ActivityForgotPassBinding
+import com.sakb.spl.databinding.ActivityForgotPassTokenBinding
+import com.sakb.spl.ui.newpass.CreatePassActivity
 import com.sakb.spl.utils.ImageUtils
 import com.sakb.spl.utils.LanguageUtil
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
-class ForgotPassActivity : BaseActivity() {
+class TokenForgotPassActivity : BaseActivity() {
 
     private lateinit var context: Context
     private lateinit var dialog: Dialog
     override val viewModel by viewModel<ForgotPassViewModel>()
 
-    var _binding: ActivityForgotPassBinding? = null
+    var _binding: ActivityForgotPassTokenBinding? = null
     private val binding get() = _binding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        _binding = ActivityForgotPassBinding.inflate(layoutInflater)
+        _binding = ActivityForgotPassTokenBinding.inflate(layoutInflater)
         setContentView(binding?.root)
         context = this
 
@@ -40,21 +41,28 @@ class ForgotPassActivity : BaseActivity() {
             onBackPressed()
         }
         binding?.buttonSend?.setOnClickListener {
-            if (binding?.EmailEtt?.text?.toString().isNullOrBlank()) {
+            if (binding?.TokenEtt?.text?.toString().isNullOrBlank()) {
                 Toast.makeText(context,
-                    getString(R.string.enter_your_email),
+                    getString(R.string.enter_your_token),
                     Toast.LENGTH_LONG).show()
                 return@setOnClickListener
             }
-            viewModel.loadForgetPassword(email = binding?.EmailEtt?.text?.toString() ?: "")
+            viewModel.loadConfirmPassword(email = "", binding?.TokenEtt?.text?.toString() ?: "")
             //startActivity(Intent(this, CreatePassActivity::class.java))
         }
 
-        viewModel.forgetPassword.observe(this) {
-            it?.data?.token?.let {
-                //send email and token
-                startActivity(Intent(this, TokenForgotPassActivity::class.java))
+        viewModel.confirmResetPassword.observe(this) {
+            if(it?.data.isNullOrEmpty()){
+                Toast.makeText(context,
+                    getString(R.string.enter_right_token),
+                    Toast.LENGTH_LONG).show()
+                return@observe
             }
+            it?.data?.let {
+                //sendEmail
+                startActivity(Intent(this, CreatePassActivity::class.java))
+            }
+
         }
     }
 

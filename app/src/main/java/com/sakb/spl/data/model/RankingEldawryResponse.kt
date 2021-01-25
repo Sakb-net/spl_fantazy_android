@@ -225,4 +225,6 @@ data class RankingEldwryItem(
 
 	@field:SerializedName("class_state")
 	val classState: String? = null,
+
+	var expandList :Boolean = false
 ) : Parcelable

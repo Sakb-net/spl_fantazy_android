@@ -15,8 +15,28 @@ interface SplApiEndpoints {
     fun login(
         @Field("email_user_name") email_user_name: String,
         @Field("password") password: String,
-        @Field("fcm_token") fcm_token: String
+        @Field("fcm_token") fcm_token: String,
     ): Single<LoginResponse>
+
+    @FormUrlEncoded
+    @POST("/api/v1/forgetpassword")
+    fun getForgetPassword(
+        @Field("email") email: String,
+    ): Single<ForgetPasswordResponse>
+
+    @FormUrlEncoded
+    @POST("/api/v1/password/confirm_reset")
+    fun getConfirmPassword(
+        @Field("email") email: String,
+        @Field("token") token: String,
+    ): Single<ConfirmResetPasswordResponse>
+
+    @FormUrlEncoded
+    @POST("")
+    fun getCreateNewPassword(
+        @Field("email") email: String,
+        @Field("password") newPassword: String,
+    ): Single<CreateNewPasswordResponse>
 
     @FormUrlEncoded
     @POST("/api/v1/filterPlayer")
@@ -25,7 +45,7 @@ interface SplApiEndpoints {
         @Field("order_play") order_play: String,
         @Field("link_team") link_team: String,
         @Field("from_price") from_price: String,
-        @Field("to_price") to_price: String
+        @Field("to_price") to_price: String,
     ): Single<PlayerByTypeResponse>
 
     @FormUrlEncoded
@@ -36,14 +56,14 @@ interface SplApiEndpoints {
         @Field("password") password: String,
         @Field("display_name") display_name: String,
         @Field("reg_site") reg_site: String,
-        @Field("fcm_token") fcm_token: String
+        @Field("fcm_token") fcm_token: String,
     ): Single<RegisterResponse>
 
     @FormUrlEncoded
     @POST("/api/v1/change_password")
     fun changePassword(
         @Field("old_password") old_password: String,
-        @Field("new_password") new_password: String
+        @Field("new_password") new_password: String,
     ): Single<ChangePasswordResponse>
 
     @FormUrlEncoded
@@ -53,13 +73,13 @@ interface SplApiEndpoints {
         @Field("provider_id") provider_id: String,
         @Field("display_name") display_name: String,
         @Field("reg_site") reg_site: String,
-        @Field("fcm_token") fcm_token: String
+        @Field("fcm_token") fcm_token: String,
     ): Single<SocialResponse>
 
     @FormUrlEncoded
     @POST("/api/v1/add_player")
     fun addPlayer(
-        @Field("player_link") player_link: String
+        @Field("player_link") player_link: String,
     ): Single<AddPlayerResponse>
 
     @FormUrlEncoded
@@ -67,7 +87,7 @@ interface SplApiEndpoints {
     fun changePlayer(
         @Field("eldwry_link") eldwry_link: String,
         @Field("delet_player_link") delet_player_link: String,
-        @Field("add_player_link") add_player_link: String
+        @Field("add_player_link") add_player_link: String,
     ): Single<ChangePlayerResponse>
 
     @FormUrlEncoded
@@ -77,20 +97,20 @@ interface SplApiEndpoints {
         @Field("ch_game_player_id_one") ch_game_player_id_one: String,
         @Field("ch_player_id_one") ch_player_id_one: String,
         @Field("ch_game_player_id_two") ch_game_player_id_two: String,
-        @Field("ch_player_id_two") ch_player_id_two: String
+        @Field("ch_player_id_two") ch_player_id_two: String,
     ): Single<CheckInsideChangeResponse>
 
     @FormUrlEncoded
     @POST("/api/v1/player")
     fun playerInfo(
-        @Field("player_link") player_link: String
+        @Field("player_link") player_link: String,
     ): Single<PlayerResponse>
 
     @FormUrlEncoded
     @POST("/api/v1/add_captain_assist")
     fun addCaptainOrViseCaptain(
         @Field("player_link") player_link: String,
-        @Field("type") type: String
+        @Field("type") type: String,
     ): Single<AddCaptainOrVise>
 
     @POST("/api/v1/instraction")
@@ -105,7 +125,7 @@ interface SplApiEndpoints {
     @FormUrlEncoded
     @POST("/api/v1/add_myteam")
     fun saveTeam(
-        @Field("name_team") name_team: String
+        @Field("name_team") name_team: String,
     ): Single<AddTeamResponse>
 
     // get all players in my team
@@ -120,7 +140,7 @@ interface SplApiEndpoints {
     @POST("/api/v1/add_direct_insideChange")
     fun addDirectInsideChange(
         @Field("player_link_one") player_link_one: String,
-        @Field("player_link_two") player_link_two: String
+        @Field("player_link_two") player_link_two: String,
     ): Single<AddDirectInsideChange>
 
     // get all players in my team
@@ -139,41 +159,41 @@ interface SplApiEndpoints {
         @Field("best_team") best_team: String,
         @Field("display_name") display_name: String,
         @Field("email") email: String,
-        @Field("image") image: String
+        @Field("image") image: String,
     ): Single<UpdateProfileResponse>
 
     @FormUrlEncoded
     @POST("/api/v1/update_profile")
     fun updateProfileBestTeam(
-        @Field("best_team") best_team: String
+        @Field("best_team") best_team: String,
     ): Single<UpdateProfileResponse>
 
     @FormUrlEncoded
     @POST("/api/v1/videos")
     fun videos(
         @Field("num_page") num_page: String,
-        @Field("limit") limit: String
+        @Field("limit") limit: String,
     ): Single<VideosResponse>
 
     @FormUrlEncoded
     @POST("/api/v1/news")
     fun news(
         @Field("num_page") num_page: String,
-        @Field("limit") limit: String
+        @Field("limit") limit: String,
     ): Single<NewsResponse>
 
     @FormUrlEncoded
     @POST("/api/v1/home")
     fun home(
         @Field("limit") limit: String,
-        @Field("limit_fix") limit_fix: String
+        @Field("limit_fix") limit_fix: String,
     ): Single<HomeResponse>
 
     @GET("/api/v1/home_points_eldwry")
-    fun homePointEldwry():Single<HomePointEldawryResponse>
+    fun homePointEldwry(): Single<HomePointEldawryResponse>
 
     @GET("/api/v1/public_points_eldwry")
-    fun publicPointEldwry():Single<PublicPointEldaweryResponse>
+    fun publicPointEldwry(): Single<PublicPointEldaweryResponse>
 
     @FormUrlEncoded
     @POST("/api/v1/comments")
@@ -181,14 +201,14 @@ interface SplApiEndpoints {
         @Field("num_page") num_page: String,
         @Field("limit") limit: String,
         @Field("lang") lang: String,
-        @Field("link") link: String
+        @Field("link") link: String,
     ): Single<CommentsResponse>
 
 
     @FormUrlEncoded
     @POST("api/v1/uploadImage")
     fun uploadImage(
-        @Field("image") image  : String
+        @Field("image") image: String,
     ): Single<UploadImgResponse>
 
 
@@ -198,31 +218,31 @@ interface SplApiEndpoints {
     @FormUrlEncoded
     @POST("api/v1/add_contact_us")
     fun addContactUsMessage(
-        @Field("content") content : String
+        @Field("content") content: String,
     ): Single<AddContactUsMessageResponse>
 
     @GET("api/v1/fixtures")
-    fun getFixtures():Single<GetLastFixturesResponse>
+    fun getFixtures(): Single<GetLastFixturesResponse>
 
     @GET("api/v1/subeldwry")
-    fun getAllSubeldawry():Single<GetAllSubeldawryResponse>
+    fun getAllSubeldawry(): Single<GetAllSubeldawryResponse>
 
     @GET("api/v1/subeldwry/{link}/fixtures")
     fun getAllFixturesBySubeldawry(
-        @Path("link") link_subeldawry: String
-    ):Single<GetFixturesBySubeldawryResponse>
+        @Path("link") link_subeldawry: String,
+    ): Single<GetFixturesBySubeldawryResponse>
 
     @GET("api/v1/fixtures/{link}")
     fun getFixturesBy(
-        @Path("link") link_subeldawry: String
-    ):Single<GetFixtuersResponse>
+        @Path("link") link_subeldawry: String,
+    ): Single<GetFixtuersResponse>
 
     @FormUrlEncoded
     @POST("api/v1/statistics")
     fun getStatistics(
         @Field("link_team") link_team: String,
         @Field("order_play") order_play: String,
-        @Field("loc_player") loc_player: String
+        @Field("loc_player") loc_player: String,
     ): Single<StatisticsPlayerResponse>
 
     @POST("/api/v1/award")
@@ -236,7 +256,7 @@ interface SplApiEndpoints {
     fun getPointsSubEldawry(@Field("subeldwry_link") link_team: String): Single<GetPointSubeldawryResponse>
 
     @GET("/api/v1/check_btns_status")
-    fun checkCardsStatus():Single<CardStatusResponse>
+    fun checkCardsStatus(): Single<CardStatusResponse>
 
     @GET("/api/v1/triple_captain_card")
     fun activeTripleCardsStatus(): Single<BaseResponse>
@@ -358,13 +378,14 @@ interface SplApiEndpoints {
         @Field("teamFollow") teamFollow: String,
     ): Single<BaseResponse>
 
-    @FormUrlEncoded
+    @GET("/api/v1/ranking_eldwry")
+    fun getRankingEldawry(): Single<RankingEldawryResponse>
+
     @GET("/api/v1/ranking_eldwry")
     fun getRankingEldawry(
-        @Field("subeldwry_link") subeldwry_link:String
-    ):Single<RankingEldawryResponse>
-
+        @Query("subeldwry_link") subeldwry_link: String,
+    ): Single<RankingEldawryResponse>
 
     @GET("/api/v1/ranking_eldwry/subeldwry")
-    fun getSudEldawryForRankingEldawry():Single<GetAllSubeldawryResponse>
+    fun getSudEldawryForRankingEldawry(): Single<GetAllSubeldawryResponse>
 }

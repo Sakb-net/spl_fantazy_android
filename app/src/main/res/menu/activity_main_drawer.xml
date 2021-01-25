@@ -53,6 +53,10 @@
             android:title="@string/fixtures" />
 
         <item
+            android:id="@+id/rankingMatches"
+            android:title="@string/rankingMatche" />
+
+        <item
             android:id="@+id/contactUsFragment"
             android:title="@string/contactus_title" />
         <item

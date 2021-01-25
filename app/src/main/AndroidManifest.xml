@@ -11,12 +11,12 @@
     <application
         android:name=".app.SplApplication"
         android:allowBackup="true"
+        android:fullBackupContent="@xml/backup_descriptor"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppThemeNormal"
-        android:fullBackupContent="@xml/backup_descriptor"
         android:usesCleartextTraffic="true"
         tools:targetApi="m">
         <activity
@@ -131,6 +131,17 @@
         </activity>
         <activity
             android:name=".ui.forgotpassword.ForgotPassActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/FormsTheme"
+            android:windowSoftInputMode="stateHidden|adjustResize">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".ui.forgotpassword.TokenForgotPassActivity"
             android:screenOrientation="portrait"
             android:theme="@style/FormsTheme"
             android:windowSoftInputMode="stateHidden|adjustResize">
