@@ -77,7 +77,6 @@ class MatchesFragment : BaseFragment() {
     }
 
     private fun initDialogRounds() {
-        // todo   val options = viewModel.teamsNames.toTypedArray()
         val options = option.map {
             it.let {
                 it.langNumWeek?.trim()

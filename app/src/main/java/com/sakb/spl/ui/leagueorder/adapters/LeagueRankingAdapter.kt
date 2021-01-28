@@ -22,6 +22,9 @@ class LeagueRankingAdapter(var context: Context) :
     var onClickListener: ((RankingEldwryItem, Int) -> Unit)? = null
     var expand = true
     var pos = 0
+
+    var homeAway = ""
+    var winTieLosse = ""
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) =
         RankingViewHolder(
             ItemLeagueRankingBinding.inflate(
@@ -71,93 +74,113 @@ class LeagueRankingAdapter(var context: Context) :
                 for (i in list.indices) {
                     when (i) {
                         0 -> {
-                            binding.matchOne.visibility = View.VISIBLE
-                            binding.matchOne.text = list[i]?.stateLang
-                            binding.matchOne.background = when (list[i]?.state) {
-                                "w" -> {
-                                    ContextCompat.getDrawable(context, R.drawable.win)
+                            if ((list[i]?.state == winTieLosse || winTieLosse == "") && (list[i]?.locationType == homeAway || homeAway == "")) {
+                                binding.matchOne.visibility = View.VISIBLE
+                                binding.matchOne.text = list[i]?.stateLang
+                                binding.matchOne.background = when (list[i]?.state) {
+                                    "w" -> {
+                                        ContextCompat.getDrawable(context, R.drawable.win)
+                                    }
+                                    "l" -> {
+                                        ContextCompat.getDrawable(context, R.drawable.lose)
+                                    }
+                                    "d" -> {
+                                        ContextCompat.getDrawable(context, R.drawable.tie)
+                                    }
+                                    else -> {
+                                        ContextCompat.getDrawable(context, R.drawable.win)
+                                    }
                                 }
-                                "l" -> {
-                                    ContextCompat.getDrawable(context, R.drawable.lose)
-                                }
-                                "d" -> {
-                                    ContextCompat.getDrawable(context, R.drawable.tie)
-                                }
-                                else -> {
-                                    ContextCompat.getDrawable(context, R.drawable.win)
-                                }
+                            } else {
+                                binding.matchOne.visibility = View.GONE
                             }
                         }
                         1 -> {
-                            binding.matchTwo.visibility = View.VISIBLE
-                            binding.matchTwo.text = list[i]?.stateLang
-                            binding.matchTwo.background = when (list[i]?.state) {
-                                "w" -> {
-                                    ContextCompat.getDrawable(context, R.drawable.win)
+                            if ((list[i]?.state == winTieLosse || winTieLosse == "") && (list[i]?.locationType == homeAway || homeAway == "")) {
+                                binding.matchTwo.visibility = View.VISIBLE
+                                binding.matchTwo.text = list[i]?.stateLang
+                                binding.matchTwo.background = when (list[i]?.state) {
+                                    "w" -> {
+                                        ContextCompat.getDrawable(context, R.drawable.win)
+                                    }
+                                    "l" -> {
+                                        ContextCompat.getDrawable(context, R.drawable.lose)
+                                    }
+                                    "d" -> {
+                                        ContextCompat.getDrawable(context, R.drawable.tie)
+                                    }
+                                    else -> {
+                                        ContextCompat.getDrawable(context, R.drawable.win)
+                                    }
                                 }
-                                "l" -> {
-                                    ContextCompat.getDrawable(context, R.drawable.lose)
-                                }
-                                "d" -> {
-                                    ContextCompat.getDrawable(context, R.drawable.tie)
-                                }
-                                else -> {
-                                    ContextCompat.getDrawable(context, R.drawable.win)
-                                }
+                            } else {
+                                binding.matchTwo.visibility = View.GONE
                             }
                         }
                         2 -> {
-                            binding.matchThree.visibility = View.VISIBLE
-                            binding.matchThree.text = list[i]?.stateLang
-                            binding.matchThree.background = when (list[i]?.state) {
-                                "w" -> {
-                                    ContextCompat.getDrawable(context, R.drawable.win)
+                            if ((list[i]?.state == winTieLosse || winTieLosse == "") && (list[i]?.locationType == homeAway || homeAway == "")) {
+                                binding.matchThree.visibility = View.VISIBLE
+                                binding.matchThree.text = list[i]?.stateLang
+                                binding.matchThree.background = when (list[i]?.state) {
+                                    "w" -> {
+                                        ContextCompat.getDrawable(context, R.drawable.win)
+                                    }
+                                    "l" -> {
+                                        ContextCompat.getDrawable(context, R.drawable.lose)
+                                    }
+                                    "d" -> {
+                                        ContextCompat.getDrawable(context, R.drawable.tie)
+                                    }
+                                    else -> {
+                                        ContextCompat.getDrawable(context, R.drawable.win)
+                                    }
                                 }
-                                "l" -> {
-                                    ContextCompat.getDrawable(context, R.drawable.lose)
-                                }
-                                "d" -> {
-                                    ContextCompat.getDrawable(context, R.drawable.tie)
-                                }
-                                else -> {
-                                    ContextCompat.getDrawable(context, R.drawable.win)
-                                }
+                            } else {
+                                binding.matchThree.visibility = View.GONE
                             }
                         }
                         3 -> {
-                            binding.matchFour.visibility = View.VISIBLE
-                            binding.matchFour.text = list[i]?.stateLang
-                            binding.matchFour.background = when (list[i]?.state) {
-                                "w" -> {
-                                    ContextCompat.getDrawable(context, R.drawable.win)
+                            if ((list[i]?.state == winTieLosse || winTieLosse == "") && (list[i]?.locationType == homeAway || homeAway == "")) {
+                                binding.matchFour.visibility = View.VISIBLE
+                                binding.matchFour.text = list[i]?.stateLang
+                                binding.matchFour.background = when (list[i]?.state) {
+                                    "w" -> {
+                                        ContextCompat.getDrawable(context, R.drawable.win)
+                                    }
+                                    "l" -> {
+                                        ContextCompat.getDrawable(context, R.drawable.lose)
+                                    }
+                                    "d" -> {
+                                        ContextCompat.getDrawable(context, R.drawable.tie)
+                                    }
+                                    else -> {
+                                        ContextCompat.getDrawable(context, R.drawable.win)
+                                    }
                                 }
-                                "l" -> {
-                                    ContextCompat.getDrawable(context, R.drawable.lose)
-                                }
-                                "d" -> {
-                                    ContextCompat.getDrawable(context, R.drawable.tie)
-                                }
-                                else -> {
-                                    ContextCompat.getDrawable(context, R.drawable.win)
-                                }
+                            } else {
+                                binding.matchFour.visibility = View.GONE
                             }
                         }
                         4 -> {
-                            binding.matchFive.visibility = View.VISIBLE
-                            binding.matchFive.text = list[i]?.stateLang
-                            binding.matchFive.background = when (list[i]?.state) {
-                                "w" -> {
-                                    ContextCompat.getDrawable(context, R.drawable.win)
+                            if ((list[i]?.state == winTieLosse || winTieLosse == "") && (list[i]?.locationType == homeAway || homeAway == "")) {
+                                binding.matchFive.visibility = View.VISIBLE
+                                binding.matchFive.text = list[i]?.stateLang
+                                binding.matchFive.background = when (list[i]?.state) {
+                                    "w" -> {
+                                        ContextCompat.getDrawable(context, R.drawable.win)
+                                    }
+                                    "l" -> {
+                                        ContextCompat.getDrawable(context, R.drawable.lose)
+                                    }
+                                    "d" -> {
+                                        ContextCompat.getDrawable(context, R.drawable.tie)
+                                    }
+                                    else -> {
+                                        ContextCompat.getDrawable(context, R.drawable.win)
+                                    }
                                 }
-                                "l" -> {
-                                    ContextCompat.getDrawable(context, R.drawable.lose)
-                                }
-                                "d" -> {
-                                    ContextCompat.getDrawable(context, R.drawable.tie)
-                                }
-                                else -> {
-                                    ContextCompat.getDrawable(context, R.drawable.win)
-                                }
+                            } else {
+                                binding.matchFive.visibility = View.GONE
                             }
                         }
                     }
@@ -165,20 +188,24 @@ class LeagueRankingAdapter(var context: Context) :
             }
 
             data.currentMatch?.let { currentMatch ->
-                binding.lastMatchLL.visibility = View.VISIBLE
-                binding.lastTeam1Tv.text = currentMatch.firstTeamName
-                Glide.with(context)
-                    .load(Constants.baseUrl + currentMatch.firstTeamImage)
-                    .override(39)
-                    .into(binding.lastTeam1Iv)
-                binding.lastDateResultTeamOne.text = currentMatch.firstTeamGoon
-                binding.lastTeam2Tv.text = currentMatch.secondTeamName
-                Glide.with(context)
-                    .load(Constants.baseUrl + currentMatch.secondTeamImage)
-                    .override(39)
-                    .into(binding.lastTeam2Iv)
-                binding.lastDateResultTeamTwo.text = currentMatch.secondTeamGoon
-                binding.lastDate.text = currentMatch.dateDay
+                if ((currentMatch.state == winTieLosse || winTieLosse == "") && (currentMatch.locationType == homeAway || homeAway == "")) {
+                    binding.lastMatchLL.visibility = View.VISIBLE
+                    binding.lastTeam1Tv.text = currentMatch.firstTeamName
+                    Glide.with(context)
+                        .load(Constants.baseUrl + currentMatch.firstTeamImage)
+                        .override(39)
+                        .into(binding.lastTeam1Iv)
+                    binding.lastDateResultTeamOne.text = currentMatch.firstTeamGoon
+                    binding.lastTeam2Tv.text = currentMatch.secondTeamName
+                    Glide.with(context)
+                        .load(Constants.baseUrl + currentMatch.secondTeamImage)
+                        .override(39)
+                        .into(binding.lastTeam2Iv)
+                    binding.lastDateResultTeamTwo.text = currentMatch.secondTeamGoon
+                    binding.lastDate.text = currentMatch.dateDay
+                } else {
+                    binding.lastMatchLL.visibility = View.GONE
+                }
             }
 
             data.nextMatch?.let { nextMatch ->
@@ -203,5 +230,11 @@ class LeagueRankingAdapter(var context: Context) :
 
     fun onClear() {
         onClickListener = null
+    }
+
+    fun changeStatus(statusHomeAway: String, statusWinTieLoss: String) {
+        homeAway = statusHomeAway
+        winTieLosse = statusWinTieLoss
+        notifyDataSetChanged()
     }
 }

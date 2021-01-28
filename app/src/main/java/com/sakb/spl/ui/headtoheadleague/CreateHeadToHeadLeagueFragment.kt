@@ -135,7 +135,6 @@ class CreateHeadToHeadLeagueFragment : BaseFragment() {
     }
 
     private fun dialogRounds() {
-        // todo   val options = viewModel.teamsNames.toTypedArray()
         val option = mutableListOf<String>()
         option.add("الجولة 1 ")
         option.add("الجولة 2 ")
@@ -152,7 +151,6 @@ class CreateHeadToHeadLeagueFragment : BaseFragment() {
         }
         builder.setPositiveButton(R.string.okkk) { dialogInterface: DialogInterface, _: Int ->
             binding.roundEt.text = options[selectedItem]
-            ///todo  viewModel.selectedTeamPosition = selectedItem
             dialogInterface.dismiss()
         }
         builder.setNegativeButton(R.string.cancell) { dialogInterface: DialogInterface, _: Int ->
@@ -163,7 +161,6 @@ class CreateHeadToHeadLeagueFragment : BaseFragment() {
     }
 
     private fun dialogMaxTeams() {
-        // todo   val options = viewModel.teamsNames.toTypedArray()
         val option = mutableListOf<String>()
         option.add(" غير محدد ")
         option.add(" 12 ")
@@ -180,7 +177,6 @@ class CreateHeadToHeadLeagueFragment : BaseFragment() {
         }
         builder.setPositiveButton(R.string.okkk) { dialogInterface: DialogInterface, _: Int ->
             binding.maxTeamsEdit.text = options[selectedItem]
-            ///todo  viewModel.selectedTeamPosition = selectedItem
             dialogInterface.dismiss()
         }
         builder.setNegativeButton(R.string.cancell) { dialogInterface: DialogInterface, _: Int ->

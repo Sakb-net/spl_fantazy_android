@@ -2,7 +2,6 @@ package com.sakb.spl.ui.leagueorder
 
 import android.content.DialogInterface
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -25,6 +24,16 @@ class LeagueOrderFragment : BaseFragment() {
     var option = mutableListOf<DataItemSub>()
     var builder: AlertDialog.Builder? = null
 
+    var optionHomeAway = mutableListOf<StatusMatch>()
+    var builderHomeAway: AlertDialog.Builder? = null
+
+    var optionWinTieLoss = mutableListOf<StatusMatch>()
+    var builderWinTieLoss: AlertDialog.Builder? = null
+
+
+    var linkSub: String = ""
+    var statusHomeAway = ""
+    var statusWinTieLoss = ""
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?,
@@ -46,17 +55,19 @@ class LeagueOrderFragment : BaseFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        initHomeAway()
+
+        initWinTieLoss()
+
         initRecyclerView()
         viewModel.rankingTeamLoad("")
         viewModel.subEldawryLoad()
 
         viewModel.rankingTeams.observe(viewLifecycleOwner) {
-
             var list = mutableListOf<RankingEldwryItem>()
             it?.data?.rankingEldwry?.let { dataItem ->
                 list = dataItem.filterNotNull() as MutableList<RankingEldwryItem>
             }
-
             leagueOrderAdapter.submitList(list)
             leagueOrderAdapter.onClickListener = { rank, pos ->
                 leagueOrderAdapter.expand = !leagueOrderAdapter.expand
@@ -77,6 +88,37 @@ class LeagueOrderFragment : BaseFragment() {
         binding.viewByTourTv.setOnClickListener {
             builder?.show()
         }
+
+        binding.winLoseTv.setOnClickListener {
+            builderWinTieLoss?.show()
+        }
+
+        binding.landTv.setOnClickListener {
+            builderHomeAway?.show()
+        }
+    }
+
+    private fun initHomeAway() {
+        val homeAwayList = ArrayList<StatusMatch>()
+        homeAwayList.add(StatusMatch(name = getString(R.string.all_list), status = ""))
+        homeAwayList.add(StatusMatch(name = getString(R.string.homeList), status = HOME))
+        homeAwayList.add(StatusMatch(name = getString(R.string.awayList), status = AWAY))
+
+        optionHomeAway = homeAwayList
+        builderHomeAway = AlertDialog.Builder(requireContext(), R.style.MaterialThemeDialog)
+        initDialogRoundsHomeAway()
+    }
+
+    private fun initWinTieLoss() {
+        val winTieLossList = ArrayList<StatusMatch>()
+        winTieLossList.add(StatusMatch(name = getString(R.string.all_list), status = ""))
+        winTieLossList.add(StatusMatch(name = getString(R.string.win), status = WIN))
+        winTieLossList.add(StatusMatch(name = getString(R.string.tie), status = TIE))
+        winTieLossList.add(StatusMatch(name = getString(R.string.loss), status = LOSS))
+
+        optionWinTieLoss = winTieLossList
+        builderWinTieLoss = AlertDialog.Builder(requireContext(), R.style.MaterialThemeDialog)
+        initDialogRoundsWinTieLoss()
     }
 
     private fun initRecyclerView() {
@@ -85,7 +127,6 @@ class LeagueOrderFragment : BaseFragment() {
     }
 
     private fun initDialogRounds() {
-        // todo   val options = viewModel.teamsNames.toTypedArray()
         val options = option.map {
             it.let {
                 it.langNumWeek?.trim()
@@ -101,18 +142,75 @@ class LeagueOrderFragment : BaseFragment() {
         builder?.setSingleChoiceItems(
             adapter, -1
         ) { dialogInterface: DialogInterface, item: Int ->
-            selectedItem = -1
+            selectedItem = item
             binding.viewByTourTv.text = options[selectedItem]
-            option[selectedItem].link?.let { link -> callRankingBySubeldawry(link) }
+            option[selectedItem].link?.let { link ->
+                linkSub = link
+                callRankingBySubeldawry(link)
+            }
             dialogInterface.dismiss()
         }
-
-//        binding.viewByTourTv.text = options[options.size - 1]
-//        option[options.size - 1].link?.let { link -> callRankingBySubeldawry(link) }
         builder?.create()
     }
 
     private fun callRankingBySubeldawry(link: String) {
         viewModel.rankingTeamLoad(link)
     }
+
+    private fun initDialogRoundsHomeAway() {
+        val options = optionHomeAway.map {
+            it.name
+        }.toTypedArray()
+
+        val adapter: ArrayAdapter<CharSequence> = ArrayAdapter<CharSequence>(
+            requireContext(), R.layout.item_check_list, options
+        )
+
+        var selectedItem: Int
+        builderHomeAway?.setTitle(getString(R.string.select_round))
+        builderHomeAway?.setSingleChoiceItems(
+            adapter, -1
+        ) { dialogInterface: DialogInterface, item: Int ->
+            selectedItem = item
+            binding.landTv.text = options[selectedItem]
+            statusHomeAway = optionHomeAway[selectedItem].status
+            leagueOrderAdapter.changeStatus(statusHomeAway, statusWinTieLoss)
+            dialogInterface.dismiss()
+        }
+        builderHomeAway?.create()
+    }
+
+    private fun initDialogRoundsWinTieLoss() {
+        val options = optionWinTieLoss.map {
+            it.name
+        }.toTypedArray()
+
+        val adapter: ArrayAdapter<CharSequence> = ArrayAdapter<CharSequence>(
+            requireContext(), R.layout.item_check_list, options
+        )
+
+        var selectedItem: Int
+        builderWinTieLoss?.setTitle(getString(R.string.select_round))
+        builderWinTieLoss?.setSingleChoiceItems(
+            adapter, -1
+        ) { dialogInterface: DialogInterface, item: Int ->
+            selectedItem = item
+            binding.winLoseTv.text = options[selectedItem]
+            statusWinTieLoss = optionWinTieLoss[selectedItem].status
+            leagueOrderAdapter.changeStatus(statusHomeAway, statusWinTieLoss)
+            dialogInterface.dismiss()
+        }
+        builderWinTieLoss?.create()
+    }
+
+    companion object {
+        const val HOME = "home"
+        const val AWAY = "away"
+
+        const val WIN = "w"
+        const val TIE = "d"
+        const val LOSS = "l"
+    }
 }
+
+data class StatusMatch(var name: String, var status: String)

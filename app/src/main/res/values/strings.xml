@@ -419,5 +419,11 @@
     <string name="enter_your_token">Enter Token send to your mail</string>
     <string name="enter_right_token">Enter right token</string>
     <string name="rankingMatche">Ranking Matches</string>
+    <string name="homeList">Home</string>
+    <string name="awayList">Away</string>
+    <string name="win">Win</string>
+    <string name="tie">Tie</string>
+    <string name="loss">Loss</string>
+    <string name="all_list">All</string>
 
 </resources>

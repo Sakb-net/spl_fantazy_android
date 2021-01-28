@@ -209,7 +209,7 @@ data class RankingEldwryItem(
 	val goalsOwn: String? = null,
 
 	@field:SerializedName("form")
-	val form: List<FormItem?>? = null,
+	val form: ArrayList<FormItem?>? = null,
 
 	@field:SerializedName("goals_diff")
 	val goalsDiff: String? = null,

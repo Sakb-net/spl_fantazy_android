@@ -10,8 +10,7 @@ data class GetTeamResponse(
 ) : Parcelable {
     constructor(parcel: Parcel) : this(
         parcel.readString(),
-        parcel.readValue(Int::class.java.classLoader) as? Int,
-        TODO("data")) {
+        parcel.readValue(Int::class.java.classLoader) as? Int) {
     }
 
     data class Data(
